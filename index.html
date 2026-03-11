@@ -1,436 +1,905 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NSF 3D – הדפסות תלת מימד בעיצוב אישי</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #0e0e0e; --surface: #181818; --surface2: #222222;
-      --brown: #7a5c3a; --brown-light: #a07848; --brown-muted: #5a4028;
-      --text: #e8e0d4; --text-muted: #8a7d6e; --accent: #d4a255; --radius: 12px;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { background:var(--bg); color:var(--text); font-family:'Heebo',sans-serif; overflow-x:hidden; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSF 3D — הדפסות תלת מימד מקצועיות</title>
+<meta name="description" content="NSF 3D — הדפסות תלת מימד מקצועיות בישראל. PLA, PETG, TPU. עשרות צבעים, שילוט, דמויות, ושירות אישי מהיר.">
+<meta name="robots" content="index, follow">
 
-    .hero { min-height:100vh; display:flex; flex-direction:column; position:relative; overflow:hidden; }
-    .hero-bg {
-      position:absolute; inset:0; z-index:0;
-      background: radial-gradient(ellipse 80% 60% at 50% -10%,#4a8fb5 0%,transparent 65%),
-                  radial-gradient(ellipse 40% 30% at 80% 20%,#2a6080 0%,transparent 50%), var(--bg);
-    }
-    .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,transparent 40%,var(--bg) 100%); }
+<!-- ══ Open Graph — שיתוף יפה בפייסבוק, וואטסאפ, אינסטגרם ══ -->
+<meta property="og:title"       content="NSF 3D — הדפסות תלת מימד מקצועיות">
+<meta property="og:description" content="עשרות צבעים, PLA/PETG/TPU, שילוט ודמויות בהזמנה אישית. שירות מהיר ואיכותי.">
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://nsf3dil.github.io/nsf3d-website/">
+<meta property="og:image"       content="https://nsf3dil.github.io/nsf3d-website/NSF-logo-large-1000px.png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="1000">
+<meta property="og:locale"      content="he_IL">
+<meta property="og:site_name"   content="NSF 3D">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="theme-color"        content="#1e6fa8">
 
-    nav { position:relative; z-index:10; display:flex; align-items:center; gap:12px; padding:24px 40px; flex-wrap:wrap; }
-    .logo-box {
-      width:52px; height:52px; background:linear-gradient(135deg,#b8d4e8,#7aabcc); border-radius:13px;
-      display:flex; align-items:center; justify-content:center;
-      font-family:'Space Mono',monospace; font-weight:700; font-size:12px; color:#1a3a50;
-      letter-spacing:1px; box-shadow:0 4px 24px rgba(100,180,230,.25); flex-shrink:0;
-    }
-    .nav-links { display:flex; gap:6px; flex-wrap:wrap; margin-right:auto; }
-    .nav-links a {
-      background:var(--brown-muted); color:var(--text); text-decoration:none;
-      padding:9px 16px; border-radius:8px; font-size:13px; font-weight:500;
-      transition:background .2s,transform .15s; cursor:pointer;
-    }
-    .nav-links a:hover { background:var(--brown); transform:translateY(-1px); }
-    .nav-links a.active { background:var(--brown); }
+<!-- ══ Facebook Pixel — הדבק כאן את קוד הפיקסל שלך ══
+     חשוב: הקוד מוגן — יופעל רק אחרי שהמשתמש אישר עוגיות שיווק.
+     בעתיד, כשיהיה לך Pixel ID, החלף את XXXXXXXXXXXXXXX:
 
-    .hero-content {
-      position:relative; z-index:5; flex:1; display:flex; flex-direction:column;
-      justify-content:center; padding:0 40px 80px; max-width:680px;
-    }
-    .hero-tag {
-      display:inline-block; background:rgba(122,92,58,.35); border:1px solid var(--brown-muted);
-      color:var(--accent); font-size:11px; font-family:'Space Mono',monospace; letter-spacing:2px;
-      padding:5px 13px; border-radius:100px; margin-bottom:22px; width:fit-content;
-    }
-    .hero h1 { font-size:clamp(34px,5vw,62px); font-weight:900; line-height:1.1; margin-bottom:18px; color:#fff; }
-    .hero h1 span { color:var(--accent); }
-    .hero p { font-size:17px; color:var(--text-muted); line-height:1.7; margin-bottom:32px; max-width:460px; }
-    .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
-    .btn-primary {
-      background:linear-gradient(135deg,var(--brown-light),var(--brown)); color:#fff;
-      padding:13px 28px; border-radius:10px; font-size:15px; font-weight:700;
-      text-decoration:none; border:none; cursor:pointer; font-family:'Heebo',sans-serif;
-      transition:opacity .2s,transform .15s;
-    }
-    .btn-primary:hover { opacity:.88; transform:translateY(-2px); }
-    .btn-ghost {
-      background:transparent; border:1.5px solid var(--brown-muted); color:var(--text-muted);
-      padding:13px 28px; border-radius:10px; font-size:15px; font-weight:500;
-      text-decoration:none; cursor:pointer; font-family:'Heebo',sans-serif;
-      transition:border-color .2s,color .2s;
-    }
-    .btn-ghost:hover { border-color:var(--brown); color:var(--text); }
+<script id="fb-pixel-script">
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){...};...}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'XXXXXXXXXXXXXXX');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
 
-    .page-section { display:none; }
-    .page-section.active { display:block; }
-    section { padding:70px 40px; max-width:1200px; margin:0 auto; }
-    .section-header { margin-bottom:44px; }
-    .section-label { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px; }
-    .section-title { font-size:clamp(26px,3.5vw,42px); font-weight:900; color:#fff; }
+     ⚠️  אל תפעיל עד שתאשר בעמוד Meta Business שהדומיין שלך מאומת.
+     הפיקסל יופעל אוטומטית על-ידי פונקציית loadFbPixel() ב-JS רק אם consent=marketing.
+══ -->
 
-    .search-bar { display:flex; gap:10px; margin-bottom:28px; flex-wrap:wrap; align-items:center; }
-    .search-input {
-      flex:1; min-width:180px; background:var(--surface);
-      border:1.5px solid rgba(255,255,255,.08); color:var(--text);
-      padding:11px 16px; border-radius:10px; font-family:'Heebo',sans-serif; font-size:14px;
-      outline:none; transition:border-color .2s;
-    }
-    .search-input:focus { border-color:var(--brown); }
-    .search-input::placeholder { color:var(--text-muted); }
-    .filter-btn {
-      background:var(--surface); border:1.5px solid rgba(255,255,255,.08); color:var(--text-muted);
-      padding:9px 16px; border-radius:10px; font-family:'Heebo',sans-serif; font-size:13px; cursor:pointer; transition:all .2s;
-    }
-    .filter-btn:hover,.filter-btn.active { background:var(--brown-muted); color:var(--text); border-color:var(--brown); }
-    #material-filter-btns { display:flex; gap:6px; flex-wrap:wrap; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ══ LIGHT THEME ══ */
+:root{
+  --bg:#fff;--bg2:#f4f7fa;--bg3:#e8f4fb;
+  --text:#1a2533;--text2:#4a5e74;
+  --border:#d0dde9;--border2:#b8cfe0;
+  --blue-dark:#1a3a5c;--blue-mid:#1e6fa8;--blue-light:#4db8e8;
+  --card-bg:#fff;--input-bg:#e8f4fb;
+  --nav-bg:rgba(255,255,255,.93);--modal-bg:#fff;
+  --shadow:0 2px 16px rgba(30,111,168,.10);
+  --shadow-md:0 4px 32px rgba(30,111,168,.15);
+  --radius:14px;
+}
+/* ══ DARK THEME — ניגודיות גבוהה לנגישות ══ */
+body.dark{
+  --bg:#0b1622;--bg2:#0f1e2e;--bg3:#0b2038;
+  --text:#f5faff;--text2:#c8dff0;
+  --border:#1e3a55;--border2:#2a5a7a;
+  --blue-dark:#b8e0f7;--blue-mid:#5ecff7;--blue-light:#90def9;
+  --card-bg:#0f1e2e;--input-bg:#0b1622;
+  --nav-bg:rgba(11,22,34,.97);--modal-bg:#0f1e2e;
+  --shadow:0 2px 16px rgba(0,0,0,.5);
+  --shadow-md:0 4px 32px rgba(0,0,0,.6);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direction:rtl;overflow-x:hidden;transition:background .3s,color .3s;}
 
-    .material-group { margin-bottom:48px; }
-    .material-group-title { font-size:19px; font-weight:700; margin-bottom:18px; color:#fff; display:flex; align-items:center; gap:10px; }
-    .material-badge { background:var(--brown-muted); color:var(--accent); font-family:'Space Mono',monospace; font-size:11px; padding:4px 10px; border-radius:6px; letter-spacing:1px; }
-    .color-count { color:var(--text-muted); font-size:13px; font-weight:400; }
+/* NAV */
+nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:40px;width:auto;}
+.nav-logo-text{font-size:22px;font-weight:900;color:var(--blue-dark);display:none;}
+.nav-logo-text span{color:var(--blue-light);}
+.nav-links{display:flex;gap:22px;list-style:none;align-items:center;}
+.nav-links a{color:var(--text2);font-size:14px;font-weight:600;text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--blue-mid);}
+.nav-cta{background:var(--blue-mid)!important;color:#fff!important;padding:8px 18px;border-radius:10px;font-weight:700!important;transition:background .2s!important;}
+.nav-cta:hover{background:var(--blue-dark)!important;}
+.dark-toggle{background:var(--bg2);border:1.5px solid var(--border);color:var(--text);height:34px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;gap:5px;padding:0 12px;transition:background .2s,border-color .2s;flex-shrink:0;white-space:nowrap;font-family:'Heebo',sans-serif;}
+.dark-toggle:hover{background:var(--border);border-color:var(--blue-mid);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
+.hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s;}
+/* On desktop: nav-links visible, hamburger hidden. Dark toggle always shows (outside nav-links). */
+.mobile-menu{display:none;position:fixed;top:64px;right:0;left:0;z-index:199;background:var(--bg);border-bottom:1px solid var(--border);padding:20px 24px;flex-direction:column;gap:4px;box-shadow:0 4px 24px rgba(0,0,0,.12);transition:background .3s;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--text);font-size:16px;font-weight:600;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-child{border:none;}
 
-    .color-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px; }
-    .color-card {
-      background:var(--surface); border-radius:var(--radius); overflow:hidden;
-      border:1px solid rgba(255,255,255,.05); transition:transform .2s,box-shadow .2s; cursor:pointer;
-    }
-    .color-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.4); }
-    .color-swatch { height:105px; width:100%; position:relative; }
-    .color-swatch img { width:100%; height:100%; object-fit:cover; display:block; }
-    .color-info { padding:11px 13px; }
-    .color-name { font-weight:700; font-size:13px; margin-bottom:3px; line-height:1.3; }
-    .color-hex { font-family:'Space Mono',monospace; font-size:10px; color:var(--text-muted); }
-    .color-tags { display:flex; gap:4px; flex-wrap:wrap; margin-top:7px; }
-    .color-tag { font-size:9px; background:rgba(122,92,58,.2); color:var(--accent); padding:2px 6px; border-radius:100px; }
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;background:linear-gradient(155deg,var(--bg3) 0%,var(--bg) 55%,var(--bg2) 100%);position:relative;overflow:hidden;transition:background .3s;}
+.hero-blob{position:absolute;top:-100px;left:-150px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(77,184,232,.12) 0%,transparent 70%);pointer-events:none;}
+.hero-blob2{position:absolute;bottom:-80px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(30,111,168,.08) 0%,transparent 70%);pointer-events:none;}
+.hero-logo{width:130px;height:auto;margin-bottom:24px;filter:drop-shadow(0 4px 18px rgba(30,111,168,.20));}
+body.dark .hero-logo{filter:drop-shadow(0 4px 18px rgba(77,184,232,.35));}
+.hero-tag{display:inline-block;background:rgba(77,184,232,.15);border:1px solid rgba(77,184,232,.4);color:var(--blue-mid);font-size:13px;font-weight:700;padding:6px 18px;border-radius:100px;margin-bottom:18px;}
+.hero-title{font-size:clamp(42px,7vw,80px);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:18px;color:var(--blue-dark);}
+.hero-title .accent{color:var(--blue-light);}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--text2);max-width:500px;line-height:1.75;margin-bottom:34px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:var(--blue-mid);color:#fff;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;transition:background .2s,transform .2s;box-shadow:0 4px 20px rgba(30,111,168,.30);}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);}
+.btn-secondary{background:var(--card-bg);color:var(--blue-mid);padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;border:2px solid var(--blue-light);transition:background .2s,transform .2s;}
+.btn-secondary:hover{background:var(--bg3);transform:translateY(-2px);}
+.hero-stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap;justify-content:center;}
+.stat{text-align:center;}
+.stat-num{font-size:34px;font-weight:900;color:var(--blue-dark);}
+.stat-num span{color:var(--blue-light);}
+.stat-label{font-size:13px;color:var(--text2);margin-top:2px;}
 
-    .loading-state { text-align:center; padding:80px 24px; color:var(--text-muted); }
-    .loading-spinner { width:38px; height:38px; border:3px solid rgba(212,162,85,.2); border-top-color:var(--accent); border-radius:50%; animation:spin .8s linear infinite; margin:0 auto 18px; }
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .error-state { background:rgba(200,50,50,.1); border:1px solid rgba(200,50,50,.3); border-radius:var(--radius); padding:24px; color:#f88; }
+/* SECTIONS */
+.sw{padding:76px 40px;max-width:1200px;margin:0 auto;}
+.sdiv{height:1px;background:var(--border);}
+.stag{font-size:12px;font-weight:700;color:var(--blue-mid);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.stitle{font-size:clamp(26px,3.5vw,38px);font-weight:900;color:var(--blue-dark);letter-spacing:-.5px;line-height:1.15;}
+.ssub{font-size:16px;color:var(--text2);margin-top:10px;line-height:1.65;}
+.sh{margin-bottom:42px;}
 
-    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:22px; }
-    .project-card { background:var(--surface); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.05); transition:transform .2s; }
-    .project-card:hover { transform:translateY(-4px); }
-    .project-img { height:210px; background:var(--surface2); display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    .project-img img { width:100%; height:100%; object-fit:cover; }
-    .project-placeholder { display:flex; flex-direction:column; align-items:center; gap:10px; opacity:.35; }
-    .project-placeholder svg { width:44px; height:44px; }
-    .project-info { padding:18px; }
-    .project-title { font-weight:700; font-size:17px; margin-bottom:7px; }
-    .project-desc { color:var(--text-muted); font-size:14px; line-height:1.6; margin-bottom:12px; }
-    .project-tags { display:flex; gap:7px; flex-wrap:wrap; }
-    .tag { background:rgba(122,92,58,.2); border:1px solid var(--brown-muted); color:var(--accent); font-size:11px; padding:3px 9px; border-radius:100px; }
+/* CATALOG */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:24px;}
+.filter-btn{background:var(--card-bg);color:var(--text2);border:1.5px solid var(--border);padding:8px 18px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Heebo',sans-serif;}
+.filter-btn:hover,.filter-btn.active{background:var(--blue-mid);color:#fff;border-color:var(--blue-mid);}
+.search-input{background:var(--card-bg);border:1.5px solid var(--border);color:var(--text);padding:9px 18px;border-radius:100px;font-size:14px;font-family:'Heebo',sans-serif;outline:none;min-width:190px;transition:border-color .2s;margin-right:auto;}
+.search-input:focus{border-color:var(--blue-mid);}
+.search-input::placeholder{color:var(--text2);}
+.show-all-row{text-align:center;margin-top:26px;}
+.show-all-btn{background:var(--card-bg);color:var(--blue-mid);border:2px solid var(--blue-light);padding:10px 28px;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
+.show-all-btn:hover{background:var(--bg3);}
+.colors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px;}
+.color-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;cursor:pointer;}
+.color-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--blue-light);}
+.color-swatch{height:92px;width:100%;overflow:hidden;}
+.color-swatch img{width:100%;height:100%;object-fit:cover;}
+.color-swatch-block{width:100%;height:100%;}
+.color-info{padding:10px 12px;}
+.color-name{font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.35;color:var(--text);}
+.color-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.color-sku{font-size:11px;color:var(--text2);}
+.tag-glow{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(77,184,232,.15);color:var(--blue-mid);border:1px solid rgba(77,184,232,.3);}
+.loading{text-align:center;padding:56px;color:var(--text2);font-size:16px;grid-column:1/-1;}
+.loading-spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--blue-mid);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px;}
+@keyframes spin{to{transform:rotate(360deg);}}
 
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; }
-    .about-text p { color:var(--text-muted); line-height:1.8; font-size:15px; margin-bottom:14px; }
-    .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-    .stat-box { background:var(--surface); border-radius:var(--radius); padding:22px; border:1px solid rgba(255,255,255,.05); }
-    .stat-num { font-size:34px; font-weight:900; color:var(--accent); font-family:'Space Mono',monospace; }
-    .stat-label { color:var(--text-muted); font-size:12px; margin-top:4px; }
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--modal-bg);border-radius:18px;max-width:420px;width:100%;overflow:hidden;box-shadow:0 12px 60px rgba(0,0,0,.25);}
+.modal-img{width:100%;height:200px;object-fit:cover;}
+.modal-swatch{width:100%;height:200px;}
+.modal-body{padding:22px;}
+.modal-title{font-size:22px;font-weight:900;color:var(--blue-dark);margin-bottom:14px;}
+.modal-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px;}
+.modal-row:last-of-type{border:none;}
+.modal-row-label{color:var(--text2);}
+.modal-row-val{font-weight:700;color:var(--text);}
+.modal-actions{display:flex;gap:10px;margin-top:16px;}
+.modal-wa{flex:1;background:var(--blue-mid);color:#fff;border:none;padding:12px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
+.modal-wa:hover{background:var(--blue-dark);}
+.modal-close-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;}
 
-    .steps { display:grid; grid-template-columns:repeat(auto-fill,minmax(195px,1fr)); gap:20px; }
-    .step { background:var(--surface); border-radius:var(--radius); padding:26px; border:1px solid rgba(255,255,255,.05); }
-    .step-num { font-family:'Space Mono',monospace; font-size:38px; font-weight:700; color:var(--brown-muted); line-height:1; margin-bottom:14px; }
-    .step h3 { font-size:15px; font-weight:700; margin-bottom:7px; }
-    .step p { color:var(--text-muted); font-size:13px; line-height:1.6; }
+/* PRODUCTS */
+.product-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
+.ptype{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:26px;text-align:center;}
+.ptype-icon{font-size:42px;margin-bottom:10px;}
+.ptype-title{font-size:16px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
+.ptype-desc{font-size:13px;color:var(--text2);line-height:1.6;}
+.coming-soon{background:var(--bg3);border:2px dashed var(--border2);border-radius:var(--radius);padding:44px;text-align:center;}
+.coming-soon .cs-icon{font-size:44px;margin-bottom:12px;}
+.coming-soon h3{font-size:19px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
+.coming-soon p{font-size:14px;color:var(--text2);}
 
-    .faq-list { display:flex; flex-direction:column; gap:10px; }
-    .faq-item { background:var(--surface); border-radius:var(--radius); border:1px solid rgba(255,255,255,.05); overflow:hidden; }
-    .faq-q { padding:18px 22px; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; user-select:none; }
-    .faq-q:hover { background:var(--surface2); }
-    .faq-icon { color:var(--accent); font-size:20px; flex-shrink:0; transition:transform .25s; }
-    .faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease,padding .25s; color:var(--text-muted); font-size:14px; line-height:1.7; padding:0 22px; }
-    .faq-item.open .faq-a { max-height:280px; padding:0 22px 18px; }
-    .faq-item.open .faq-icon { transform:rotate(45deg); }
+/* ORDER */
+.order-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px;}
+.step{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:24px;}
+.step-num{font-size:40px;font-weight:900;color:rgba(77,184,232,.25);line-height:1;margin-bottom:12px;}
+.step-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:5px;}
+.step-desc{font-size:13px;color:var(--text2);line-height:1.6;}
+.order-cta{text-align:center;margin-top:32px;}
 
-    footer { background:var(--surface); border-top:1px solid rgba(255,255,255,.05); padding:44px; text-align:center; }
-    .contact-methods { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:28px; }
-    .contact-btn { background:var(--brown-muted); color:var(--text); text-decoration:none; padding:11px 26px; border-radius:10px; font-weight:600; font-size:14px; transition:background .2s,transform .15s; display:flex; align-items:center; gap:7px; }
-    .contact-btn:hover { background:var(--brown); transform:translateY(-2px); }
-    footer p { color:var(--text-muted); font-size:12px; }
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.about-features{display:grid;gap:16px;margin-top:26px;}
+.fi{display:flex;gap:14px;align-items:flex-start;}
+.fi-icon{width:42px;height:42px;border-radius:10px;background:rgba(30,111,168,.1);border:1px solid rgba(30,111,168,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.fi-text h4{font-size:14px;font-weight:800;color:var(--blue-dark);margin-bottom:2px;}
+.fi-text p{font-size:13px;color:var(--text2);line-height:1.55;}
+.about-visual{background:var(--card-bg);border:1.5px solid var(--border);border-radius:18px;padding:32px;text-align:center;box-shadow:var(--shadow);}
+.abn{font-size:68px;font-weight:900;color:var(--blue-mid);line-height:1;}
+.abl{font-size:14px;color:var(--text2);margin-top:5px;}
+.ab-chips{display:grid;gap:9px;margin-top:22px;}
+.ab-chip{background:var(--bg2);border-radius:10px;padding:12px 14px;text-align:right;}
+.ab-chip-l{font-size:11px;color:var(--text2);}
+.ab-chip-v{font-size:13px;font-weight:700;color:var(--text);margin-top:1px;}
 
-    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.75); z-index:100; display:none; align-items:center; justify-content:center; padding:20px; }
-    .modal-overlay.open { display:flex; }
-    .modal { background:var(--surface); border-radius:16px; padding:32px; max-width:420px; width:100%; border:1px solid rgba(255,255,255,.08); }
-    .modal-swatch { width:100%; height:150px; border-radius:10px; margin-bottom:22px; overflow:hidden; }
-    .modal h2 { font-size:22px; font-weight:900; margin-bottom:7px; }
-    .modal-meta { display:flex; gap:7px; flex-wrap:wrap; margin:10px 0; }
-    .modal-tag { background:rgba(122,92,58,.25); color:var(--accent); font-size:11px; padding:3px 9px; border-radius:100px; }
-    .modal p { color:var(--text-muted); font-size:14px; line-height:1.6; margin-top:7px; }
-    .modal-sku { font-family:'Space Mono',monospace; font-size:11px; color:var(--text-muted); margin-top:9px; }
-    .modal-close { margin-top:22px; background:var(--brown-muted); color:var(--text); border:none; padding:9px 22px; border-radius:8px; cursor:pointer; font-family:'Heebo',sans-serif; font-size:14px; transition:background .2s; }
-    .modal-close:hover { background:var(--brown); }
+/* SOCIAL */
+.social-grid{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
+.social-card{display:flex;align-items:center;gap:12px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 22px;text-decoration:none;color:var(--text);transition:transform .2s,box-shadow .2s,border-color .2s;min-width:150px;}
+.social-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--blue-light);}
+.social-icon{font-size:24px;}
+.social-name{font-size:14px;font-weight:700;color:var(--blue-dark);}
+.social-handle{font-size:12px;color:var(--text2);}
 
-    @media(max-width:700px) {
-      nav { padding:16px; }
-      .nav-links a { padding:7px 10px; font-size:12px; }
-      .hero-content { padding:0 18px 56px; }
-      section { padding:44px 18px; }
-      footer { padding:30px 18px; }
-      .about-grid { grid-template-columns:1fr; }
-    }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
-    .hero-content>*{animation:fadeUp .6s ease both}
-    .hero-content>*:nth-child(1){animation-delay:.1s}
-    .hero-content>*:nth-child(2){animation-delay:.22s}
-    .hero-content>*:nth-child(3){animation-delay:.34s}
-    .hero-content>*:nth-child(4){animation-delay:.46s}
-  </style>
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
+.contact-info{display:grid;gap:12px;}
+.contact-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);transition:background .2s,transform .2s;}
+.contact-card:hover{background:var(--border);transform:translateX(-3px);}
+.contact-icon{width:44px;height:44px;border-radius:11px;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.contact-label{font-size:12px;color:var(--text2);margin-bottom:2px;}
+.contact-val{font-size:15px;font-weight:700;color:var(--blue-dark);}
+.hours-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 20px;}
+.hours-l{font-size:12px;color:var(--text2);margin-bottom:5px;}
+.hours-v{font-size:14px;font-weight:700;color:var(--blue-dark);}
+.hours-s{font-size:12px;color:var(--text2);margin-top:3px;}
+.contact-form{display:grid;gap:13px;}
+.form-group{display:grid;gap:5px;}
+.form-label{font-size:13px;font-weight:700;color:var(--blue-dark);}
+.form-input,.form-textarea,.form-select{background:var(--input-bg);border:1.5px solid var(--border);color:var(--text);padding:11px 14px;border-radius:10px;font-size:15px;font-family:'Heebo',sans-serif;outline:none;transition:border-color .2s;width:100%;}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--blue-mid);}
+.form-textarea{resize:vertical;min-height:100px;}
+.form-file-wrap{background:var(--input-bg);border:1.5px dashed var(--border2);border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;}
+.form-file-wrap:hover{border-color:var(--blue-mid);}
+.form-file-input{display:none;}
+.form-file-label{font-size:13px;color:var(--text2);cursor:pointer;}
+.form-file-label strong{color:var(--blue-mid);}
+.form-file-preview{display:none;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.form-file-thumb{width:60px;height:60px;object-fit:cover;border-radius:8px;border:2px solid var(--border2);}
+.form-submit{background:var(--blue-mid);color:#fff;border:none;padding:13px 28px;border-radius:var(--radius);font-size:16px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(30,111,168,.28);}
+.form-submit:hover{background:var(--blue-dark);transform:translateY(-1px);}
+.form-note{font-size:12px;color:var(--text2);text-align:center;}
+.form-success{display:none;background:rgba(30,180,100,.1);border:1px solid rgba(30,180,100,.3);color:#1a8a50;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
+
+/* FOOTER */
+footer{background:var(--blue-dark);color:rgba(255,255,255,.7);padding:38px 40px 28px;text-align:center;}
+body.dark footer{background:#061422;}
+.footer-logo{margin-bottom:14px;}
+.footer-logo img{height:44px;filter:brightness(0) invert(1);opacity:.88;}
+.footer-logo-text{font-size:20px;font-weight:900;color:rgba(255,255,255,.9);display:none;}
+.footer-links{display:flex;gap:20px;justify-content:center;list-style:none;margin-bottom:10px;flex-wrap:wrap;}
+.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;transition:color .2s;}
+.footer-links a:hover,.footer-links button:hover{color:#fff;}
+.footer-legal{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
+.footer-legal-btn{background:none;border:none;color:rgba(255,255,255,.45);font-size:12px;font-family:'Heebo',sans-serif;cursor:pointer;text-decoration:underline;padding:0;transition:color .2s;}
+.footer-legal-btn:hover{color:rgba(255,255,255,.85);}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.3);}
+
+/* ══ LEGAL MODALS ══ */
+.legal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.legal-overlay.open{display:flex;}
+.legal-modal{background:var(--modal-bg);border-radius:18px;max-width:640px;width:100%;max-height:82vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 16px 64px rgba(0,0,0,.3);}
+.legal-header{padding:22px 26px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.legal-header h2{font-size:20px;font-weight:900;color:var(--blue-dark);}
+.legal-close{background:var(--bg2);border:1px solid var(--border);color:var(--text);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.legal-body{padding:24px 26px;overflow-y:auto;font-size:14px;line-height:1.75;color:var(--text);}
+.legal-body h3{font-size:15px;font-weight:800;color:var(--blue-dark);margin:20px 0 8px;}
+.legal-body h3:first-child{margin-top:0;}
+.legal-body p{margin-bottom:10px;color:var(--text2);}
+.legal-body ul{margin:6px 0 10px 0;padding-right:18px;}
+.legal-body ul li{margin-bottom:5px;color:var(--text2);}
+.legal-body strong{color:var(--text);}
+.legal-body .highlight{background:rgba(255,180,0,.12);border:1px solid rgba(255,180,0,.3);border-radius:8px;padding:12px 16px;margin:12px 0;}
+.legal-body .highlight strong{color:#b06000;}
+
+/* ══ COOKIE BANNER ══ */
+#cookieBanner{
+  display:none;position:fixed;bottom:0;right:0;left:0;z-index:500;
+  background:var(--blue-dark);color:#fff;
+  padding:16px 24px;
+  border-top:2px solid var(--blue-mid);
+  box-shadow:0 -4px 24px rgba(0,0,0,.2);
+}
+body.dark #cookieBanner{background:#061422;}
+.cookie-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.cookie-text{flex:1;min-width:240px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.85);}
+.cookie-text a{color:var(--blue-light);text-decoration:underline;cursor:pointer;}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0;}
+.cookie-accept{background:var(--blue-mid);color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
+.cookie-accept:hover{background:#3aa0d0;}
+.cookie-decline{background:transparent;color:rgba(255,255,255,.65);border:1.5px solid rgba(255,255,255,.3);padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s;}
+.cookie-decline:hover{border-color:rgba(255,255,255,.7);color:#fff;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0 18px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .sw{padding:54px 18px;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .about-visual{order:-1;}
+  .hero-stats{gap:26px;}
+  footer{padding:28px 18px;}
+  .filter-row{gap:7px;}
+  .search-input{margin-right:0;width:100%;}
+  .cookie-inner{flex-direction:column;align-items:stretch;}
+  .cookie-btns{justify-content:stretch;}
+  .cookie-accept,.cookie-decline{flex:1;text-align:center;}
+}
+@media(max-width:480px){
+  .colors-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+}
+</style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-bg"></div>
-  <nav>
-    <div class="logo-box">NSF</div>
-    <div class="nav-links">
-      <a class="active" onclick="showPage('home',this)">🏠 ראשי</a>
-      <a onclick="showPage('colors',this)">🎨 קטלוג צבעים</a>
-      <a onclick="showPage('projects',this)">📁 פרויקטים</a>
-      <a onclick="showPage('how',this)">⚙️ איך זה עובד?</a>
-      <a onclick="showPage('faq',this)">❓ שאלות נפוצות</a>
-      <a onclick="showPage('about',this)">👤 קצת עליי</a>
-    </div>
-  </nav>
-  <div class="hero-content" id="home-hero">
-    <div class="hero-tag">✦ הדפסות תלת מימד בישראל</div>
-    <h1>NSF 3D<br/><span>עיצוב אישי</span><br/>בכל צבע</h1>
-    <p>הדפסות FDM איכותיות עם עשרות צבעים וחומרים — מרעיון לידיים שלך.</p>
-    <div class="hero-cta">
-      <button class="btn-primary" onclick="showPage('colors',document.querySelectorAll('.nav-links a')[1])">ראה קטלוג צבעים</button>
-      <button class="btn-ghost"   onclick="showPage('projects',document.querySelectorAll('.nav-links a')[2])">פרויקטים שביצעתי</button>
-    </div>
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="40" height="40"
+      onerror="this.style.display='none';document.querySelector('.nav-logo-text').style.display='block'">
+    <span class="nav-logo-text">NSF <span>3D</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#catalog">קטלוג</a></li>
+    <li><a href="#products" id="nav-products">מוצרים</a></li>
+    <li><a href="#order" id="nav-order">הזמנות</a></li>
+    <li><a href="#about">אודות</a></li>
+    <li><a href="#social">רשתות</a></li>
+    <li><a href="#contact" class="nav-cta">📱 צור קשר</a></li>
+  </ul>
+  <!-- כפתור מצב כהה + המבורגר — ימין הנאב -->
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="dark-toggle" id="darkBtn" onclick="toggleDark()" aria-label="החלף מצב כהה/בהיר"><span id="darkIcon">🌙</span><span id="darkLabel">מצב כהה</span></button>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#catalog" onclick="closeMenu()">🎨 קטלוג צבעים</a>
+  <a href="#products" onclick="closeMenu()" id="mm-products">🖨️ מוצרים</a>
+  <a href="#order" onclick="closeMenu()" id="mm-order">📦 הזמנות</a>
+  <a href="#about" onclick="closeMenu()">ℹ️ אודות</a>
+  <a href="#social" onclick="closeMenu()">📲 רשתות</a>
+  <a href="#contact" onclick="closeMenu()">📱 צור קשר</a>
 </div>
 
-<!-- COLORS -->
-<div class="page-section" id="page-colors">
-<section>
-  <div class="section-header">
-    <div class="section-label">// CATALOG</div>
-    <h2 class="section-title">קטלוג צבעים</h2>
-  </div>
-  <div class="search-bar">
-    <input class="search-input" type="text" placeholder="חיפוש צבע או מק״ט..." id="color-search" oninput="renderColorGroups()" />
-    <button class="filter-btn active" onclick="setFilter('all',this)">הכל</button>
-    <div id="material-filter-btns"></div>
-  </div>
-  <div id="colors-container">
-    <div class="loading-state"><div class="loading-spinner"></div><div>טוען צבעים מ-Notion...</div></div>
-  </div>
-</section>
-</div>
-
-<!-- PROJECTS -->
-<div class="page-section" id="page-projects">
-<section>
-  <div class="section-header"><div class="section-label">// PORTFOLIO</div><h2 class="section-title">פרויקטים שלי</h2></div>
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-img"><div class="project-placeholder"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="36" height="36" rx="4"/><circle cx="24" cy="22" r="7"/><path d="M6 34l10-10 8 8 8-10 10 10"/></svg><span>הוסף תמונה</span></div></div>
-      <div class="project-info"><div class="project-title">פרויקט לדוגמה</div><div class="project-desc">תיאור קצר — חומר, צבע, שימוש.</div><div class="project-tags"><span class="tag">PLA</span><span class="tag">עיצוב אישי</span></div></div>
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-blob"></div><div class="hero-blob2"></div>
+  <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
+    <img src="NSF-logo-large-1000px.png" alt="NSF 3D" class="hero-logo" width="130" height="130" onerror="this.style.display='none'">
+    <div class="hero-tag">✦ הדפסות תלת מימד מקצועיות</div>
+    <h1 class="hero-title">הרעיון שלך<br><span class="accent">מוצר אמיתי</span></h1>
+    <p class="hero-sub">הדפסות 3D איכותיות ב-PLA, PETG ו-TPU — עשרות צבעים, גימורים מיוחדים, ושירות אישי מול המדפיס עצמו.</p>
+    <div class="hero-btns">
+      <a href="#catalog" class="btn-primary">לקטלוג הצבעים ←</a>
+      <a href="#contact" class="btn-secondary">💬 דברו איתנו</a>
     </div>
-    <div class="project-card" style="border:1.5px dashed rgba(255,255,255,.1);background:transparent;display:flex;align-items:center;justify-content:center;min-height:300px;">
-      <div style="text-align:center;color:var(--text-muted);padding:40px;"><div style="font-size:44px;margin-bottom:10px;">+</div><div style="font-size:13px;">הוסף פרויקט חדש</div></div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="statColors">—</div><div class="stat-label">צבעים במלאי</div></div>
+      <div class="stat"><div class="stat-num">3<span>+</span></div><div class="stat-label">סוגי חומרים</div></div>
+      <div class="stat"><div class="stat-num">100<span>%</span></div><div class="stat-label">ישראלי מקומי</div></div>
     </div>
   </div>
 </section>
-</div>
 
-<!-- HOW -->
-<div class="page-section" id="page-how">
-<section>
-  <div class="section-header"><div class="section-label">// PROCESS</div><h2 class="section-title">איך זה עובד?</h2></div>
-  <div class="steps">
-    <div class="step"><div class="step-num">01</div><h3>בחר צבע וחומר</h3><p>עיין בקטלוג ובחר את הצירוף המתאים — PLA, PETG, TPU ועוד.</p></div>
-    <div class="step"><div class="step-num">02</div><h3>שלח את הקובץ</h3><p>שלח קובץ STL / OBJ / 3MF, או תאר את הרעיון שלך.</p></div>
-    <div class="step"><div class="step-num">03</div><h3>הדפסה + עיבוד</h3><p>הדפסה עם הגדרות מקסימאליות, כולל עיבוד גמר לפי הצורך.</p></div>
-    <div class="step"><div class="step-num">04</div><h3>משלוח / איסוף</h3><p>משלוח לכל הארץ או איסוף עצמי — לפי הנוחות שלך.</p></div>
+<!-- ══ CATALOG ══ -->
+<div class="sdiv"></div>
+<div id="catalog" style="background:var(--bg2)">
+<div class="sw">
+  <div class="sh">
+    <div class="stag">קטלוג</div>
+    <h2 class="stitle">צבעים וחומרים</h2>
+    <p class="ssub">המלאי מתעדכן אוטומטית. לחץ על כרטיס לפרטים ולהזמנה.</p>
   </div>
-</section>
-</div>
-
-<!-- FAQ -->
-<div class="page-section" id="page-faq">
-<section>
-  <div class="section-header"><div class="section-label">// FAQ</div><h2 class="section-title">שאלות נפוצות</h2></div>
-  <div class="faq-list">
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>מה זמן האספקה?</span><span class="faq-icon">+</span></div><div class="faq-a">בדרך כלל 3-7 ימי עסקים, תלוי בגודל ומורכבות ההדפסה.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>מה הפורמטים שאתה מקבל?</span><span class="faq-icon">+</span></div><div class="faq-a">STL, OBJ, 3MF. אם יש לך רעיון בלי קובץ — אפשר לתאם.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>אפשר לבקש צבע שלא ברשימה?</span><span class="faq-icon">+</span></div><div class="faq-a">תלוי בזמינות. צור קשר ונבדוק יחד.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>האם ההדפסות עמידות?</span><span class="faq-icon">+</span></div><div class="faq-a">PLA מעולה לפנים, PETG עמיד לחום ולחות. אייעץ לך על החומר הנכון.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>מה עלות ההדפסה?</span><span class="faq-icon">+</span></div><div class="faq-a">תלוי בגודל, כמות חומר, ומורכבות. שלח לי את הקובץ ואשלח הצעת מחיר.</div></div>
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="setFilter('popular',this)">⭐ פופולריים</button>
+    <button class="filter-btn" onclick="setFilter('all',this)">הכל</button>
+    <button class="filter-btn" onclick="setFilter('PLA',this)">PLA</button>
+    <button class="filter-btn" onclick="setFilter('PETG',this)">PETG</button>
+    <button class="filter-btn" onclick="setFilter('TPU',this)">TPU</button>
+    <button class="filter-btn" onclick="setFilter('glow',this)">✨ זוהר בחושך</button>
+    <input class="search-input" type="text" id="searchInput" placeholder="🔍 חיפוש..." oninput="filterColors()" aria-label="חיפוש צבע">
   </div>
-</section>
+  <div class="colors-grid" id="colorsGrid" role="list">
+    <div class="loading"><div class="loading-spinner"></div>טוען צבעים...</div>
+  </div>
+  <div class="show-all-row" id="showAllRow" style="display:none">
+    <button class="show-all-btn" id="showAllBtn" onclick="toggleShowAll()">הצג את כל הצבעים ↓</button>
+  </div>
+</div>
 </div>
 
-<!-- ABOUT -->
-<div class="page-section" id="page-about">
-<section>
-  <div class="section-header"><div class="section-label">// ABOUT</div><h2 class="section-title">קצת עליי</h2></div>
+<!-- ══ COLOR MODAL ══ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div id="modalTop"></div>
+    <div class="modal-body">
+      <div class="modal-title" id="modalName"></div>
+      <div id="modalRows"></div>
+      <div class="modal-actions">
+        <button class="modal-wa" onclick="orderFromModal()">📱 הזמן בוואטסאפ</button>
+        <button class="modal-close-btn" onclick="closeModalDirect()">סגור</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRODUCTS ══ -->
+<div class="sdiv"></div>
+<section id="products" style="background:var(--bg)">
+<div class="sw">
+  <div class="sh">
+    <div class="stag">מוצרים ופרויקטים</div>
+    <h2 class="stitle">מה אנחנו מדפיסים?</h2>
+    <p class="ssub">שלטים, דמויות, חלקים מותאמים — כל רעיון יכול להפוך למציאות</p>
+  </div>
+  <div class="product-types">
+    <div class="ptype"><div class="ptype-icon">🪧</div><div class="ptype-title">שילוט מותאם אישית</div><div class="ptype-desc">שלטי בית, עסק, מספרי דירות, לוגואים תלת-מימדיים</div></div>
+    <div class="ptype"><div class="ptype-icon">👤</div><div class="ptype-title">דמויות על בסיס תמונה</div><div class="ptype-desc">מיניאטורות אישיות, פסלונים מתמונות, מתנות ייחודיות</div></div>
+    <div class="ptype"><div class="ptype-icon">⚙️</div><div class="ptype-title">חלקים ואביזרים</div><div class="ptype-desc">חלפים, מתאמים, פתרונות שאין להם תשובה מדף</div></div>
+  </div>
+  <div class="coming-soon"><div class="cs-icon">📸</div><h3>גלריית פרויקטים — בקרוב</h3><p>תמונות עבודות יתווספו בקרוב. בינתיים — שלחו הודעה ונשמח לשתף דוגמאות!</p></div>
+</div>
+</section>
+
+<!-- ══ ORDER ══ -->
+<div class="sdiv"></div>
+<section id="order" style="background:var(--bg2)">
+<div class="sw">
+  <div class="sh">
+    <div class="stag">הזמנות</div>
+    <h2 class="stitle">איך מזמינים?</h2>
+    <p class="ssub">פשוט ומהיר — ישירות מולי בוואטסאפ</p>
+  </div>
+  <div class="order-steps">
+    <div class="step"><div class="step-num">01</div><div class="step-title">בחר צבע וחומר</div><div class="step-desc">עיין בקטלוג ובחר מה מתאים לך. לא בטוח? נייעץ בשמחה.</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">תאר מה אתה רוצה</div><div class="step-desc">שלח הודעה עם תיאור, תמונה, או רעיון — אני מבין הכל.</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">אישור ומחיר</div><div class="step-desc">אחזור מהר עם הצעת מחיר מפורטת לפני שמתחילים.</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">הדפסה ואיסוף</div><div class="step-desc">רוב ההזמנות מוכנות תוך 1–3 ימים. משלוח או איסוף עצמי.</div></div>
+  </div>
+  <div class="order-cta"><a href="#contact" class="btn-primary">💬 שלח הזמנה עכשיו</a></div>
+</div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<div class="sdiv"></div>
+<section id="about" style="background:var(--bg)">
+<div class="sw">
   <div class="about-grid">
-    <div class="about-text">
-      <p>שלום! אני [השם שלך], מדפיס תלת מימד עם תשוקה לעיצוב ודיוק.</p>
-      <p>כל הדפסה מקבלת תשומת לב מלאה — מבחירת החומר, הגדרות האיכות המיטביות, ועד עיבוד הגמר.</p>
-      <p>חלקים פונקציונאליים, מוצרי עיצוב, פיגורות, אביזרים — אם יש לך רעיון, בוא נדבר.</p>
-      <a href="/cdn-cgi/l/email-protection#c7bea8b2b587a2aaa6aeabe9a4a8aa" class="btn-primary" style="display:inline-block;margin-top:22px;">צור קשר</a>
+    <div>
+      <div class="stag">אודות</div>
+      <h2 class="stitle">הדפסות 3D<br>עם גישה אישית</h2>
+      <p class="ssub" style="margin-top:14px">NSF 3D הוא סטודיו הדפסות תלת-מימד שמאמין שכל לקוח מגיע לשירות אמיתי — לא רק לקובץ ממוחשב. מדברים ישירות, מוצאים את הפתרון הנכון, ומספקים תוצאה שמרשימה.</p>
+      <div class="about-features">
+        <div class="fi"><div class="fi-icon">🎯</div><div class="fi-text"><h4>דיוק ואיכות בכל הדפסה</h4><p>בקרת איכות קפדנית — כל מוצר עובר בדיקה לפני שיוצא</p></div></div>
+        <div class="fi"><div class="fi-icon">⚡</div><div class="fi-text"><h4>זמן אספקה מהיר</h4><p>רוב ההזמנות מוכנות תוך 1–3 ימי עסקים</p></div></div>
+        <div class="fi"><div class="fi-icon">🤝</div><div class="fi-text"><h4>שירות אישי ומקצועי</h4><p>לא בוט — אדם אמיתי שמבין הדפסות ויעזור לך לבחור נכון</p></div></div>
+      </div>
     </div>
-    <div class="about-stats">
-      <div class="stat-box"><div class="stat-num" id="stat-colors">—</div><div class="stat-label">צבעים זמינים</div></div>
-      <div class="stat-box"><div class="stat-num" id="stat-materials">—</div><div class="stat-label">חומרים עיקריים</div></div>
-      <div class="stat-box"><div class="stat-num">FDM</div><div class="stat-label">טכנולוגיית הדפסה</div></div>
-      <div class="stat-box"><div class="stat-num">IL</div><div class="stat-label">משלוח לכל הארץ</div></div>
+    <div class="about-visual">
+      <div class="abn" id="aboutNum">60+</div>
+      <div class="abl">צבעים במלאי</div>
+      <div class="ab-chips">
+        <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · TPU</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">גימורים מיוחדים</div><div class="ab-chip-v">מט · Silk · זוהר בחושך · נצנצים</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">שפות שירות</div><div class="ab-chip-v">עברית · English</div></div>
+      </div>
     </div>
   </div>
-</section>
 </div>
+</section>
 
-<footer>
-  <div class="contact-methods">
-    <a href="/cdn-cgi/l/email-protection#8cf5e3f9fecce9e1ede5e0a2efe3e1" class="contact-btn">✉️ אימייל</a>
-    <a href="https://wa.me/972500000000" class="contact-btn" target="_blank">💬 WhatsApp</a>
-    <a href="https://instagram.com/nsf3d" class="contact-btn" target="_blank">📸 אינסטגרם</a>
+<!-- ══ SOCIAL ══ -->
+<div class="sdiv"></div>
+<section id="social" style="background:var(--bg2)">
+<div class="sw" style="text-align:center">
+  <div class="sh">
+    <div class="stag">עקבו אחרינו</div>
+    <h2 class="stitle">אנחנו גם ברשתות</h2>
+    <p class="ssub">עדכונים, פרויקטים חדשים ועוד</p>
   </div>
-  <p>© 2025 NSF 3D · כל הזכויות שמורות</p>
+  <div class="social-grid" id="socialGrid"></div>
+</div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<div class="sdiv"></div>
+<section id="contact" style="background:var(--bg)">
+<div class="sw">
+  <div class="sh">
+    <div class="stag">יצירת קשר</div>
+    <h2 class="stitle">בואו נדבר</h2>
+    <p class="ssub">זמינים לכל שאלה, הצעת מחיר, או סתם להתייעץ</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <a href="#" class="contact-card" id="waCard">
+        <div class="contact-icon">📱</div>
+        <div><div class="contact-label">WhatsApp עסקי</div><div class="contact-val" id="waDisplay">—</div></div>
+      </a>
+      <a href="#" class="contact-card" id="mailCard">
+        <div class="contact-icon" style="background:var(--blue-light)">✉️</div>
+        <div><div class="contact-label">אימייל</div><div class="contact-val" id="mailDisplay">—</div></div>
+      </a>
+      <div class="hours-card">
+        <div class="hours-l">⏰ זמני מענה</div>
+        <div class="hours-v">ראשון–שישי, 09:00–21:00</div>
+        <div class="hours-s">מענה בוואטסאפ תוך שעות ספורות</div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm" onsubmit="submitForm(event)" novalidate>
+      <div class="form-group"><label class="form-label" for="fname">שם מלא *</label><input class="form-input" type="text" id="fname" required placeholder="ישראל ישראלי" autocomplete="name"></div>
+      <div class="form-group"><label class="form-label" for="fphone">טלפון *</label><input class="form-input" type="tel" id="fphone" required placeholder="050-0000000" autocomplete="tel"></div>
+      <div class="form-group">
+        <label class="form-label" for="fsubject">נושא</label>
+        <select class="form-select" id="fsubject">
+          <option value="הזמנה חדשה">הזמנה חדשה</option>
+          <option value="שאלה על צבעים">שאלה על צבעים / חומרים</option>
+          <option value="הצעת מחיר">הצעת מחיר</option>
+          <option value="אחר">אחר</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label" for="fmessage">פרטים *</label><textarea class="form-textarea" id="fmessage" required placeholder="ספר לי מה אתה צריך — מה להדפיס, באיזה צבע, כמות..."></textarea></div>
+      <div class="form-group">
+        <label class="form-label">תמונות להמחשה (אופציונלי)</label>
+        <div class="form-file-wrap" onclick="document.getElementById('ffiles').click()">
+          <input type="file" id="ffiles" class="form-file-input" accept="image/*" multiple onchange="previewFiles(this)">
+          <label class="form-file-label" for="ffiles">📎 <strong>לחץ לצירוף תמונות</strong><br><span style="font-size:12px">JPG/PNG · עד 5 תמונות</span></label>
+          <div class="form-file-preview" id="filePreview"></div>
+        </div>
+        <div style="font-size:11px;color:var(--text2);margin-top:4px">💡 התמונות ישלחו ידנית בוואטסאפ אחרי שתועבר אליו</div>
+      </div>
+      <button type="submit" class="form-submit">📱 שלח בוואטסאפ →</button>
+      <div class="form-note">הלחיצה תפתח את וואטסאפ עם ההודעה מוכנה</div>
+      <div class="form-success" id="formSuccess">✅ מיד תועבר לוואטסאפ!</div>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">
+    <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="44" height="44"
+      onerror="this.style.display='none';document.querySelector('.footer-logo-text').style.display='block'">
+    <div class="footer-logo-text">NSF 3D</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#catalog">קטלוג</a></li>
+    <li><a href="#products">מוצרים</a></li>
+    <li><a href="#order">הזמנות</a></li>
+    <li><a href="#about">אודות</a></li>
+    <li><a href="#contact">צור קשר</a></li>
+  </ul>
+  <div class="footer-legal">
+    <button class="footer-legal-btn" id="btn-accessibility" onclick="openLegal('accessibility')">הצהרת נגישות</button>
+    <button class="footer-legal-btn" id="btn-privacy"       onclick="openLegal('privacy')">מדיניות פרטיות</button>
+    <button class="footer-legal-btn" id="btn-terms"         onclick="openLegal('terms')">תקנון ותנאי שימוש</button>
+  </div>
+  <div class="footer-copy">© 2025 NSF 3D — כל הזכויות שמורות</div>
 </footer>
 
-<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="modal-swatch" id="modal-swatch"></div>
-    <h2 id="modal-name"></h2>
-    <div class="modal-meta" id="modal-meta"></div>
-    <p id="modal-notes"></p>
-    <div class="modal-sku" id="modal-sku"></div>
-    <button class="modal-close" onclick="closeModal()">סגור</button>
+<!-- ══ LEGAL MODALS ══ -->
+<div class="legal-overlay" id="legalOverlay" onclick="closeLegal(event)">
+  <div class="legal-modal">
+    <div class="legal-header">
+      <h2 id="legalTitle">—</h2>
+      <button class="legal-close" onclick="closeLegalDirect()">✕</button>
+    </div>
+    <div class="legal-body" id="legalBody"></div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ═══════════════════════════════════════════════
-// ⚙️  שנה את הכתובת הזו לאחר פריסת ה-Worker
-// ═══════════════════════════════════════════════
-const WORKER_URL = "https://nsf3d-colors.nsf3d-il.workers.dev/";
-
-let allColors = [];
-let activeFilter = "all";
-let colorsLoaded = false;
-
-async function loadColors() {
-  try {
-    const res = await fetch(WORKER_URL);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    if (data.error) throw new Error(data.error);
-    allColors = data.colors;
-    colorsLoaded = true;
-    buildMaterialFilters();
-    renderColorGroups();
-    updateStats();
-  } catch (err) {
-    document.getElementById("colors-container").innerHTML = `
-      <div class="error-state">
-        <strong>שגיאה בטעינת צבעים</strong><br/><br/>
-        ${err.message}<br/><br/>
-        <small>ודא ש-WORKER_URL מוגדר נכון ושה-Worker פועל.</small>
-      </div>`;
-  }
-}
-
-function buildMaterialFilters() {
-  const materials = [...new Set(allColors.map(c => c.material))].sort();
-  document.getElementById("material-filter-btns").innerHTML =
-    materials.map(m => `<button class="filter-btn" onclick="setFilter('${m}',this)">${m}</button>`).join("");
-}
-
-function setFilter(mat, btn) {
-  activeFilter = mat;
-  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  renderColorGroups();
-}
-
-function renderColorGroups() {
-  const search = (document.getElementById("color-search")?.value ?? "").trim().toLowerCase();
-  const filtered = allColors.filter(c => {
-    const matchMat = activeFilter === "all" || c.material === activeFilter;
-    const matchSearch = !search || c.name.includes(search) || c.hex.toLowerCase().includes(search) || c.sku.toLowerCase().includes(search);
-    return matchMat && matchSearch;
-  });
-
-  if (!filtered.length) {
-    document.getElementById("colors-container").innerHTML = `<div class="loading-state">לא נמצאו צבעים תואמים</div>`;
-    return;
-  }
-
-  const groups = {};
-  filtered.forEach(c => { if (!groups[c.material]) groups[c.material]=[]; groups[c.material].push(c); });
-
-  document.getElementById("colors-container").innerHTML = Object.entries(groups).map(([mat, cols]) => `
-    <div class="material-group">
-      <div class="material-group-title">
-        <span class="material-badge">${mat}</span>
-        <span class="color-count">${cols.length} צבעים</span>
-      </div>
-      <div class="color-grid">${cols.map(c => colorCardHTML(c)).join("")}</div>
-    </div>`).join("");
-}
-
-function colorCardHTML(c) {
-  const idx = allColors.indexOf(c);
-  const swatch = c.image
-    ? `<img src="${c.image}" alt="${c.name}" loading="lazy"/>`
-    : `<div style="width:100%;height:100%;background:${c.hex}"></div>`;
-  const tags = c.finishes.slice(0,2).map(f=>`<span class="color-tag">${f}</span>`).join("");
-  return `<div class="color-card" onclick="openModal(${idx})">
-    <div class="color-swatch">${swatch}</div>
-    <div class="color-info">
-      <div class="color-name">${c.name}</div>
-      <div class="color-hex">${c.hex}</div>
-      <div class="color-tags">${tags}</div>
+<!-- ══ COOKIE BANNER ══ -->
+<div id="cookieBanner" role="region" aria-label="הסכמה לעוגיות">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      🍪 אנו משתמשים בעוגיות לצורך שיפור החוויה ולמטרות שיווק (כגון Facebook Pixel).
+      לפרטים: <a onclick="openLegal('privacy');closeCookieBanner()">מדיניות פרטיות</a>.
     </div>
-  </div>`;
+    <div class="cookie-btns">
+      <button class="cookie-accept" onclick="acceptCookies()">קבל הכל ✓</button>
+      <button class="cookie-decline" onclick="declineCookies()">דחה</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════
+//  ⚙️  הגדרות — עדכן כאן בלבד
+// ══════════════════════════════════════════════════════
+const WORKER_URL   = "https://nsf3d-colors.nsf3d-il.workers.dev/";
+const WA_NUMBER    = "PHONE_NUMBER";   // דוגמה: 972501234567
+const EMAIL_ADDR   = "EMAIL_ADDRESS";  // דוגמה: you@gmail.com
+const SITE_URL     = "https://nsf3dil.github.io/nsf3d-website/";
+const DEFAULT_SHOW = 20;
+
+const SECTIONS = {
+  products:      true,   // false = מוצגת הודעת "בבנייה"
+  order:         true,
+  social:        true,
+  // עמודים משפטיים — false = הכפתור בפוטר מוסתר
+  accessibility: true,
+  privacy:       true,
+  terms:         true,
+};
+
+const SOCIALS = {
+  facebook:  { url:"https://facebook.com/FACEBOOK_PAGE",     icon:"📘", name:"פייסבוק",  handle:"NSF 3D" },
+  instagram: { url:"https://instagram.com/INSTAGRAM_HANDLE", icon:"📷", name:"אינסטגרם", handle:"@nsf3d" },
+  tiktok:    { url:"https://tiktok.com/@TIKTOK_HANDLE",      icon:"🎵", name:"טיקטוק",   handle:"@nsf3d" },
+  youtube:   { url:"https://youtube.com/@YOUTUBE_HANDLE",    icon:"▶️", name:"יוטיוב",   handle:"NSF 3D" },
+};
+// ══════════════════════════════════════════════════════
+
+let allColors=[], showingAll=false, activeFilter='popular', currentModalColor=null;
+
+// ── COOKIE CONSENT ──
+function getCookieConsent(){ return localStorage.getItem('nsf-cookie-consent'); }
+
+function acceptCookies(){
+  localStorage.setItem('nsf-cookie-consent','all');
+  closeCookieBanner();
+  loadFbPixel(); // הפעל פיקסל אחרי אישור
+}
+function declineCookies(){
+  localStorage.setItem('nsf-cookie-consent','none');
+  closeCookieBanner();
+}
+function closeCookieBanner(){ document.getElementById('cookieBanner').style.display='none'; }
+
+function loadFbPixel(){
+  // ══ כאן יופעל הפיקסל אחרי אישור עוגיות ══
+  // כשיהיה לך Pixel ID, הוסף כאן:
+  // const s=document.createElement('script');
+  // s.innerHTML=`!function(f,b,e,v,...`;
+  // document.head.appendChild(s);
+  console.log('[NSF3D] Facebook Pixel loaded after consent');
 }
 
-function openModal(i) {
-  const c = allColors[i];
-  document.getElementById("modal-swatch").innerHTML = c.image
-    ? `<img src="${c.image}" alt="${c.name}" style="width:100%;height:100%;object-fit:cover;">`
-    : `<div style="width:100%;height:100%;background:${c.hex}"></div>`;
-  document.getElementById("modal-name").textContent = c.name;
-  document.getElementById("modal-meta").innerHTML =
-    `<span class="modal-tag">${c.material}</span>${c.finishes.map(f=>`<span class="modal-tag">${f}</span>`).join("")}`;
-  document.getElementById("modal-notes").textContent = c.notes || "";
-  document.getElementById("modal-sku").textContent = c.sku ? `מק"ט: ${c.sku}` : "";
-  document.getElementById("modal").classList.add("open");
-}
-function closeModal() { document.getElementById("modal").classList.remove("open"); }
-
-function updateStats() {
-  document.getElementById("stat-colors").textContent = allColors.length + "+";
-  document.getElementById("stat-materials").textContent = new Set(allColors.map(c=>c.material)).size;
+function initCookieBanner(){
+  const consent = getCookieConsent();
+  if(!consent){
+    // הצג אחרי 1.5 שניות — לא לחסום loading
+    setTimeout(()=>{ document.getElementById('cookieBanner').style.display='block'; }, 1500);
+  } else if(consent === 'all'){
+    loadFbPixel();
+  }
 }
 
-function showPage(page, el) {
-  document.getElementById("home-hero").style.display = page==="home" ? "flex" : "none";
-  document.querySelectorAll(".page-section").forEach(s=>s.classList.remove("active"));
-  if (page!=="home") { const t=document.getElementById("page-"+page); if(t) t.classList.add("active"); }
-  document.querySelectorAll(".nav-links a").forEach(a=>a.classList.remove("active"));
-  if (el) el.classList.add("active");
-  window.scrollTo({top:0,behavior:"smooth"});
-  if (page==="colors" && !colorsLoaded) loadColors();
+// ── DARK MODE ──
+(function(){
+  if(localStorage.getItem('nsf-dark')==='1') document.body.classList.add('dark');
+})();
+
+function toggleDark(){
+  const d=document.body.classList.toggle('dark');
+  localStorage.setItem('nsf-dark',d?'1':'0');
+  document.getElementById('darkIcon').textContent=d?'☀️':'🌙';
+  document.getElementById('darkLabel').textContent=d?'מצב בהיר':'מצב כהה';
 }
 
-function toggleFaq(el) { el.parentElement.classList.toggle("open"); }
+// ── WIP SECTIONS ──
+function applyWipSections(){
+  const wip=`<div style="text-align:center;padding:60px 20px"><div style="font-size:48px;margin-bottom:16px">🚧</div><h3 style="font-size:20px;font-weight:800;color:var(--blue-dark);margin-bottom:8px">הקטע הזה בבנייה</h3><p style="color:var(--text2)">בקרוב! בינתיים <a href="#contact" style="color:var(--blue-mid);font-weight:700">צרו קשר</a></p></div>`;
+  if(!SECTIONS.products){ document.querySelector('#products .sw').innerHTML=wip; document.getElementById('nav-products').style.display='none'; document.getElementById('mm-products').style.display='none'; }
+  if(!SECTIONS.order){ document.querySelector('#order .sw').innerHTML=wip; document.getElementById('nav-order').style.display='none'; document.getElementById('mm-order').style.display='none'; }
+  if(!SECTIONS.social){ document.getElementById('social').style.display='none'; }
+  // עמודים משפטיים — הסתר כפתור בפוטר אם false
+  if(!SECTIONS.accessibility){ const b=document.getElementById('btn-accessibility'); if(b)b.style.display='none'; }
+  if(!SECTIONS.privacy)      { const b=document.getElementById('btn-privacy');       if(b)b.style.display='none'; }
+  if(!SECTIONS.terms)        { const b=document.getElementById('btn-terms');         if(b)b.style.display='none'; }
+}
 
-showPage("home", document.querySelector(".nav-links a"));
+// ── INIT ──
+document.addEventListener('DOMContentLoaded',()=>{
+  applyWipSections();
+  // fix dark toggle icon if dark was already set
+  if(document.body.classList.contains('dark')){ document.getElementById('darkIcon').textContent='☀️'; document.getElementById('darkLabel').textContent='מצב בהיר'; }
+
+  document.getElementById('waDisplay').textContent=WA_NUMBER;
+  document.getElementById('mailDisplay').textContent=EMAIL_ADDR;
+  document.getElementById('waCard').href=`https://wa.me/${WA_NUMBER.replace(/\D/g,'')}`;
+  document.getElementById('mailCard').href=`mailto:${EMAIL_ADDR}`;
+
+  const sg=document.getElementById('socialGrid');
+  if(sg) sg.innerHTML=Object.values(SOCIALS).filter(Boolean).map(v=>`<a href="${v.url}" target="_blank" rel="noopener noreferrer" class="social-card"><div class="social-icon">${v.icon}</div><div><div class="social-name">${v.name}</div><div class="social-handle">${v.handle}</div></div></a>`).join('');
+
+  initCookieBanner();
+  loadColors();
+});
+
+// ── COLORS ──
+async function loadColors(){
+  try{
+    const res=await fetch(WORKER_URL);
+    const data=await res.json();
+    allColors=(data.colors||[]).filter(c=>c.name&&c.name!=='ללא שם');
+    document.getElementById('statColors').textContent=allColors.length;
+    document.getElementById('aboutNum').textContent=allColors.length+'+';
+    filterColors();
+  }catch(e){
+    document.getElementById('colorsGrid').innerHTML='<div class="loading">⚠️ שגיאה בטעינת הצבעים. נסה לרענן.</div>';
+  }
+}
+
+function setFilter(f,btn){ activeFilter=f; showingAll=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); filterColors(); }
+
+function filterColors(){
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  let list=[...allColors];
+  if(activeFilter==='glow')     list=list.filter(c=>c.finishes.includes('זוהר בחושך'));
+  else if(activeFilter==='PLA') list=list.filter(c=>c.material==='PLA');
+  else if(activeFilter==='PETG')list=list.filter(c=>c.material==='PETG');
+  else if(activeFilter==='TPU') list=list.filter(c=>c.material==='TPU');
+  if(q) list=list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q)||c.material.toLowerCase().includes(q));
+  const sar=document.getElementById('showAllRow'),sab=document.getElementById('showAllBtn');
+  const canT=!q&&list.length>DEFAULT_SHOW&&activeFilter!=='glow';
+  if(canT){ sar.style.display='block'; sab.textContent=showingAll?'הצג פחות ↑':`הצג את כל ${list.length} הצבעים ↓`; renderColors(showingAll?list:list.slice(0,DEFAULT_SHOW)); }
+  else{ sar.style.display='none'; renderColors(list); }
+}
+
+function toggleShowAll(){ showingAll=!showingAll; filterColors(); }
+function isHex(h){ return /^#[0-9A-Fa-f]{6}$/.test(h); }
+
+function renderColors(list){
+  const grid=document.getElementById('colorsGrid');
+  if(!list.length){ grid.innerHTML='<div class="loading">לא נמצאו צבעים</div>'; return; }
+  grid.innerHTML=list.map(c=>{
+    const hex=isHex(c.hex)?c.hex:null;
+    const isGlow=c.finishes.includes('זוהר בחושך');
+    const safe=JSON.stringify(c).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    const sw=c.image?`<img src="${c.image}" alt="${c.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'color-swatch-block\\' style=\\'background:${hex||'#9ab4c8'}\\'/>'">` :`<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
+    return `<div class="color-card" onclick="openModal('${safe}')" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal('${safe}')"><div class="color-swatch" aria-hidden="true">${sw}</div><div class="color-info"><div class="color-name">${c.name}</div><div class="color-meta"><span class="color-sku">${c.sku} · ${c.material}</span>${isGlow?'<span class="tag-glow">✨ זוהר</span>':''}</div></div></div>`;
+  }).join('');
+}
+
+// ── MODAL ──
+function openModal(dataStr){
+  const c=typeof dataStr==='string'?JSON.parse(dataStr):dataStr;
+  currentModalColor=c;
+  const hex=isHex(c.hex)?c.hex:null;
+  document.getElementById('modalTop').innerHTML=c.image?`<img class="modal-img" src="${c.image}" alt="${c.name}" onerror="this.style.display='none'">`:`<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
+  document.getElementById('modalName').textContent=c.name;
+  const fins=c.finishes.filter(f=>f!=='במלאי').join(' · ')||'—';
+  const rows=[['מק"ט',c.sku||'—'],['חומר',c.material],['קוד צבע',hex||c.hex],['גימורים',fins]];
+  if(c.notes)rows.push(['הערות',c.notes]);
+  document.getElementById('modalRows').innerHTML=rows.map(([l,v])=>`<div class="modal-row"><span class="modal-row-label">${l}</span><span class="modal-row-val">${v}</span></div>`).join('');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function orderFromModal(){ if(!currentModalColor)return; const c=currentModalColor; const msg=encodeURIComponent(`היי NSF 3D! 👋\nאני מעוניין בצבע: ${c.name} (${c.sku})\nחומר: ${c.material}\n\nאשמח לשמוע פרטים 😊`); window.open(`https://wa.me/${WA_NUMBER.replace(/\D/g,'')}?text=${msg}`,'_blank','noopener'); }
+function closeModal(e){ if(e.target===document.getElementById('modalOverlay'))closeModalDirect(); }
+function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeModalDirect(); closeLegalDirect(); }});
+
+// ── FILE PREVIEW ──
+function previewFiles(input){
+  const preview=document.getElementById('filePreview');
+  preview.innerHTML='';
+  const files=Array.from(input.files).slice(0,5);
+  if(!files.length){ preview.style.display='none'; return; }
+  preview.style.display='flex';
+  files.forEach(file=>{ const r=new FileReader(); r.onload=e=>{ const img=document.createElement('img'); img.src=e.target.result; img.className='form-file-thumb'; img.alt='תצוגה מקדימה'; preview.appendChild(img); }; r.readAsDataURL(file); });
+}
+
+// ── FORM ──
+function submitForm(e){
+  e.preventDefault();
+  const name=document.getElementById('fname').value.trim();
+  const phone=document.getElementById('fphone').value.trim();
+  if(!name||!phone){ alert('נא למלא שם וטלפון'); return; }
+  const msg=encodeURIComponent(`היי NSF 3D! 👋\nשמי: ${name}\nטלפון: ${phone}\nנושא: ${document.getElementById('fsubject').value}\n\n${document.getElementById('fmessage').value}`);
+  window.open(`https://wa.me/${WA_NUMBER.replace(/\D/g,'')}?text=${msg}`,'_blank','noopener');
+  document.getElementById('formSuccess').style.display='block';
+  document.getElementById('contactForm').reset();
+  document.getElementById('filePreview').style.display='none';
+  setTimeout(()=>document.getElementById('formSuccess').style.display='none',5000);
+}
+
+// ── MOBILE MENU ──
+function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ── LEGAL MODALS ──
+const LEGAL_CONTENT = {
+  accessibility: {
+    title: 'הצהרת נגישות',
+    body: `
+      <h3>מחויבות לנגישות</h3>
+      <p>NSF 3D שואף לאפשר לכלל הציבור, לרבות אנשים עם מוגבלויות, לעשות שימוש בתכני האתר.</p>
+
+      <h3>פטור לפי חוק שוויון זכויות לאנשים עם מוגבלויות</h3>
+      <div class="highlight">
+        <strong>⚠️ הבהרה:</strong> עסק זה הינו עוסק זעיר / פטור, ועל כן חלות עליו הוראות הפטור הקבועות בתקנות שוויון זכויות לאנשים עם מוגבלויות (התאמות נגישות לשירות), תשע"ג-2013. בהתאם לכך, האתר אינו חייב בעמידה מלאה בדרישות תקן הנגישות.
+      </div>
+      <p>למרות זאת, ביצענו מספר פעולות בסיסיות לשיפור הנגישות כגון: שימוש בגופן ברור, ניגודיות צבעים, תיאורי alt לתמונות ותמיכה במקלדת.</p>
+
+      <h3>פניות בנושא נגישות</h3>
+      <p>לפניות ובקשות בנושא נגישות ניתן לפנות אלינו:<br>
+      <strong>שם:</strong> [ממלא שם מלא כאן]<br>
+      <strong>טלפון:</strong> [מספר טלפון]<br>
+      <strong>אימייל:</strong> [כתובת אימייל]</p>
+      <p>נשתדל להשיב תוך 5 ימי עסקים.</p>
+    `
+  },
+  privacy: {
+    title: 'מדיניות פרטיות',
+    body: `
+      <h3>מהו המידע שאנו אוספים?</h3>
+      <p>במסגרת השימוש באתר ויצירת קשר, אנו עשויים לאסוף: שם, מספר טלפון, כתובת אימייל, ותוכן הפניה.</p>
+      <p>בנוסף, עם הסכמתך, אנו משתמשים בכלים אנליטיים ופרסומיים (כגון Facebook Pixel) לצורך שיפור השירות וקמפיינים שיווקיים.</p>
+
+      <h3>כיצד אנו משתמשים במידע?</h3>
+      <ul>
+        <li>מענה לפניות ועיבוד הזמנות</li>
+        <li>שיפור השירות והאתר</li>
+        <li>פרסום ממוקד ברשתות החברתיות (בכפוף להסכמה)</li>
+      </ul>
+
+      <h3>העברת מידע לצד שלישי</h3>
+      <p><strong>אנו לא מוכרים, מעבירים או משתפים את פרטיך האישיים עם צדדים שלישיים</strong>, למעט כלי שיווק סטנדרטיים (Meta/Facebook Pixel) בהסכמתך.</p>
+
+      <h3>עוגיות (Cookies)</h3>
+      <p>האתר משתמש בעוגיות טכניות חיוניות (העדפות תצוגה) ובעוגיות שיווקיות אופציונליות. ניתן לשנות את הסכמתך בכל עת על-ידי מחיקת ה-LocalStorage בדפדפן.</p>
+
+      <h3>זכויותיך</h3>
+      <p>בהתאם לחוק הגנת הפרטיות (ישראל), יש לך זכות לעיין, לתקן או למחוק מידע אישי שנאסף עליך. לפניות: <strong>${EMAIL_ADDR}</strong></p>
+
+      <h3>עדכון מדיניות</h3>
+      <p>מדיניות זו עשויה להתעדכן מעת לעת. גרסה אחרונה: ינואר 2025.</p>
+    `
+  },
+  terms: {
+    title: 'תקנון ותנאי שימוש — NSF 3D',
+    body: `
+      <p style="font-size:12px;color:var(--text2);margin-bottom:16px">עדכון אחרון: ינואר 2025 | גרסה 1.2</p>
+
+      <h3>1. כללי ותחולה</h3>
+      <p>תקנון זה מסדיר את תנאי ההתקשרות בין <strong>NSF 3D</strong> (להלן: "העסק") לבין כל לקוח המבצע הזמנה או עושה שימוש בשירותי העסק (להלן: "הלקוח"). ביצוע הזמנה — בין אם בעל-פה, בכתב, בוואטסאפ, בטופס אינטרנטי, או בכל דרך אחרת — מהווה הסכמה מלאה לתנאי תקנון זה.</p>
+
+      <h3>2. קניין רוחני וזכויות יוצרים</h3>
+      <p><strong>2.1 הצהרת הלקוח:</strong> הלקוח מצהיר ומתחייב כי הוא הבעלים החוקי, או שברשותו הרישיון המלא והתקף (לרבות זכות לשימוש מסחרי, ככל שרלוונטי) עבור כל קובץ תלת-ממד (STL, STEP, OBJ, וכיו"ב), עיצוב, לוגו, תמונה, או כל חומר אחר שהוא מוסר לעסק לצורך ייצור.</p>
+      <p><strong>2.2 שירותי ייצור בלבד:</strong> NSF 3D מספקת שירותי <strong>ייצור והדפסה בלבד</strong>, ואינה בודקת, מאמתת, או נושאת בכל אחריות לגבי בעלות על זכויות יוצרים, פטנטים, סימני מסחר, או כל קניין רוחני אחר הגלום בקבצים שנמסרו לה על-ידי הלקוח.</p>
+      <p><strong>2.3 שיפוי:</strong> הלקוח ישפה את NSF 3D בגין כל תביעה, נזק, הוצאה משפטית, או תשלום שיחויב בהם העסק כתוצאה מהפרת זכויות קניין רוחני שיסודה בחומרים שמסר הלקוח.</p>
+      <div class="highlight"><strong>⚠️ דגש:</strong> אין להגיש לייצור קבצים של דמויות מוגנות (Disney, Marvel, ליגות ספורט, וכו') ללא אישור מחזיק הזכויות. העסק שומר לעצמו את הזכות לסרב לייצר כל פריט שעלול להפר זכויות קניין רוחני.</div>
+
+      <h3>3. טיב המוצר, טולרנסים וגימור</h3>
+      <p><strong>3.1 מאפייני תהליך ההדפסה:</strong> טכנולוגיית ההדפסה בתלת-ממד (FDM) מבוססת על הנחת שכבות חומר זו על גבי זו. כתוצאה מכך, המאפיינים הבאים הינם <strong>חלק אינהרנטי ובלתי נפרד מתהליך הייצור</strong> ואינם מהווים פגם:</p>
+      <ul>
+        <li><strong>סימני שכבות (Layer Lines):</strong> קווים עדינים על פני השטח, הנובעים ממבנה ההדפסה השכבתי.</li>
+        <li><strong>קווי חיבור (Seams):</strong> נקודות חיבור בין שכבות או בין חלקי הדפסה שונים.</li>
+        <li><strong>עקבות תמיכות (Support Marks):</strong> חספוס קל או עקבות קלות באזורים שנדרשו להם מבני תמיכה במהלך ההדפסה.</li>
+        <li><strong>וריאציות קלות בגוון:</strong> אפשריות שונות קלות בגוון הצבע בין הדפסות שונות, בשל אופי חומרי הגלם.</li>
+      </ul>
+      <p><strong>3.2 טולרנסים מידתיים:</strong> תיתכן סטייה מידתית של <strong>עד ±0.2 מ"מ</strong> ממידות הקובץ המקורי. סטייה זו מקובלת בתעשיית ההדפסה בתלת-ממד ואינה מהווה עילה לתלונה או ביטול. פריטים הדורשים דיוק גבוה יותר יש לסמן מפורשות בהזמנה מראש, ויתומחרו בהתאם.</p>
+      <p><strong>3.3 גימורים אסתטיים:</strong> ככל שהלקוח מעוניין בגימור מיוחד (ליטוש, צביעה, הסרת סימני שכבות), עליו לציין זאת מפורשות בהזמנה ועלות הגימור תחושב בנפרד.</p>
+
+      <h3>4. הגבלת אחריות לגבי ייעוד המוצר</h3>
+      <p><strong>4.1 אחריות הלקוח:</strong> הלקוח הוא <strong>האחראי הבלעדי</strong> לבחון ולוודא כי העיצוב, החומר הנבחר, ומידות המוצר מתאימים לשימוש הסופי המיועד.</p>
+      <p><strong>4.2 סייגים מפורשים:</strong> NSF 3D אינה אחראית ואין להסתמך על מוצריה לצרכים הבאים, אלא אם הוסכם מפורשות אחרת בכתב:</p>
+      <ul>
+        <li><strong>חשיפה לחום:</strong> חומרי PLA עלולים לאבד צורתם בחשיפה לחום מעל ~60°C. חומרי PETG ו-ASA עמידים יותר אך אינם מיועדים לסביבות קיצוניות.</li>
+        <li><strong>עמידות מכנית ומבנית:</strong> מוצרים מודפסים אינם מיועדים, בהכרח, לעמידה בעומסים מכניים גבוהים, לחצים, או כוחות מתיחה.</li>
+        <li><strong>חשיפה לתנאי חוץ:</strong> רוב חומרי ההדפסה אינם עמידים לאור שמש ממושך (UV) או לחות קיצונית, אלא אם נאמר אחרת.</li>
+        <li><strong>מגע עם מזון או מים:</strong> מוצרים מודפסים אינם מוסמכים כבטוחים למגע עם מזון, אלא אם הוזמנו מחומר מתאים עם אישור מפורש.</li>
+        <li><strong>שימוש רפואי:</strong> מוצרים אינם מיועדים לכל שימוש רפואי, פרמדי, או כגופי הפעלה בטיחותיים.</li>
+      </ul>
+      <p><strong>4.3 הגבלת אחריות כוללת:</strong> NSF 3D לא תישא באחריות לכל נזק ישיר, עקיף, תוצאתי, מיוחד, או עונשי — לרבות נזק גופני, רכושי, כלכלי, או עסקי — שנגרם כתוצאה משימוש, שימוש לא נכון, שבר, או בלאי של מוצר מודפס.</p>
+
+      <h3>5. הזמנות, ביטולים והחזרים</h3>
+      <div class="highlight">
+        <strong>⚠️ טובין שיוצרו במיוחד עבור הצרכן — אין זכות ביטול:</strong><br>
+        כלל מוצרי NSF 3D מיוצרים בהזמנה אישית עבור הלקוח הספציפי. בהתאם לתקנות הגנת הצרכן (ביטול עסקה), התשע"א-2010, סעיף 14ג(ד)(1), <strong>לא תינתן זכות ביטול עסקה, החזר כספי, או החלפת מוצר מרגע מסירת אישור הייצור ותחילת תהליך ההדפסה.</strong>
+      </div>
+      <p><strong>5.1 ביטול לפני תחילת ייצור:</strong> ביטול הזמנה לפני קבלת אישור תחילת ייצור — אפשרי ללא חיוב. לאחר מסירת האישור, ההזמנה מחייבת.</p>
+      <p><strong>5.2 ליקוי ייצור:</strong> אם המוצר אינו תואם לפרטי ההזמנה שאושרו (פגם בייצור, מידה שגויה, חומר לא נכון — שנבע מטעות העסק), הלקוח יודיע בכתב תוך <strong>48 שעות</strong> מקבלת המוצר בצירוף תיעוד צילומי. במקרה כזה, NSF 3D יתקן או יחליף את המוצר ללא תשלום נוסף.</p>
+
+      <h3>6. זמני אספקה ומשלוחים</h3>
+      <p><strong>6.1 זמני ייצור:</strong> זמני האספקה המצוינים (<strong>1–3 ימי עסקים</strong>) הינם <strong>הערכה בלבד</strong> ועשויים להשתנות בהתאם למורכבות ההדפסה, כמות הפריטים, עומס ייצור, ואספקת חומרים.</p>
+      <p><strong>6.2 אחריות על משלוחים:</strong> בהזמנות המועברות באמצעות חברת שליחויות חיצונית — NSF 3D <strong>אינה אחראית</strong> לעיכובים, אובדן, או נזק שנגרם במהלך המשלוח. האחריות על מצב הסחורה עוברת לחברת השליחויות עם מסירת החבילה לידיה. מומלץ לצלם את המוצר עם קבלתו.</p>
+      <p><strong>6.3 נסיבות חוץ שליטה:</strong> העסק לא יישא באחריות לעיכובים שנגרמו מסיבות שאינן בשליטתו, לרבות: שיבושים בשרשרת אספקת חומרים, תקלות ציוד, אירועי כוח עליון, או הוראות רשויות.</p>
+
+      <h3>7. פרטיות ואבטחת מידע</h3>
+      <p>מידע אישי שנמסר לעסק ישמש לצורך עיבוד ההזמנה ויצירת קשר בלבד. ראה <button onclick="closeLegalDirect();openLegal('privacy')" style="background:none;border:none;color:var(--blue-mid);cursor:pointer;font-size:14px;font-family:'Heebo',sans-serif;text-decoration:underline;padding:0">מדיניות הפרטיות המלאה</button>.</p>
+
+      <h3>8. שינויים בתקנון</h3>
+      <p>NSF 3D שומרת לעצמה את הזכות לעדכן תקנון זה בכל עת. גרסה מעודכנת תיכנס לתוקף עם פרסומה באתר.</p>
+
+      <h3>9. סמכות שיפוט</h3>
+      <p>כל מחלוקת שתנבע מתנאי תקנון זה תדון בבתי המשפט המוסמכים במחוז תל אביב, ויחול הדין הישראלי בלבד.</p>
+
+      <h3>יצירת קשר</h3>
+      <p>לשאלות בנוגע לתקנון: <strong id="terms-email"></strong></p>
+    `
+  }
+};
+
+function openLegal(type){
+  const c=LEGAL_CONTENT[type];
+  if(!c)return;
+  document.getElementById('legalTitle').textContent=c.title;
+  document.getElementById('legalBody').innerHTML=c.body.replace(/\${EMAIL_ADDR}/g,EMAIL_ADDR);
+  // inject email into terms contact span if exists
+  const em=document.getElementById('terms-email');
+  if(em)em.textContent=EMAIL_ADDR;
+  document.getElementById('legalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLegal(e){ if(e.target===document.getElementById('legalOverlay'))closeLegalDirect(); }
+function closeLegalDirect(){ document.getElementById('legalOverlay').classList.remove('open'); document.body.style.overflow=''; }
 </script>
 </body>
 </html>
