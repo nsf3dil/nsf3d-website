@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NSF 3D – הדפסות תלת מימד בעיצוב אישי</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e0e0e; --surface: #181818; --surface2: #222222;
+      --brown: #7a5c3a; --brown-light: #a07848; --brown-muted: #5a4028;
+      --text: #e8e0d4; --text-muted: #8a7d6e; --accent: #d4a255; --radius: 12px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--text); font-family:'Heebo',sans-serif; overflow-x:hidden; }
+
+    .hero { min-height:100vh; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+    .hero-bg {
+      position:absolute; inset:0; z-index:0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%,#4a8fb5 0%,transparent 65%),
+                  radial-gradient(ellipse 40% 30% at 80% 20%,#2a6080 0%,transparent 50%), var(--bg);
+    }
+    .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,transparent 40%,var(--bg) 100%); }
+
+    nav { position:relative; z-index:10; display:flex; align-items:center; gap:12px; padding:24px 40px; flex-wrap:wrap; }
+    .logo-box {
+      width:52px; height:52px; background:linear-gradient(135deg,#b8d4e8,#7aabcc); border-radius:13px;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Space Mono',monospace; font-weight:700; font-size:12px; color:#1a3a50;
+      letter-spacing:1px; box-shadow:0 4px 24px rgba(100,180,230,.25); flex-shrink:0;
+    }
+    .nav-links { display:flex; gap:6px; flex-wrap:wrap; margin-right:auto; }
+    .nav-links a {
+      background:var(--brown-muted); color:var(--text); text-decoration:none;
+      padding:9px 16px; border-radius:8px; font-size:13px; font-weight:500;
+      transition:background .2s,transform .15s; cursor:pointer;
+    }
+    .nav-links a:hover { background:var(--brown); transform:translateY(-1px); }
+    .nav-links a.active { background:var(--brown); }
+
+    .hero-content {
+      position:relative; z-index:5; flex:1; display:flex; flex-direction:column;
+      justify-content:center; padding:0 40px 80px; max-width:680px;
+    }
+    .hero-tag {
+      display:inline-block; background:rgba(122,92,58,.35); border:1px solid var(--brown-muted);
+      color:var(--accent); font-size:11px; font-family:'Space Mono',monospace; letter-spacing:2px;
+      padding:5px 13px; border-radius:100px; margin-bottom:22px; width:fit-content;
+    }
+    .hero h1 { font-size:clamp(34px,5vw,62px); font-weight:900; line-height:1.1; margin-bottom:18px; color:#fff; }
+    .hero h1 span { color:var(--accent); }
+    .hero p { font-size:17px; color:var(--text-muted); line-height:1.7; margin-bottom:32px; max-width:460px; }
+    .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-primary {
+      background:linear-gradient(135deg,var(--brown-light),var(--brown)); color:#fff;
+      padding:13px 28px; border-radius:10px; font-size:15px; font-weight:700;
+      text-decoration:none; border:none; cursor:pointer; font-family:'Heebo',sans-serif;
+      transition:opacity .2s,transform .15s;
+    }
+    .btn-primary:hover { opacity:.88; transform:translateY(-2px); }
+    .btn-ghost {
+      background:transparent; border:1.5px solid var(--brown-muted); color:var(--text-muted);
+      padding:13px 28px; border-radius:10px; font-size:15px; font-weight:500;
+      text-decoration:none; cursor:pointer; font-family:'Heebo',sans-serif;
+      transition:border-color .2s,color .2s;
+    }
+    .btn-ghost:hover { border-color:var(--brown); color:var(--text); }
+
+    .page-section { display:none; }
+    .page-section.active { display:block; }
+    section { padding:70px 40px; max-width:1200px; margin:0 auto; }
+    .section-header { margin-bottom:44px; }
+    .section-label { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px; }
+    .section-title { font-size:clamp(26px,3.5vw,42px); font-weight:900; color:#fff; }
+
+    .search-bar { display:flex; gap:10px; margin-bottom:28px; flex-wrap:wrap; align-items:center; }
+    .search-input {
+      flex:1; min-width:180px; background:var(--surface);
+      border:1.5px solid rgba(255,255,255,.08); color:var(--text);
+      padding:11px 16px; border-radius:10px; font-family:'Heebo',sans-serif; font-size:14px;
+      outline:none; transition:border-color .2s;
+    }
+    .search-input:focus { border-color:var(--brown); }
+    .search-input::placeholder { color:var(--text-muted); }
+    .filter-btn {
+      background:var(--surface); border:1.5px solid rgba(255,255,255,.08); color:var(--text-muted);
+      padding:9px 16px; border-radius:10px; font-family:'Heebo',sans-serif; font-size:13px; cursor:pointer; transition:all .2s;
+    }
+    .filter-btn:hover,.filter-btn.active { background:var(--brown-muted); color:var(--text); border-color:var(--brown); }
+    #material-filter-btns { display:flex; gap:6px; flex-wrap:wrap; }
+
+    .material-group { margin-bottom:48px; }
+    .material-group-title { font-size:19px; font-weight:700; margin-bottom:18px; color:#fff; display:flex; align-items:center; gap:10px; }
+    .material-badge { background:var(--brown-muted); color:var(--accent); font-family:'Space Mono',monospace; font-size:11px; padding:4px 10px; border-radius:6px; letter-spacing:1px; }
+    .color-count { color:var(--text-muted); font-size:13px; font-weight:400; }
+
+    .color-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px; }
+    .color-card {
+      background:var(--surface); border-radius:var(--radius); overflow:hidden;
+      border:1px solid rgba(255,255,255,.05); transition:transform .2s,box-shadow .2s; cursor:pointer;
+    }
+    .color-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.4); }
+    .color-swatch { height:105px; width:100%; position:relative; }
+    .color-swatch img { width:100%; height:100%; object-fit:cover; display:block; }
+    .color-info { padding:11px 13px; }
+    .color-name { font-weight:700; font-size:13px; margin-bottom:3px; line-height:1.3; }
+    .color-hex { font-family:'Space Mono',monospace; font-size:10px; color:var(--text-muted); }
+    .color-tags { display:flex; gap:4px; flex-wrap:wrap; margin-top:7px; }
+    .color-tag { font-size:9px; background:rgba(122,92,58,.2); color:var(--accent); padding:2px 6px; border-radius:100px; }
+
+    .loading-state { text-align:center; padding:80px 24px; color:var(--text-muted); }
+    .loading-spinner { width:38px; height:38px; border:3px solid rgba(212,162,85,.2); border-top-color:var(--accent); border-radius:50%; animation:spin .8s linear infinite; margin:0 auto 18px; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .error-state { background:rgba(200,50,50,.1); border:1px solid rgba(200,50,50,.3); border-radius:var(--radius); padding:24px; color:#f88; }
+
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:22px; }
+    .project-card { background:var(--surface); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.05); transition:transform .2s; }
+    .project-card:hover { transform:translateY(-4px); }
+    .project-img { height:210px; background:var(--surface2); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .project-img img { width:100%; height:100%; object-fit:cover; }
+    .project-placeholder { display:flex; flex-direction:column; align-items:center; gap:10px; opacity:.35; }
+    .project-placeholder svg { width:44px; height:44px; }
+    .project-info { padding:18px; }
+    .project-title { font-weight:700; font-size:17px; margin-bottom:7px; }
+    .project-desc { color:var(--text-muted); font-size:14px; line-height:1.6; margin-bottom:12px; }
+    .project-tags { display:flex; gap:7px; flex-wrap:wrap; }
+    .tag { background:rgba(122,92,58,.2); border:1px solid var(--brown-muted); color:var(--accent); font-size:11px; padding:3px 9px; border-radius:100px; }
+
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; }
+    .about-text p { color:var(--text-muted); line-height:1.8; font-size:15px; margin-bottom:14px; }
+    .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .stat-box { background:var(--surface); border-radius:var(--radius); padding:22px; border:1px solid rgba(255,255,255,.05); }
+    .stat-num { font-size:34px; font-weight:900; color:var(--accent); font-family:'Space Mono',monospace; }
+    .stat-label { color:var(--text-muted); font-size:12px; margin-top:4px; }
+
+    .steps { display:grid; grid-template-columns:repeat(auto-fill,minmax(195px,1fr)); gap:20px; }
+    .step { background:var(--surface); border-radius:var(--radius); padding:26px; border:1px solid rgba(255,255,255,.05); }
+    .step-num { font-family:'Space Mono',monospace; font-size:38px; font-weight:700; color:var(--brown-muted); line-height:1; margin-bottom:14px; }
+    .step h3 { font-size:15px; font-weight:700; margin-bottom:7px; }
+    .step p { color:var(--text-muted); font-size:13px; line-height:1.6; }
+
+    .faq-list { display:flex; flex-direction:column; gap:10px; }
+    .faq-item { background:var(--surface); border-radius:var(--radius); border:1px solid rgba(255,255,255,.05); overflow:hidden; }
+    .faq-q { padding:18px 22px; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; user-select:none; }
+    .faq-q:hover { background:var(--surface2); }
+    .faq-icon { color:var(--accent); font-size:20px; flex-shrink:0; transition:transform .25s; }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease,padding .25s; color:var(--text-muted); font-size:14px; line-height:1.7; padding:0 22px; }
+    .faq-item.open .faq-a { max-height:280px; padding:0 22px 18px; }
+    .faq-item.open .faq-icon { transform:rotate(45deg); }
+
+    footer { background:var(--surface); border-top:1px solid rgba(255,255,255,.05); padding:44px; text-align:center; }
+    .contact-methods { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:28px; }
+    .contact-btn { background:var(--brown-muted); color:var(--text); text-decoration:none; padding:11px 26px; border-radius:10px; font-weight:600; font-size:14px; transition:background .2s,transform .15s; display:flex; align-items:center; gap:7px; }
+    .contact-btn:hover { background:var(--brown); transform:translateY(-2px); }
+    footer p { color:var(--text-muted); font-size:12px; }
+
+    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.75); z-index:100; display:none; align-items:center; justify-content:center; padding:20px; }
+    .modal-overlay.open { display:flex; }
+    .modal { background:var(--surface); border-radius:16px; padding:32px; max-width:420px; width:100%; border:1px solid rgba(255,255,255,.08); }
+    .modal-swatch { width:100%; height:150px; border-radius:10px; margin-bottom:22px; overflow:hidden; }
+    .modal h2 { font-size:22px; font-weight:900; margin-bottom:7px; }
+    .modal-meta { display:flex; gap:7px; flex-wrap:wrap; margin:10px 0; }
+    .modal-tag { background:rgba(122,92,58,.25); color:var(--accent); font-size:11px; padding:3px 9px; border-radius:100px; }
+    .modal p { color:var(--text-muted); font-size:14px; line-height:1.6; margin-top:7px; }
+    .modal-sku { font-family:'Space Mono',monospace; font-size:11px; color:var(--text-muted); margin-top:9px; }
+    .modal-close { margin-top:22px; background:var(--brown-muted); color:var(--text); border:none; padding:9px 22px; border-radius:8px; cursor:pointer; font-family:'Heebo',sans-serif; font-size:14px; transition:background .2s; }
+    .modal-close:hover { background:var(--brown); }
+
+    @media(max-width:700px) {
+      nav { padding:16px; }
+      .nav-links a { padding:7px 10px; font-size:12px; }
+      .hero-content { padding:0 18px 56px; }
+      section { padding:44px 18px; }
+      footer { padding:30px 18px; }
+      .about-grid { grid-template-columns:1fr; }
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+    .hero-content>*{animation:fadeUp .6s ease both}
+    .hero-content>*:nth-child(1){animation-delay:.1s}
+    .hero-content>*:nth-child(2){animation-delay:.22s}
+    .hero-content>*:nth-child(3){animation-delay:.34s}
+    .hero-content>*:nth-child(4){animation-delay:.46s}
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <nav>
+    <div class="logo-box">NSF</div>
+    <div class="nav-links">
+      <a class="active" onclick="showPage('home',this)">🏠 ראשי</a>
+      <a onclick="showPage('colors',this)">🎨 קטלוג צבעים</a>
+      <a onclick="showPage('projects',this)">📁 פרויקטים</a>
+      <a onclick="showPage('how',this)">⚙️ איך זה עובד?</a>
+      <a onclick="showPage('faq',this)">❓ שאלות נפוצות</a>
+      <a onclick="showPage('about',this)">👤 קצת עליי</a>
+    </div>
+  </nav>
+  <div class="hero-content" id="home-hero">
+    <div class="hero-tag">✦ הדפסות תלת מימד בישראל</div>
+    <h1>NSF 3D<br/><span>עיצוב אישי</span><br/>בכל צבע</h1>
+    <p>הדפסות FDM איכותיות עם עשרות צבעים וחומרים — מרעיון לידיים שלך.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="showPage('colors',document.querySelectorAll('.nav-links a')[1])">ראה קטלוג צבעים</button>
+      <button class="btn-ghost"   onclick="showPage('projects',document.querySelectorAll('.nav-links a')[2])">פרויקטים שביצעתי</button>
+    </div>
+  </div>
+</div>
+
+<!-- COLORS -->
+<div class="page-section" id="page-colors">
+<section>
+  <div class="section-header">
+    <div class="section-label">// CATALOG</div>
+    <h2 class="section-title">קטלוג צבעים</h2>
+  </div>
+  <div class="search-bar">
+    <input class="search-input" type="text" placeholder="חיפוש צבע או מק״ט..." id="color-search" oninput="renderColorGroups()" />
+    <button class="filter-btn active" onclick="setFilter('all',this)">הכל</button>
+    <div id="material-filter-btns"></div>
+  </div>
+  <div id="colors-container">
+    <div class="loading-state"><div class="loading-spinner"></div><div>טוען צבעים מ-Notion...</div></div>
+  </div>
+</section>
+</div>
+
+<!-- PROJECTS -->
+<div class="page-section" id="page-projects">
+<section>
+  <div class="section-header"><div class="section-label">// PORTFOLIO</div><h2 class="section-title">פרויקטים שלי</h2></div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img"><div class="project-placeholder"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="36" height="36" rx="4"/><circle cx="24" cy="22" r="7"/><path d="M6 34l10-10 8 8 8-10 10 10"/></svg><span>הוסף תמונה</span></div></div>
+      <div class="project-info"><div class="project-title">פרויקט לדוגמה</div><div class="project-desc">תיאור קצר — חומר, צבע, שימוש.</div><div class="project-tags"><span class="tag">PLA</span><span class="tag">עיצוב אישי</span></div></div>
+    </div>
+    <div class="project-card" style="border:1.5px dashed rgba(255,255,255,.1);background:transparent;display:flex;align-items:center;justify-content:center;min-height:300px;">
+      <div style="text-align:center;color:var(--text-muted);padding:40px;"><div style="font-size:44px;margin-bottom:10px;">+</div><div style="font-size:13px;">הוסף פרויקט חדש</div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- HOW -->
+<div class="page-section" id="page-how">
+<section>
+  <div class="section-header"><div class="section-label">// PROCESS</div><h2 class="section-title">איך זה עובד?</h2></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h3>בחר צבע וחומר</h3><p>עיין בקטלוג ובחר את הצירוף המתאים — PLA, PETG, TPU ועוד.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>שלח את הקובץ</h3><p>שלח קובץ STL / OBJ / 3MF, או תאר את הרעיון שלך.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>הדפסה + עיבוד</h3><p>הדפסה עם הגדרות מקסימאליות, כולל עיבוד גמר לפי הצורך.</p></div>
+    <div class="step"><div class="step-num">04</div><h3>משלוח / איסוף</h3><p>משלוח לכל הארץ או איסוף עצמי — לפי הנוחות שלך.</p></div>
+  </div>
+</section>
+</div>
+
+<!-- FAQ -->
+<div class="page-section" id="page-faq">
+<section>
+  <div class="section-header"><div class="section-label">// FAQ</div><h2 class="section-title">שאלות נפוצות</h2></div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>מה זמן האספקה?</span><span class="faq-icon">+</span></div><div class="faq-a">בדרך כלל 3-7 ימי עסקים, תלוי בגודל ומורכבות ההדפסה.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>מה הפורמטים שאתה מקבל?</span><span class="faq-icon">+</span></div><div class="faq-a">STL, OBJ, 3MF. אם יש לך רעיון בלי קובץ — אפשר לתאם.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>אפשר לבקש צבע שלא ברשימה?</span><span class="faq-icon">+</span></div><div class="faq-a">תלוי בזמינות. צור קשר ונבדוק יחד.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>האם ההדפסות עמידות?</span><span class="faq-icon">+</span></div><div class="faq-a">PLA מעולה לפנים, PETG עמיד לחום ולחות. אייעץ לך על החומר הנכון.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>מה עלות ההדפסה?</span><span class="faq-icon">+</span></div><div class="faq-a">תלוי בגודל, כמות חומר, ומורכבות. שלח לי את הקובץ ואשלח הצעת מחיר.</div></div>
+  </div>
+</section>
+</div>
+
+<!-- ABOUT -->
+<div class="page-section" id="page-about">
+<section>
+  <div class="section-header"><div class="section-label">// ABOUT</div><h2 class="section-title">קצת עליי</h2></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>שלום! אני [השם שלך], מדפיס תלת מימד עם תשוקה לעיצוב ודיוק.</p>
+      <p>כל הדפסה מקבלת תשומת לב מלאה — מבחירת החומר, הגדרות האיכות המיטביות, ועד עיבוד הגמר.</p>
+      <p>חלקים פונקציונאליים, מוצרי עיצוב, פיגורות, אביזרים — אם יש לך רעיון, בוא נדבר.</p>
+      <a href="/cdn-cgi/l/email-protection#c7bea8b2b587a2aaa6aeabe9a4a8aa" class="btn-primary" style="display:inline-block;margin-top:22px;">צור קשר</a>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box"><div class="stat-num" id="stat-colors">—</div><div class="stat-label">צבעים זמינים</div></div>
+      <div class="stat-box"><div class="stat-num" id="stat-materials">—</div><div class="stat-label">חומרים עיקריים</div></div>
+      <div class="stat-box"><div class="stat-num">FDM</div><div class="stat-label">טכנולוגיית הדפסה</div></div>
+      <div class="stat-box"><div class="stat-num">IL</div><div class="stat-label">משלוח לכל הארץ</div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="contact-methods">
+    <a href="/cdn-cgi/l/email-protection#8cf5e3f9fecce9e1ede5e0a2efe3e1" class="contact-btn">✉️ אימייל</a>
+    <a href="https://wa.me/972500000000" class="contact-btn" target="_blank">💬 WhatsApp</a>
+    <a href="https://instagram.com/nsf3d" class="contact-btn" target="_blank">📸 אינסטגרם</a>
+  </div>
+  <p>© 2025 NSF 3D · כל הזכויות שמורות</p>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-swatch" id="modal-swatch"></div>
+    <h2 id="modal-name"></h2>
+    <div class="modal-meta" id="modal-meta"></div>
+    <p id="modal-notes"></p>
+    <div class="modal-sku" id="modal-sku"></div>
+    <button class="modal-close" onclick="closeModal()">סגור</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ═══════════════════════════════════════════════
+// ⚙️  שנה את הכתובת הזו לאחר פריסת ה-Worker
+// ═══════════════════════════════════════════════
+const WORKER_URL = "https://nsf3d-colors.nsf3d-il.workers.dev/";
+
+let allColors = [];
+let activeFilter = "all";
+let colorsLoaded = false;
+
+async function loadColors() {
+  try {
+    const res = await fetch(WORKER_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    allColors = data.colors;
+    colorsLoaded = true;
+    buildMaterialFilters();
+    renderColorGroups();
+    updateStats();
+  } catch (err) {
+    document.getElementById("colors-container").innerHTML = `
+      <div class="error-state">
+        <strong>שגיאה בטעינת צבעים</strong><br/><br/>
+        ${err.message}<br/><br/>
+        <small>ודא ש-WORKER_URL מוגדר נכון ושה-Worker פועל.</small>
+      </div>`;
+  }
+}
+
+function buildMaterialFilters() {
+  const materials = [...new Set(allColors.map(c => c.material))].sort();
+  document.getElementById("material-filter-btns").innerHTML =
+    materials.map(m => `<button class="filter-btn" onclick="setFilter('${m}',this)">${m}</button>`).join("");
+}
+
+function setFilter(mat, btn) {
+  activeFilter = mat;
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  renderColorGroups();
+}
+
+function renderColorGroups() {
+  const search = (document.getElementById("color-search")?.value ?? "").trim().toLowerCase();
+  const filtered = allColors.filter(c => {
+    const matchMat = activeFilter === "all" || c.material === activeFilter;
+    const matchSearch = !search || c.name.includes(search) || c.hex.toLowerCase().includes(search) || c.sku.toLowerCase().includes(search);
+    return matchMat && matchSearch;
+  });
+
+  if (!filtered.length) {
+    document.getElementById("colors-container").innerHTML = `<div class="loading-state">לא נמצאו צבעים תואמים</div>`;
+    return;
+  }
+
+  const groups = {};
+  filtered.forEach(c => { if (!groups[c.material]) groups[c.material]=[]; groups[c.material].push(c); });
+
+  document.getElementById("colors-container").innerHTML = Object.entries(groups).map(([mat, cols]) => `
+    <div class="material-group">
+      <div class="material-group-title">
+        <span class="material-badge">${mat}</span>
+        <span class="color-count">${cols.length} צבעים</span>
+      </div>
+      <div class="color-grid">${cols.map(c => colorCardHTML(c)).join("")}</div>
+    </div>`).join("");
+}
+
+function colorCardHTML(c) {
+  const idx = allColors.indexOf(c);
+  const swatch = c.image
+    ? `<img src="${c.image}" alt="${c.name}" loading="lazy"/>`
+    : `<div style="width:100%;height:100%;background:${c.hex}"></div>`;
+  const tags = c.finishes.slice(0,2).map(f=>`<span class="color-tag">${f}</span>`).join("");
+  return `<div class="color-card" onclick="openModal(${idx})">
+    <div class="color-swatch">${swatch}</div>
+    <div class="color-info">
+      <div class="color-name">${c.name}</div>
+      <div class="color-hex">${c.hex}</div>
+      <div class="color-tags">${tags}</div>
+    </div>
+  </div>`;
+}
+
+function openModal(i) {
+  const c = allColors[i];
+  document.getElementById("modal-swatch").innerHTML = c.image
+    ? `<img src="${c.image}" alt="${c.name}" style="width:100%;height:100%;object-fit:cover;">`
+    : `<div style="width:100%;height:100%;background:${c.hex}"></div>`;
+  document.getElementById("modal-name").textContent = c.name;
+  document.getElementById("modal-meta").innerHTML =
+    `<span class="modal-tag">${c.material}</span>${c.finishes.map(f=>`<span class="modal-tag">${f}</span>`).join("")}`;
+  document.getElementById("modal-notes").textContent = c.notes || "";
+  document.getElementById("modal-sku").textContent = c.sku ? `מק"ט: ${c.sku}` : "";
+  document.getElementById("modal").classList.add("open");
+}
+function closeModal() { document.getElementById("modal").classList.remove("open"); }
+
+function updateStats() {
+  document.getElementById("stat-colors").textContent = allColors.length + "+";
+  document.getElementById("stat-materials").textContent = new Set(allColors.map(c=>c.material)).size;
+}
+
+function showPage(page, el) {
+  document.getElementById("home-hero").style.display = page==="home" ? "flex" : "none";
+  document.querySelectorAll(".page-section").forEach(s=>s.classList.remove("active"));
+  if (page!=="home") { const t=document.getElementById("page-"+page); if(t) t.classList.add("active"); }
+  document.querySelectorAll(".nav-links a").forEach(a=>a.classList.remove("active"));
+  if (el) el.classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+  if (page==="colors" && !colorsLoaded) loadColors();
+}
+
+function toggleFaq(el) { el.parentElement.classList.toggle("open"); }
+
+showPage("home", document.querySelector(".nav-links a"));
+</script>
+</body>
+</html>
