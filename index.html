@@ -53,7 +53,7 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 /* NAV */
 nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-img-wrap{width:40px;height:40px;border-radius:12px;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;}
+.nav-logo-img-wrap{width:40px;height:40px;border-radius:18px;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;}
 .nav-logo-img-wrap img{width:100%;height:100%;object-fit:contain;}
 .nav-logo-text{font-size:22px;font-weight:900;color:var(--blue-dark);display:none;}
 .nav-logo-text span{color:var(--blue-light);}
@@ -75,7 +75,7 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;background:linear-gradient(155deg,var(--bg3) 0%,var(--bg) 55%,var(--bg2) 100%);position:relative;overflow:hidden;transition:background .3s;}
 .hero-blob{position:absolute;top:-100px;left:-150px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(77,184,232,.12) 0%,transparent 70%);pointer-events:none;}
 .hero-blob2{position:absolute;bottom:-80px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(30,111,168,.08) 0%,transparent 70%);pointer-events:none;}
-.hero-logo-wrap{width:140px;height:140px;border-radius:28px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 50%,#0d2a47 100%);box-shadow:0 8px 40px rgba(30,111,168,.35),0 0 0 1px rgba(77,184,232,.2);display:flex;align-items:center;justify-content:center;}
+.hero-logo-wrap{width:140px;height:140px;border-radius:40px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 50%,#0d2a47 100%);box-shadow:0 8px 40px rgba(30,111,168,.35),0 0 0 1px rgba(77,184,232,.2);display:flex;align-items:center;justify-content:center;}
 .hero-logo-wrap img{width:88%;height:88%;object-fit:contain;}
 body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px rgba(77,184,232,.15);}
 .hero-tag{display:inline-block;background:rgba(77,184,232,.15);border:1px solid rgba(77,184,232,.4);color:var(--blue-mid);font-size:13px;font-weight:700;padding:6px 18px;border-radius:100px;margin-bottom:18px;}
@@ -98,7 +98,7 @@ body.dark .btn-secondary{color:var(--blue-light);}
 .sw{padding:76px 40px;max-width:1200px;margin:0 auto;}
 .sdiv{height:1px;background:var(--border);}
 .stag{font-size:12px;font-weight:700;color:var(--blue-mid);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
-.stitle{font-size:clamp(26px,3.5vw,38px);font-weight:900;color:var(--blue-dark);letter-spacing:-.5px;line-height:1.15;}
+.stitle{font-size:clamp(32px,4vw,46px);font-weight:900;color:var(--blue-dark);letter-spacing:-.5px;line-height:1.15;}
 .ssub{font-size:16px;color:var(--text2);margin-top:10px;line-height:1.65;font-weight:400;}
 .sh{margin-bottom:42px;}
 
@@ -328,6 +328,52 @@ body.dark #cookieBanner{background:#061422;}
 .cookie-decline{background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.35);padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s;}
 .cookie-decline:hover{border-color:rgba(255,255,255,.8);color:#fff;}
 
+/* ── MATERIALS & FINISHES ── */
+.mat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:32px;}
+.mat-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 20px;}
+.mat-icon{font-size:32px;margin-bottom:10px;}
+.mat-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:5px;}
+.mat-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:8px;}
+.mat-badge.pla{background:rgba(30,111,168,.1);color:#155f8f;border:1px solid rgba(30,111,168,.25);}
+.mat-badge.petg{background:rgba(30,160,90,.1);color:#156638;border:1px solid rgba(30,160,90,.25);}
+.mat-badge.tpu{background:rgba(200,120,0,.1);color:#7a4800;border:1px solid rgba(200,120,0,.25);}
+.mat-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:400;}
+.mat-props{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+.mat-prop{font-size:11px;font-weight:700;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:3px 9px;color:var(--text2);}
+.finish-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.finish-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:18px 16px;display:flex;gap:12px;align-items:flex-start;}
+.finish-swatch{width:36px;height:36px;border-radius:10px;flex-shrink:0;border:1.5px solid var(--border2);}
+.finish-name{font-size:13px;font-weight:800;color:var(--blue-dark);margin-bottom:4px;}
+.finish-desc{font-size:12px;color:var(--text2);line-height:1.55;font-weight:400;}
+.macro-note{margin-top:24px;background:var(--bg2);border:1.5px dashed var(--border2);border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:16px;}
+.macro-note-icon{font-size:32px;flex-shrink:0;}
+.macro-note-text{font-size:13px;color:var(--text2);line-height:1.65;}
+.macro-note-text strong{color:var(--blue-dark);}
+
+/* ── PRICING ── */
+.pricing-note{background:rgba(255,180,0,.09);border:1.5px solid rgba(255,180,0,.3);border-radius:12px;padding:13px 18px;font-size:13px;color:#7a4800;font-weight:600;margin-bottom:28px;display:flex;align-items:center;gap:10px;}
+body.dark .pricing-note{color:#f5c842;background:rgba(255,180,0,.07);border-color:rgba(255,180,0,.2);}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:28px;}
+.price-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.price-card-head{background:var(--bg3);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;}
+.price-card-icon{font-size:26px;}
+.price-card-title{font-size:15px;font-weight:800;color:var(--blue-dark);}
+.price-rows{padding:8px 0;}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:9px 20px;border-bottom:1px solid var(--border);font-size:13px;}
+.price-row:last-child{border:none;}
+.price-row-label{color:var(--text2);font-weight:600;}
+.price-row-val{font-weight:800;color:var(--blue-dark);}
+.price-row-val.green{color:#156638;}
+body.dark .price-row-val.green{color:#3ecf7a;}
+.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px;}
+.pay-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:14px;}
+.pay-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.pay-title{font-size:14px;font-weight:800;color:var(--blue-dark);}
+.pay-desc{font-size:12px;color:var(--text2);margin-top:2px;font-weight:400;}
+.shipping-row{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:14px;}
+.shipping-label{color:var(--text2);font-weight:600;display:flex;align-items:center;gap:8px;}
+.shipping-val{font-weight:800;color:var(--blue-dark);}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   nav{padding:0 18px;}
@@ -364,10 +410,11 @@ body.dark #cookieBanner{background:#061422;}
   </a>
   <ul class="nav-links">
     <li><a href="#catalog">קטלוג</a></li>
+    <li><a href="#materials" id="nav-materials">חומרים</a></li>
     <li><a href="#products" id="nav-products">מוצרים</a></li>
+    <li><a href="#pricing" id="nav-pricing">מחירון</a></li>
     <li><a href="#order" id="nav-order">הזמנות</a></li>
     <li><a href="#about">אודות</a></li>
-    <li><a href="#social">רשתות</a></li>
     <li><a href="#contact" class="nav-cta">📱 צור קשר</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:10px;">
@@ -377,7 +424,9 @@ body.dark #cookieBanner{background:#061422;}
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#catalog" onclick="closeMenu()">🎨 קטלוג צבעים</a>
+  <a href="#materials" onclick="closeMenu()">🧪 חומרים וגימורים</a>
   <a href="#products" onclick="closeMenu()" id="mm-products">🖨️ מוצרים</a>
+  <a href="#pricing" onclick="closeMenu()">💰 מחירון</a>
   <a href="#order" onclick="closeMenu()" id="mm-order">📦 הזמנות</a>
   <a href="#about" onclick="closeMenu()">ℹ️ אודות</a>
   <a href="#social" onclick="closeMenu()">📲 רשתות</a>
@@ -452,6 +501,100 @@ body.dark #cookieBanner{background:#061422;}
   <img id="lightboxImg" src="" alt="תצוגה מוגדלת">
 </div>
 
+<!-- MATERIALS & FINISHES -->
+<div class="sdiv"></div>
+<section id="materials" style="background:var(--bg)">
+<div class="sw">
+  <div class="sh">
+    <div class="stag">חומרים וגימורים</div>
+    <h2 class="stitle">מה ההבדל בין החומרים?</h2>
+    <p class="ssub">לפני שבוחרים — כדאי להבין מה מתאים לכל שימוש</p>
+  </div>
+
+  <div class="mat-grid">
+    <div class="mat-card">
+      <div class="mat-icon">🟦</div>
+      <div class="mat-badge pla">PLA — הנפוץ ביותר</div>
+      <div class="mat-title">PLA</div>
+      <div class="mat-desc">החומר הסטנדרטי והמומלץ לרוב הפרויקטים. מדפיס בצורה יפה, מגוון צבעים עצום, ומתאים לשימוש פנים. לא מומלץ לחשיפה לשמש ישירה לאורך זמן או לחום גבוה.</div>
+      <div class="mat-props">
+        <span class="mat-prop">✅ קל להדפסה</span>
+        <span class="mat-prop">🎨 מגוון צבעים</span>
+        <span class="mat-prop">🏠 שימוש פנים</span>
+        <span class="mat-prop">⚡ מהיר</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-icon">🟩</div>
+      <div class="mat-badge petg">PETG — חזק ועמיד</div>
+      <div class="mat-title">PETG</div>
+      <div class="mat-desc">חזק יותר מ-PLA, עמיד לחום בינוני ולחשיפה לרטיבות. מעט גמיש — פחות שביר. אידיאלי לחלקים פונקציונליים, ממשקים מכניים ושימוש בתנאים תובעניים יותר.</div>
+      <div class="mat-props">
+        <span class="mat-prop">💪 עמיד</span>
+        <span class="mat-prop">🌡️ עמיד לחום חלקי</span>
+        <span class="mat-prop">💧 עמיד לרטיבות</span>
+        <span class="mat-prop">⚙️ פונקציונלי</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-icon">🟠</div>
+      <div class="mat-badge tpu">TPU — גמיש</div>
+      <div class="mat-title">TPU</div>
+      <div class="mat-desc">חומר גומי/גמיש. מושלם לכיסויי טלפון, רצועות, אביזרים שצריכים לקפוץ בחזרה לצורתם, ומוצרים שעוברים לחץ וכיפוף חוזר. פחות מתאים לדמויות או שילוט.</div>
+      <div class="mat-props">
+        <span class="mat-prop">🤸 גמיש</span>
+        <span class="mat-prop">🛡️ עמיד לאחיזה</span>
+        <span class="mat-prop">📱 כיסויים</span>
+        <span class="mat-prop">🔄 גמישות חזרה</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:18px">
+    <div class="stag" style="margin-bottom:14px">גימורים מיוחדים</div>
+  </div>
+  <div class="finish-grid">
+    <div class="finish-card">
+      <div class="finish-swatch" style="background:linear-gradient(135deg,#6b6b6b,#9b9b9b);"></div>
+      <div>
+        <div class="finish-name">מט (Matte)</div>
+        <div class="finish-desc">גימור עדין ללא ברק. מסתיר טוב יחסית עקבות הדפסה. הפופולרי ביותר לשילוט ודמויות.</div>
+      </div>
+    </div>
+    <div class="finish-card">
+      <div class="finish-swatch" style="background:linear-gradient(135deg,#c0a060,#f0d090,#c0a060);"></div>
+      <div>
+        <div class="finish-name">Silk / ברק</div>
+        <div class="finish-desc">ברק עז ומראה משי מתכתי. מרשים מאוד לדמויות ומוצרי נוי. מדגיש טוב כל פרט.</div>
+      </div>
+    </div>
+    <div class="finish-card">
+      <div class="finish-swatch" style="background:linear-gradient(135deg,#003308,#00aa33,#003308);"></div>
+      <div>
+        <div class="finish-name">זוהר בחושך (Glow)</div>
+        <div class="finish-desc">נטען מאור ומאיר בחושך בגוון ירוק-כחלחל. מצוין לשלטים, קישוטים, ופרויקטים ייחודיים.</div>
+      </div>
+    </div>
+    <div class="finish-card">
+      <div class="finish-swatch" style="background:linear-gradient(135deg,#1a1a3a,#4a4a8a,#1a1a3a);background-image:radial-gradient(circle at 30% 40%, rgba(200,200,255,.6) 1px, transparent 1px),radial-gradient(circle at 70% 60%, rgba(255,255,200,.5) 1px, transparent 1px);background-size:100% 100%,8px 8px,6px 6px;"></div>
+      <div>
+        <div class="finish-name">Galaxy / נצנצים</div>
+        <div class="finish-desc">נקודות מנצנצות בתוך הצבע. מראה כוכבי / עמוק. קיים בכחול, סגול, שחור ועוד.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Macro photos placeholder -->
+  <div class="macro-note">
+    <div class="macro-note-icon">📸</div>
+    <div class="macro-note-text">
+      <strong>תמונות מאקרו של הגימורים — בקרוב!</strong><br>
+      בקרוב יתווספו כאן תמונות מקרוב של כל גימור כדי שתוכלו לראות בדיוק איך זה נראה על המוצר. בינתיים — שלחו הודעה ונשמח לשתף דוגמאות.
+    </div>
+  </div>
+</div>
+</section>
+
 <!-- PRODUCTS -->
 <div class="sdiv"></div>
 <section id="products" style="background:var(--bg)">
@@ -492,6 +635,106 @@ body.dark #cookieBanner{background:#061422;}
     <div class="cs-icon">📸</div>
     <h3>גלריית פרויקטים — בקרוב</h3>
     <p>תמונות עבודות יתווספו בקרוב. בינתיים — שלחו הודעה ונשמח לשתף דוגמאות!</p>
+  </div>
+</div>
+</section>
+
+<!-- PRICING -->
+<div class="sdiv"></div>
+<section id="pricing" style="background:var(--bg2)">
+<div class="sw">
+  <div class="sh">
+    <div class="stag">מחירון</div>
+    <h2 class="stitle">מחירון משוער</h2>
+    <p class="ssub">מחירים לדוגמה — כל הזמנה מתומחרת אישית לפי גודל, מורכבות וחומר</p>
+  </div>
+
+  <div class="pricing-note">
+    ⚠️ המחירים כאן הם אינדיקטיביים בלבד. המחיר הסופי נקבע לאחר שיחה קצרה — תמיד תקבלו הצעת מחיר לפני שמתחילים.
+  </div>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-card-head">
+        <div class="price-card-icon">👤</div>
+        <div class="price-card-title">דמויות ופסלונים</div>
+      </div>
+      <div class="price-rows">
+        <div class="price-row"><span class="price-row-label">עד 5 ס"מ (קטנה)</span><span class="price-row-val">~35–60 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">5–10 ס"מ</span><span class="price-row-val">~60–120 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">10–15 ס"מ</span><span class="price-row-val">~120–200 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">15–20 ס"מ</span><span class="price-row-val">~200–320 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">מעל 20 ס"מ</span><span class="price-row-val">לפי הצעה</span></div>
+      </div>
+    </div>
+    <div class="price-card">
+      <div class="price-card-head">
+        <div class="price-card-icon">🪧</div>
+        <div class="price-card-title">שילוט</div>
+      </div>
+      <div class="price-rows">
+        <div class="price-row"><span class="price-row-label">מספר דירה / בית</span><span class="price-row-val">~40–80 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">שלט שם קטן (עד A5)</span><span class="price-row-val">~80–150 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">שלט עסק / לוגו</span><span class="price-row-val">~150–350 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">שלט גדול / מורכב</span><span class="price-row-val">לפי הצעה</span></div>
+      </div>
+    </div>
+    <div class="price-card">
+      <div class="price-card-head">
+        <div class="price-card-icon">⚙️</div>
+        <div class="price-card-title">חלקים וחלפים</div>
+      </div>
+      <div class="price-rows">
+        <div class="price-row"><span class="price-row-label">חלק קטן / פשוט</span><span class="price-row-val">~30–80 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">חלק בינוני</span><span class="price-row-val">~80–200 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">חלק מורכב / גדול</span><span class="price-row-val">לפי הצעה</span></div>
+        <div class="price-row"><span class="price-row-label">עיצוב מאפס (+הדפסה)</span><span class="price-row-val">+תוספת עיצוב</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shipping -->
+  <div style="margin-bottom:10px">
+    <div class="stag" style="margin-bottom:14px">משלוח ואיסוף</div>
+  </div>
+  <div class="shipping-row">
+    <span class="shipping-label">📦 משלוח (שליח / דואר)</span>
+    <span class="shipping-val">~30–50 ₪ (לפי משקל)</span>
+  </div>
+  <div class="shipping-row">
+    <span class="shipping-label">🚗 איסוף עצמי — באר שבע</span>
+    <span class="shipping-val green" style="color:#156638;font-weight:800;">חינם ✓</span>
+  </div>
+
+  <!-- Payment -->
+  <div style="margin-top:28px;margin-bottom:14px">
+    <div class="stag" style="margin-bottom:14px">אופן תשלום</div>
+  </div>
+  <div class="payment-grid">
+    <div class="pay-card">
+      <div class="pay-icon" style="background:rgba(77,184,232,.12);border:1.5px solid rgba(77,184,232,.25);">💸</div>
+      <div>
+        <div class="pay-title">Bit</div>
+        <div class="pay-desc">העברה מיידית דרך אפליקציית Bit. מהיר ופשוט.</div>
+      </div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-icon" style="background:rgba(30,160,90,.1);border:1.5px solid rgba(30,160,90,.25);">💵</div>
+      <div>
+        <div class="pay-title">מזומן</div>
+        <div class="pay-desc">תשלום במזומן באיסוף עצמי.</div>
+      </div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-icon" style="background:rgba(200,120,0,.1);border:1.5px solid rgba(200,120,0,.25);">🏦</div>
+      <div>
+        <div class="pay-title">העברה בנקאית</div>
+        <div class="pay-desc">לפרטים — יישלחו לאחר אישור הזמנה.</div>
+      </div>
+    </div>
+  </div>
+  <div style="font-size:12px;color:var(--text2);margin-top:14px;padding:12px 16px;background:var(--bg3);border-radius:10px;border:1px solid var(--border);">
+    💡 <strong>הבהרה:</strong> NSF 3D פועל כעת כעוסק פטור. חשבונית/קבלה תישלח לפי בקשה. אמצעי תשלום נוספים יתווספו בעתיד.
   </div>
 </div>
 </section>
@@ -563,9 +806,10 @@ body.dark #cookieBanner{background:#061422;}
           <span class="sw-chip art" title="מידול אומנותי ואורגני">🎨 Blender</span>
           <span class="sw-chip art" title="גרפיקה ווקטורית לשילוט">✏️ Inkscape</span>
           <span class="sw-chip art" title="ריפוש ושחזור רשתות 3D">🔧 Meshmixer</span>
-          <span class="sw-chip ai" title="בינה מלאכותית לעיצוב ויצירה">🤖 AI Tools</span>
+          <span class="sw-chip ai" title="בינה מלאכותית לעיצוב ויצירה">🤖 בינה מלאכותית · AI</span>
+          <span class="sw-chip ai" title="סריקת תלת מימד באמצעות LiDAR של אייפון">📱 סריקת LiDAR</span>
         </div>
-        <div style="font-size:11px;color:var(--text2);margin-top:7px;font-weight:400;">הנדסי: SolidWorks · יצירתי: Blender, Inkscape, Meshmixer · AI-assisted design</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:7px;font-weight:400;">הנדסי: SolidWorks · יצירתי: Blender, Inkscape, Meshmixer · בינה מלאכותית · סריקת LiDAR (iPhone)</div>
       </div>
 
       <div class="about-features" style="margin-top:22px">
@@ -689,7 +933,9 @@ body.dark #cookieBanner{background:#061422;}
   </div>
   <ul class="footer-links">
     <li><a href="#catalog">קטלוג</a></li>
+    <li><a href="#materials">חומרים</a></li>
     <li><a href="#products">מוצרים</a></li>
+    <li><a href="#pricing">מחירון</a></li>
     <li><a href="#order">הזמנות</a></li>
     <li><a href="#about">אודות</a></li>
     <li><a href="#contact">צור קשר</a></li>
@@ -1064,9 +1310,11 @@ const LEGAL_CONTENT = {
       <div class="highlight"><strong>⚠️ כלל מוצרי NSF 3D מיוצרים בהזמנה אישית — לא תינתן זכות ביטול לאחר תחילת הייצור.</strong></div>
       <h3>5. מסלול אקספרס</h3>
       <p>מסלול האקספרס כרוך בתוספת תשלום המסוכמת מראש. ביטול הזמנת אקספרס לאחר תחילת הייצור אינה מזכה בהחזר.</p>
-      <h3>6. זמני אספקה</h3>
+      <h3>6. אמצעי תשלום</h3>
+      <p>NSF 3D מקבל תשלום ב-<strong>Bit</strong>, <strong>מזומן</strong> ו<strong>העברה בנקאית</strong>. העסק פועל כעוסק פטור; קבלה/אישור תישלח לפי בקשה.</p>
+      <h3>7. זמני אספקה</h3>
       <p>זמני האספקה (7–30 ימי עסקים / אקספרס לפי הסכמה) הינם הערכה בלבד ועשויים להשתנות.</p>
-      <h3>7. סמכות שיפוט</h3>
+      <h3>8. סמכות שיפוט</h3>
       <p>כל מחלוקת תדון בבתי המשפט המוסמכים במחוז תל אביב.</p>
     `
   }
