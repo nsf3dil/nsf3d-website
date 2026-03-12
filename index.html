@@ -812,14 +812,18 @@ function orderFromModal(){
   const msg = encodeURIComponent(`היי NSF 3D! 👋\nאני מעוניין בצבע: ${c.name} (מק"ט: ${c.sku})\nחומר: ${c.material}\n\nאשמח לשמוע פרטים 😊`);
   window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank','noopener');
 }
-function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
-function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+function closeModal(e){
+  if(e.target===document.getElementById('modalOverlay') && !document.getElementById('lightbox').classList.contains('open')){
+    closeModalDirect();
+  }
+}function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
 
 // LIGHTBOX
 function openLightbox(src, event){
-  if(event) event.stopPropagation();
+  if(event){ event.stopPropagation(); event.preventDefault(); }
   document.getElementById('lightboxImg').src = src;
   document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
 
