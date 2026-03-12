@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NSF 3D — הדפסות תלת מימד מקצועיות</title>
-<meta name="description" content="NSF 3D — הדפסות תלת מימד בהתאמה אישית בישראל. מגוון חומרים וצבעים, שילוט, דמויות, ושירות אישי מהיר.">
+<title>NSF 3D — הדפסות תלת מימד מקצועיות באר שבע והדרום</title>
+<meta name="description" content="NSF 3D — הדפסות תלת מימד בהתאמה אישית בבאר שבע והדרום. מגוון חומרים וצבעים, שילוט, דמויות, ושירות אישי מהיר.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="NSF 3D — הדפסות תלת מימד מקצועיות">
-<meta property="og:description" content="מגוון צבעים וחומרים, שילוט ודמויות בהזמנה אישית. שירות מהיר ואיכותי.">
+<meta property="og:title" content="NSF 3D — הדפסות תלת מימד מקצועיות באר שבע">
+<meta property="og:description" content="הדפסות 3D בהתאמה אישית בבאר שבע והדרום. מגוון צבעים וחומרים, שילוט ודמויות בהזמנה אישית. שירות מהיר ואיכותי.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nsf3dil.github.io/nsf3d-website/">
 <meta property="og:image" content="https://nsf3dil.github.io/nsf3d-website/NSF-logo-large-1000px.png">
@@ -27,7 +27,7 @@
 /* ══ LIGHT THEME ══ */
 :root{
   --bg:#fff;--bg2:#f4f7fa;--bg3:#e8f4fb;
-  --text:#1a2533;--text2:#4a5e74;
+  --text:#1a2533;--text2:#3d5166;
   --border:#d0dde9;--border2:#b8cfe0;
   --blue-dark:#1a3a5c;--blue-mid:#1e6fa8;--blue-light:#4db8e8;
   --card-bg:#fff;--input-bg:#e8f4fb;
@@ -58,29 +58,26 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 .nav-logo-text{font-size:22px;font-weight:900;color:var(--blue-dark);display:none;}
 .nav-logo-text span{color:var(--blue-light);}
 .nav-links{display:flex;gap:22px;list-style:none;align-items:center;}
-.nav-links a{color:var(--text2);font-size:14px;font-weight:600;text-decoration:none;transition:color .2s;}
+.nav-links a{color:var(--text2);font-size:14px;font-weight:700;text-decoration:none;transition:color .2s;}
 .nav-links a:hover{color:var(--blue-mid);}
 .nav-cta{background:var(--blue-mid)!important;color:#fff!important;padding:8px 18px;border-radius:10px;font-weight:700!important;transition:background .2s!important;}
 .nav-cta:hover{background:var(--blue-dark)!important;}
-.dark-toggle{background:var(--bg2);border:1.5px solid var(--border);color:var(--text);height:34px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;gap:5px;padding:0 12px;transition:background .2s,border-color .2s;flex-shrink:0;white-space:nowrap;font-family:'Heebo',sans-serif;}
+.dark-toggle{background:var(--bg2);border:1.5px solid var(--border);color:var(--text);height:34px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;display:flex;align-items:center;gap:5px;padding:0 12px;transition:background .2s,border-color .2s;flex-shrink:0;white-space:nowrap;font-family:'Heebo',sans-serif;}
 .dark-toggle:hover{background:var(--border);border-color:var(--blue-mid);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
 .hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s;}
 .mobile-menu{display:none;position:fixed;top:64px;right:0;left:0;z-index:199;background:var(--bg);border-bottom:1px solid var(--border);padding:20px 24px;flex-direction:column;gap:4px;box-shadow:0 4px 24px rgba(0,0,0,.12);transition:background .3s;}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{color:var(--text);font-size:16px;font-weight:600;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);}
+.mobile-menu a{color:var(--text);font-size:16px;font-weight:700;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);}
 .mobile-menu a:last-child{border:none;}
 
 /* HERO */
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;background:linear-gradient(155deg,var(--bg3) 0%,var(--bg) 55%,var(--bg2) 100%);position:relative;overflow:hidden;transition:background .3s;}
 .hero-blob{position:absolute;top:-100px;left:-150px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(77,184,232,.12) 0%,transparent 70%);pointer-events:none;}
 .hero-blob2{position:absolute;bottom:-80px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(30,111,168,.08) 0%,transparent 70%);pointer-events:none;}
-
-/* HERO LOGO — עיגול נקי עם רקע */
 .hero-logo-wrap{width:140px;height:140px;border-radius:28px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 50%,#0d2a47 100%);box-shadow:0 8px 40px rgba(30,111,168,.35),0 0 0 1px rgba(77,184,232,.2);display:flex;align-items:center;justify-content:center;}
 .hero-logo-wrap img{width:88%;height:88%;object-fit:contain;}
 body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px rgba(77,184,232,.15);}
-
 .hero-tag{display:inline-block;background:rgba(77,184,232,.15);border:1px solid rgba(77,184,232,.4);color:var(--blue-mid);font-size:13px;font-weight:700;padding:6px 18px;border-radius:100px;margin-bottom:18px;}
 .hero-title{font-size:clamp(42px,7vw,80px);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:18px;color:var(--blue-dark);}
 .hero-title .accent{color:var(--blue-light);}
@@ -88,25 +85,36 @@ body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px r
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
 .btn-primary{background:var(--blue-mid);color:#fff;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;transition:background .2s,transform .2s;box-shadow:0 4px 20px rgba(30,111,168,.30);}
 .btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);}
-.btn-secondary{background:var(--card-bg);color:var(--blue-mid);padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;border:2px solid var(--blue-light);transition:background .2s,transform .2s;}
+.btn-secondary{background:var(--card-bg);color:#1a5a8a;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;border:2px solid var(--blue-light);transition:background .2s,transform .2s;}
 .btn-secondary:hover{background:var(--bg3);transform:translateY(-2px);}
+body.dark .btn-secondary{color:var(--blue-light);}
 .hero-stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap;justify-content:center;}
 .stat{text-align:center;}
 .stat-num{font-size:34px;font-weight:900;color:var(--blue-dark);}
 .stat-num span{color:var(--blue-light);}
-.stat-label{font-size:13px;color:var(--text2);margin-top:2px;}
+.stat-label{font-size:13px;color:var(--text2);margin-top:2px;font-weight:600;}
 
 /* SECTIONS */
 .sw{padding:76px 40px;max-width:1200px;margin:0 auto;}
 .sdiv{height:1px;background:var(--border);}
 .stag{font-size:12px;font-weight:700;color:var(--blue-mid);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
 .stitle{font-size:clamp(26px,3.5vw,38px);font-weight:900;color:var(--blue-dark);letter-spacing:-.5px;line-height:1.15;}
-.ssub{font-size:16px;color:var(--text2);margin-top:10px;line-height:1.65;}
+.ssub{font-size:16px;color:var(--text2);margin-top:10px;line-height:1.65;font-weight:400;}
 .sh{margin-bottom:42px;}
+
+/* ── SKELETON LOADING ── */
+@keyframes shimmer{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}
+}
+.skeleton-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;pointer-events:none;}
+.skeleton-swatch{height:92px;animation:shimmer 1.4s ease-in-out infinite;background:linear-gradient(90deg,var(--bg2) 25%,var(--border) 50%,var(--bg2) 75%);background-size:200% 100%;}
+.skeleton-line{height:11px;border-radius:6px;margin:0 12px;animation:shimmer 1.4s ease-in-out infinite;background:linear-gradient(90deg,var(--bg2) 25%,var(--border) 50%,var(--bg2) 75%);background-size:200% 100%;}
+.skeleton-info{padding:10px 0 12px;}
 
 /* CATALOG */
 .filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:24px;}
-.filter-btn{background:var(--card-bg);color:var(--text2);border:1.5px solid var(--border);padding:8px 18px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Heebo',sans-serif;}
+.filter-btn{background:var(--card-bg);color:var(--text2);border:1.5px solid var(--border);padding:8px 18px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Heebo',sans-serif;}
 .filter-btn:hover,.filter-btn.active{background:var(--blue-mid);color:#fff;border-color:var(--blue-mid);}
 .search-input{background:var(--card-bg);border:1.5px solid var(--border);color:var(--text);padding:9px 18px;border-radius:100px;font-size:14px;font-family:'Heebo',sans-serif;outline:none;min-width:190px;transition:border-color .2s;margin-right:auto;}
 .search-input:focus{border-color:var(--blue-mid);}
@@ -123,15 +131,16 @@ body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px r
 .color-info{padding:10px 12px;}
 .color-name{font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.35;color:var(--text);}
 .color-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
-.color-sku{font-size:11px;color:var(--text2);}
-.tag-glow{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(77,184,232,.15);color:var(--blue-mid);border:1px solid rgba(77,184,232,.3);}
-.tag-instock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(30,180,100,.12);color:#1a8a50;border:1px solid rgba(30,180,100,.25);}
-.tag-outstock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(200,60,60,.10);color:#b83030;border:1px solid rgba(200,60,60,.2);}
+.color-sku{font-size:11px;color:var(--text2);font-weight:600;}
+.tag-glow{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(77,184,232,.15);color:#155f8f;border:1px solid rgba(77,184,232,.4);}
+body.dark .tag-glow{color:var(--blue-mid);}
+.tag-instock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(30,160,90,.12);color:#156638;border:1px solid rgba(30,160,90,.3);}
+body.dark .tag-instock{color:#3ecf7a;background:rgba(30,160,90,.15);border-color:rgba(30,160,90,.35);}
+.tag-outstock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(200,60,60,.10);color:#9e2020;border:1px solid rgba(200,60,60,.25);}
+body.dark .tag-outstock{color:#f07070;background:rgba(200,60,60,.12);border-color:rgba(200,60,60,.3);}
 .loading{text-align:center;padding:56px;color:var(--text2);font-size:16px;grid-column:1/-1;}
-.loading-spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--blue-mid);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px;}
-@keyframes spin{to{transform:rotate(360deg);}}
 
-/* COLOR MODAL — enlarged */
+/* COLOR MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:300;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--modal-bg);border-radius:20px;max-width:500px;width:100%;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,.3);}
@@ -160,43 +169,118 @@ body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px r
 .ptype{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:26px;text-align:center;}
 .ptype-icon{font-size:42px;margin-bottom:10px;}
 .ptype-title{font-size:16px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
-.ptype-desc{font-size:13px;color:var(--text2);line-height:1.6;}
+.ptype-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:400;}
 .coming-soon{background:var(--bg3);border:2px dashed var(--border2);border-radius:var(--radius);padding:44px;text-align:center;}
 .coming-soon .cs-icon{font-size:44px;margin-bottom:12px;}
 .coming-soon h3{font-size:19px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
-.coming-soon p{font-size:14px;color:var(--text2);}
+.coming-soon p{font-size:14px;color:var(--text2);font-weight:400;}
+
+/* ── MACRO PHOTO PLACEHOLDER ── */
+.macro-placeholder{
+  margin-top:32px;
+  border-radius:18px;
+  overflow:hidden;
+  border:2.5px dashed var(--border2);
+  background:linear-gradient(135deg,var(--bg3) 0%,var(--bg2) 100%);
+  position:relative;
+  min-height:240px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:border-color .2s;
+}
+.macro-placeholder:hover{border-color:var(--blue-mid);}
+.macro-ph-inner{text-align:center;padding:40px 24px;}
+.macro-ph-icon{font-size:52px;margin-bottom:14px;opacity:.7;}
+.macro-ph-badge{display:inline-block;background:rgba(30,111,168,.12);border:1px solid rgba(30,111,168,.25);color:var(--blue-mid);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+.macro-ph-title{font-size:17px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
+.macro-ph-desc{font-size:13px;color:var(--text2);line-height:1.6;max-width:320px;margin:0 auto;font-weight:400;}
+/* כשמחליפים את ה-placeholder בתמונה אמיתית — פשוט החלף את כל ה-div ב: */
+/* <img src="your-macro.jpg" alt="פרטי הדפסה מקרוב" style="width:100%;height:300px;object-fit:cover;border-radius:16px;"> */
 
 /* ORDER */
 .order-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px;}
 .step{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:24px;}
-.step-num{font-size:40px;font-weight:900;color:rgba(77,184,232,.25);line-height:1;margin-bottom:12px;}
+.step-num{font-size:40px;font-weight:900;color:rgba(77,184,232,.30);line-height:1;margin-bottom:12px;}
 .step-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:5px;}
-.step-desc{font-size:13px;color:var(--text2);line-height:1.6;}
+.step-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:400;}
 .order-cta{text-align:center;margin-top:32px;}
 
+/* ── EXPRESS BANNER ── */
+.express-banner{
+  margin-top:28px;
+  background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 60%,#0e3255 100%);
+  border-radius:18px;
+  padding:28px 32px;
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+  box-shadow:0 6px 32px rgba(30,111,168,.30);
+  border:1px solid rgba(77,184,232,.25);
+  position:relative;
+  overflow:hidden;
+}
+.express-banner::before{
+  content:'';position:absolute;top:-60px;left:-60px;width:220px;height:220px;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,200,50,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.express-icon-wrap{
+  width:56px;height:56px;border-radius:14px;
+  background:rgba(255,200,50,.15);border:1.5px solid rgba(255,200,50,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;flex-shrink:0;
+}
+.express-content{flex:1;min-width:200px;}
+.express-title{font-size:17px;font-weight:900;color:#fff;margin-bottom:6px;}
+.express-badge{display:inline-block;background:rgba(255,200,50,.2);border:1px solid rgba(255,200,50,.4);color:#f5c842;font-size:10px;font-weight:700;padding:2px 10px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.express-desc{font-size:13px;color:rgba(255,255,255,.78);line-height:1.65;font-weight:400;}
+.btn-express{
+  background:linear-gradient(135deg,#f5c842 0%,#e6a800 100%);
+  color:#1a2533;
+  padding:13px 24px;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:900;
+  text-decoration:none;
+  white-space:nowrap;
+  flex-shrink:0;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 18px rgba(245,200,66,.35);
+}
+.btn-express:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(245,200,66,.5);}
+
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
 .about-features{display:grid;gap:16px;margin-top:26px;}
 .fi{display:flex;gap:14px;align-items:flex-start;}
 .fi-icon{width:42px;height:42px;border-radius:10px;background:rgba(30,111,168,.1);border:1px solid rgba(30,111,168,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .fi-text h4{font-size:14px;font-weight:800;color:var(--blue-dark);margin-bottom:2px;}
-.fi-text p{font-size:13px;color:var(--text2);line-height:1.55;}
+.fi-text p{font-size:13px;color:var(--text2);line-height:1.55;font-weight:400;}
+
+/* Software chips in about */
+.sw-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
+.sw-chip{background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--blue-dark);}
+.sw-chip.eng{border-color:rgba(30,111,168,.35);background:rgba(30,111,168,.07);}
+.sw-chip.art{border-color:rgba(77,184,232,.35);background:rgba(77,184,232,.08);}
+
 .about-visual{background:var(--card-bg);border:1.5px solid var(--border);border-radius:18px;padding:32px;text-align:center;box-shadow:var(--shadow);}
 .abn{font-size:68px;font-weight:900;color:var(--blue-mid);line-height:1;}
-.abl{font-size:14px;color:var(--text2);margin-top:5px;}
+.abl{font-size:14px;color:var(--text2);margin-top:5px;font-weight:600;}
 .ab-chips{display:grid;gap:9px;margin-top:22px;}
 .ab-chip{background:var(--bg2);border-radius:10px;padding:12px 14px;text-align:right;}
-.ab-chip-l{font-size:11px;color:var(--text2);}
+.ab-chip-l{font-size:11px;color:var(--text2);font-weight:600;}
 .ab-chip-v{font-size:13px;font-weight:700;color:var(--text);margin-top:1px;}
 
-/* SOCIAL — with real icons */
+/* SOCIAL */
 .social-grid{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
 .social-card{display:flex;align-items:center;gap:12px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 22px;text-decoration:none;color:var(--text);transition:transform .2s,box-shadow .2s,border-color .2s;min-width:150px;}
 .social-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--blue-light);}
 .social-icon{width:34px;height:34px;flex-shrink:0;}
 .social-icon svg{width:100%;height:100%;}
 .social-name{font-size:14px;font-weight:700;color:var(--blue-dark);}
-.social-handle{font-size:12px;color:var(--text2);}
+.social-handle{font-size:12px;color:var(--text2);font-weight:600;}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
@@ -204,13 +288,13 @@ body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px r
 .contact-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);transition:background .2s,transform .2s;}
 .contact-card:hover{background:var(--border);transform:translateX(-3px);}
 .contact-icon{width:44px;height:44px;border-radius:11px;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
-.contact-label{font-size:12px;color:var(--text2);margin-bottom:2px;}
+.contact-label{font-size:12px;color:var(--text2);margin-bottom:2px;font-weight:600;}
 .contact-val{font-size:15px;font-weight:700;color:var(--blue-dark);}
 .hours-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 20px;}
 .hours-l{font-size:12px;color:var(--text2);margin-bottom:8px;font-weight:700;}
 .hours-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid var(--border);}
 .hours-row:last-child{border:none;}
-.hours-day{color:var(--text2);}
+.hours-day{color:var(--text2);font-weight:600;}
 .hours-time{font-weight:700;color:var(--blue-dark);}
 .contact-form{display:grid;gap:13px;}
 .form-group{display:grid;gap:5px;}
@@ -218,30 +302,21 @@ body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px r
 .form-input,.form-textarea,.form-select{background:var(--input-bg);border:1.5px solid var(--border);color:var(--text);padding:11px 14px;border-radius:10px;font-size:15px;font-family:'Heebo',sans-serif;outline:none;transition:border-color .2s;width:100%;}
 .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--blue-mid);}
 .form-textarea{resize:vertical;min-height:100px;}
-.form-file-wrap{background:var(--input-bg);border:1.5px dashed var(--border2);border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;}
-.form-file-wrap:hover{border-color:var(--blue-mid);}
-.form-file-input{display:none;}
-.form-file-label{font-size:13px;color:var(--text2);cursor:pointer;}
-.form-file-label strong{color:var(--blue-mid);}
-.form-file-preview{display:none;flex-wrap:wrap;gap:8px;margin-top:10px;}
-.form-file-thumb{width:60px;height:60px;object-fit:cover;border-radius:8px;border:2px solid var(--border2);}
 .form-submit{background:var(--blue-mid);color:#fff;border:none;padding:13px 28px;border-radius:var(--radius);font-size:16px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(30,111,168,.28);}
-.form-submit:hover{background:var(--blue-dark);transform:translateY(-1px);}
+.form-submit:hover{background:#155f8f;transform:translateY(-1px);}
 .form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-.form-note{font-size:12px;color:var(--text2);text-align:center;}
-.form-success{display:none;background:rgba(30,180,100,.1);border:1px solid rgba(30,180,100,.3);color:#1a8a50;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
-.form-error{display:none;background:rgba(200,60,60,.1);border:1px solid rgba(200,60,60,.3);color:#b83030;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
+.form-hint{font-size:12px;color:var(--text2);margin-top:5px;font-weight:400;display:flex;align-items:flex-start;gap:5px;line-height:1.5;}
+.form-success{display:none;background:rgba(30,160,90,.1);border:1px solid rgba(30,160,90,.3);color:#156638;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
+body.dark .form-success{color:#3ecf7a;background:rgba(30,160,90,.12);border-color:rgba(30,160,90,.3);}
+.form-error{display:none;background:rgba(200,60,60,.1);border:1px solid rgba(200,60,60,.3);color:#9e2020;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
+body.dark .form-error{color:#f07070;}
 
 /* FOOTER */
 footer{background:var(--blue-dark);color:rgba(255,255,255,.7);padding:38px 40px 28px;text-align:center;}
 body.dark footer{background:#061422;}
-.footer-logo{margin-bottom:14px;display:flex;justify-content:center;}
-.footer-logo-wrap{width:52px;height:52px;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;}
-.footer-logo-wrap img{width:88%;height:88%;object-fit:contain;filter:brightness(0) invert(1);opacity:.9;}
-.footer-logo-text{font-size:20px;font-weight:900;color:rgba(255,255,255,.9);display:none;}
 .footer-links{display:flex;gap:20px;justify-content:center;list-style:none;margin-bottom:10px;flex-wrap:wrap;}
-.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;transition:color .2s;}
-.footer-links a:hover,.footer-links button:hover{color:#fff;}
+.footer-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:13px;font-weight:600;transition:color .2s;}
+.footer-links a:hover{color:#fff;}
 .footer-legal{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
 .footer-legal-btn{background:none;border:none;color:rgba(255,255,255,.45);font-size:12px;font-family:'Heebo',sans-serif;cursor:pointer;text-decoration:underline;padding:0;transition:color .2s;}
 .footer-legal-btn:hover{color:rgba(255,255,255,.85);}
@@ -262,7 +337,8 @@ body.dark footer{background:#061422;}
 .legal-body ul li{margin-bottom:5px;color:var(--text2);}
 .legal-body strong{color:var(--text);}
 .legal-body .highlight{background:rgba(255,180,0,.12);border:1px solid rgba(255,180,0,.3);border-radius:8px;padding:12px 16px;margin:12px 0;}
-.legal-body .highlight strong{color:#b06000;}
+.legal-body .highlight strong{color:#8a4d00;}
+body.dark .legal-body .highlight strong{color:#f5c842;}
 
 /* COOKIE BANNER */
 #cookieBanner{display:none;position:fixed;bottom:0;right:0;left:0;z-index:500;background:var(--blue-dark);color:#fff;padding:16px 24px;border-top:2px solid var(--blue-mid);box-shadow:0 -4px 24px rgba(0,0,0,.2);}
@@ -273,8 +349,8 @@ body.dark #cookieBanner{background:#061422;}
 .cookie-btns{display:flex;gap:10px;flex-shrink:0;}
 .cookie-accept{background:var(--blue-mid);color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
 .cookie-accept:hover{background:#3aa0d0;}
-.cookie-decline{background:transparent;color:rgba(255,255,255,.65);border:1.5px solid rgba(255,255,255,.3);padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s;}
-.cookie-decline:hover{border-color:rgba(255,255,255,.7);color:#fff;}
+.cookie-decline{background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.35);padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s;}
+.cookie-decline:hover{border-color:rgba(255,255,255,.8);color:#fff;}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -291,6 +367,8 @@ body.dark #cookieBanner{background:#061422;}
   .cookie-inner{flex-direction:column;align-items:stretch;}
   .cookie-btns{justify-content:stretch;}
   .cookie-accept,.cookie-decline{flex:1;text-align:center;}
+  .express-banner{flex-direction:column;align-items:flex-start;}
+  .btn-express{width:100%;text-align:center;}
 }
 @media(max-width:480px){
   .colors-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
@@ -311,7 +389,7 @@ body.dark #cookieBanner{background:#061422;}
   <ul class="nav-links">
     <li><a href="#catalog">קטלוג</a></li>
     <li><a href="#products" id="nav-products">מוצרים</a></li>
-    <li><a href="#order" id="nav-order">ייעוץ והזמנות</a></li>
+    <li><a href="#order" id="nav-order">הזמנות</a></li>
     <li><a href="#about">אודות</a></li>
     <li><a href="#social">רשתות</a></li>
     <li><a href="#contact" class="nav-cta">📱 צור קשר</a></li>
@@ -324,7 +402,7 @@ body.dark #cookieBanner{background:#061422;}
 <div class="mobile-menu" id="mobileMenu">
   <a href="#catalog" onclick="closeMenu()">🎨 קטלוג צבעים</a>
   <a href="#products" onclick="closeMenu()" id="mm-products">🖨️ מוצרים</a>
-  <a href="#order" onclick="closeMenu()" id="mm-order">📦 ייעוץ והזמנות</a>
+  <a href="#order" onclick="closeMenu()" id="mm-order">📦 הזמנות</a>
   <a href="#about" onclick="closeMenu()">ℹ️ אודות</a>
   <a href="#social" onclick="closeMenu()">📲 רשתות</a>
   <a href="#contact" onclick="closeMenu()">📱 צור קשר</a>
@@ -337,9 +415,9 @@ body.dark #cookieBanner{background:#061422;}
     <div class="hero-logo-wrap">
       <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="124" height="124" onerror="this.style.display='none'">
     </div>
-    <div class="hero-tag">✦ הדפסות תלת מימד בהתאמה אישית</div>
+    <div class="hero-tag">✦ הדפסות תלת מימד בהתאמה אישית — באר שבע והדרום</div>
     <h1 class="hero-title">הרעיון שלך<br><span class="accent">הופך למוצר אמיתי</span></h1>
-    <p class="hero-sub">הדפסות 3D איכותיות במגוון חומרים וצבעים — גימורים מיוחדים, ושירות אישי מול המדפיס עצמו.</p>
+    <p class="hero-sub">הדפסות 3D איכותיות במגוון חומרים וצבעים — מהנדס עם עין לאומנות, שירות אישי מהיר.</p>
     <div class="hero-btns">
       <a href="#catalog" class="btn-primary">לקטלוג הצבעים ←</a>
       <a href="#contact" class="btn-secondary">💬 דברו איתנו</a>
@@ -370,8 +448,8 @@ body.dark #cookieBanner{background:#061422;}
     <button class="filter-btn" onclick="setFilter('glow',this)">✨ זוהר בחושך</button>
     <input class="search-input" type="text" id="searchInput" placeholder="🔍 חיפוש..." oninput="filterColors()" aria-label="חיפוש צבע">
   </div>
-  <div class="colors-grid" id="colorsGrid" role="list">
-    <div class="loading"><div class="loading-spinner"></div>טוען צבעים...</div>
+  <div class="colors-grid" id="colorsGrid" role="list" aria-live="polite" aria-label="קטלוג צבעים">
+    <!-- skeleton cards shown by JS on load -->
   </div>
   <div class="show-all-row" id="showAllRow" style="display:none">
     <button class="show-all-btn" id="showAllBtn" onclick="toggleShowAll()">הצג את כל הצבעים ↓</button>
@@ -380,7 +458,7 @@ body.dark #cookieBanner{background:#061422;}
 </div>
 
 <!-- COLOR MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)" role="dialog" aria-modal="true">
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)" role="dialog" aria-modal="true" aria-label="פרטי צבע">
   <div class="modal">
     <div id="modalTop"></div>
     <div class="modal-body">
@@ -396,7 +474,7 @@ body.dark #cookieBanner{background:#061422;}
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="סגור תצוגה מוגדלת">✕</button>
   <img id="lightboxImg" src="" alt="תצוגה מוגדלת">
 </div>
 
@@ -407,14 +485,43 @@ body.dark #cookieBanner{background:#061422;}
   <div class="sh">
     <div class="stag">מוצרים ופרויקטים</div>
     <h2 class="stitle">מה אנחנו מדפיסים?</h2>
-    <p class="ssub">שלטים, דמויות, חלקים מותאמים — כל רעיון יכול להפוך למציאות</p>
+    <p class="ssub">שילוט, דמויות, חלקים מותאמים — כל רעיון יכול להפוך למציאות</p>
   </div>
   <div class="product-types">
-    <div class="ptype"><div class="ptype-icon">🪧</div><div class="ptype-title">שילוט מותאם אישית</div><div class="ptype-desc">שלטי בית, עסק, מספרי דירות, לוגואים תלת-מימדיים</div></div>
-    <div class="ptype"><div class="ptype-icon">👤</div><div class="ptype-title">דמויות על בסיס תמונה</div><div class="ptype-desc">מיניאטורות אישיות, פסלונים מתמונות, מתנות ייחודיות</div></div>
-    <div class="ptype"><div class="ptype-icon">⚙️</div><div class="ptype-title">חלקים ואביזרים</div><div class="ptype-desc">חלפים, מתאמים, פתרונות שאין להם תשובה מדף</div></div>
+    <div class="ptype">
+      <div class="ptype-icon">🪧</div>
+      <div class="ptype-title">שילוט מותאם אישית</div>
+      <div class="ptype-desc">שלטי בית, עסק, מספרי דירות, לוגואים תלת-מימדיים — מעוצבים מאפס לפי הדרישות שלך.</div>
+    </div>
+    <div class="ptype">
+      <div class="ptype-icon">👤</div>
+      <div class="ptype-title">דמויות על בסיס תמונה</div>
+      <div class="ptype-desc">מיניאטורות אישיות, פסלונים מתמונות, מתנות ייחודיות שאין אפשרות לקנות בשום מקום אחר.</div>
+    </div>
+    <div class="ptype">
+      <div class="ptype-icon">⚙️</div>
+      <div class="ptype-title">חלקים ואביזרים</div>
+      <div class="ptype-desc">חלפים, מתאמים, פתרונות הנדסיים — כשהמדף לא עוזר, אנחנו מייצרים את הפתרון.</div>
+    </div>
   </div>
-  <div class="coming-soon"><div class="cs-icon">📸</div><h3>גלריית פרויקטים — בקרוב</h3><p>תמונות עבודות יתווספו בקרוב. בינתיים — שלחו הודעה ונשמח לשתף דוגמאות!</p></div>
+
+  <!-- ══ MACRO PHOTO PLACEHOLDER ══ -->
+  <!-- כדי להחליף בתמונה אמיתית: מחק את ה-div.macro-placeholder והוסף:
+       <img src="שם-הקובץ.jpg" alt="פרטי הדפסה מקרוב" style="width:100%;height:300px;object-fit:cover;border-radius:16px;margin-top:28px;"> -->
+  <div class="macro-placeholder" id="macroPh" aria-hidden="true">
+    <div class="macro-ph-inner">
+      <div class="macro-ph-icon">📸</div>
+      <div class="macro-ph-badge">Macro Shot — בקרוב</div>
+      <div class="macro-ph-title">גלריית הדפסות מקרוב</div>
+      <div class="macro-ph-desc">כאן תוצג תמונת מאקרו איכותית של עבודה שהושלמה — פרטי מרקם, שכבות וגימור. מקום שמור לתמונה שתדבר בעד עצמה.</div>
+    </div>
+  </div>
+
+  <div class="coming-soon" style="margin-top:18px">
+    <div class="cs-icon">📸</div>
+    <h3>גלריית פרויקטים — בקרוב</h3>
+    <p>תמונות עבודות יתווספו בקרוב. בינתיים — שלחו הודעה ונשמח לשתף דוגמאות!</p>
+  </div>
 </div>
 </section>
 
@@ -429,10 +536,26 @@ body.dark #cookieBanner{background:#061422;}
   </div>
   <div class="order-steps">
     <div class="step"><div class="step-num">01</div><div class="step-title">בחר צבע וחומר</div><div class="step-desc">עיין בקטלוג ובחר מה מתאים לך. לא בטוח? נייעץ בשמחה.</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">שלח תיאור או קובץ</div><div class="step-desc">הודעה עם תיאור, תמונה, רעיון — או קובץ מקצועי (STL, STEP, וכו'). אני מבין הכל.</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">שלח תיאור או קובץ</div><div class="step-desc">הודעה עם תיאור, תמונה, רעיון — או קובץ מקצועי (STL, STEP, וכו'). מבין הכל.</div></div>
     <div class="step"><div class="step-num">03</div><div class="step-title">אישור ומחיר</div><div class="step-desc">אחזור מהר עם הצעת מחיר מפורטת לפני שמתחילים.</div></div>
     <div class="step"><div class="step-num">04</div><div class="step-title">הדפסה ואיסוף</div><div class="step-desc">רוב ההזמנות מוכנות תוך 7–14 ימי עסקים. משלוח או איסוף עצמי.</div></div>
   </div>
+
+  <!-- ══ EXPRESS BANNER ══ -->
+  <div class="express-banner">
+    <div class="express-icon-wrap">⚡</div>
+    <div class="express-content">
+      <div class="express-badge">Express Track</div>
+      <div class="express-title">מסלול אקספרס — לפרויקטים דחופים</div>
+      <div class="express-desc">
+        צריכים את זה מחר? מסלול האקספרס מבטיח עדיפות מיידית בתור ומסירה מואצת.
+        זמינות מיידית שלי היא משאב מוגבל — ולכן המסלול כרוך בתוספת תשלום. 
+        <strong style="color:rgba(255,255,255,.95)">צרו קשר לפרטים ותמחור.</strong>
+      </div>
+    </div>
+    <a href="#contact" class="btn-express">הזמן אקספרס ⚡</a>
+  </div>
+
   <div class="order-cta"><a href="#contact" class="btn-primary">💬 שלח הזמנה עכשיו</a></div>
 </div>
 </section>
@@ -444,12 +567,31 @@ body.dark #cookieBanner{background:#061422;}
   <div class="about-grid">
     <div>
       <div class="stag">אודות</div>
-      <h2 class="stitle">הדפסות 3D<br>עם גישה אישית</h2>
-      <p class="ssub" style="margin-top:14px">NSF 3D הוא סטודיו הדפסות תלת-מימד שמאמין שכל לקוח מגיע לשירות אמיתי — לא רק לקובץ ממוחשב. מאחורי העסק עומד <strong>סמואל נרודיצקי</strong>, מהנדס מכונות בעל תואר מאוניברסיטת בן גוריון ומעל 4 שנות ניסיון, המשמש כמהנדס מעבדות במחלקת מדעי הסביבה, גאואינפורמטיקה ותכנון ערים — ומביא גישה מהנדסית מדויקת לכל הדפסה.</p>
-      <div class="about-features">
-        <div class="fi"><div class="fi-icon">🎯</div><div class="fi-text"><h4>דיוק ואיכות בכל הדפסה</h4><p>בקרת איכות קפדנית — כל מוצר עובר בדיקה לפני שיוצא</p></div></div>
-        <div class="fi"><div class="fi-icon">⚡</div><div class="fi-text"><h4>זמן אספקה מהיר</h4><p>רוב ההזמנות מוכנות תוך 7–14 ימי עסקים</p></div></div>
-        <div class="fi"><div class="fi-icon">🤝</div><div class="fi-text"><h4>שירות אישי ומקצועי</h4><p>לא בוט — אדם אמיתי שמבין הדפסות ויעזור לך לבחור נכון</p></div></div>
+      <h2 class="stitle">הנדסה ואומנות<br>באותו הדפס</h2>
+      <p class="ssub" style="margin-top:14px">
+        NSF 3D הוא סטודיו שמשלב בין דיוק הנדסי לפן יצירתי-אומנותי — כי לא כל הדפסה היא ברגים ומנגנונים.
+        מאחורי העסק עומד <strong>סמואל נרודיצקי</strong>, מהנדס מכונות בוגר אוניברסיטת בן גוריון עם מעל 4 שנות ניסיון בהדפסות 3D, המשמש כמהנדס מעבדות במחלקת מדעי הסביבה, גאואינפורמטיקה ותכנון ערים.
+      </p>
+      <p class="ssub" style="margin-top:10px">
+        לצד גישה הנדסית מדויקת, סמואל מביא את הכלים הנדרשים לפרויקטים יצירתיים: שילוט, דמויות, פסלונים ומוצרי עיצוב — מהרעיון הראשוני ועד המוצר הסופי.
+      </p>
+
+      <!-- תוכנות -->
+      <div style="margin-top:18px">
+        <div style="font-size:12px;font-weight:700;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:9px;">כלי עבודה</div>
+        <div class="sw-chips">
+          <span class="sw-chip eng" title="מכאני / הנדסי">🔩 SolidWorks</span>
+          <span class="sw-chip art" title="מידול אומנותי ואורגני">🎨 Blender</span>
+          <span class="sw-chip art" title="גרפיקה ווקטורית לשילוט">✏️ Inkscape</span>
+          <span class="sw-chip art" title="ריפוש ושחזור רשתות 3D">🔧 Meshmixer</span>
+        </div>
+        <div style="font-size:11px;color:var(--text2);margin-top:7px;font-weight:400;">הנדסי: SolidWorks · יצירתי: Blender, Inkscape, Meshmixer</div>
+      </div>
+
+      <div class="about-features" style="margin-top:22px">
+        <div class="fi"><div class="fi-icon">🎯</div><div class="fi-text"><h4>דיוק ואיכות בכל הדפסה</h4><p>בקרת איכות קפדנית — כל מוצר עובר בדיקה לפני שיוצא.</p></div></div>
+        <div class="fi"><div class="fi-icon">⚡</div><div class="fi-text"><h4>זמן אספקה מהיר</h4><p>רוב ההזמנות מוכנות תוך 7–14 ימי עסקים, ומסלול אקספרס לצרכים דחופים.</p></div></div>
+        <div class="fi"><div class="fi-icon">🤝</div><div class="fi-text"><h4>שירות אישי ומקצועי</h4><p>לא בוט — אדם אמיתי שמבין הדפסות, יועץ לפני שמזמין ועומד מאחורי התוצאה.</p></div></div>
       </div>
     </div>
     <div class="about-visual">
@@ -458,7 +600,9 @@ body.dark #cookieBanner{background:#061422;}
       <div class="ab-chips">
         <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · ועוד בקרוב</div></div>
         <div class="ab-chip"><div class="ab-chip-l">גימורים מיוחדים</div><div class="ab-chip-v">מט · Silk · זוהר בחושך · נצנצים</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">תחומי עיצוב</div><div class="ab-chip-v">הנדסי · שילוט · דמויות · יצירתי</div></div>
         <div class="ab-chip"><div class="ab-chip-l">שפות שירות</div><div class="ab-chip-v">עברית · English · Русский</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">אזור שירות</div><div class="ab-chip-v">באר שבע, הדרום, כלל הארץ</div></div>
       </div>
     </div>
   </div>
@@ -502,27 +646,34 @@ body.dark #cookieBanner{background:#061422;}
         <div class="hours-row"><span class="hours-day">ראשון–חמישי</span><span class="hours-time">09:00–21:00</span></div>
         <div class="hours-row"><span class="hours-day">שישי</span><span class="hours-time">09:00–15:00</span></div>
         <div class="hours-row"><span class="hours-day">שבת</span><span class="hours-time">סגור</span></div>
-        <div style="font-size:12px;color:var(--text2);margin-top:8px">מענה בוואטסאפ תוך שעות ספורות</div>
+        <div style="font-size:12px;color:var(--text2);margin-top:8px;font-weight:400;">מענה בוואטסאפ תוך שעות ספורות</div>
       </div>
     </div>
     <form class="contact-form" id="contactForm" onsubmit="submitForm(event)" novalidate>
-      <div class="form-group"><label class="form-label" for="fname">שם מלא *</label><input class="form-input" type="text" id="fname" required placeholder="ישראל ישראלי" autocomplete="name"></div>
-      <div class="form-group"><label class="form-label" for="fphone">טלפון *</label><input class="form-input" type="tel" id="fphone" required placeholder="050-0000000" autocomplete="tel"></div>
+      <div class="form-group">
+        <label class="form-label" for="fname">שם מלא *</label>
+        <input class="form-input" type="text" id="fname" required placeholder="ישראל ישראלי" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="fphone">טלפון *</label>
+        <input class="form-input" type="tel" id="fphone" required placeholder="050-0000000" autocomplete="tel">
+      </div>
       <div class="form-group">
         <label class="form-label" for="fsubject">נושא</label>
         <select class="form-select" id="fsubject">
           <option value="הזמנה חדשה">הזמנה חדשה</option>
           <option value="שאלה על צבעים">שאלה על צבעים / חומרים</option>
           <option value="הצעת מחיר">הצעת מחיר</option>
+          <option value="מסלול אקספרס">⚡ מסלול אקספרס — דחוף</option>
           <option value="אחר">אחר</option>
         </select>
       </div>
-      <div class="form-group"><label class="form-label" for="fmessage">פרטים *</label><textarea class="form-textarea" id="fmessage" required placeholder="ספר לי מה אתה צריך — מה להדפיס, באיזה צבע, כמות..."></textarea></div>
-      
-        <div style="font-size:11px;color:var(--text2);margin-top:4px">💡 הפניה תישלח לאימייל. תמונות ניתן לצרף גם בוואטסאפ בנפרד.</div>
+      <div class="form-group">
+        <label class="form-label" for="fmessage">פרטים *</label>
+        <textarea class="form-textarea" id="fmessage" required placeholder="ספר לי מה אתה צריך — מה להדפיס, באיזה צבע, כמות..."></textarea>
+        <div class="form-hint">💡 תמונות וקבצים רלוונטיים ניתן לצרף גם בוואטסאפ או באימייל בנפרד.</div>
       </div>
       <button type="submit" class="form-submit" id="submitBtn">✉️ שלח פניה →</button>
-      <div class="form-note">הפניה תישלח לאימייל ותקבל גם התראה בוואטסאפ</div>
       <div class="form-success" id="formSuccess">✅ הפניה נשלחה בהצלחה! נחזור אליך בהקדם.</div>
       <div class="form-error" id="formError">⚠️ שגיאה בשליחה. נסה שוב או פנה ישירות בוואטסאפ.</div>
     </form>
@@ -532,13 +683,14 @@ body.dark #cookieBanner{background:#061422;}
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">
-    <div style="font-size:26px;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:-0.5px;margin-bottom:4px">NSF <span style="color:var(--blue-light)">3D</span></div>
+  <div style="margin-bottom:14px">
+    <div style="font-size:26px;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:-0.5px">NSF <span style="color:#4db8e8">3D</span></div>
+    <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:3px">באר שבע והדרום · הדפסות 3D בהתאמה אישית</div>
   </div>
   <ul class="footer-links">
     <li><a href="#catalog">קטלוג</a></li>
     <li><a href="#products">מוצרים</a></li>
-    <li><a href="#order">ייעוץ והזמנות</a></li>
+    <li><a href="#order">הזמנות</a></li>
     <li><a href="#about">אודות</a></li>
     <li><a href="#contact">צור קשר</a></li>
   </ul>
@@ -555,7 +707,7 @@ body.dark #cookieBanner{background:#061422;}
   <div class="legal-modal">
     <div class="legal-header">
       <h2 id="legalTitle">—</h2>
-      <button class="legal-close" onclick="closeLegalDirect()">✕</button>
+      <button class="legal-close" onclick="closeLegalDirect()" aria-label="סגור">✕</button>
     </div>
     <div class="legal-body" id="legalBody"></div>
   </div>
@@ -585,18 +737,16 @@ const EMAIL_ADDR   = "nsf3d.il@gmail.com";
 const SITE_URL     = "https://nsf3dil.github.io/nsf3d-website/";
 const DEFAULT_SHOW = 20;
 
-// EmailJS — להגדיר לאחר הרשמה ב-emailjs.com
-// Service ID, Template ID, Public Key
-const EMAILJS_SERVICE  = "nsf3d_gmail";   // ← החלף
-const EMAILJS_TEMPLATE = "template_auajv0o";  // ← החלף
-const EMAILJS_KEY      = "0zsMlXrQhjmsDRUI9";   // ← החלף
+const EMAILJS_SERVICE  = "nsf3d_gmail";
+const EMAILJS_TEMPLATE = "template_auajv0o";
+const EMAILJS_KEY      = "0zsMlXrQhjmsDRUI9";
 
 const SECTIONS = {
   products: true, order: true, social: true,
   accessibility: true, privacy: true, terms: true,
 };
 
-// רשתות חברתיות עם SVG icons אמיתיים
+// רשתות חברתיות
 const SOCIALS = [
   {
     url: "https://www.facebook.com/profile.php?id=61586093829404",
@@ -639,9 +789,7 @@ const SOCIALS = [
 
 let allColors=[], showingAll=false, activeFilter='popular', currentModalColor=null;
 
-// EmailJS init — נטען ב-DOMContentLoaded
-
-// COOKIE
+// ── COOKIE ──
 function getCookieConsent(){ return localStorage.getItem('nsf-cookie-consent'); }
 function acceptCookies(){ localStorage.setItem('nsf-cookie-consent','all'); closeCookieBanner(); loadFbPixel(); }
 function declineCookies(){ localStorage.setItem('nsf-cookie-consent','none'); closeCookieBanner(); }
@@ -653,7 +801,7 @@ function initCookieBanner(){
   else if(consent==='all'){ loadFbPixel(); }
 }
 
-// DARK MODE
+// ── DARK MODE ──
 (function(){ if(localStorage.getItem('nsf-dark')==='1') document.body.classList.add('dark'); })();
 function toggleDark(){
   const d=document.body.classList.toggle('dark');
@@ -662,7 +810,7 @@ function toggleDark(){
   document.getElementById('darkLabel').textContent=d?'מצב בהיר':'מצב כהה';
 }
 
-// WIP SECTIONS
+// ── WIP SECTIONS ──
 function applyWipSections(){
   const wip=`<div style="text-align:center;padding:60px 20px"><div style="font-size:48px;margin-bottom:16px">🚧</div><h3 style="font-size:20px;font-weight:800;color:var(--blue-dark);margin-bottom:8px">הקטע הזה בבנייה</h3><p style="color:var(--text2)">בקרוב! בינתיים <a href="#contact" style="color:var(--blue-mid);font-weight:700">צרו קשר</a></p></div>`;
   if(!SECTIONS.products){ document.querySelector('#products .sw').innerHTML=wip; document.getElementById('nav-products').style.display='none'; document.getElementById('mm-products').style.display='none'; }
@@ -673,12 +821,10 @@ function applyWipSections(){
   if(!SECTIONS.terms){ const b=document.getElementById('btn-terms'); if(b)b.style.display='none'; }
 }
 
-// INIT
+// ── INIT ──
 document.addEventListener('DOMContentLoaded',()=>{
-  // Init EmailJS
   if(typeof emailjs !== 'undefined'){
     emailjs.init(EMAILJS_KEY);
-    console.log('[NSF3D] EmailJS initialized');
   } else {
     console.warn('[NSF3D] EmailJS not loaded!');
   }
@@ -702,27 +848,47 @@ document.addEventListener('DOMContentLoaded',()=>{
   loadColors();
 });
 
-// COLORS
+// ── SKELETON LOADING ──
+function renderSkeletons(count = 12){
+  const grid = document.getElementById('colorsGrid');
+  grid.innerHTML = Array.from({length:count}, (_,i) => `
+    <div class="skeleton-card" aria-hidden="true" style="animation-delay:${i*0.06}s">
+      <div class="skeleton-swatch"></div>
+      <div class="skeleton-info">
+        <div class="skeleton-line" style="width:78%;margin-bottom:8px"></div>
+        <div class="skeleton-line" style="width:52%;margin-bottom:6px"></div>
+        <div class="skeleton-line" style="width:38%"></div>
+      </div>
+    </div>`).join('');
+}
+
+// ── COLORS ──
 async function loadColors(){
+  renderSkeletons(12);
   try{
     const res = await fetch(WORKER_URL);
     const data = await res.json();
     allColors = (data.colors||[]).filter(c=>c.name&&c.name!=='ללא שם');
     filterColors();
   }catch(e){
-    document.getElementById('colorsGrid').innerHTML='<div class="loading">⚠️ שגיאה בטעינת הצבעים. נסה לרענן.</div>';
+    document.getElementById('colorsGrid').innerHTML='<div class="loading" style="grid-column:1/-1">⚠️ שגיאה בטעינת הצבעים. נסה לרענן.</div>';
   }
 }
 
-function setFilter(f,btn){ activeFilter=f; showingAll=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); filterColors(); }
+function setFilter(f,btn){
+  activeFilter=f; showingAll=false;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  filterColors();
+}
 
 function filterColors(){
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   let list = [...allColors];
-  if(activeFilter==='glow')     list = list.filter(c=>c.finishes.includes('זוהר בחושך'));
-  else if(activeFilter==='PLA') list = list.filter(c=>c.material==='PLA');
-  else if(activeFilter==='PETG')list = list.filter(c=>c.material==='PETG');
-  else if(activeFilter==='TPU') list = list.filter(c=>c.material==='TPU');
+  if(activeFilter==='glow')      list = list.filter(c=>c.finishes.includes('זוהר בחושך'));
+  else if(activeFilter==='PLA')  list = list.filter(c=>c.material==='PLA');
+  else if(activeFilter==='PETG') list = list.filter(c=>c.material==='PETG');
+  else if(activeFilter==='TPU')  list = list.filter(c=>c.material==='TPU');
   if(q) list = list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q)||c.material.toLowerCase().includes(q));
   const sar=document.getElementById('showAllRow'), sab=document.getElementById('showAllBtn');
   const canT = !q&&list.length>DEFAULT_SHOW&&activeFilter!=='glow';
@@ -735,15 +901,14 @@ function isHex(h){ return /^#[0-9A-Fa-f]{6}$/.test(h); }
 
 function renderColors(list){
   const grid = document.getElementById('colorsGrid');
-  if(!list.length){ grid.innerHTML='<div class="loading">לא נמצאו צבעים</div>'; return; }
+  if(!list.length){ grid.innerHTML='<div class="loading" style="grid-column:1/-1">לא נמצאו צבעים</div>'; return; }
   grid.innerHTML = list.map(c=>{
     const hex = isHex(c.hex)?c.hex:null;
     const isGlow = c.finishes.includes('זוהר בחושך');
-    // בדיקת מלאי — אם הפרמטר קיים
-    const inStock = c.inStock !== false; // default true if not specified
+    const inStock = c.inStock !== false;
     const safe = JSON.stringify(c).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     const sw = c.image
-      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">` 
+      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">`
       : `<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
     return `<div class="color-card" onclick="openModal('${safe}')" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal('${safe}')">
       <div class="color-swatch" aria-hidden="true">${sw}</div>
@@ -761,14 +926,13 @@ function renderColors(list){
   }).join('');
 }
 
-// MODAL
+// ── MODAL ──
 function openModal(dataStr){
   const c = typeof dataStr==='string' ? JSON.parse(dataStr) : dataStr;
   currentModalColor = c;
   const hex = isHex(c.hex)?c.hex:null;
   const inStock = c.inStock !== false;
 
-  // top image — clickable for lightbox
   if(c.image){
     document.getElementById('modalTop').innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" onclick="openLightbox('${c.image}')" title="לחץ להגדלה">`;
   } else {
@@ -804,7 +968,7 @@ function orderFromModal(){
 function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
 function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
 
-// LIGHTBOX
+// ── LIGHTBOX ──
 function openLightbox(src){
   document.getElementById('lightboxImg').src = src;
   document.getElementById('lightbox').classList.add('open');
@@ -815,27 +979,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){ closeModalDirect(); closeLegalDirect(); closeLightbox(); }
 });
 
-// FILE PREVIEW
-function previewFiles(input){
-  const preview = document.getElementById('filePreview');
-  preview.innerHTML = '';
-  const files = Array.from(input.files).slice(0,5);
-  if(!files.length){ preview.style.display='none'; return; }
-  preview.style.display = 'flex';
-  files.forEach(file=>{
-    const r = new FileReader();
-    r.onload = e => {
-      const img = document.createElement('img');
-      img.src = e.target.result;
-      img.className = 'form-file-thumb';
-      img.alt = 'תצוגה מקדימה';
-      preview.appendChild(img);
-    };
-    r.readAsDataURL(file);
-  });
-}
-
-// FORM — שולח למייל עם EmailJS
+// ── FORM ──
 async function submitForm(e){
   e.preventDefault();
   const name    = document.getElementById('fname').value.trim();
@@ -861,10 +1005,8 @@ async function submitForm(e){
       subject:    subject,
       message:    message,
     });
-    console.log('[NSF3D] Email sent:', result.status);
     success.style.display = 'block';
     document.getElementById('contactForm').reset();
-    document.getElementById('filePreview').style.display = 'none';
     setTimeout(()=>{ success.style.display='none'; }, 6000);
   } catch(err) {
     console.error('[NSF3D] Email error:', err);
@@ -875,11 +1017,11 @@ async function submitForm(e){
   btn.textContent = '✉️ שלח פניה →';
 }
 
-// MOBILE MENU
+// ── MOBILE MENU ──
 function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
 
-// LEGAL MODALS
+// ── LEGAL MODALS ──
 const LEGAL_CONTENT = {
   accessibility: {
     title: 'הצהרת נגישות',
@@ -920,9 +1062,11 @@ const LEGAL_CONTENT = {
       <p>סימני שכבות, קווי חיבור ועקבות תמיכות הם חלק אינהרנטי מתהליך ההדפסה ואינם מהווים פגם. תיתכן סטייה מידתית של עד ±0.2 מ"מ.</p>
       <h3>4. ביטולים והחזרים</h3>
       <div class="highlight"><strong>⚠️ כלל מוצרי NSF 3D מיוצרים בהזמנה אישית — לא תינתן זכות ביטול לאחר תחילת הייצור.</strong></div>
-      <h3>5. זמני אספקה</h3>
-      <p>זמני האספקה (1–3 ימי עסקים) הינם הערכה בלבד ועשויים להשתנות.</p>
-      <h3>6. סמכות שיפוט</h3>
+      <h3>5. מסלול אקספרס</h3>
+      <p>מסלול האקספרס כרוך בתוספת תשלום המסוכמת מראש. ביטול הזמנת אקספרס לאחר תחילת הייצור אינה מזכה בהחזר.</p>
+      <h3>6. זמני אספקה</h3>
+      <p>זמני האספקה (7–14 ימי עסקים / אקספרס לפי הסכמה) הינם הערכה בלבד ועשויים להשתנות.</p>
+      <h3>7. סמכות שיפוט</h3>
       <p>כל מחלוקת תדון בבתי המשפט המוסמכים במחוז תל אביב.</p>
     `
   }
