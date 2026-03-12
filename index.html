@@ -448,7 +448,7 @@ body.dark #cookieBanner{background:#061422;}
       <p class="ssub" style="margin-top:14px">NSF 3D הוא סטודיו הדפסות תלת-מימד שמאמין שכל לקוח מגיע לשירות אמיתי — לא רק לקובץ ממוחשב. מאחורי העסק עומד <strong>סמואל נרודיצקי</strong>, מהנדס מכונות בעל תואר מאוניברסיטת בן גוריון ומעל 4 שנות ניסיון, המשמש כמהנדס מעבדות במחלקת מדעי הסביבה, גאואינפורמטיקה ותכנון ערים — ומביא גישה מהנדסית מדויקת לכל הדפסה.</p>
       <div class="about-features">
         <div class="fi"><div class="fi-icon">🎯</div><div class="fi-text"><h4>דיוק ואיכות בכל הדפסה</h4><p>בקרת איכות קפדנית — כל מוצר עובר בדיקה לפני שיוצא</p></div></div>
-        <div class="fi"><div class="fi-icon">⚡</div><div class="fi-text"><h4>זמן אספקה מהיר</h4><p>רוב ההזמנות מוכנות תוך 1–3 ימי עסקים</p></div></div>
+        <div class="fi"><div class="fi-icon">⚡</div><div class="fi-text"><h4>זמן אספקה מהיר</h4><p>רוב ההזמנות מוכנות תוך 7–14 ימי עסקים</p></div></div>
         <div class="fi"><div class="fi-icon">🤝</div><div class="fi-text"><h4>שירות אישי ומקצועי</h4><p>לא בוט — אדם אמיתי שמבין הדפסות ויעזור לך לבחור נכון</p></div></div>
       </div>
     </div>
@@ -518,13 +518,7 @@ body.dark #cookieBanner{background:#061422;}
         </select>
       </div>
       <div class="form-group"><label class="form-label" for="fmessage">פרטים *</label><textarea class="form-textarea" id="fmessage" required placeholder="ספר לי מה אתה צריך — מה להדפיס, באיזה צבע, כמות..."></textarea></div>
-      <div class="form-group">
-        <label class="form-label">תמונות להמחשה (אופציונלי)</label>
-        <div class="form-file-wrap" onclick="document.getElementById('ffiles').click()">
-          <input type="file" id="ffiles" class="form-file-input" accept="image/*" multiple onchange="previewFiles(this)">
-          <label class="form-file-label" for="ffiles">📎 <strong>לחץ לצירוף תמונות</strong><br><span style="font-size:12px">JPG/PNG · עד 5 תמונות</span></label>
-          <div class="form-file-preview" id="filePreview"></div>
-        </div>
+      
         <div style="font-size:11px;color:var(--text2);margin-top:4px">💡 הפניה תישלח לאימייל. תמונות ניתן לצרף גם בוואטסאפ בנפרד.</div>
       </div>
       <button type="submit" class="form-submit" id="submitBtn">✉️ שלח פניה →</button>
@@ -539,12 +533,7 @@ body.dark #cookieBanner{background:#061422;}
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <div class="footer-logo-wrap" id="footerLogoWrap">
-      <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="44" height="44"
-        onload="this.style.display='block'"
-        onerror="document.getElementById('footerLogoWrap').style.display='none';document.querySelector('.footer-logo-text').style.display='block'">
-    </div>
-    <div class="footer-logo-text">NSF <span style="opacity:.7">3D</span></div>
+    <div style="font-size:26px;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:-0.5px;margin-bottom:4px">NSF <span style="color:var(--blue-light)">3D</span></div>
   </div>
   <ul class="footer-links">
     <li><a href="#catalog">קטלוג</a></li>
@@ -754,7 +743,7 @@ function renderColors(list){
     const inStock = c.inStock !== false; // default true if not specified
     const safe = JSON.stringify(c).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     const sw = c.image
-      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'color-swatch-block\\' style=\\'background:${hex||'#9ab4c8'}\\'/>'">` 
+      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">` 
       : `<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
     return `<div class="color-card" onclick="openModal('${safe}')" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal('${safe}')">
       <div class="color-swatch" aria-hidden="true">${sw}</div>
@@ -779,20 +768,11 @@ function openModal(dataStr){
   const hex = isHex(c.hex)?c.hex:null;
   const inStock = c.inStock !== false;
 
-  const modalTop = document.getElementById('modalTop');
-
+  // top image — clickable for lightbox
   if(c.image){
-    modalTop.innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" title="לחץ להגדלה">`;
-    // מוסיפים listener ישירות — כך event.stopPropagation עובד בוודאות
-    modalTop.querySelector('img').addEventListener('click', function(e){
-      e.stopPropagation();
-      e.preventDefault();
-      document.getElementById('lightboxImg').src = c.image;
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
+    document.getElementById('modalTop').innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" onclick="openLightbox('${c.image}')" title="לחץ להגדלה">`;
   } else {
-    modalTop.innerHTML = `<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
+    document.getElementById('modalTop').innerHTML = `<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
   }
 
   document.getElementById('modalName').textContent = c.name;
@@ -815,12 +795,19 @@ function openModal(dataStr){
   document.body.style.overflow = 'hidden';
 }
 
+function orderFromModal(){
+  if(!currentModalColor) return;
+  const c = currentModalColor;
+  const msg = encodeURIComponent(`היי NSF 3D! 👋\nאני מעוניין בצבע: ${c.name} (מק"ט: ${c.sku})\nחומר: ${c.material}\n\nאשמח לשמוע פרטים 😊`);
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank','noopener');
+}
+function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
+function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+
 // LIGHTBOX
-function openLightbox(src, event){
-  if(event){ event.stopPropagation(); event.preventDefault(); }
+function openLightbox(src){
   document.getElementById('lightboxImg').src = src;
   document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
 }
 function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
 
