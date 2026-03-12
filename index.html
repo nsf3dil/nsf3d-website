@@ -53,7 +53,7 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 /* NAV */
 nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-img-wrap{width:40px;height:40px;border-radius:18px;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;}
+.nav-logo-img-wrap{width:40px;height:40px;border-radius:12px;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;}
 .nav-logo-img-wrap img{width:100%;height:100%;object-fit:contain;}
 .nav-logo-text{font-size:22px;font-weight:900;color:var(--blue-dark);display:none;}
 .nav-logo-text span{color:var(--blue-light);}
@@ -75,7 +75,7 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;background:linear-gradient(155deg,var(--bg3) 0%,var(--bg) 55%,var(--bg2) 100%);position:relative;overflow:hidden;transition:background .3s;}
 .hero-blob{position:absolute;top:-100px;left:-150px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(77,184,232,.12) 0%,transparent 70%);pointer-events:none;}
 .hero-blob2{position:absolute;bottom:-80px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(30,111,168,.08) 0%,transparent 70%);pointer-events:none;}
-.hero-logo-wrap{width:140px;height:140px;border-radius:40px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 50%,#0d2a47 100%);box-shadow:0 8px 40px rgba(30,111,168,.35),0 0 0 1px rgba(77,184,232,.2);display:flex;align-items:center;justify-content:center;}
+.hero-logo-wrap{width:140px;height:140px;border-radius:28px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 50%,#0d2a47 100%);box-shadow:0 8px 40px rgba(30,111,168,.35),0 0 0 1px rgba(77,184,232,.2);display:flex;align-items:center;justify-content:center;}
 .hero-logo-wrap img{width:88%;height:88%;object-fit:contain;}
 body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px rgba(77,184,232,.15);}
 .hero-tag{display:inline-block;background:rgba(77,184,232,.15);border:1px solid rgba(77,184,232,.4);color:var(--blue-mid);font-size:13px;font-weight:700;padding:6px 18px;border-radius:100px;margin-bottom:18px;}
@@ -174,19 +174,6 @@ body.dark .tag-outstock{color:#f07070;background:rgba(200,60,60,.12);border-colo
 .coming-soon .cs-icon{font-size:44px;margin-bottom:12px;}
 .coming-soon h3{font-size:19px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
 .coming-soon p{font-size:14px;color:var(--text2);font-weight:400;}
-
-/* ── MACRO PHOTO PLACEHOLDER ── */
-.macro-placeholder{
-  margin-top:32px;border-radius:18px;overflow:hidden;border:2.5px dashed var(--border2);
-  background:linear-gradient(135deg,var(--bg3) 0%,var(--bg2) 100%);position:relative;
-  min-height:240px;display:flex;align-items:center;justify-content:center;transition:border-color .2s;
-}
-.macro-placeholder:hover{border-color:var(--blue-mid);}
-.macro-ph-inner{text-align:center;padding:40px 24px;}
-.macro-ph-icon{font-size:52px;margin-bottom:14px;opacity:.7;}
-.macro-ph-badge{display:inline-block;background:rgba(30,111,168,.12);border:1px solid rgba(30,111,168,.25);color:var(--blue-mid);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
-.macro-ph-title{font-size:17px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
-.macro-ph-desc{font-size:13px;color:var(--text2);line-height:1.6;max-width:320px;margin:0 auto;font-weight:400;}
 
 /* ORDER */
 .order-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px;}
@@ -328,28 +315,6 @@ body.dark #cookieBanner{background:#061422;}
 .cookie-decline{background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.35);padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s;}
 .cookie-decline:hover{border-color:rgba(255,255,255,.8);color:#fff;}
 
-/* ── MATERIALS & FINISHES ── */
-.mat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:32px;}
-.mat-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 20px;}
-.mat-icon{font-size:32px;margin-bottom:10px;}
-.mat-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:5px;}
-.mat-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:8px;}
-.mat-badge.pla{background:rgba(30,111,168,.1);color:#155f8f;border:1px solid rgba(30,111,168,.25);}
-.mat-badge.petg{background:rgba(30,160,90,.1);color:#156638;border:1px solid rgba(30,160,90,.25);}
-.mat-badge.tpu{background:rgba(200,120,0,.1);color:#7a4800;border:1px solid rgba(200,120,0,.25);}
-.mat-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:400;}
-.mat-props{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
-.mat-prop{font-size:11px;font-weight:700;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:3px 9px;color:var(--text2);}
-.finish-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
-.finish-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:18px 16px;display:flex;gap:12px;align-items:flex-start;}
-.finish-swatch{width:36px;height:36px;border-radius:10px;flex-shrink:0;border:1.5px solid var(--border2);}
-.finish-name{font-size:13px;font-weight:800;color:var(--blue-dark);margin-bottom:4px;}
-.finish-desc{font-size:12px;color:var(--text2);line-height:1.55;font-weight:400;}
-.macro-note{margin-top:24px;background:var(--bg2);border:1.5px dashed var(--border2);border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:16px;}
-.macro-note-icon{font-size:32px;flex-shrink:0;}
-.macro-note-text{font-size:13px;color:var(--text2);line-height:1.65;}
-.macro-note-text strong{color:var(--blue-dark);}
-
 /* ── PRICING ── */
 .pricing-note{background:rgba(255,180,0,.09);border:1.5px solid rgba(255,180,0,.3);border-radius:12px;padding:13px 18px;font-size:13px;color:#7a4800;font-weight:600;margin-bottom:28px;display:flex;align-items:center;gap:10px;}
 body.dark .pricing-note{color:#f5c842;background:rgba(255,180,0,.07);border-color:rgba(255,180,0,.2);}
@@ -410,7 +375,6 @@ body.dark .price-row-val.green{color:#3ecf7a;}
   </a>
   <ul class="nav-links">
     <li><a href="#catalog">קטלוג</a></li>
-    <li><a href="#materials" id="nav-materials">חומרים</a></li>
     <li><a href="#products" id="nav-products">מוצרים</a></li>
     <li><a href="#pricing" id="nav-pricing">מחירון</a></li>
     <li><a href="#order" id="nav-order">הזמנות</a></li>
@@ -424,7 +388,6 @@ body.dark .price-row-val.green{color:#3ecf7a;}
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#catalog" onclick="closeMenu()">🎨 קטלוג צבעים</a>
-  <a href="#materials" onclick="closeMenu()">🧪 חומרים וגימורים</a>
   <a href="#products" onclick="closeMenu()" id="mm-products">🖨️ מוצרים</a>
   <a href="#pricing" onclick="closeMenu()">💰 מחירון</a>
   <a href="#order" onclick="closeMenu()" id="mm-order">📦 הזמנות</a>
@@ -501,133 +464,30 @@ body.dark .price-row-val.green{color:#3ecf7a;}
   <img id="lightboxImg" src="" alt="תצוגה מוגדלת">
 </div>
 
-<!-- MATERIALS & FINISHES -->
-<div class="sdiv"></div>
-<section id="materials" style="background:var(--bg)">
-<div class="sw">
-  <div class="sh">
-    <div class="stag">חומרים וגימורים</div>
-    <h2 class="stitle">מה ההבדל בין החומרים?</h2>
-    <p class="ssub">לפני שבוחרים — כדאי להבין מה מתאים לכל שימוש</p>
-  </div>
-
-  <div class="mat-grid">
-    <div class="mat-card">
-      <div class="mat-icon">🟦</div>
-      <div class="mat-badge pla">PLA — הנפוץ ביותר</div>
-      <div class="mat-title">PLA</div>
-      <div class="mat-desc">החומר הסטנדרטי והמומלץ לרוב הפרויקטים. מדפיס בצורה יפה, מגוון צבעים עצום, ומתאים לשימוש פנים. לא מומלץ לחשיפה לשמש ישירה לאורך זמן או לחום גבוה.</div>
-      <div class="mat-props">
-        <span class="mat-prop">✅ קל להדפסה</span>
-        <span class="mat-prop">🎨 מגוון צבעים</span>
-        <span class="mat-prop">🏠 שימוש פנים</span>
-        <span class="mat-prop">⚡ מהיר</span>
-      </div>
-    </div>
-    <div class="mat-card">
-      <div class="mat-icon">🟩</div>
-      <div class="mat-badge petg">PETG — חזק ועמיד</div>
-      <div class="mat-title">PETG</div>
-      <div class="mat-desc">חזק יותר מ-PLA, עמיד לחום בינוני ולחשיפה לרטיבות. מעט גמיש — פחות שביר. אידיאלי לחלקים פונקציונליים, ממשקים מכניים ושימוש בתנאים תובעניים יותר.</div>
-      <div class="mat-props">
-        <span class="mat-prop">💪 עמיד</span>
-        <span class="mat-prop">🌡️ עמיד לחום חלקי</span>
-        <span class="mat-prop">💧 עמיד לרטיבות</span>
-        <span class="mat-prop">⚙️ פונקציונלי</span>
-      </div>
-    </div>
-    <div class="mat-card">
-      <div class="mat-icon">🟠</div>
-      <div class="mat-badge tpu">TPU — גמיש</div>
-      <div class="mat-title">TPU</div>
-      <div class="mat-desc">חומר גומי/גמיש. מושלם לכיסויי טלפון, רצועות, אביזרים שצריכים לקפוץ בחזרה לצורתם, ומוצרים שעוברים לחץ וכיפוף חוזר. פחות מתאים לדמויות או שילוט.</div>
-      <div class="mat-props">
-        <span class="mat-prop">🤸 גמיש</span>
-        <span class="mat-prop">🛡️ עמיד לאחיזה</span>
-        <span class="mat-prop">📱 כיסויים</span>
-        <span class="mat-prop">🔄 גמישות חזרה</span>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-bottom:18px">
-    <div class="stag" style="margin-bottom:14px">גימורים מיוחדים</div>
-  </div>
-  <div class="finish-grid">
-    <div class="finish-card">
-      <div class="finish-swatch" style="background:linear-gradient(135deg,#6b6b6b,#9b9b9b);"></div>
-      <div>
-        <div class="finish-name">מט (Matte)</div>
-        <div class="finish-desc">גימור עדין ללא ברק. מסתיר טוב יחסית עקבות הדפסה. הפופולרי ביותר לשילוט ודמויות.</div>
-      </div>
-    </div>
-    <div class="finish-card">
-      <div class="finish-swatch" style="background:linear-gradient(135deg,#c0a060,#f0d090,#c0a060);"></div>
-      <div>
-        <div class="finish-name">Silk / ברק</div>
-        <div class="finish-desc">ברק עז ומראה משי מתכתי. מרשים מאוד לדמויות ומוצרי נוי. מדגיש טוב כל פרט.</div>
-      </div>
-    </div>
-    <div class="finish-card">
-      <div class="finish-swatch" style="background:linear-gradient(135deg,#003308,#00aa33,#003308);"></div>
-      <div>
-        <div class="finish-name">זוהר בחושך (Glow)</div>
-        <div class="finish-desc">נטען מאור ומאיר בחושך בגוון ירוק-כחלחל. מצוין לשלטים, קישוטים, ופרויקטים ייחודיים.</div>
-      </div>
-    </div>
-    <div class="finish-card">
-      <div class="finish-swatch" style="background:linear-gradient(135deg,#1a1a3a,#4a4a8a,#1a1a3a);background-image:radial-gradient(circle at 30% 40%, rgba(200,200,255,.6) 1px, transparent 1px),radial-gradient(circle at 70% 60%, rgba(255,255,200,.5) 1px, transparent 1px);background-size:100% 100%,8px 8px,6px 6px;"></div>
-      <div>
-        <div class="finish-name">Galaxy / נצנצים</div>
-        <div class="finish-desc">נקודות מנצנצות בתוך הצבע. מראה כוכבי / עמוק. קיים בכחול, סגול, שחור ועוד.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Macro photos placeholder -->
-  <div class="macro-note">
-    <div class="macro-note-icon">📸</div>
-    <div class="macro-note-text">
-      <strong>תמונות מאקרו של הגימורים — בקרוב!</strong><br>
-      בקרוב יתווספו כאן תמונות מקרוב של כל גימור כדי שתוכלו לראות בדיוק איך זה נראה על המוצר. בינתיים — שלחו הודעה ונשמח לשתף דוגמאות.
-    </div>
-  </div>
-</div>
-</section>
-
 <!-- PRODUCTS -->
 <div class="sdiv"></div>
 <section id="products" style="background:var(--bg)">
 <div class="sw">
   <div class="sh">
     <div class="stag">מוצרים ופרויקטים</div>
-    <h2 class="stitle">מה אנחנו מדפיסים?</h2>
-    <p class="ssub">שילוט, דמויות, חלקים מותאמים — כל רעיון יכול להפוך למציאות</p>
+    <h2 class="stitle">מה אפשר להדפיס?</h2>
+    <p class="ssub">כמעט כל דבר שאפשר לדמיין — אם יש לך רעיון, בוא נדבר</p>
   </div>
   <div class="product-types">
     <div class="ptype">
-      <div class="ptype-icon">🪧</div>
-      <div class="ptype-title">שילוט מותאם אישית</div>
-      <div class="ptype-desc">שלטי בית, עסק, מספרי דירות, לוגואים תלת-מימדיים — מעוצבים מאפס לפי הדרישות שלך.</div>
+      <div class="ptype-icon">💡</div>
+      <div class="ptype-title">כל רעיון — כל מוצר</div>
+      <div class="ptype-desc">שילוט, דמויות, קישוטים, חלקים, מתנות ייחודיות, אמנות, אביזרים ועוד. אם אתה יכול לדמיין את זה — אני יכול להדפיס את זה.</div>
     </div>
     <div class="ptype">
-      <div class="ptype-icon">👤</div>
-      <div class="ptype-title">דמויות על בסיס תמונה</div>
-      <div class="ptype-desc">מיניאטורות אישיות, פסלונים מתמונות, מתנות ייחודיות שאין אפשרות לקנות בשום מקום אחר.</div>
+      <div class="ptype-icon">📐</div>
+      <div class="ptype-title">עיצוב מאפס או מקובץ</div>
+      <div class="ptype-desc">יש לך קובץ STL / STEP מוכן? מצוין. אין קובץ? אעצב מאפס לפי תיאור, תמונה, או רעיון כללי.</div>
     </div>
     <div class="ptype">
-      <div class="ptype-icon">⚙️</div>
-      <div class="ptype-title">חלקים ואביזרים</div>
-      <div class="ptype-desc">חלפים, מתאמים, פתרונות הנדסיים — כשהמדף לא עוזר, אנחנו מייצרים את הפתרון.</div>
-    </div>
-  </div>
-
-  <div class="macro-placeholder" id="macroPh" aria-hidden="true">
-    <div class="macro-ph-inner">
-      <div class="macro-ph-icon">📸</div>
-      <div class="macro-ph-badge">Macro Shot — בקרוב</div>
-      <div class="macro-ph-title">גלריית הדפסות מקרוב</div>
-      <div class="macro-ph-desc">כאן תוצג תמונת מאקרו איכותית של עבודה שהושלמה — פרטי מרקם, שכבות וגימור. מקום שמור לתמונה שתדבר בעד עצמה.</div>
+      <div class="ptype-icon">📏</div>
+      <div class="ptype-title">ממדים עד 32×32×32 ס"מ</div>
+      <div class="ptype-desc">גודל מדפסת: עד 32×32×32 ס"מ בהדפסה אחת. מוצרים גדולים יותר — אפשרי בתיאום אישי ועיצוב מפוצל.</div>
     </div>
   </div>
 
@@ -660,7 +520,7 @@ body.dark .price-row-val.green{color:#3ecf7a;}
         <div class="price-card-title">דמויות ופסלונים</div>
       </div>
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">עד 5 ס"מ (קטנה)</span><span class="price-row-val">~35–60 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">עד 5 ס"מ</span><span class="price-row-val">~35–60 ₪</span></div>
         <div class="price-row"><span class="price-row-label">5–10 ס"מ</span><span class="price-row-val">~60–120 ₪</span></div>
         <div class="price-row"><span class="price-row-label">10–15 ס"מ</span><span class="price-row-val">~120–200 ₪</span></div>
         <div class="price-row"><span class="price-row-label">15–20 ס"מ</span><span class="price-row-val">~200–320 ₪</span></div>
@@ -673,23 +533,40 @@ body.dark .price-row-val.green{color:#3ecf7a;}
         <div class="price-card-title">שילוט</div>
       </div>
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">מספר דירה / בית</span><span class="price-row-val">~40–80 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">שלט שם קטן (עד A5)</span><span class="price-row-val">~80–150 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">שלט עסק / לוגו</span><span class="price-row-val">~150–350 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">שלט גדול / מורכב</span><span class="price-row-val">לפי הצעה</span></div>
+        <div class="price-row"><span class="price-row-label">שלט פשוט — מחיר התחלה</span><span class="price-row-val">~50 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">שלטים מורכבים / גדולים</span><span class="price-row-val">לפי הצעה</span></div>
       </div>
     </div>
     <div class="price-card">
       <div class="price-card-head">
-        <div class="price-card-icon">⚙️</div>
-        <div class="price-card-title">חלקים וחלפים</div>
+        <div class="price-card-icon">🎯</div>
+        <div class="price-card-title">כל שאר הפרויקטים</div>
       </div>
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">חלק קטן / פשוט</span><span class="price-row-val">~30–80 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">חלק בינוני</span><span class="price-row-val">~80–200 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">חלק מורכב / גדול</span><span class="price-row-val">לפי הצעה</span></div>
+        <div class="price-row"><span class="price-row-label">פרויקטים קטנים / פשוטים</span><span class="price-row-val">~30–80 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">פרויקטים בינוניים</span><span class="price-row-val">~80–250 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">פרויקטים גדולים / מורכבים</span><span class="price-row-val">לפי הצעה</span></div>
         <div class="price-row"><span class="price-row-label">עיצוב מאפס (+הדפסה)</span><span class="price-row-val">+תוספת עיצוב</span></div>
       </div>
+    </div>
+  </div>
+
+  <!-- Printer specs -->
+  <div style="margin-bottom:10px;margin-top:28px">
+    <div class="stag" style="margin-bottom:14px">המדפסת שלי</div>
+  </div>
+  <div style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:28px;">
+    <div style="background:var(--bg3);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;">
+      <span style="font-size:26px;">🖨️</span>
+      <div>
+        <div style="font-size:15px;font-weight:800;color:var(--blue-dark);">Bambu Lab H2D</div>
+        <div style="font-size:12px;color:var(--text2);margin-top:2px;">מדפסת פרו-גרייד עם יכולות צבע מתקדמות</div>
+      </div>
+    </div>
+    <div style="padding:8px 0;">
+      <div class="price-row"><span class="price-row-label">מערכת צבע</span><span class="price-row-val">AMS 2 Pro × 2 יחידות (הדפסה רב-צבעונית)</span></div>
+      <div class="price-row"><span class="price-row-label">גודל הדפסה מקסימלי</span><span class="price-row-val">32 × 32 × 32 ס"מ</span></div>
+      <div class="price-row"><span class="price-row-label">מעל לגודל המדפסת</span><span class="price-row-val">אפשרי בתיאום אישי (עיצוב מפוצל)</span></div>
     </div>
   </div>
 
@@ -825,7 +702,7 @@ body.dark .price-row-val.green{color:#3ecf7a;}
         <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · ועוד בקרוב</div></div>
         <div class="ab-chip"><div class="ab-chip-l">גימורים מיוחדים</div><div class="ab-chip-v">מט · Silk · זוהר בחושך · נצנצים</div></div>
         <div class="ab-chip"><div class="ab-chip-l">תחומי עיצוב</div><div class="ab-chip-v">הנדסי · שילוט · דמויות · יצירתי</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">כלי עיצוב</div><div class="ab-chip-v">CAD · Blender · AI-assisted</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">כלי עיצוב</div><div class="ab-chip-v">SolidWorks · Blender · Inkscape · Meshmixer · AI · LiDAR</div></div>
         <div class="ab-chip"><div class="ab-chip-l">שפות שירות</div><div class="ab-chip-v">עברית · English · Русский</div></div>
         <div class="ab-chip"><div class="ab-chip-l">אזור שירות</div><div class="ab-chip-v">באר שבע, הדרום, כלל הארץ</div></div>
       </div>
@@ -933,7 +810,6 @@ body.dark .price-row-val.green{color:#3ecf7a;}
   </div>
   <ul class="footer-links">
     <li><a href="#catalog">קטלוג</a></li>
-    <li><a href="#materials">חומרים</a></li>
     <li><a href="#products">מוצרים</a></li>
     <li><a href="#pricing">מחירון</a></li>
     <li><a href="#order">הזמנות</a></li>
