@@ -651,7 +651,7 @@ let allColors=[], showingAll=false, activeFilter='popular', currentModalColor=nu
 
 // EmailJS init
 (function(){
-  if(typeof emailjs !== 'undefined' && EMAILJS_KEY !== 'YOUR_PUBLIC_KEY'){
+  if(typeof emailjs !== 'undefined'){
     emailjs.init(EMAILJS_KEY);
   }
 })();
@@ -884,16 +884,8 @@ async function submitForm(e){
     success.style.display = 'block';
     document.getElementById('contactForm').reset();
     document.getElementById('filePreview').style.display = 'none';
-    // שלח גם התראה בוואטסאפ (נפתח בטאב)
-    const waMsg = encodeURIComponent(`🔔 פניה חדשה באתר!\nשם: ${name}\nטלפון: ${phone}\nנושא: ${subject}\n\n${message}`);
-    setTimeout(()=>{ window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`,'_blank','noopener'); }, 800);
   } else {
-    // fallback: פתח ישירות וואטסאפ
-    const waMsg = encodeURIComponent(`היי NSF 3D! 👋\nשמי: ${name}\nטלפון: ${phone}\nנושא: ${subject}\n\n${message}`);
-    window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`,'_blank','noopener');
-    success.style.display = 'block';
-    document.getElementById('contactForm').reset();
-    document.getElementById('filePreview').style.display = 'none';
+    errEl.style.display = 'block';
   }
 
   btn.disabled = false;
