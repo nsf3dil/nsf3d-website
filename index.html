@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NSF 3D — הדפסות תלת מימד מקצועיות באר שבע והדרום</title>
-<meta name="description" content="NSF 3D — הדפסות תלת מימד בהתאמה אישית בבאר שבע והדרום. מגוון חומרים וצבעים, שילוט, דמויות, ושירות אישי מהיר.">
+<title>NSF 3D — הדפסות תלת מימד מקצועיות | באר שבע והדרום</title>
+<meta name="description" content="NSF 3D — הדפסות 3D בהתאמה אישית בבאר שבע והדרום. PLA, PETG, TPU במגוון צבעים. שילוט, דמויות, עיצוב מהנדס. הצעת מחיר חינם, משלוח לכל הארץ.">
+<meta name="keywords" content="הדפסות תלת מימד, 3D printing, באר שבע, הדפסת 3D, PLA, PETG, שילוט תלת מימד, דמויות 3D, NSF 3D">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="NSF 3D — הדפסות תלת מימד מקצועיות באר שבע">
-<meta property="og:description" content="הדפסות 3D בהתאמה אישית בבאר שבע והדרום. מגוון צבעים וחומרים, שילוט ודמויות בהזמנה אישית. שירות מהיר ואיכותי.">
+<link rel="canonical" href="https://nsf3dil.github.io/nsf3d-website/">
+
+<meta property="og:title" content="NSF 3D — הדפסות 3D מקצועיות | באר שבע והדרום">
+<meta property="og:description" content="הדפסות 3D בהתאמה אישית — PLA, PETG, TPU במגוון צבעים. שילוט, דמויות, עיצוב. הצעת מחיר חינם, שירות אישי מהיר.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nsf3dil.github.io/nsf3d-website/">
 <meta property="og:image" content="https://nsf3dil.github.io/nsf3d-website/NSF-logo-large-1000px.png">
@@ -16,6 +19,59 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1e6fa8">
 
+<!-- Structured Data — Local Business -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "NSF 3D",
+  "description": "הדפסות 3D בהתאמה אישית בבאר שבע והדרום — PLA, PETG, TPU, שילוט, דמויות ופרויקטי עיצוב",
+  "url": "https://nsf3dil.github.io/nsf3d-website/",
+  "telephone": "+972-55-9144386",
+  "email": "nsf3d.il@gmail.com",
+  "image": "https://nsf3dil.github.io/nsf3d-website/NSF-logo-large-1000px.png",
+  "priceRange": "₪₪",
+  "currenciesAccepted": "ILS",
+  "paymentAccepted": "Cash, Bank Transfer, Bit",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "באר שבע",
+    "addressRegion": "הדרום",
+    "addressCountry": "IL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 31.2518,
+    "longitude": 34.7913
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+      "opens": "09:00",
+      "closes": "21:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "09:00",
+      "closes": "15:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61586093829404",
+    "https://www.instagram.com/nsf.3d/",
+    "https://www.tiktok.com/@nsf.3d"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "סמואל נרודיצקי",
+    "jobTitle": "מהנדס מכונות ומומחה הדפסות 3D"
+  }
+}
+</script>
+
+<link rel="preload" as="image" href="NSF-logo-large-1000px.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -107,6 +163,10 @@ body.dark .btn-secondary{color:var(--blue-light);}
   0%{background-position:200% 0}
   100%{background-position:-200% 0}
 }
+body.a11y-noanim *,
+body.a11y-noanim *::before,
+body.a11y-noanim *::after{animation-duration:.001s!important;transition-duration:.001s!important;}
+
 .skeleton-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;pointer-events:none;}
 .skeleton-swatch{height:92px;animation:shimmer 1.4s ease-in-out infinite;background:linear-gradient(90deg,var(--bg2) 25%,var(--border) 50%,var(--bg2) 75%);background-size:200% 100%;}
 .skeleton-line{height:11px;border-radius:6px;margin:0 12px;animation:shimmer 1.4s ease-in-out infinite;background:linear-gradient(90deg,var(--bg2) 25%,var(--border) 50%,var(--bg2) 75%);background-size:200% 100%;}
@@ -316,8 +376,20 @@ body.dark #cookieBanner{background:#061422;}
 .cookie-decline:hover{border-color:rgba(255,255,255,.8);color:#fff;}
 
 /* ── PRICING ── */
-.pricing-note{background:rgba(255,180,0,.09);border:1.5px solid rgba(255,180,0,.3);border-radius:12px;padding:13px 18px;font-size:13px;color:#7a4800;font-weight:600;margin-bottom:28px;display:flex;align-items:center;gap:10px;}
-body.dark .pricing-note{color:#f5c842;background:rgba(255,180,0,.07);border-color:rgba(255,180,0,.2);}
+/* Pricing info note — friendly, not alarming */
+.pricing-note{
+  background:rgba(30,111,168,.07);
+  border:1.5px solid rgba(30,111,168,.25);
+  border-radius:12px;padding:14px 20px;
+  font-size:14px;color:var(--blue-dark);font-weight:600;
+  margin-bottom:28px;display:flex;align-items:flex-start;gap:12px;
+  line-height:1.65;
+}
+body.dark .pricing-note{
+  color:var(--blue-light);
+  background:rgba(30,111,168,.10);
+  border-color:rgba(77,184,232,.25);
+}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:28px;}
 .price-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
 .price-card-head{background:var(--bg3);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;}
@@ -330,6 +402,11 @@ body.dark .pricing-note{color:#f5c842;background:rgba(255,180,0,.07);border-colo
 .price-row-val{font-weight:800;color:var(--blue-dark);}
 .price-row-val.green{color:#156638;}
 body.dark .price-row-val.green{color:#3ecf7a;}
+
+/* Shipping free tag — bright in both modes */
+.shipping-free{font-weight:800;color:#156638;}
+body.dark .shipping-free{color:#3ecf7a;}
+
 .payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px;}
 .pay-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:14px;}
 .pay-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
@@ -337,7 +414,53 @@ body.dark .price-row-val.green{color:#3ecf7a;}
 .pay-desc{font-size:12px;color:var(--text2);margin-top:2px;font-weight:400;}
 .shipping-row{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:14px;}
 .shipping-label{color:var(--text2);font-weight:600;display:flex;align-items:center;gap:8px;}
-.shipping-val{font-weight:800;color:var(--blue-dark);}
+
+/* ── ACCESSIBILITY WIDGET ── */
+.a11y-btn{
+  position:fixed;bottom:24px;left:24px;z-index:990;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--blue-mid);color:#fff;
+  border:none;cursor:pointer;
+  box-shadow:0 4px 20px rgba(30,111,168,.45);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;transition:transform .2s,box-shadow .2s;
+  font-family:'Heebo',sans-serif;
+}
+.a11y-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(30,111,168,.6);}
+.a11y-btn:focus-visible{outline:3px solid var(--blue-light);outline-offset:3px;}
+.a11y-panel{
+  display:none;position:fixed;bottom:88px;left:24px;z-index:990;
+  background:var(--modal-bg);border:1.5px solid var(--border);
+  border-radius:18px;padding:20px;min-width:240px;
+  box-shadow:0 8px 40px rgba(0,0,0,.22);
+}
+.a11y-panel.open{display:block;}
+.a11y-panel-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.a11y-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;gap:10px;}
+.a11y-label{font-size:13px;font-weight:600;color:var(--text);}
+.a11y-controls{display:flex;gap:6px;}
+.a11y-ctrl{
+  background:var(--bg2);border:1.5px solid var(--border);color:var(--text);
+  min-width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-family:'Heebo',sans-serif;
+  transition:background .2s,border-color .2s;padding:0 10px;
+}
+.a11y-ctrl:hover{background:var(--border);}
+.a11y-ctrl.active{background:var(--blue-mid);color:#fff;border-color:var(--blue-mid);}
+.a11y-ctrl:focus-visible{outline:2px solid var(--blue-mid);outline-offset:2px;}
+.a11y-reset{
+  width:100%;margin-top:12px;background:var(--bg2);
+  border:1.5px solid var(--border);color:var(--text2);
+  padding:9px;border-radius:10px;font-size:13px;font-weight:700;
+  cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;
+}
+.a11y-reset:hover{background:var(--border);}
+/* High contrast mode */
+body.a11y-contrast{filter:contrast(1.4);}
+/* Underline all links */
+body.a11y-links a{text-decoration:underline!important;text-underline-offset:3px;}
+/* Large cursor */
+body.a11y-cursor,body.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M8 2 L8 28 L14 22 L18 32 L22 30 L18 20 L26 20 Z' fill='black' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 0 0,auto!important;}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -356,10 +479,18 @@ body.dark .price-row-val.green{color:#3ecf7a;}
   .cookie-accept,.cookie-decline{flex:1;text-align:center;}
   .express-banner{flex-direction:column;align-items:flex-start;}
   .btn-express{width:100%;text-align:center;}
+  .a11y-btn{bottom:18px;left:18px;}
+  .a11y-panel{bottom:82px;left:18px;}
 }
 @media(max-width:480px){
   .colors-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
 }
+/* Highlight links in accessibility mode */
+body.a11y-links nav a,
+body.a11y-links .nav-links a,
+body.a11y-links .mobile-menu a,
+body.a11y-links footer a,
+body.a11y-links .footer-links a{text-decoration:underline!important;}
 </style>
 </head>
 <body>
@@ -368,7 +499,7 @@ body.dark .price-row-val.green{color:#3ecf7a;}
 <nav>
   <a href="#hero" class="nav-logo">
     <div class="nav-logo-img-wrap">
-      <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="40" height="40"
+      <img src="NSF-logo-large-1000px.png" alt="NSF 3D — הדפסות תלת מימד" width="40" height="40" fetchpriority="high"
         onerror="this.parentElement.style.display='none';document.querySelector('.nav-logo-text').style.display='block'">
     </div>
     <span class="nav-logo-text">NSF <span>3D</span></span>
@@ -377,20 +508,20 @@ body.dark .price-row-val.green{color:#3ecf7a;}
     <li><a href="#catalog">קטלוג</a></li>
     <li><a href="#products" id="nav-products">מוצרים</a></li>
     <li><a href="#pricing" id="nav-pricing">מחירון</a></li>
-    <li><a href="#order" id="nav-order">הזמנות</a></li>
+    <li><a href="#order" id="nav-order">הזמנה</a></li>
     <li><a href="#about">אודות</a></li>
     <li><a href="#contact" class="nav-cta">📱 צור קשר</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:10px;">
     <button class="dark-toggle" id="darkBtn" onclick="toggleDark()" aria-label="החלף מצב כהה/בהיר"><span id="darkIcon">🌙</span><span id="darkLabel">מצב כהה</span></button>
-    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="תפריט" role="button" tabindex="0"><span></span><span></span><span></span></div>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#catalog" onclick="closeMenu()">🎨 קטלוג צבעים</a>
   <a href="#products" onclick="closeMenu()" id="mm-products">🖨️ מוצרים</a>
   <a href="#pricing" onclick="closeMenu()">💰 מחירון</a>
-  <a href="#order" onclick="closeMenu()" id="mm-order">📦 הזמנות</a>
+  <a href="#order" onclick="closeMenu()" id="mm-order">📦 הזמנה</a>
   <a href="#about" onclick="closeMenu()">ℹ️ אודות</a>
   <a href="#social" onclick="closeMenu()">📲 רשתות</a>
   <a href="#contact" onclick="closeMenu()">📱 צור קשר</a>
@@ -401,7 +532,7 @@ body.dark .price-row-val.green{color:#3ecf7a;}
   <div class="hero-blob"></div><div class="hero-blob2"></div>
   <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
     <div class="hero-logo-wrap">
-      <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="124" height="124" onerror="this.style.display='none'">
+      <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="124" height="124" fetchpriority="high" onerror="this.style.display='none'">
     </div>
     <div class="hero-tag">✦ הדפסות תלת מימד בהתאמה אישית — באר שבע והדרום</div>
     <h1 class="hero-title">הרעיון שלך<br><span class="accent">הופך למוצר אמיתי</span></h1>
@@ -505,12 +636,13 @@ body.dark .price-row-val.green{color:#3ecf7a;}
 <div class="sw">
   <div class="sh">
     <div class="stag">מחירון</div>
-    <h2 class="stitle">מחירים ותנאי הזמנה</h2>
-    <p class="ssub">מחירי הדמויות קבועים לפי גודל. שאר הפרויקטים — מחיר לפי הצעה אישית</p>
+    <h2 class="stitle">מחיר הוגן, שקיפות מלאה</h2>
+    <p class="ssub">מחירי הדמויות קבועים לפי גודל. שאר הפרויקטים — הצעה אישית לפני שמתחילים</p>
   </div>
 
   <div class="pricing-note">
-    ⚠️ המחירים כאן הם אינדיקטיביים בלבד. המחיר הסופי נקבע לאחר שיחה קצרה — תמיד תקבלו הצעת מחיר לפני שמתחילים.
+    <span style="font-size:20px;flex-shrink:0;">💬</span>
+    <span>המחירים כאן הם נקודת פתיחה בלבד — כל פרויקט מתומחר בנפרד לפי הפרטים המדויקים. תמיד תקבלו הצעת מחיר מפורטת לפני שמתחילים. <strong>ללא הפתעות.</strong></span>
   </div>
 
   <div class="pricing-grid">
@@ -576,20 +708,20 @@ body.dark .price-row-val.green{color:#3ecf7a;}
   </div>
   <div class="shipping-row">
     <span class="shipping-label">📦 משלוח (שליח / דואר)</span>
-    <span class="shipping-val">~30–50 ₪ (לפי משקל)</span>
+    <span style="font-weight:800;color:var(--text);">~30–50 ₪ (לפי משקל)</span>
   </div>
-  <div class="shipping-row" style="background:rgba(30,160,90,.07);border-color:rgba(30,160,90,.25);">
+  <div class="shipping-row" style="background:var(--bg3);border-color:var(--border2);">
     <span class="shipping-label">🎁 משלוח בהזמנות מעל 1,000 ₪</span>
-    <span class="shipping-val green" style="color:#156638;font-weight:800;">חינם ✓</span>
+    <span class="shipping-free">חינם ✓</span>
   </div>
-  <div class="shipping-row">
+  <div class="shipping-row" style="background:var(--bg3);border-color:var(--border2);">
     <span class="shipping-label">🚗 איסוף עצמי — באר שבע</span>
-    <span class="shipping-val green" style="color:#156638;font-weight:800;">חינם ✓</span>
+    <span class="shipping-free">חינם ✓</span>
   </div>
 
   <!-- Payment -->
   <div style="margin-top:28px;margin-bottom:14px">
-    <div class="stag" style="margin-bottom:14px">אופן תשלום</div>
+    <div class="stag" style="margin-bottom:14px">אמצעי תשלום</div>
   </div>
   <div class="payment-grid">
     <div class="pay-card">
@@ -625,9 +757,9 @@ body.dark .price-row-val.green{color:#3ecf7a;}
 <section id="order" style="background:var(--bg2)">
 <div class="sw">
   <div class="sh">
-    <div class="stag">ייעוץ והזמנות</div>
-    <h2 class="stitle">ייעוץ והזמנות</h2>
-    <p class="ssub">פשוט ומהיר — ישירות מולי. לא בטוח מה צריך? נתייעץ קודם, ואחרי זה נזמין.</p>
+    <div class="stag">הזמנות</div>
+    <h2 class="stitle">ארבעה צעדים פשוטים</h2>
+    <p class="ssub">לא בטוח מה צריך? נתייעץ קודם, ואחר כך נזמין — בלי לחץ.</p>
   </div>
   <div class="order-steps">
     <div class="step"><div class="step-num">01</div><div class="step-title">בחר צבע וחומר</div><div class="step-desc">עיין בקטלוג ובחר מה מתאים לך. לא בטוח? נייעץ בשמחה.</div></div>
@@ -733,7 +865,7 @@ body.dark .price-row-val.green{color:#3ecf7a;}
 <section id="contact" style="background:var(--bg)">
 <div class="sw">
   <div class="sh">
-    <div class="stag">יצירת קשר</div>
+    <div class="stag">צור קשר</div>
     <h2 class="stitle">בואו נדבר</h2>
     <p class="ssub">זמינים לכל שאלה, הצעת מחיר, או סתם להתייעץ</p>
   </div>
@@ -743,7 +875,7 @@ body.dark .price-row-val.green{color:#3ecf7a;}
       <!-- WhatsApp Business card -->
       <a href="#" class="contact-card" id="waCard">
         <div class="contact-icon" style="background:#25D366;">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#fff"/>
           </svg>
         </div>
@@ -756,7 +888,7 @@ body.dark .price-row-val.green{color:#3ecf7a;}
       <!-- Email card -->
       <a href="#" class="contact-card" id="mailCard">
         <div class="contact-icon" style="background:#1e6fa8;">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1.5 3L12 11.5 5.5 7h13zM4 18V8.5l8 5 8-5V18H4z" fill="#fff"/>
           </svg>
         </div>
@@ -816,7 +948,7 @@ body.dark .price-row-val.green{color:#3ecf7a;}
     <li><a href="#catalog">קטלוג</a></li>
     <li><a href="#products">מוצרים</a></li>
     <li><a href="#pricing">מחירון</a></li>
-    <li><a href="#order">הזמנות</a></li>
+    <li><a href="#order">הזמנה</a></li>
     <li><a href="#about">אודות</a></li>
     <li><a href="#contact">צור קשר</a></li>
   </ul>
@@ -825,7 +957,7 @@ body.dark .price-row-val.green{color:#3ecf7a;}
     <button class="footer-legal-btn" id="btn-privacy" onclick="openLegal('privacy')">מדיניות פרטיות</button>
     <button class="footer-legal-btn" id="btn-terms" onclick="openLegal('terms')">תקנון ותנאי שימוש</button>
   </div>
-  <div class="footer-copy">© 2025 NSF 3D — כל הזכויות שמורות</div>
+  <div class="footer-copy">© 2025–2026 NSF 3D — כל הזכויות שמורות</div>
 </footer>
 
 <!-- LEGAL MODALS -->
@@ -851,6 +983,36 @@ body.dark .price-row-val.green{color:#3ecf7a;}
       <button class="cookie-decline" onclick="declineCookies()">דחה</button>
     </div>
   </div>
+</div>
+
+<!-- ♿ ACCESSIBILITY WIDGET -->
+<button class="a11y-btn" id="a11yBtn" onclick="toggleA11yPanel()" aria-label="כלי נגישות" title="כלי נגישות">♿</button>
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="אפשרויות נגישות" aria-modal="false">
+  <div class="a11y-panel-title">♿ כלי נגישות</div>
+  <div class="a11y-row">
+    <span class="a11y-label">גודל טקסט</span>
+    <div class="a11y-controls">
+      <button class="a11y-ctrl" onclick="changeFontSize(-1)" aria-label="הקטן גופן" title="הקטן">א-</button>
+      <button class="a11y-ctrl" onclick="changeFontSize(1)" aria-label="הגדל גופן" title="הגדל">א+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">ניגודיות גבוהה</span>
+    <button class="a11y-ctrl" id="a11yContrast" onclick="toggleA11yFeature('contrast')" aria-pressed="false" title="ניגודיות גבוהה">⬛</button>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">הדגשת קישורים</span>
+    <button class="a11y-ctrl" id="a11yLinks" onclick="toggleA11yFeature('links')" aria-pressed="false" title="הדגש קישורים">🔗</button>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">עצור אנימציות</span>
+    <button class="a11y-ctrl" id="a11yNoanim" onclick="toggleA11yFeature('noanim')" aria-pressed="false" title="עצור אנימציות">⏸</button>
+  </div>
+  <div class="a11y-row">
+    <span class="a11y-label">סמן גדול</span>
+    <button class="a11y-ctrl" id="a11yCursor" onclick="toggleA11yFeature('cursor')" aria-pressed="false" title="סמן גדול">🖱️</button>
+  </div>
+  <button class="a11y-reset" onclick="resetA11y()">↺ אפס הכל</button>
 </div>
 
 <script>
@@ -972,6 +1134,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   initCookieBanner();
   loadColors();
+  initA11y();
 
   // Auto-updating catalog date
   const dateEl = document.getElementById('catalogDate');
@@ -1045,7 +1208,7 @@ function renderColors(list){
     const inStock = c.inStock !== false;
     const safe = JSON.stringify(c).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     const sw = c.image
-      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">`
+      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" decoding="async" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">`
       : `<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
     return `<div class="color-card" onclick="openModal('${safe}')" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal('${safe}')">
       <div class="color-swatch" aria-hidden="true">${sw}</div>
@@ -1158,18 +1321,100 @@ async function submitForm(e){
 function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
 
+// ── ACCESSIBILITY WIDGET ──
+let a11yFontLevel = 0;
+const a11yFeatures = { contrast: false, links: false, noanim: false, cursor: false };
+
+function initA11y(){
+  const savedFont = parseInt(localStorage.getItem('nsf-a11y-font') || '0');
+  if(savedFont){ a11yFontLevel = savedFont; document.documentElement.style.fontSize = (100 + savedFont * 12.5) + '%'; }
+  ['contrast','links','noanim','cursor'].forEach(f => {
+    if(localStorage.getItem('nsf-a11y-' + f) === '1'){
+      a11yFeatures[f] = true;
+      document.body.classList.add('a11y-' + f);
+      const id = 'a11y' + f.charAt(0).toUpperCase() + f.slice(1);
+      const btn = document.getElementById(id);
+      if(btn){ btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
+    }
+  });
+}
+
+function toggleA11yPanel(){
+  document.getElementById('a11yPanel').classList.toggle('open');
+}
+
+function changeFontSize(dir){
+  a11yFontLevel = Math.max(-2, Math.min(3, a11yFontLevel + dir));
+  document.documentElement.style.fontSize = a11yFontLevel === 0 ? '' : (100 + a11yFontLevel * 12.5) + '%';
+  localStorage.setItem('nsf-a11y-font', a11yFontLevel);
+}
+
+function toggleA11yFeature(feature){
+  a11yFeatures[feature] = !a11yFeatures[feature];
+  document.body.classList.toggle('a11y-' + feature, a11yFeatures[feature]);
+  const id = 'a11y' + feature.charAt(0).toUpperCase() + feature.slice(1);
+  const btn = document.getElementById(id);
+  if(btn){ btn.classList.toggle('active', a11yFeatures[feature]); btn.setAttribute('aria-pressed', String(a11yFeatures[feature])); }
+  localStorage.setItem('nsf-a11y-' + feature, a11yFeatures[feature] ? '1' : '0');
+}
+
+function resetA11y(){
+  a11yFontLevel = 0;
+  document.documentElement.style.fontSize = '';
+  Object.keys(a11yFeatures).forEach(f => {
+    a11yFeatures[f] = false;
+    document.body.classList.remove('a11y-' + f);
+    const id = 'a11y' + f.charAt(0).toUpperCase() + f.slice(1);
+    const btn = document.getElementById(id);
+    if(btn){ btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
+    localStorage.removeItem('nsf-a11y-' + f);
+  });
+  localStorage.removeItem('nsf-a11y-font');
+}
+
+// Close a11y panel when clicking outside
+document.addEventListener('click', function(e){
+  const panel = document.getElementById('a11yPanel');
+  const btn   = document.getElementById('a11yBtn');
+  if(panel && panel.classList.contains('open') && !panel.contains(e.target) && e.target !== btn){
+    panel.classList.remove('open');
+  }
+});
+
 // ── LEGAL MODALS ──
 const LEGAL_CONTENT = {
   accessibility: {
     title: 'הצהרת נגישות',
     body: `
       <h3>מחויבות לנגישות</h3>
-      <p>NSF 3D שואף לאפשר לכלל הציבור, לרבות אנשים עם מוגבלויות, לעשות שימוש בתכני האתר.</p>
+      <p>NSF 3D מאמין שכולם — ללא יוצא מן הכלל — מגיעים לחוויית שימוש נוחה ונגישה באתר. מסיבה זו, ולא רק בשל דרישות חוקיות, ביצענו מספר פעולות מעשיות לשיפור הנגישות.</p>
+
+      <h3>♿ כלי הנגישות המובנה</h3>
+      <p>האתר כולל לחצן נגישות קבוע בפינה הימנית התחתונה של המסך, המאפשר:</p>
+      <ul>
+        <li>📝 <strong>שינוי גודל טקסט</strong> — הגדלה או הקטנה של הגופן</li>
+        <li>⬛ <strong>ניגודיות גבוהה</strong> — הגברת הניגוד לנוחות קריאה</li>
+        <li>🔗 <strong>הדגשת קישורים</strong> — קו תחתון לכל הקישורים</li>
+        <li>⏸ <strong>עצירת אנימציות</strong> — לרגישים לתנועה (Vestibular/Photosensitivity)</li>
+        <li>🖱️ <strong>סמן גדול</strong> — להתמצאות נוחה יותר</li>
+      </ul>
+      <p>כל ההגדרות נשמרות אוטומטית בדפדפן לביקורים הבאים.</p>
+
+      <h3>פעולות נגישות נוספות</h3>
+      <ul>
+        <li>ניגודיות צבעים נאותה בשני מצבי תצוגה (בהיר / כהה)</li>
+        <li>תיאורי alt לכל התמונות המשמעותיות</li>
+        <li>מבנה כותרות היררכי (H1, H2, H3) לניווט מסייע</li>
+        <li>תמיכה מלאה בניווט מקלדת (Tab, Enter, Escape)</li>
+        <li>תוויות aria לרכיבים אינטראקטיביים</li>
+        <li>טקסט גמיש — גדל עם הגדלת גופן הדפדפן</li>
+      </ul>
+
       <h3>פטור לפי חוק שוויון זכויות לאנשים עם מוגבלויות</h3>
       <div class="highlight"><strong>⚠️ הבהרה:</strong> עסק זה הינו עוסק זעיר / פטור, ועל כן חלות עליו הוראות הפטור הקבועות בתקנות שוויון זכויות לאנשים עם מוגבלויות (התאמות נגישות לשירות), תשע"ג-2013.</div>
-      <p>למרות זאת, ביצענו מספר פעולות בסיסיות לשיפור הנגישות כגון: שימוש בגופן ברור, ניגודיות צבעים, תיאורי alt לתמונות ותמיכה במקלדת.</p>
-      <h3>פניות בנושא נגישות</h3>
-      <p><strong>שם:</strong> סמואל נרודיצקי<br><strong>טלפון:</strong> 055-9144386<br><strong>אימייל:</strong> nsf3d.il@gmail.com</p>
+
+      <h3>נתקלתם בבעיה? ספרו לנו</h3>
+      <p>אם נתקלתם בקושי כלשהו בשימוש באתר, נשמח לשמוע כדי שנוכל לשפר.<br><strong>שם:</strong> סמואל נרודיצקי<br><strong>טלפון:</strong> 055-9144386<br><strong>אימייל:</strong> nsf3d.il@gmail.com</p>
       <p>נשתדל להשיב תוך 14 ימי עסקים.</p>
     `
   },
