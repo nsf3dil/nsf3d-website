@@ -779,11 +779,20 @@ function openModal(dataStr){
   const hex = isHex(c.hex)?c.hex:null;
   const inStock = c.inStock !== false;
 
-  // top image — clickable for lightbox
+  const modalTop = document.getElementById('modalTop');
+
   if(c.image){
-    document.getElementById('modalTop').innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" onclick="openLightbox('${c.image}', event)" title="לחץ להגדלה">`;
+    modalTop.innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" title="לחץ להגדלה">`;
+    // מוסיפים listener ישירות — כך event.stopPropagation עובד בוודאות
+    modalTop.querySelector('img').addEventListener('click', function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      document.getElementById('lightboxImg').src = c.image;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
   } else {
-    document.getElementById('modalTop').innerHTML = `<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
+    modalTop.innerHTML = `<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
   }
 
   document.getElementById('modalName').textContent = c.name;
@@ -805,18 +814,6 @@ function openModal(dataStr){
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
-function orderFromModal(){
-  if(!currentModalColor) return;
-  const c = currentModalColor;
-  const msg = encodeURIComponent(`היי NSF 3D! 👋\nאני מעוניין בצבע: ${c.name} (מק"ט: ${c.sku})\nחומר: ${c.material}\n\nאשמח לשמוע פרטים 😊`);
-  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank','noopener');
-}
-function closeModal(e){
-  if(e.target===document.getElementById('modalOverlay') && !document.getElementById('lightbox').classList.contains('open')){
-    closeModalDirect();
-  }
-}function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
 
 // LIGHTBOX
 function openLightbox(src, event){
