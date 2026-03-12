@@ -597,9 +597,9 @@ const DEFAULT_SHOW = 20;
 
 // EmailJS — להגדיר לאחר הרשמה ב-emailjs.com
 // Service ID, Template ID, Public Key
-const EMAILJS_SERVICE  = "YOUR_SERVICE_ID";   // ← החלף
-const EMAILJS_TEMPLATE = "YOUR_TEMPLATE_ID";  // ← החלף
-const EMAILJS_KEY      = "YOUR_PUBLIC_KEY";   // ← החלף
+const EMAILJS_SERVICE  = "nsf3d_gmail";   // ← החלף
+const EMAILJS_TEMPLATE = "template_auajv0o";  // ← החלף
+const EMAILJS_KEY      = "0zsMlXrQhjmsDRUI9";   // ← החלף
 
 const SECTIONS = {
   products: true, order: true, social: true,
@@ -864,7 +864,7 @@ async function submitForm(e){
 
   // שליחה במייל דרך EmailJS
   let emailSent = false;
-  if(typeof emailjs !== 'undefined' && EMAILJS_SERVICE !== 'YOUR_SERVICE_ID'){
+  if(typeof emailjs !== 'undefined' && EMAILJS_SERVICE !== 'nsf3d_gmail'){
     try{
       await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
         from_name:    name,
