@@ -649,12 +649,7 @@ const SOCIALS = [
 
 let allColors=[], showingAll=false, activeFilter='popular', currentModalColor=null;
 
-// EmailJS init
-(function(){
-  if(typeof emailjs !== 'undefined'){
-    emailjs.init(EMAILJS_KEY);
-  }
-})();
+// EmailJS init — נטען ב-DOMContentLoaded
 
 // COOKIE
 function getCookieConsent(){ return localStorage.getItem('nsf-cookie-consent'); }
@@ -690,6 +685,13 @@ function applyWipSections(){
 
 // INIT
 document.addEventListener('DOMContentLoaded',()=>{
+  // Init EmailJS
+  if(typeof emailjs !== 'undefined'){
+    emailjs.init(EMAILJS_KEY);
+    console.log('[NSF3D] EmailJS initialized');
+  } else {
+    console.warn('[NSF3D] EmailJS not loaded!');
+  }
   applyWipSections();
   if(document.body.classList.contains('dark')){ document.getElementById('darkIcon').textContent='☀️'; document.getElementById('darkLabel').textContent='מצב בהיר'; }
 
@@ -876,7 +878,7 @@ async function submitForm(e){
       });
       emailSent = true;
     } catch(err){
-      console.error('EmailJS error:', err);
+      console.error('[NSF3D] EmailJS send error:', err);
     }
   }
 
