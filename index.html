@@ -4,42 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NSF 3D — הדפסות תלת מימד מקצועיות</title>
-<meta name="description" content="NSF 3D — הדפסות תלת מימד מקצועיות בישראל. PLA, PETG, TPU. עשרות צבעים, שילוט, דמויות, ושירות אישי מהיר.">
+<meta name="description" content="NSF 3D — הדפסות תלת מימד בהתאמה אישית בישראל. מגוון חומרים וצבעים, שילוט, דמויות, ושירות אישי מהיר.">
 <meta name="robots" content="index, follow">
-
-<!-- ══ Open Graph — שיתוף יפה בפייסבוק, וואטסאפ, אינסטגרם ══ -->
-<meta property="og:title"       content="NSF 3D — הדפסות תלת מימד מקצועיות">
-<meta property="og:description" content="עשרות צבעים, PLA/PETG/TPU, שילוט ודמויות בהזמנה אישית. שירות מהיר ואיכותי.">
-<meta property="og:type"        content="website">
-<meta property="og:url"         content="https://nsf3dil.github.io/nsf3d-website/">
-<meta property="og:image"       content="https://nsf3dil.github.io/nsf3d-website/NSF-logo-large-1000px.png">
-<meta property="og:image:width" content="1000">
-<meta property="og:image:height" content="1000">
-<meta property="og:locale"      content="he_IL">
-<meta property="og:site_name"   content="NSF 3D">
-<meta name="twitter:card"       content="summary_large_image">
-<meta name="theme-color"        content="#1e6fa8">
-
-<!-- ══ Facebook Pixel — הדבק כאן את קוד הפיקסל שלך ══
-     חשוב: הקוד מוגן — יופעל רק אחרי שהמשתמש אישר עוגיות שיווק.
-     בעתיד, כשיהיה לך Pixel ID, החלף את XXXXXXXXXXXXXXX:
-
-<script id="fb-pixel-script">
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){...};...}
-  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 'XXXXXXXXXXXXXXX');
-  fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
-
-     ⚠️  אל תפעיל עד שתאשר בעמוד Meta Business שהדומיין שלך מאומת.
-     הפיקסל יופעל אוטומטית על-ידי פונקציית loadFbPixel() ב-JS רק אם consent=marketing.
-══ -->
+<meta property="og:title" content="NSF 3D — הדפסות תלת מימד מקצועיות">
+<meta property="og:description" content="מגוון צבעים וחומרים, שילוט ודמויות בהזמנה אישית. שירות מהיר ואיכותי.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nsf3dil.github.io/nsf3d-website/">
+<meta property="og:image" content="https://nsf3dil.github.io/nsf3d-website/NSF-logo-large-1000px.png">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="NSF 3D">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1e6fa8">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <style>
 /* ══ LIGHT THEME ══ */
 :root{
@@ -53,7 +36,6 @@
   --shadow-md:0 4px 32px rgba(30,111,168,.15);
   --radius:14px;
 }
-/* ══ DARK THEME — ניגודיות גבוהה לנגישות ══ */
 body.dark{
   --bg:#0b1622;--bg2:#0f1e2e;--bg3:#0b2038;
   --text:#f5faff;--text2:#c8dff0;
@@ -71,7 +53,8 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 /* NAV */
 nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo img{height:40px;width:auto;}
+.nav-logo-img-wrap{width:40px;height:40px;border-radius:12px;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;}
+.nav-logo-img-wrap img{width:100%;height:100%;object-fit:contain;}
 .nav-logo-text{font-size:22px;font-weight:900;color:var(--blue-dark);display:none;}
 .nav-logo-text span{color:var(--blue-light);}
 .nav-links{display:flex;gap:22px;list-style:none;align-items:center;}
@@ -83,7 +66,6 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 .dark-toggle:hover{background:var(--border);border-color:var(--blue-mid);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
 .hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s;}
-/* On desktop: nav-links visible, hamburger hidden. Dark toggle always shows (outside nav-links). */
 .mobile-menu{display:none;position:fixed;top:64px;right:0;left:0;z-index:199;background:var(--bg);border-bottom:1px solid var(--border);padding:20px 24px;flex-direction:column;gap:4px;box-shadow:0 4px 24px rgba(0,0,0,.12);transition:background .3s;}
 .mobile-menu.open{display:flex;}
 .mobile-menu a{color:var(--text);font-size:16px;font-weight:600;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);}
@@ -93,8 +75,12 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;background:linear-gradient(155deg,var(--bg3) 0%,var(--bg) 55%,var(--bg2) 100%);position:relative;overflow:hidden;transition:background .3s;}
 .hero-blob{position:absolute;top:-100px;left:-150px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(77,184,232,.12) 0%,transparent 70%);pointer-events:none;}
 .hero-blob2{position:absolute;bottom:-80px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(30,111,168,.08) 0%,transparent 70%);pointer-events:none;}
-.hero-logo{width:130px;height:auto;margin-bottom:24px;filter:drop-shadow(0 4px 18px rgba(30,111,168,.20));}
-body.dark .hero-logo{filter:drop-shadow(0 4px 18px rgba(77,184,232,.35));}
+
+/* HERO LOGO — עיגול נקי עם רקע */
+.hero-logo-wrap{width:140px;height:140px;border-radius:28px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 50%,#0d2a47 100%);box-shadow:0 8px 40px rgba(30,111,168,.35),0 0 0 1px rgba(77,184,232,.2);display:flex;align-items:center;justify-content:center;}
+.hero-logo-wrap img{width:88%;height:88%;object-fit:contain;}
+body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px rgba(77,184,232,.15);}
+
 .hero-tag{display:inline-block;background:rgba(77,184,232,.15);border:1px solid rgba(77,184,232,.4);color:var(--blue-mid);font-size:13px;font-weight:700;padding:6px 18px;border-radius:100px;margin-bottom:18px;}
 .hero-title{font-size:clamp(42px,7vw,80px);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:18px;color:var(--blue-dark);}
 .hero-title .accent{color:var(--blue-light);}
@@ -139,26 +125,35 @@ body.dark .hero-logo{filter:drop-shadow(0 4px 18px rgba(77,184,232,.35));}
 .color-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
 .color-sku{font-size:11px;color:var(--text2);}
 .tag-glow{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(77,184,232,.15);color:var(--blue-mid);border:1px solid rgba(77,184,232,.3);}
+.tag-instock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(30,180,100,.12);color:#1a8a50;border:1px solid rgba(30,180,100,.25);}
+.tag-outstock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(200,60,60,.10);color:#b83030;border:1px solid rgba(200,60,60,.2);}
 .loading{text-align:center;padding:56px;color:var(--text2);font-size:16px;grid-column:1/-1;}
 .loading-spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--blue-mid);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
-/* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
+/* COLOR MODAL — enlarged */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:300;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
 .modal-overlay.open{display:flex;}
-.modal{background:var(--modal-bg);border-radius:18px;max-width:420px;width:100%;overflow:hidden;box-shadow:0 12px 60px rgba(0,0,0,.25);}
-.modal-img{width:100%;height:200px;object-fit:cover;}
-.modal-swatch{width:100%;height:200px;}
-.modal-body{padding:22px;}
-.modal-title{font-size:22px;font-weight:900;color:var(--blue-dark);margin-bottom:14px;}
+.modal{background:var(--modal-bg);border-radius:20px;max-width:500px;width:100%;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,.3);}
+.modal-img{width:100%;height:280px;object-fit:cover;cursor:zoom-in;}
+.modal-swatch{width:100%;height:280px;}
+.modal-body{padding:24px;}
+.modal-title{font-size:24px;font-weight:900;color:var(--blue-dark);margin-bottom:16px;}
 .modal-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px;}
 .modal-row:last-of-type{border:none;}
-.modal-row-label{color:var(--text2);}
+.modal-row-label{color:var(--text2);font-weight:600;}
 .modal-row-val{font-weight:700;color:var(--text);}
 .modal-actions{display:flex;gap:10px;margin-top:16px;}
 .modal-wa{flex:1;background:var(--blue-mid);color:#fff;border:none;padding:12px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
 .modal-wa:hover{background:var(--blue-dark);}
 .modal-close-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;}
+
+/* IMAGE LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;align-items:center;justify-content:center;cursor:zoom-out;padding:20px;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:12px;box-shadow:0 8px 60px rgba(0,0,0,.5);}
+.lightbox-close{position:fixed;top:20px;left:20px;width:44px;height:44px;background:rgba(255,255,255,.15);border:none;border-radius:50%;cursor:pointer;font-size:22px;color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.lightbox-close:hover{background:rgba(255,255,255,.3);}
 
 /* PRODUCTS */
 .product-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
@@ -194,11 +189,12 @@ body.dark .hero-logo{filter:drop-shadow(0 4px 18px rgba(77,184,232,.35));}
 .ab-chip-l{font-size:11px;color:var(--text2);}
 .ab-chip-v{font-size:13px;font-weight:700;color:var(--text);margin-top:1px;}
 
-/* SOCIAL */
+/* SOCIAL — with real icons */
 .social-grid{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
 .social-card{display:flex;align-items:center;gap:12px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 22px;text-decoration:none;color:var(--text);transition:transform .2s,box-shadow .2s,border-color .2s;min-width:150px;}
 .social-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--blue-light);}
-.social-icon{font-size:24px;}
+.social-icon{width:34px;height:34px;flex-shrink:0;}
+.social-icon svg{width:100%;height:100%;}
 .social-name{font-size:14px;font-weight:700;color:var(--blue-dark);}
 .social-handle{font-size:12px;color:var(--text2);}
 
@@ -211,9 +207,11 @@ body.dark .hero-logo{filter:drop-shadow(0 4px 18px rgba(77,184,232,.35));}
 .contact-label{font-size:12px;color:var(--text2);margin-bottom:2px;}
 .contact-val{font-size:15px;font-weight:700;color:var(--blue-dark);}
 .hours-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 20px;}
-.hours-l{font-size:12px;color:var(--text2);margin-bottom:5px;}
-.hours-v{font-size:14px;font-weight:700;color:var(--blue-dark);}
-.hours-s{font-size:12px;color:var(--text2);margin-top:3px;}
+.hours-l{font-size:12px;color:var(--text2);margin-bottom:8px;font-weight:700;}
+.hours-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid var(--border);}
+.hours-row:last-child{border:none;}
+.hours-day{color:var(--text2);}
+.hours-time{font-weight:700;color:var(--blue-dark);}
 .contact-form{display:grid;gap:13px;}
 .form-group{display:grid;gap:5px;}
 .form-label{font-size:13px;font-weight:700;color:var(--blue-dark);}
@@ -229,14 +227,17 @@ body.dark .hero-logo{filter:drop-shadow(0 4px 18px rgba(77,184,232,.35));}
 .form-file-thumb{width:60px;height:60px;object-fit:cover;border-radius:8px;border:2px solid var(--border2);}
 .form-submit{background:var(--blue-mid);color:#fff;border:none;padding:13px 28px;border-radius:var(--radius);font-size:16px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(30,111,168,.28);}
 .form-submit:hover{background:var(--blue-dark);transform:translateY(-1px);}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 .form-note{font-size:12px;color:var(--text2);text-align:center;}
 .form-success{display:none;background:rgba(30,180,100,.1);border:1px solid rgba(30,180,100,.3);color:#1a8a50;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
+.form-error{display:none;background:rgba(200,60,60,.1);border:1px solid rgba(200,60,60,.3);color:#b83030;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
 
 /* FOOTER */
 footer{background:var(--blue-dark);color:rgba(255,255,255,.7);padding:38px 40px 28px;text-align:center;}
 body.dark footer{background:#061422;}
-.footer-logo{margin-bottom:14px;}
-.footer-logo img{height:44px;filter:brightness(0) invert(1);opacity:.88;}
+.footer-logo{margin-bottom:14px;display:flex;justify-content:center;}
+.footer-logo-wrap{width:52px;height:52px;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;}
+.footer-logo-wrap img{width:88%;height:88%;object-fit:contain;filter:brightness(0) invert(1);opacity:.9;}
 .footer-logo-text{font-size:20px;font-weight:900;color:rgba(255,255,255,.9);display:none;}
 .footer-links{display:flex;gap:20px;justify-content:center;list-style:none;margin-bottom:10px;flex-wrap:wrap;}
 .footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;transition:color .2s;}
@@ -246,7 +247,7 @@ body.dark footer{background:#061422;}
 .footer-legal-btn:hover{color:rgba(255,255,255,.85);}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.3);}
 
-/* ══ LEGAL MODALS ══ */
+/* LEGAL MODALS */
 .legal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
 .legal-overlay.open{display:flex;}
 .legal-modal{background:var(--modal-bg);border-radius:18px;max-width:640px;width:100%;max-height:82vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 16px 64px rgba(0,0,0,.3);}
@@ -263,14 +264,8 @@ body.dark footer{background:#061422;}
 .legal-body .highlight{background:rgba(255,180,0,.12);border:1px solid rgba(255,180,0,.3);border-radius:8px;padding:12px 16px;margin:12px 0;}
 .legal-body .highlight strong{color:#b06000;}
 
-/* ══ COOKIE BANNER ══ */
-#cookieBanner{
-  display:none;position:fixed;bottom:0;right:0;left:0;z-index:500;
-  background:var(--blue-dark);color:#fff;
-  padding:16px 24px;
-  border-top:2px solid var(--blue-mid);
-  box-shadow:0 -4px 24px rgba(0,0,0,.2);
-}
+/* COOKIE BANNER */
+#cookieBanner{display:none;position:fixed;bottom:0;right:0;left:0;z-index:500;background:var(--blue-dark);color:#fff;padding:16px 24px;border-top:2px solid var(--blue-mid);box-shadow:0 -4px 24px rgba(0,0,0,.2);}
 body.dark #cookieBanner{background:#061422;}
 .cookie-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
 .cookie-text{flex:1;min-width:240px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.85);}
@@ -304,11 +299,13 @@ body.dark #cookieBanner{background:#061422;}
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
+<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="40" height="40"
-      onerror="this.style.display='none';document.querySelector('.nav-logo-text').style.display='block'">
+    <div class="nav-logo-img-wrap">
+      <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="40" height="40"
+        onerror="this.parentElement.style.display='none';document.querySelector('.nav-logo-text').style.display='block'">
+    </div>
     <span class="nav-logo-text">NSF <span>3D</span></span>
   </a>
   <ul class="nav-links">
@@ -319,7 +316,6 @@ body.dark #cookieBanner{background:#061422;}
     <li><a href="#social">רשתות</a></li>
     <li><a href="#contact" class="nav-cta">📱 צור קשר</a></li>
   </ul>
-  <!-- כפתור מצב כהה + המבורגר — ימין הנאב -->
   <div style="display:flex;align-items:center;gap:10px;">
     <button class="dark-toggle" id="darkBtn" onclick="toggleDark()" aria-label="החלף מצב כהה/בהיר"><span id="darkIcon">🌙</span><span id="darkLabel">מצב כהה</span></button>
     <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
@@ -334,27 +330,29 @@ body.dark #cookieBanner{background:#061422;}
   <a href="#contact" onclick="closeMenu()">📱 צור קשר</a>
 </div>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-blob"></div><div class="hero-blob2"></div>
   <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
-    <img src="NSF-logo-large-1000px.png" alt="NSF 3D" class="hero-logo" width="130" height="130" onerror="this.style.display='none'">
-    <div class="hero-tag">✦ הדפסות תלת מימד מקצועיות</div>
+    <div class="hero-logo-wrap">
+      <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="124" height="124" onerror="this.style.display='none'">
+    </div>
+    <div class="hero-tag">✦ הדפסות תלת מימד בהתאמה אישית</div>
     <h1 class="hero-title">הרעיון שלך<br><span class="accent">מוצר אמיתי</span></h1>
-    <p class="hero-sub">הדפסות 3D איכותיות ב-PLA, PETG ו-TPU — עשרות צבעים, גימורים מיוחדים, ושירות אישי מול המדפיס עצמו.</p>
+    <p class="hero-sub">הדפסות 3D איכותיות במגוון חומרים וצבעים — גימורים מיוחדים, ושירות אישי מול המדפיס עצמו.</p>
     <div class="hero-btns">
       <a href="#catalog" class="btn-primary">לקטלוג הצבעים ←</a>
       <a href="#contact" class="btn-secondary">💬 דברו איתנו</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num" id="statColors">—</div><div class="stat-label">צבעים במלאי</div></div>
-      <div class="stat"><div class="stat-num">3<span>+</span></div><div class="stat-label">סוגי חומרים</div></div>
+      <div class="stat"><div class="stat-num">מגוון<span> רחב</span></div><div class="stat-label">צבעים וגימורים</div></div>
       <div class="stat"><div class="stat-num">100<span>%</span></div><div class="stat-label">ישראלי מקומי</div></div>
+      <div class="stat"><div class="stat-num">1–3<span> ימים</span></div><div class="stat-label">זמן אספקה</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ CATALOG ══ -->
+<!-- CATALOG -->
 <div class="sdiv"></div>
 <div id="catalog" style="background:var(--bg2)">
 <div class="sw">
@@ -381,7 +379,7 @@ body.dark #cookieBanner{background:#061422;}
 </div>
 </div>
 
-<!-- ══ COLOR MODAL ══ -->
+<!-- COLOR MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)" role="dialog" aria-modal="true">
   <div class="modal">
     <div id="modalTop"></div>
@@ -396,7 +394,13 @@ body.dark #cookieBanner{background:#061422;}
   </div>
 </div>
 
-<!-- ══ PRODUCTS ══ -->
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="תצוגה מוגדלת">
+</div>
+
+<!-- PRODUCTS -->
 <div class="sdiv"></div>
 <section id="products" style="background:var(--bg)">
 <div class="sw">
@@ -414,7 +418,7 @@ body.dark #cookieBanner{background:#061422;}
 </div>
 </section>
 
-<!-- ══ ORDER ══ -->
+<!-- ORDER -->
 <div class="sdiv"></div>
 <section id="order" style="background:var(--bg2)">
 <div class="sw">
@@ -433,7 +437,7 @@ body.dark #cookieBanner{background:#061422;}
 </div>
 </section>
 
-<!-- ══ ABOUT ══ -->
+<!-- ABOUT -->
 <div class="sdiv"></div>
 <section id="about" style="background:var(--bg)">
 <div class="sw">
@@ -449,10 +453,10 @@ body.dark #cookieBanner{background:#061422;}
       </div>
     </div>
     <div class="about-visual">
-      <div class="abn" id="aboutNum">60+</div>
-      <div class="abl">צבעים במלאי</div>
+      <div class="abn">מגוון</div>
+      <div class="abl">צבעים וגימורים במלאי</div>
       <div class="ab-chips">
-        <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · TPU</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · ועוד בקרוב</div></div>
         <div class="ab-chip"><div class="ab-chip-l">גימורים מיוחדים</div><div class="ab-chip-v">מט · Silk · זוהר בחושך · נצנצים</div></div>
         <div class="ab-chip"><div class="ab-chip-l">שפות שירות</div><div class="ab-chip-v">עברית · English</div></div>
       </div>
@@ -461,7 +465,7 @@ body.dark #cookieBanner{background:#061422;}
 </div>
 </section>
 
-<!-- ══ SOCIAL ══ -->
+<!-- SOCIAL -->
 <div class="sdiv"></div>
 <section id="social" style="background:var(--bg2)">
 <div class="sw" style="text-align:center">
@@ -474,7 +478,7 @@ body.dark #cookieBanner{background:#061422;}
 </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
+<!-- CONTACT -->
 <div class="sdiv"></div>
 <section id="contact" style="background:var(--bg)">
 <div class="sw">
@@ -487,7 +491,7 @@ body.dark #cookieBanner{background:#061422;}
     <div class="contact-info">
       <a href="#" class="contact-card" id="waCard">
         <div class="contact-icon">📱</div>
-        <div><div class="contact-label">WhatsApp עסקי</div><div class="contact-val" id="waDisplay">—</div></div>
+        <div><div class="contact-label">WhatsApp</div><div class="contact-val" id="waDisplay">—</div></div>
       </a>
       <a href="#" class="contact-card" id="mailCard">
         <div class="contact-icon" style="background:var(--blue-light)">✉️</div>
@@ -495,8 +499,10 @@ body.dark #cookieBanner{background:#061422;}
       </a>
       <div class="hours-card">
         <div class="hours-l">⏰ זמני מענה</div>
-        <div class="hours-v">ראשון–שישי, 09:00–21:00</div>
-        <div class="hours-s">מענה בוואטסאפ תוך שעות ספורות</div>
+        <div class="hours-row"><span class="hours-day">ראשון–חמישי</span><span class="hours-time">09:00–21:00</span></div>
+        <div class="hours-row"><span class="hours-day">שישי</span><span class="hours-time">09:00–15:00</span></div>
+        <div class="hours-row"><span class="hours-day">שבת</span><span class="hours-time">סגור</span></div>
+        <div style="font-size:12px;color:var(--text2);margin-top:8px">מענה בוואטסאפ תוך שעות ספורות</div>
       </div>
     </div>
     <form class="contact-form" id="contactForm" onsubmit="submitForm(event)" novalidate>
@@ -519,21 +525,24 @@ body.dark #cookieBanner{background:#061422;}
           <label class="form-file-label" for="ffiles">📎 <strong>לחץ לצירוף תמונות</strong><br><span style="font-size:12px">JPG/PNG · עד 5 תמונות</span></label>
           <div class="form-file-preview" id="filePreview"></div>
         </div>
-        <div style="font-size:11px;color:var(--text2);margin-top:4px">💡 התמונות ישלחו ידנית בוואטסאפ אחרי שתועבר אליו</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:4px">💡 הפניה תישלח לאימייל. תמונות ניתן לצרף גם בוואטסאפ בנפרד.</div>
       </div>
-      <button type="submit" class="form-submit">📱 שלח בוואטסאפ →</button>
-      <div class="form-note">הלחיצה תפתח את וואטסאפ עם ההודעה מוכנה</div>
-      <div class="form-success" id="formSuccess">✅ מיד תועבר לוואטסאפ!</div>
+      <button type="submit" class="form-submit" id="submitBtn">✉️ שלח פניה →</button>
+      <div class="form-note">הפניה תישלח לאימייל ותקבל גם התראה בוואטסאפ</div>
+      <div class="form-success" id="formSuccess">✅ הפניה נשלחה בהצלחה! נחזור אליך בהקדם.</div>
+      <div class="form-error" id="formError">⚠️ שגיאה בשליחה. נסה שוב או פנה ישירות בוואטסאפ.</div>
     </form>
   </div>
 </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="44" height="44"
-      onerror="this.style.display='none';document.querySelector('.footer-logo-text').style.display='block'">
+    <div class="footer-logo-wrap">
+      <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="44" height="44"
+        onerror="this.parentElement.style.display='none';document.querySelector('.footer-logo-text').style.display='block'">
+    </div>
     <div class="footer-logo-text">NSF 3D</div>
   </div>
   <ul class="footer-links">
@@ -545,13 +554,13 @@ body.dark #cookieBanner{background:#061422;}
   </ul>
   <div class="footer-legal">
     <button class="footer-legal-btn" id="btn-accessibility" onclick="openLegal('accessibility')">הצהרת נגישות</button>
-    <button class="footer-legal-btn" id="btn-privacy"       onclick="openLegal('privacy')">מדיניות פרטיות</button>
-    <button class="footer-legal-btn" id="btn-terms"         onclick="openLegal('terms')">תקנון ותנאי שימוש</button>
+    <button class="footer-legal-btn" id="btn-privacy" onclick="openLegal('privacy')">מדיניות פרטיות</button>
+    <button class="footer-legal-btn" id="btn-terms" onclick="openLegal('terms')">תקנון ותנאי שימוש</button>
   </div>
   <div class="footer-copy">© 2025 NSF 3D — כל הזכויות שמורות</div>
 </footer>
 
-<!-- ══ LEGAL MODALS ══ -->
+<!-- LEGAL MODALS -->
 <div class="legal-overlay" id="legalOverlay" onclick="closeLegal(event)">
   <div class="legal-modal">
     <div class="legal-header">
@@ -562,7 +571,7 @@ body.dark #cookieBanner{background:#061422;}
   </div>
 </div>
 
-<!-- ══ COOKIE BANNER ══ -->
+<!-- COOKIE BANNER -->
 <div id="cookieBanner" role="region" aria-label="הסכמה לעוגיות">
   <div class="cookie-inner">
     <div class="cookie-text">
@@ -578,72 +587,89 @@ body.dark #cookieBanner{background:#061422;}
 
 <script>
 // ══════════════════════════════════════════════════════
-//  ⚙️  הגדרות — עדכן כאן בלבד
+//  ⚙️  הגדרות
 // ══════════════════════════════════════════════════════
 const WORKER_URL   = "https://nsf3d-colors.nsf3d-il.workers.dev/";
-const WA_NUMBER    = "+972-55-914-4386";   // דוגמה: 972501234567
-const EMAIL_ADDR   = "nsf3d.il@gmail.com";  // דוגמה: you@gmail.com
+const WA_NUMBER    = "972559144386";
+const EMAIL_ADDR   = "nsf3d.il@gmail.com";
 const SITE_URL     = "https://nsf3dil.github.io/nsf3d-website/";
 const DEFAULT_SHOW = 20;
 
+// EmailJS — להגדיר לאחר הרשמה ב-emailjs.com
+// Service ID, Template ID, Public Key
+const EMAILJS_SERVICE  = "YOUR_SERVICE_ID";   // ← החלף
+const EMAILJS_TEMPLATE = "YOUR_TEMPLATE_ID";  // ← החלף
+const EMAILJS_KEY      = "YOUR_PUBLIC_KEY";   // ← החלף
+
 const SECTIONS = {
-  products:      true,   // false = מוצגת הודעת "בבנייה"
-  order:         true,
-  social:        true,
-  // עמודים משפטיים — false = הכפתור בפוטר מוסתר
-  accessibility: true,
-  privacy:       true,
-  terms:         true,
+  products: true, order: true, social: true,
+  accessibility: true, privacy: true, terms: true,
 };
 
-const SOCIALS = {
-  facebook:  { url:"https://www.facebook.com/profile.php?id=61586093829404",     icon:"📘", name:"פייסבוק",  handle:"NSF.3D" },
-  instagram: { url:"https://www.instagram.com/nsf.3d/", icon:"📷", name:"אינסטגרם", handle:"@nsf.3d" },
-  tiktok:    { url:"https://www.tiktok.com/@nsf.3d",      icon:"🎵", name:"טיקטוק",   handle:"@nsf.3d" },
-  youtube:   { url:"https://www.youtube.com/@NSFchannel",    icon:"▶️", name:"יוטיוב",   handle:"NSFchannel" },
-};
+// רשתות חברתיות עם SVG icons אמיתיים
+const SOCIALS = [
+  {
+    url: "https://www.facebook.com/profile.php?id=61586093829404",
+    name: "פייסבוק", handle: "NSF.3D",
+    color: "#1877F2",
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`
+  },
+  {
+    url: "https://www.instagram.com/nsf.3d/",
+    name: "אינסטגרם", handle: "@nsf.3d",
+    color: "#E1306C",
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`
+  },
+  {
+    url: "https://www.tiktok.com/@nsf.3d",
+    name: "טיקטוק", handle: "@nsf.3d",
+    color: "#000000",
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>`
+  },
+  {
+    url: "https://www.youtube.com/@NSFchannel",
+    name: "יוטיוב", handle: "NSFchannel",
+    color: "#FF0000",
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`
+  },
+  {
+    url: `mailto:${EMAIL_ADDR}`,
+    name: "אימייל", handle: EMAIL_ADDR,
+    color: "#1e6fa8",
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>`
+  },
+  {
+    url: `https://wa.me/${WA_NUMBER}`,
+    name: "וואטסאפ", handle: WA_NUMBER.replace('972','0').replace(/(\d{3})(\d{4})(\d{4})/,'$1-$2-$3'),
+    color: "#25D366",
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`
+  },
+];
 // ══════════════════════════════════════════════════════
 
 let allColors=[], showingAll=false, activeFilter='popular', currentModalColor=null;
 
-// ── COOKIE CONSENT ──
-function getCookieConsent(){ return localStorage.getItem('nsf-cookie-consent'); }
-
-function acceptCookies(){
-  localStorage.setItem('nsf-cookie-consent','all');
-  closeCookieBanner();
-  loadFbPixel(); // הפעל פיקסל אחרי אישור
-}
-function declineCookies(){
-  localStorage.setItem('nsf-cookie-consent','none');
-  closeCookieBanner();
-}
-function closeCookieBanner(){ document.getElementById('cookieBanner').style.display='none'; }
-
-function loadFbPixel(){
-  // ══ כאן יופעל הפיקסל אחרי אישור עוגיות ══
-  // כשיהיה לך Pixel ID, הוסף כאן:
-  // const s=document.createElement('script');
-  // s.innerHTML=`!function(f,b,e,v,...`;
-  // document.head.appendChild(s);
-  console.log('[NSF3D] Facebook Pixel loaded after consent');
-}
-
-function initCookieBanner(){
-  const consent = getCookieConsent();
-  if(!consent){
-    // הצג אחרי 1.5 שניות — לא לחסום loading
-    setTimeout(()=>{ document.getElementById('cookieBanner').style.display='block'; }, 1500);
-  } else if(consent === 'all'){
-    loadFbPixel();
-  }
-}
-
-// ── DARK MODE ──
+// EmailJS init
 (function(){
-  if(localStorage.getItem('nsf-dark')==='1') document.body.classList.add('dark');
+  if(typeof emailjs !== 'undefined' && EMAILJS_KEY !== 'YOUR_PUBLIC_KEY'){
+    emailjs.init(EMAILJS_KEY);
+  }
 })();
 
+// COOKIE
+function getCookieConsent(){ return localStorage.getItem('nsf-cookie-consent'); }
+function acceptCookies(){ localStorage.setItem('nsf-cookie-consent','all'); closeCookieBanner(); loadFbPixel(); }
+function declineCookies(){ localStorage.setItem('nsf-cookie-consent','none'); closeCookieBanner(); }
+function closeCookieBanner(){ document.getElementById('cookieBanner').style.display='none'; }
+function loadFbPixel(){ console.log('[NSF3D] Facebook Pixel loaded after consent'); }
+function initCookieBanner(){
+  const consent = getCookieConsent();
+  if(!consent){ setTimeout(()=>{ document.getElementById('cookieBanner').style.display='block'; }, 1500); }
+  else if(consent==='all'){ loadFbPixel(); }
+}
+
+// DARK MODE
+(function(){ if(localStorage.getItem('nsf-dark')==='1') document.body.classList.add('dark'); })();
 function toggleDark(){
   const d=document.body.classList.toggle('dark');
   localStorage.setItem('nsf-dark',d?'1':'0');
@@ -651,44 +677,45 @@ function toggleDark(){
   document.getElementById('darkLabel').textContent=d?'מצב בהיר':'מצב כהה';
 }
 
-// ── WIP SECTIONS ──
+// WIP SECTIONS
 function applyWipSections(){
   const wip=`<div style="text-align:center;padding:60px 20px"><div style="font-size:48px;margin-bottom:16px">🚧</div><h3 style="font-size:20px;font-weight:800;color:var(--blue-dark);margin-bottom:8px">הקטע הזה בבנייה</h3><p style="color:var(--text2)">בקרוב! בינתיים <a href="#contact" style="color:var(--blue-mid);font-weight:700">צרו קשר</a></p></div>`;
   if(!SECTIONS.products){ document.querySelector('#products .sw').innerHTML=wip; document.getElementById('nav-products').style.display='none'; document.getElementById('mm-products').style.display='none'; }
   if(!SECTIONS.order){ document.querySelector('#order .sw').innerHTML=wip; document.getElementById('nav-order').style.display='none'; document.getElementById('mm-order').style.display='none'; }
   if(!SECTIONS.social){ document.getElementById('social').style.display='none'; }
-  // עמודים משפטיים — הסתר כפתור בפוטר אם false
   if(!SECTIONS.accessibility){ const b=document.getElementById('btn-accessibility'); if(b)b.style.display='none'; }
-  if(!SECTIONS.privacy)      { const b=document.getElementById('btn-privacy');       if(b)b.style.display='none'; }
-  if(!SECTIONS.terms)        { const b=document.getElementById('btn-terms');         if(b)b.style.display='none'; }
+  if(!SECTIONS.privacy){ const b=document.getElementById('btn-privacy'); if(b)b.style.display='none'; }
+  if(!SECTIONS.terms){ const b=document.getElementById('btn-terms'); if(b)b.style.display='none'; }
 }
 
-// ── INIT ──
+// INIT
 document.addEventListener('DOMContentLoaded',()=>{
   applyWipSections();
-  // fix dark toggle icon if dark was already set
   if(document.body.classList.contains('dark')){ document.getElementById('darkIcon').textContent='☀️'; document.getElementById('darkLabel').textContent='מצב בהיר'; }
 
-  document.getElementById('waDisplay').textContent=WA_NUMBER;
-  document.getElementById('mailDisplay').textContent=EMAIL_ADDR;
-  document.getElementById('waCard').href=`https://wa.me/${WA_NUMBER.replace(/\D/g,'')}`;
-  document.getElementById('mailCard').href=`mailto:${EMAIL_ADDR}`;
+  document.getElementById('waDisplay').textContent = '+' + WA_NUMBER.replace(/(\d{3})(\d{2})(\d{3})(\d{4})/,'$1-$2-$3-$4');
+  document.getElementById('mailDisplay').textContent = EMAIL_ADDR;
+  document.getElementById('waCard').href = `https://wa.me/${WA_NUMBER}`;
+  document.getElementById('mailCard').href = `mailto:${EMAIL_ADDR}`;
 
-  const sg=document.getElementById('socialGrid');
-  if(sg) sg.innerHTML=Object.values(SOCIALS).filter(Boolean).map(v=>`<a href="${v.url}" target="_blank" rel="noopener noreferrer" class="social-card"><div class="social-icon">${v.icon}</div><div><div class="social-name">${v.name}</div><div class="social-handle">${v.handle}</div></div></a>`).join('');
+  // Social icons
+  const sg = document.getElementById('socialGrid');
+  if(sg) sg.innerHTML = SOCIALS.map(v=>`
+    <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="social-card">
+      <div class="social-icon" style="color:${v.color}">${v.svg}</div>
+      <div><div class="social-name">${v.name}</div><div class="social-handle">${v.handle}</div></div>
+    </a>`).join('');
 
   initCookieBanner();
   loadColors();
 });
 
-// ── COLORS ──
+// COLORS
 async function loadColors(){
   try{
-    const res=await fetch(WORKER_URL);
-    const data=await res.json();
-    allColors=(data.colors||[]).filter(c=>c.name&&c.name!=='ללא שם');
-    document.getElementById('statColors').textContent=allColors.length;
-    document.getElementById('aboutNum').textContent=allColors.length+'+';
+    const res = await fetch(WORKER_URL);
+    const data = await res.json();
+    allColors = (data.colors||[]).filter(c=>c.name&&c.name!=='ללא שם');
     filterColors();
   }catch(e){
     document.getElementById('colorsGrid').innerHTML='<div class="loading">⚠️ שגיאה בטעינת הצבעים. נסה לרענן.</div>';
@@ -698,15 +725,15 @@ async function loadColors(){
 function setFilter(f,btn){ activeFilter=f; showingAll=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); filterColors(); }
 
 function filterColors(){
-  const q=document.getElementById('searchInput').value.trim().toLowerCase();
-  let list=[...allColors];
-  if(activeFilter==='glow')     list=list.filter(c=>c.finishes.includes('זוהר בחושך'));
-  else if(activeFilter==='PLA') list=list.filter(c=>c.material==='PLA');
-  else if(activeFilter==='PETG')list=list.filter(c=>c.material==='PETG');
-  else if(activeFilter==='TPU') list=list.filter(c=>c.material==='TPU');
-  if(q) list=list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q)||c.material.toLowerCase().includes(q));
-  const sar=document.getElementById('showAllRow'),sab=document.getElementById('showAllBtn');
-  const canT=!q&&list.length>DEFAULT_SHOW&&activeFilter!=='glow';
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  let list = [...allColors];
+  if(activeFilter==='glow')     list = list.filter(c=>c.finishes.includes('זוהר בחושך'));
+  else if(activeFilter==='PLA') list = list.filter(c=>c.material==='PLA');
+  else if(activeFilter==='PETG')list = list.filter(c=>c.material==='PETG');
+  else if(activeFilter==='TPU') list = list.filter(c=>c.material==='TPU');
+  if(q) list = list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q)||c.material.toLowerCase().includes(q));
+  const sar=document.getElementById('showAllRow'), sab=document.getElementById('showAllBtn');
+  const canT = !q&&list.length>DEFAULT_SHOW&&activeFilter!=='glow';
   if(canT){ sar.style.display='block'; sab.textContent=showingAll?'הצג פחות ↑':`הצג את כל ${list.length} הצבעים ↓`; renderColors(showingAll?list:list.slice(0,DEFAULT_SHOW)); }
   else{ sar.style.display='none'; renderColors(list); }
 }
@@ -715,83 +742,181 @@ function toggleShowAll(){ showingAll=!showingAll; filterColors(); }
 function isHex(h){ return /^#[0-9A-Fa-f]{6}$/.test(h); }
 
 function renderColors(list){
-  const grid=document.getElementById('colorsGrid');
+  const grid = document.getElementById('colorsGrid');
   if(!list.length){ grid.innerHTML='<div class="loading">לא נמצאו צבעים</div>'; return; }
-  grid.innerHTML=list.map(c=>{
-    const hex=isHex(c.hex)?c.hex:null;
-    const isGlow=c.finishes.includes('זוהר בחושך');
-    const safe=JSON.stringify(c).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-    const sw=c.image?`<img src="${c.image}" alt="${c.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'color-swatch-block\\' style=\\'background:${hex||'#9ab4c8'}\\'/>'">` :`<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
-    return `<div class="color-card" onclick="openModal('${safe}')" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal('${safe}')"><div class="color-swatch" aria-hidden="true">${sw}</div><div class="color-info"><div class="color-name">${c.name}</div><div class="color-meta"><span class="color-sku">${c.sku} · ${c.material}</span>${isGlow?'<span class="tag-glow">✨ זוהר</span>':''}</div></div></div>`;
+  grid.innerHTML = list.map(c=>{
+    const hex = isHex(c.hex)?c.hex:null;
+    const isGlow = c.finishes.includes('זוהר בחושך');
+    // בדיקת מלאי — אם הפרמטר קיים
+    const inStock = c.inStock !== false; // default true if not specified
+    const safe = JSON.stringify(c).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    const sw = c.image
+      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'color-swatch-block\\' style=\\'background:${hex||'#9ab4c8'}\\'/>'">` 
+      : `<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
+    return `<div class="color-card" onclick="openModal('${safe}')" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal('${safe}')">
+      <div class="color-swatch" aria-hidden="true">${sw}</div>
+      <div class="color-info">
+        <div class="color-name">${c.name}</div>
+        <div class="color-meta">
+          <span class="color-sku">מק"ט: ${c.sku} · ${c.material}</span>
+        </div>
+        <div class="color-meta" style="margin-top:4px">
+          ${isGlow?'<span class="tag-glow">✨ זוהר</span>':''}
+          ${inStock?'<span class="tag-instock">✓ במלאי</span>':'<span class="tag-outstock">✗ אזל</span>'}
+        </div>
+      </div>
+    </div>`;
   }).join('');
 }
 
-// ── MODAL ──
+// MODAL
 function openModal(dataStr){
-  const c=typeof dataStr==='string'?JSON.parse(dataStr):dataStr;
-  currentModalColor=c;
-  const hex=isHex(c.hex)?c.hex:null;
-  document.getElementById('modalTop').innerHTML=c.image?`<img class="modal-img" src="${c.image}" alt="${c.name}" onerror="this.style.display='none'">`:`<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
-  document.getElementById('modalName').textContent=c.name;
-  const fins=c.finishes.filter(f=>f!=='במלאי').join(' · ')||'—';
-  const rows=[['מק"ט',c.sku||'—'],['חומר',c.material],['קוד צבע',hex||c.hex],['גימורים',fins]];
-  if(c.notes)rows.push(['הערות',c.notes]);
-  document.getElementById('modalRows').innerHTML=rows.map(([l,v])=>`<div class="modal-row"><span class="modal-row-label">${l}</span><span class="modal-row-val">${v}</span></div>`).join('');
+  const c = typeof dataStr==='string' ? JSON.parse(dataStr) : dataStr;
+  currentModalColor = c;
+  const hex = isHex(c.hex)?c.hex:null;
+  const inStock = c.inStock !== false;
+
+  // top image — clickable for lightbox
+  if(c.image){
+    document.getElementById('modalTop').innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" onclick="openLightbox('${c.image}')" title="לחץ להגדלה">`;
+  } else {
+    document.getElementById('modalTop').innerHTML = `<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
+  }
+
+  document.getElementById('modalName').textContent = c.name;
+
+  const fins = c.finishes.filter(f=>f!=='במלאי').join(' · ')||'—';
+  const rows = [
+    ['מק"ט', c.sku||'—'],
+    ['סוג חומר', c.material],
+    ['גימור', fins],
+    ['קוד צבע', hex||c.hex||'—'],
+    ['מלאי', inStock ? '✓ במלאי' : '✗ אזל'],
+  ];
+  if(c.notes) rows.push(['הערות', c.notes]);
+
+  document.getElementById('modalRows').innerHTML = rows.map(([l,v])=>
+    `<div class="modal-row"><span class="modal-row-label">${l}</span><span class="modal-row-val">${v}</span></div>`
+  ).join('');
+
   document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function orderFromModal(){ if(!currentModalColor)return; const c=currentModalColor; const msg=encodeURIComponent(`היי NSF 3D! 👋\nאני מעוניין בצבע: ${c.name} (${c.sku})\nחומר: ${c.material}\n\nאשמח לשמוע פרטים 😊`); window.open(`https://wa.me/${WA_NUMBER.replace(/\D/g,'')}?text=${msg}`,'_blank','noopener'); }
-function closeModal(e){ if(e.target===document.getElementById('modalOverlay'))closeModalDirect(); }
+
+function orderFromModal(){
+  if(!currentModalColor) return;
+  const c = currentModalColor;
+  const msg = encodeURIComponent(`היי NSF 3D! 👋\nאני מעוניין בצבע: ${c.name} (מק"ט: ${c.sku})\nחומר: ${c.material}\n\nאשמח לשמוע פרטים 😊`);
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank','noopener');
+}
+function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
 function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
-document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeModalDirect(); closeLegalDirect(); }});
 
-// ── FILE PREVIEW ──
+// LIGHTBOX
+function openLightbox(src){
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){ closeModalDirect(); closeLegalDirect(); closeLightbox(); }
+});
+
+// FILE PREVIEW
 function previewFiles(input){
-  const preview=document.getElementById('filePreview');
-  preview.innerHTML='';
-  const files=Array.from(input.files).slice(0,5);
+  const preview = document.getElementById('filePreview');
+  preview.innerHTML = '';
+  const files = Array.from(input.files).slice(0,5);
   if(!files.length){ preview.style.display='none'; return; }
-  preview.style.display='flex';
-  files.forEach(file=>{ const r=new FileReader(); r.onload=e=>{ const img=document.createElement('img'); img.src=e.target.result; img.className='form-file-thumb'; img.alt='תצוגה מקדימה'; preview.appendChild(img); }; r.readAsDataURL(file); });
+  preview.style.display = 'flex';
+  files.forEach(file=>{
+    const r = new FileReader();
+    r.onload = e => {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.className = 'form-file-thumb';
+      img.alt = 'תצוגה מקדימה';
+      preview.appendChild(img);
+    };
+    r.readAsDataURL(file);
+  });
 }
 
-// ── FORM ──
-function submitForm(e){
+// FORM — שולח למייל עם EmailJS + התראת וואטסאפ
+async function submitForm(e){
   e.preventDefault();
-  const name=document.getElementById('fname').value.trim();
-  const phone=document.getElementById('fphone').value.trim();
+  const name    = document.getElementById('fname').value.trim();
+  const phone   = document.getElementById('fphone').value.trim();
+  const subject = document.getElementById('fsubject').value;
+  const message = document.getElementById('fmessage').value.trim();
+
   if(!name||!phone){ alert('נא למלא שם וטלפון'); return; }
-  const msg=encodeURIComponent(`היי NSF 3D! 👋\nשמי: ${name}\nטלפון: ${phone}\nנושא: ${document.getElementById('fsubject').value}\n\n${document.getElementById('fmessage').value}`);
-  window.open(`https://wa.me/${WA_NUMBER.replace(/\D/g,'')}?text=${msg}`,'_blank','noopener');
-  document.getElementById('formSuccess').style.display='block';
-  document.getElementById('contactForm').reset();
-  document.getElementById('filePreview').style.display='none';
-  setTimeout(()=>document.getElementById('formSuccess').style.display='none',5000);
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ שולח...';
+
+  const success = document.getElementById('formSuccess');
+  const errEl   = document.getElementById('formError');
+  success.style.display = 'none';
+  errEl.style.display   = 'none';
+
+  // שליחה במייל דרך EmailJS
+  let emailSent = false;
+  if(typeof emailjs !== 'undefined' && EMAILJS_SERVICE !== 'YOUR_SERVICE_ID'){
+    try{
+      await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+        from_name:    name,
+        from_phone:   phone,
+        subject:      subject,
+        message:      message,
+        reply_to:     phone,
+        to_email:     EMAIL_ADDR,
+      });
+      emailSent = true;
+    } catch(err){
+      console.error('EmailJS error:', err);
+    }
+  }
+
+  if(emailSent){
+    success.style.display = 'block';
+    document.getElementById('contactForm').reset();
+    document.getElementById('filePreview').style.display = 'none';
+    // שלח גם התראה בוואטסאפ (נפתח בטאב)
+    const waMsg = encodeURIComponent(`🔔 פניה חדשה באתר!\nשם: ${name}\nטלפון: ${phone}\nנושא: ${subject}\n\n${message}`);
+    setTimeout(()=>{ window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`,'_blank','noopener'); }, 800);
+  } else {
+    // fallback: פתח ישירות וואטסאפ
+    const waMsg = encodeURIComponent(`היי NSF 3D! 👋\nשמי: ${name}\nטלפון: ${phone}\nנושא: ${subject}\n\n${message}`);
+    window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`,'_blank','noopener');
+    success.style.display = 'block';
+    document.getElementById('contactForm').reset();
+    document.getElementById('filePreview').style.display = 'none';
+  }
+
+  btn.disabled = false;
+  btn.textContent = '✉️ שלח פניה →';
+  setTimeout(()=>{ success.style.display='none'; }, 6000);
 }
 
-// ── MOBILE MENU ──
+// MOBILE MENU
 function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
 
-// ── LEGAL MODALS ──
+// LEGAL MODALS
 const LEGAL_CONTENT = {
   accessibility: {
     title: 'הצהרת נגישות',
     body: `
       <h3>מחויבות לנגישות</h3>
       <p>NSF 3D שואף לאפשר לכלל הציבור, לרבות אנשים עם מוגבלויות, לעשות שימוש בתכני האתר.</p>
-
       <h3>פטור לפי חוק שוויון זכויות לאנשים עם מוגבלויות</h3>
-      <div class="highlight">
-        <strong>⚠️ הבהרה:</strong> עסק זה הינו עוסק זעיר / פטור, ועל כן חלות עליו הוראות הפטור הקבועות בתקנות שוויון זכויות לאנשים עם מוגבלויות (התאמות נגישות לשירות), תשע"ג-2013. בהתאם לכך, האתר אינו חייב בעמידה מלאה בדרישות תקן הנגישות.
-      </div>
+      <div class="highlight"><strong>⚠️ הבהרה:</strong> עסק זה הינו עוסק זעיר / פטור, ועל כן חלות עליו הוראות הפטור הקבועות בתקנות שוויון זכויות לאנשים עם מוגבלויות (התאמות נגישות לשירות), תשע"ג-2013.</div>
       <p>למרות זאת, ביצענו מספר פעולות בסיסיות לשיפור הנגישות כגון: שימוש בגופן ברור, ניגודיות צבעים, תיאורי alt לתמונות ותמיכה במקלדת.</p>
-
       <h3>פניות בנושא נגישות</h3>
-      <p>לפניות ובקשות בנושא נגישות ניתן לפנות אלינו:<br>
-      <strong>שם:</strong> סמואל נרודיצקי<br>
-      <strong>טלפון:</strong> 055-9144386<br>
-      <strong>אימייל:</strong> nsf3d.il@gmail.com</p>
+      <p><strong>שם:</strong> סמואל נרודיצקי<br><strong>טלפון:</strong> 055-9144386<br><strong>אימייל:</strong> nsf3d.il@gmail.com</p>
       <p>נשתדל להשיב תוך 14 ימי עסקים.</p>
     `
   },
@@ -800,105 +925,43 @@ const LEGAL_CONTENT = {
     body: `
       <h3>מהו המידע שאנו אוספים?</h3>
       <p>במסגרת השימוש באתר ויצירת קשר, אנו עשויים לאסוף: שם, מספר טלפון, כתובת אימייל, ותוכן הפניה.</p>
-      <p>בנוסף, עם הסכמתך, אנו משתמשים בכלים אנליטיים ופרסומיים (כגון Facebook Pixel) לצורך שיפור השירות וקמפיינים שיווקיים.</p>
-
       <h3>כיצד אנו משתמשים במידע?</h3>
-      <ul>
-        <li>מענה לפניות ועיבוד הזמנות</li>
-        <li>שיפור השירות והאתר</li>
-        <li>פרסום ממוקד ברשתות החברתיות (בכפוף להסכמה)</li>
-      </ul>
-
+      <ul><li>מענה לפניות ועיבוד הזמנות</li><li>שיפור השירות והאתר</li><li>פרסום ממוקד ברשתות החברתיות (בכפוף להסכמה)</li></ul>
       <h3>העברת מידע לצד שלישי</h3>
       <p><strong>אנו לא מוכרים, מעבירים או משתפים את פרטיך האישיים עם צדדים שלישיים</strong>, למעט כלי שיווק סטנדרטיים (Meta/Facebook Pixel) בהסכמתך.</p>
-
-      <h3>עוגיות (Cookies)</h3>
-      <p>האתר משתמש בעוגיות טכניות חיוניות (העדפות תצוגה) ובעוגיות שיווקיות אופציונליות. ניתן לשנות את הסכמתך בכל עת על-ידי מחיקת ה-LocalStorage בדפדפן.</p>
-
       <h3>זכויותיך</h3>
-      <p>בהתאם לחוק הגנת הפרטיות (ישראל), יש לך זכות לעיין, לתקן או למחוק מידע אישי שנאסף עליך. לפניות: <strong>${EMAIL_ADDR}</strong></p>
-
-      <h3>עדכון מדיניות</h3>
-      <p>מדיניות זו עשויה להתעדכן מעת לעת. גרסה אחרונה: ינואר 2025.</p>
+      <p>בהתאם לחוק הגנת הפרטיות (ישראל), יש לך זכות לעיין, לתקן או למחוק מידע אישי שנאסף עליך. לפניות: <strong>nsf3d.il@gmail.com</strong></p>
     `
   },
   terms: {
     title: 'תקנון ותנאי שימוש — NSF 3D',
     body: `
       <p style="font-size:12px;color:var(--text2);margin-bottom:16px">עדכון אחרון: מרץ 2026 | גרסה 1.2</p>
-
       <h3>1. כללי ותחולה</h3>
-      <p>תקנון זה מסדיר את תנאי ההתקשרות בין <strong>NSF 3D</strong> (להלן: "העסק") לבין כל לקוח המבצע הזמנה או עושה שימוש בשירותי העסק (להלן: "הלקוח"). ביצוע הזמנה — בין אם בעל-פה, בכתב, בוואטסאפ, בטופס אינטרנטי, או בכל דרך אחרת — מהווה הסכמה מלאה לתנאי תקנון זה.</p>
-
-      <h3>2. קניין רוחני וזכויות יוצרים</h3>
-      <p><strong>2.1 הצהרת הלקוח:</strong> הלקוח מצהיר ומתחייב כי הוא הבעלים החוקי, או שברשותו הרישיון המלא והתקף (לרבות זכות לשימוש מסחרי, ככל שרלוונטי) עבור כל קובץ תלת-ממד (STL, STEP, OBJ, וכיו"ב), עיצוב, לוגו, תמונה, או כל חומר אחר שהוא מוסר לעסק לצורך ייצור.</p>
-      <p><strong>2.2 שירותי ייצור בלבד:</strong> NSF 3D מספקת שירותי <strong>ייצור והדפסה בלבד</strong>, ואינה בודקת, מאמתת, או נושאת בכל אחריות לגבי בעלות על זכויות יוצרים, פטנטים, סימני מסחר, או כל קניין רוחני אחר הגלום בקבצים שנמסרו לה על-ידי הלקוח.</p>
-      <p><strong>2.3 שיפוי:</strong> הלקוח ישפה את NSF 3D בגין כל תביעה, נזק, הוצאה משפטית, או תשלום שיחויב בהם העסק כתוצאה מהפרת זכויות קניין רוחני שיסודה בחומרים שמסר הלקוח.</p>
-      <div class="highlight"><strong>⚠️ דגש:</strong> אין להגיש לייצור קבצים של דמויות מוגנות (Disney, Marvel, ליגות ספורט, וכו') ללא אישור מחזיק הזכויות. העסק שומר לעצמו את הזכות לסרב לייצר כל פריט שעלול להפר זכויות קניין רוחני.</div>
-
-      <h3>3. טיב המוצר, טולרנסים וגימור</h3>
-      <p><strong>3.1 מאפייני תהליך ההדפסה:</strong> טכנולוגיית ההדפסה בתלת-ממד (FDM) מבוססת על הנחת שכבות חומר זו על גבי זו. כתוצאה מכך, המאפיינים הבאים הינם <strong>חלק אינהרנטי ובלתי נפרד מתהליך הייצור</strong> ואינם מהווים פגם:</p>
-      <ul>
-        <li><strong>סימני שכבות (Layer Lines):</strong> קווים עדינים על פני השטח, הנובעים ממבנה ההדפסה השכבתי.</li>
-        <li><strong>קווי חיבור (Seams):</strong> נקודות חיבור בין שכבות או בין חלקי הדפסה שונים.</li>
-        <li><strong>עקבות תמיכות (Support Marks):</strong> חספוס קל או עקבות קלות באזורים שנדרשו להם מבני תמיכה במהלך ההדפסה.</li>
-        <li><strong>וריאציות קלות בגוון:</strong> אפשריות שונות קלות בגוון הצבע בין הדפסות שונות, בשל אופי חומרי הגלם.</li>
-      </ul>
-      <p><strong>3.2 טולרנסים מידתיים:</strong> תיתכן סטייה מידתית של <strong>עד ±0.2 מ"מ</strong> ממידות הקובץ המקורי. סטייה זו מקובלת בתעשיית ההדפסה בתלת-ממד ואינה מהווה עילה לתלונה או ביטול. פריטים הדורשים דיוק גבוה יותר יש לסמן מפורשות בהזמנה מראש, ויתומחרו בהתאם.</p>
-      <p><strong>3.3 גימורים אסתטיים:</strong> ככל שהלקוח מעוניין בגימור מיוחד (ליטוש, צביעה, הסרת סימני שכבות), עליו לציין זאת מפורשות בהזמנה ועלות הגימור תחושב בנפרד.</p>
-
-      <h3>4. הגבלת אחריות לגבי ייעוד המוצר</h3>
-      <p><strong>4.1 אחריות הלקוח:</strong> הלקוח הוא <strong>האחראי הבלעדי</strong> לבחון ולוודא כי העיצוב, החומר הנבחר, ומידות המוצר מתאימים לשימוש הסופי המיועד.</p>
-      <p><strong>4.2 סייגים מפורשים:</strong> NSF 3D אינה אחראית ואין להסתמך על מוצריה לצרכים הבאים, אלא אם הוסכם מפורשות אחרת בכתב:</p>
-      <ul>
-        <li><strong>חשיפה לחום:</strong> חומרי PLA עלולים לאבד צורתם בחשיפה לחום מעל ~60°C. חומרי PETG ו-ASA עמידים יותר אך אינם מיועדים לסביבות קיצוניות.</li>
-        <li><strong>עמידות מכנית ומבנית:</strong> מוצרים מודפסים אינם מיועדים, בהכרח, לעמידה בעומסים מכניים גבוהים, לחצים, או כוחות מתיחה.</li>
-        <li><strong>חשיפה לתנאי חוץ:</strong> רוב חומרי ההדפסה אינם עמידים לאור שמש ממושך (UV) או לחות קיצונית, אלא אם נאמר אחרת.</li>
-        <li><strong>מגע עם מזון או מים:</strong> מוצרים מודפסים אינם מוסמכים כבטוחים למגע עם מזון, אלא אם הוזמנו מחומר מתאים עם אישור מפורש.</li>
-        <li><strong>שימוש רפואי:</strong> מוצרים אינם מיועדים לכל שימוש רפואי, פרמדי, או כגופי הפעלה בטיחותיים.</li>
-      </ul>
-      <p><strong>4.3 הגבלת אחריות כוללת:</strong> NSF 3D לא תישא באחריות לכל נזק ישיר, עקיף, תוצאתי, מיוחד, או עונשי — לרבות נזק גופני, רכושי, כלכלי, או עסקי — שנגרם כתוצאה משימוש, שימוש לא נכון, שבר, או בלאי של מוצר מודפס.</p>
-
-      <h3>5. הזמנות, ביטולים והחזרים</h3>
-      <div class="highlight">
-        <strong>⚠️ טובין שיוצרו במיוחד עבור הצרכן — אין זכות ביטול:</strong><br>
-        כלל מוצרי NSF 3D מיוצרים בהזמנה אישית עבור הלקוח הספציפי. בהתאם לתקנות הגנת הצרכן (ביטול עסקה), התשע"א-2010, סעיף 14ג(ד)(1), <strong>לא תינתן זכות ביטול עסקה, החזר כספי, או החלפת מוצר מרגע מסירת אישור הייצור ותחילת תהליך ההדפסה.</strong>
-      </div>
-      <p><strong>5.1 ביטול לפני תחילת ייצור:</strong> ביטול הזמנה לפני קבלת אישור תחילת ייצור — אפשרי ללא חיוב. לאחר מסירת האישור, ההזמנה מחייבת.</p>
-      <p><strong>5.2 ליקוי ייצור:</strong> אם המוצר אינו תואם לפרטי ההזמנה שאושרו (פגם בייצור, מידה שגויה, חומר לא נכון — שנבע מטעות העסק), הלקוח יודיע בכתב תוך <strong>48 שעות</strong> מקבלת המוצר בצירוף תיעוד צילומי. במקרה כזה, NSF 3D יתקן או יחליף את המוצר ללא תשלום נוסף.</p>
-
-      <h3>6. זמני אספקה ומשלוחים</h3>
-      <p><strong>6.1 זמני ייצור:</strong> זמני האספקה המצוינים (<strong>1–3 ימי עסקים</strong>) הינם <strong>הערכה בלבד</strong> ועשויים להשתנות בהתאם למורכבות ההדפסה, כמות הפריטים, עומס ייצור, ואספקת חומרים.</p>
-      <p><strong>6.2 אחריות על משלוחים:</strong> בהזמנות המועברות באמצעות חברת שליחויות חיצונית — NSF 3D <strong>אינה אחראית</strong> לעיכובים, אובדן, או נזק שנגרם במהלך המשלוח. האחריות על מצב הסחורה עוברת לחברת השליחויות עם מסירת החבילה לידיה. מומלץ לצלם את המוצר עם קבלתו.</p>
-      <p><strong>6.3 נסיבות חוץ שליטה:</strong> העסק לא יישא באחריות לעיכובים שנגרמו מסיבות שאינן בשליטתו, לרבות: שיבושים בשרשרת אספקת חומרים, תקלות ציוד, אירועי כוח עליון, או הוראות רשויות.</p>
-
-      <h3>7. פרטיות ואבטחת מידע</h3>
-      <p>מידע אישי שנמסר לעסק ישמש לצורך עיבוד ההזמנה ויצירת קשר בלבד. ראה <button onclick="closeLegalDirect();openLegal('privacy')" style="background:none;border:none;color:var(--blue-mid);cursor:pointer;font-size:14px;font-family:'Heebo',sans-serif;text-decoration:underline;padding:0">מדיניות הפרטיות המלאה</button>.</p>
-
-      <h3>8. שינויים בתקנון</h3>
-      <p>NSF 3D שומרת לעצמה את הזכות לעדכן תקנון זה בכל עת. גרסה מעודכנת תיכנס לתוקף עם פרסומה באתר.</p>
-
-      <h3>9. סמכות שיפוט</h3>
-      <p>כל מחלוקת שתנבע מתנאי תקנון זה תדון בבתי המשפט המוסמכים במחוז תל אביב, ויחול הדין הישראלי בלבד.</p>
-
-      <h3>יצירת קשר</h3>
-      <p>לשאלות בנוגע לתקנון: <strong id="terms-email"></strong></p>
+      <p>תקנון זה מסדיר את תנאי ההתקשרות בין <strong>NSF 3D</strong> לבין כל לקוח המבצע הזמנה. ביצוע הזמנה מהווה הסכמה מלאה לתנאי תקנון זה.</p>
+      <h3>2. קניין רוחני</h3>
+      <p>הלקוח מצהיר כי הוא הבעלים החוקי של כל קובץ שהוא מוסר לייצור. NSF 3D אינה אחראית לגבי זכויות קניין רוחני הגלומות בקבצים.</p>
+      <div class="highlight"><strong>⚠️ דגש:</strong> אין להגיש לייצור קבצים של דמויות מוגנות ללא אישור מחזיק הזכויות.</div>
+      <h3>3. טיב המוצר</h3>
+      <p>סימני שכבות, קווי חיבור ועקבות תמיכות הם חלק אינהרנטי מתהליך ההדפסה ואינם מהווים פגם. תיתכן סטייה מידתית של עד ±0.2 מ"מ.</p>
+      <h3>4. ביטולים והחזרים</h3>
+      <div class="highlight"><strong>⚠️ כלל מוצרי NSF 3D מיוצרים בהזמנה אישית — לא תינתן זכות ביטול לאחר תחילת הייצור.</strong></div>
+      <h3>5. זמני אספקה</h3>
+      <p>זמני האספקה (1–3 ימי עסקים) הינם הערכה בלבד ועשויים להשתנות.</p>
+      <h3>6. סמכות שיפוט</h3>
+      <p>כל מחלוקת תדון בבתי המשפט המוסמכים במחוז תל אביב.</p>
     `
   }
 };
 
 function openLegal(type){
-  const c=LEGAL_CONTENT[type];
-  if(!c)return;
-  document.getElementById('legalTitle').textContent=c.title;
-  document.getElementById('legalBody').innerHTML=c.body.replace(/\${EMAIL_ADDR}/g,EMAIL_ADDR);
-  // inject email into terms contact span if exists
-  const em=document.getElementById('terms-email');
-  if(em)em.textContent=EMAIL_ADDR;
+  const c = LEGAL_CONTENT[type]; if(!c) return;
+  document.getElementById('legalTitle').textContent = c.title;
+  document.getElementById('legalBody').innerHTML = c.body;
   document.getElementById('legalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function closeLegal(e){ if(e.target===document.getElementById('legalOverlay'))closeLegalDirect(); }
+function closeLegal(e){ if(e.target===document.getElementById('legalOverlay')) closeLegalDirect(); }
 function closeLegalDirect(){ document.getElementById('legalOverlay').classList.remove('open'); document.body.style.overflow=''; }
 </script>
 </body>
