@@ -845,7 +845,7 @@ function previewFiles(input){
   });
 }
 
-// FORM — שולח למייל עם EmailJS + התראת וואטסאפ
+// FORM — שולח למייל עם EmailJS
 async function submitForm(e){
   e.preventDefault();
   const name    = document.getElementById('fname').value.trim();
@@ -853,46 +853,36 @@ async function submitForm(e){
   const subject = document.getElementById('fsubject').value;
   const message = document.getElementById('fmessage').value.trim();
 
-  if(!name||!phone){ alert('נא למלא שם וטלפון'); return; }
+  if(!name || !phone){ alert('נא למלא שם וטלפון'); return; }
 
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = '⏳ שולח...';
-
+  const btn     = document.getElementById('submitBtn');
   const success = document.getElementById('formSuccess');
   const errEl   = document.getElementById('formError');
+
+  btn.disabled = true;
+  btn.textContent = '⏳ שולח...';
   success.style.display = 'none';
   errEl.style.display   = 'none';
 
-  // שליחה במייל דרך EmailJS
-  let emailSent = false;
-  if(typeof emailjs !== 'undefined' && EMAILJS_SERVICE !== 'nsf3d_gmail'){
-    try{
-      await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
-        from_name:    name,
-        from_phone:   phone,
-        subject:      subject,
-        message:      message,
-        reply_to:     phone,
-        to_email:     EMAIL_ADDR,
-      });
-      emailSent = true;
-    } catch(err){
-      console.error('[NSF3D] EmailJS send error:', err);
-    }
-  }
-
-  if(emailSent){
+  try {
+    const result = await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+      from_name:  name,
+      from_phone: phone,
+      subject:    subject,
+      message:    message,
+    });
+    console.log('[NSF3D] Email sent:', result.status);
     success.style.display = 'block';
     document.getElementById('contactForm').reset();
     document.getElementById('filePreview').style.display = 'none';
-  } else {
+    setTimeout(()=>{ success.style.display='none'; }, 6000);
+  } catch(err) {
+    console.error('[NSF3D] Email error:', err);
     errEl.style.display = 'block';
   }
 
   btn.disabled = false;
   btn.textContent = '✉️ שלח פניה →';
-  setTimeout(()=>{ success.style.display='none'; }, 6000);
 }
 
 // MOBILE MENU
