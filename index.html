@@ -298,7 +298,7 @@ body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 .price-card-title{font-size:15px;font-weight:800;color:var(--blue-dark);}
 .figurine-fixed-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(30,160,90,.12);border:1.5px solid rgba(30,160,90,.3);color:#156638;border-radius:100px;font-size:11px;font-weight:800;padding:3px 10px;margin-top:5px;}
 body.dark .figurine-fixed-badge{color:#3ecf7a;background:rgba(30,160,90,.15);border-color:rgba(30,160,90,.35);}
-/* Gift / signage marketing strips — stronger font */
+/* Gift / signage marketing strips */
 .figurine-gift-strip{background:linear-gradient(135deg,rgba(245,200,66,.08) 0%,rgba(30,111,168,.05) 100%);border-bottom:1.5px dashed rgba(245,200,66,.35);padding:14px 20px;font-size:13px;color:var(--text2);line-height:1.65;font-weight:700;}
 .figurine-gift-strip strong{color:var(--blue-dark);}
 body.dark .figurine-gift-strip strong{color:var(--blue-light);}
@@ -351,6 +351,30 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .ab-chip{background:var(--bg2);border-radius:10px;padding:12px 14px;text-align:right;}
 .ab-chip-l{font-size:11px;color:var(--text2);font-weight:600;}
 .ab-chip-v{font-size:13px;font-weight:700;color:var(--text);margin-top:1px;}
+
+/* ══ REVIEWS ══ */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:28px;}
+.review-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px;transition:transform .2s,box-shadow .2s;}
+.review-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.review-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.review-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--blue-mid);flex-shrink:0;}
+.review-avatar-placeholder{width:48px;height:48px;border-radius:50%;background:var(--bg3);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.review-author{font-size:15px;font-weight:800;color:var(--blue-dark);}
+.review-city{font-size:12px;color:var(--text2);font-weight:600;}
+.review-stars{color:#f5c842;font-size:14px;letter-spacing:1px;margin-bottom:10px;}
+.review-text{font-size:14px;color:var(--text2);line-height:1.7;font-weight:500;font-style:italic;}
+.review-product{font-size:12px;color:var(--blue-mid);font-weight:700;margin-top:10px;}
+
+/* ══ FAQ ══ */
+.faq-list{display:grid;gap:12px;margin-top:28px;}
+.faq-item{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s;}
+.faq-item.open{border-color:var(--blue-light);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:700;color:var(--blue-dark);gap:12px;-webkit-user-select:none;user-select:none;}
+.faq-q:hover{color:var(--blue-mid);}
+.faq-arrow{font-size:18px;transition:transform .25s;flex-shrink:0;color:var(--text2);}
+.faq-item.open .faq-arrow{transform:rotate(180deg);}
+.faq-a{display:none;padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.75;font-weight:500;}
+.faq-item.open .faq-a{display:block;}
 
 /* ══ SOCIAL ══ */
 .social-grid{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
@@ -506,7 +530,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <li><a href="#contact"  data-section="contact" class="nav-cta">📱 צור קשר</a></li>
   </ul>
   <div class="nav-right-cluster">
-    <!-- Social quick icons — desktop only -->
     <div class="nav-social-icons" aria-label="קישורי רשתות חברתיות">
       <a class="nav-social-ico" href="https://wa.me/972559144386" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
         <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -528,7 +551,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <!-- Social icons row in mobile menu -->
   <div class="mobile-social-row">
     <a class="mobile-social-ico" href="https://wa.me/972559144386" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -544,11 +566,8 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     </a>
   </div>
   <a href="#catalog" onclick="closeMenu()">🎨 קטלוג צבעים</a>
-  <a href="#products" onclick="closeMenu()" id="mm-products">🖨️ מוצרים</a>
   <a href="#pricing" onclick="closeMenu()">💰 מחירון</a>
   <a href="#order" onclick="closeMenu()" id="mm-order">📦 הזמנה</a>
-  <a href="#about" onclick="closeMenu()">ℹ️ אודות</a>
-  <a href="#social" onclick="closeMenu()">📲 רשתות</a>
   <a href="#contact" onclick="closeMenu()">📱 צור קשר</a>
 </div>
 
@@ -563,18 +582,11 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <h1 class="hero-title">הרעיון שלכם<br><span class="accent">הופך למוצר אמיתי</span></h1>
     <p class="hero-sub">הדפסות תלת-מימד איכותיות. שילוב של דיוק הנדסי וטאצ' אמנותי, עם מבחר גדול של חומרים וצבעים.</p>
     <div class="hero-btns">
-      <a href="#catalog" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        לקטלוג הצבעים
+      <a href="https://wa.me/972559144386?text=%D7%94%D7%99%D7%99%20NSF%203D!%20%F0%9F%91%8B%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%F0%9F%98%8A" target="_blank" rel="noopener noreferrer" class="btn-cta3" style="font-size:18px;padding:16px 36px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        שלחו הודעה בוואטסאפ
       </a>
-      <a href="#contact" class="btn-secondary">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#25D366;flex-shrink:0;" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        התייעצות מהירה בוואטסאפ
-      </a>
-      <a href="#order" class="btn-cta3">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        להזמנה עכשיו
-      </a>
+      <a href="#catalog" style="color:var(--blue-mid);font-size:14px;font-weight:700;text-decoration:none;margin-top:4px;">או עיינו בקטלוג הצבעים ←</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">מגוון<span> רחב</span></div><div class="stat-label">צבעים וגימורים</div></div>
@@ -611,7 +623,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <button class="filter-btn" onclick="setFilter('glow',this)">✨ זוהר בחושך</button>
     <input class="search-input" type="text" id="searchInput" placeholder="🔍 חפשו צבע (למשל: נחושת, כחול)" oninput="filterColors()" aria-label="חיפוש צבע">
   </div>
-  <!-- Top show-all/less button (visible only when needed) -->
   <div class="show-all-row top-row" id="showAllRowTop" style="display:none">
     <button class="show-all-btn" id="showAllBtnTop" onclick="toggleShowAll()">הצג את כל הצבעים ↓</button>
   </div>
@@ -675,11 +686,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
       <div class="ptype-desc">ניתן ליצור מוצרים בנפח עד 32×32×32 ס"מ בהדפסה אחת. מוצרים גדולים יותר — אפשרי בתיאום אישי ועיצוב מפוצל.</div>
     </div>
   </div>
-  <div class="coming-soon" style="margin-top:18px">
-    <div class="cs-icon">📸</div>
-    <h3>גלריית פרויקטים — בקרוב</h3>
-    <p>תמונות של עבודות יתווספו בקרוב. בינתיים — שלחו הודעה ונשמח לשתף אתכם בדוגמאות!</p>
-  </div>
 </div>
 </section>
 
@@ -694,7 +700,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
 
   <div class="pricing-grid">
-    <!-- ══ FIGURINES ══ -->
     <div class="price-card figurine-featured">
       <div class="price-card-head">
         <div class="price-card-icon">👤</div>
@@ -719,7 +724,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
       </div>
     </div>
 
-    <!-- ══ SIGNAGE ══ -->
     <div class="price-card">
       <div class="price-card-head">
         <div class="price-card-icon">🪧</div>
@@ -734,7 +738,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
       </div>
     </div>
 
-    <!-- ══ OTHER PROJECTS ══ -->
     <div class="price-card">
       <div class="price-card-head">
         <div class="price-card-icon">🎯</div>
@@ -753,7 +756,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     </div>
   </div>
 
-  <!-- Printer specs -->
   <div style="margin-bottom:10px;margin-top:8px">
     <div class="stag" style="margin-bottom:14px">המדפסת שלי</div>
   </div>
@@ -772,7 +774,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     </div>
   </div>
 
-  <!-- Shipping -->
   <div style="margin-bottom:10px">
     <div class="stag" style="margin-bottom:14px">משלוח ואיסוף</div>
   </div>
@@ -789,7 +790,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <span class="shipping-free">חינם ✓</span>
   </div>
 
-  <!-- Payment -->
   <div style="margin-top:28px;margin-bottom:14px">
     <div class="stag" style="margin-bottom:14px">אמצעי תשלום</div>
   </div>
@@ -850,26 +850,76 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </div>
 </section>
 
+<!-- ══ REVIEWS ══ -->
+<div class="sdiv"></div>
+<section id="reviews" style="background:var(--bg)">
+<div class="sw">
+  <div class="sh" style="text-align:center;">
+    <div class="stag">לקוחות ממליצים</div>
+    <h2 class="stitle">מה אומרים עלינו</h2>
+    <p class="ssub">לקוחות אמיתיים, חוויות אמיתיות</p>
+  </div>
+  <div class="reviews-grid">
+    <!-- ביקורת 1 -->
+    <div class="review-card">
+      <div class="review-top">
+        <!-- אם יש תמונה: <img class="review-avatar" src="reviews/reviewer1.jpg" alt="שם"> -->
+        <div class="review-avatar-placeholder">😊</div>
+        <div>
+          <div class="review-author">יוסי כ.</div>
+          <div class="review-city">באר שבע</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"הזמנתי דמות מותאמת אישית במתנה לשחרור של חבר. התוצאה הייתה מטורפת — הוא לא האמין שזה מודפס. סמואל היה סבלני, מקצועי ומהיר."</div>
+      <div class="review-product">🎁 דמות מותאמת אישית</div>
+    </div>
+    <!-- ביקורת 2 -->
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar-placeholder">😊</div>
+        <div>
+          <div class="review-author">מיכל ד.</div>
+          <div class="review-city">אשדוד</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"רצינו שלט כניסה מעוצב לדירה החדשה. קיבלנו בדיוק את מה שביקשנו — גופן, צבעים, הכל מושלם. ממליצה בחום!"</div>
+      <div class="review-product">🪧 שלט כניסה מעוצב</div>
+    </div>
+    <!-- ביקורת 3 -->
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar-placeholder">😊</div>
+        <div>
+          <div class="review-author">אלכס ר.</div>
+          <div class="review-city">תל אביב</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"שלחתי קובץ STL של חלק שנשבר במכשיר ביתי. סמואל הדפיס אותו באיכות מעולה ושלח במשלוח מהיר. חסך לי קניית מכשיר חדש!"</div>
+      <div class="review-product">🔧 חלק חלופי מותאם</div>
+    </div>
+  </div>
+</div>
+</section>
+
 <!-- ══ ABOUT ══ -->
 <div class="sdiv"></div>
-<section id="about" style="background:var(--bg)">
+<section id="about" style="background:var(--bg2)">
 <div class="sw">
   <div class="about-grid">
     <div>
       <div class="stag">אודות</div>
       <h2 class="stitle">הנדסה ואומנות<br>באותו הדפס</h2>
       <p class="ssub" style="margin-top:14px">
-        NSF 3D הוא סטודיו שמשלב בין דיוק הנדסי לפן יצירתי-אומנותי — כי לא כל הדפסה היא ברגים ומנגנונים.
-        מאחורי העסק עומד <strong>סמואל נרודיצקי</strong>, מהנדס מכונות בוגר אוניברסיטת בן גוריון עם מעל 4 שנות ניסיון בהדפסות 3D, המשמש בין היתר כמהנדס מעבדות במחלקת מדעי הסביבה, גאואינפורמטיקה ותכנון ערים באוניברסיטת בן גוריון.
-      </p>
-      <p class="ssub" style="margin-top:10px">
-        לצד גישה הנדסית מדויקת, סמואל מביא את הכלים הנדרשים לפרויקטים יצירתיים: שילוט, דמויות, פסלונים ומוצרי עיצוב — מהרעיון הראשוני ועד המוצר הסופי. בתהליך העיצוב נעשה שימוש גם בכלי בינה מלאכותית (AI) ליצירת מודלים, המרת תמונות וסרטונים לתלת מימד ופתרון אתגרים מורכבים.
+        NSF 3D הוא סטודיו להדפסות תלת מימד בבאר שבע, בניהולו של <strong>סמואל נרודיצקי</strong> — מהנדס מכונות בוגר אוניברסיטת בן גוריון עם מעל 4 שנות ניסיון בתחום. שילוב של דיוק הנדסי עם טאצ' יצירתי-אומנותי.
       </p>
 
       <div class="hobby-origin">
         <div class="hobby-origin-icon">🌱</div>
         <div class="hobby-origin-text">
-          <strong>איך הכל התחיל?</strong> NSF 3D צמח מתחביב אישי — הדפסות לעצמי, לחברים ולמשפחה. עם הזמן, <strong>הביקוש גדל מפה לאוזן</strong> ומה שהתחיל כהנאה אישית הפך לעסק קטן שמקבל הזמנות. כל הזמנה עדיין מקבלת את אותה תשומת הלב כאילו הייתה הראשונה.
+          <strong>איך הכל התחיל?</strong> מתחביב אישי לעסק — הדפסות לחברים ולמשפחה הפכו להזמנות מפה לאוזן. כל הזמנה עדיין מקבלת את אותה תשומת הלב כאילו הייתה הראשונה.
         </div>
       </div>
 
@@ -879,18 +929,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         <div class="founder-photo-text">
           <strong>סמואל נרודיצקי</strong>
           מהנדס מכונות · מומחה הדפסות 3D · מייסד NSF 3D
-        </div>
-      </div>
-
-      <div style="margin-top:18px">
-        <div style="font-size:12px;font-weight:700;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:9px;">כלי עבודה</div>
-        <div class="sw-chips">
-          <span class="sw-chip eng" title="מכאני / הנדסי">🔩 SolidWorks</span>
-          <span class="sw-chip art" title="מידול אומנותי ואורגני">🎨 Blender</span>
-          <span class="sw-chip art" title="גרפיקה ווקטורית לשילוט">✏️ Inkscape</span>
-          <span class="sw-chip art" title="ריפוש ושחזור רשתות 3D">🔧 Meshmixer</span>
-          <span class="sw-chip ai" title="בינה מלאכותית לעיצוב ויצירה">🤖 בינה מלאכותית · AI</span>
-          <span class="sw-chip ai" title="סריקת תלת מימד באמצעות LiDAR של אייפון">📱 סריקת LiDAR</span>
         </div>
       </div>
 
@@ -907,11 +945,47 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
       <div class="ab-chips">
         <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · TPU · ועוד בקרוב</div></div>
         <div class="ab-chip"><div class="ab-chip-l">גימורים מיוחדים</div><div class="ab-chip-v">רגיל · מט · משי · זוהר בחושך · נצנצים</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">תחומי עיצוב</div><div class="ab-chip-v">הנדסי · שילוט · דמויות · אומנותי · יצירתי · כללי</div></div>
         <div class="ab-chip"><div class="ab-chip-l">שפות שירות</div><div class="ab-chip-v">עברית · English · Русский</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">אזור שירות</div><div class="ab-chip-v">באר שבע, הדרום, בכל הארץ</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">ניסיון</div><div class="ab-chip-v">מעל 4 שנות ניסיון מקצועי בהדפסות תלת מימד ובהנדסת מכונות</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">אזור שירות</div><div class="ab-chip-v">באר שבע, הדרום, משלוח לכל הארץ</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">ניסיון</div><div class="ab-chip-v">מעל 4 שנות ניסיון מקצועי</div></div>
       </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<div class="sdiv"></div>
+<section id="faq" style="background:var(--bg)">
+<div class="sw">
+  <div class="sh" style="text-align:center;">
+    <div class="stag">שאלות נפוצות</div>
+    <h2 class="stitle">יש שאלה? כנראה שכבר שאלו</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">כמה עולה הדפסת 3D?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">תלוי בגודל, חומר ומורכבות. שלט פשוט מתחיל ב-50 ₪, דמות מותאמת ב-500 ₪, ופרויקטים קטנים מ-40 ₪. תמיד תקבלו הצעת מחיר מפורטת לפני שמתחילים — ללא הפתעות.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">מה ההבדל בין PLA ל-PETG?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">PLA הוא החומר הפופולרי ביותר — קל לעבודה, מגיע במגוון צבעים, ומתאים לרוב המוצרים (שילוט, דמויות, קישוטים). PETG חזק ועמיד יותר לחום ולמים, ומתאים לחלקים טכניים או מוצרים שנחשפים לחוץ. לא בטוחים מה מתאים? שלחו הודעה ונייעץ.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">כמה זמן לוקח לקבל את ההזמנה?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">רוב ההזמנות מוכנות תוך 3-7 ימי עסקים. פרויקטים מורכבים עשויים לקחת עד 10 ימים. צריכים את זה מחר? יש מסלול אקספרס לפרויקטים דחופים.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">אין לי קובץ מוכן — אפשר בכל זאת?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">בהחלט! אפשר לשלוח תיאור במילים, תמונה, סקיצה, או סתם רעיון כללי. אני מעצב את המודל מאפס ומתאים אותו בדיוק לבקשה שלכם.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">אפשר לקבל הדפסה בכמה צבעים?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">כן! המדפסת שלנו (Bambu Lab H2D עם מערכת AMS כפולה) מאפשרת הדפסה רב-צבעונית. בדמויות — ריבוי הצבעים כלול במחיר הקבוע.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">יש משלוח לכל הארץ?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">כן. משלוח בשליח או בדואר עולה כ-50-120 ₪, ובהזמנות מעל 1,000 ₪ המשלוח חינם. איסוף עצמי בבאר שבע — תמיד חינם.</div>
     </div>
   </div>
 </div>
@@ -941,7 +1015,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
   <div class="contact-grid">
     <div class="contact-info">
-      <!-- WhatsApp -->
       <a href="#" class="contact-card" id="waCard">
         <div class="contact-icon" style="background:#25D366;">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#fff"/></svg>
@@ -951,7 +1024,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
           <div class="contact-val" id="waDisplay">—</div>
         </div>
       </a>
-      <!-- Phone -->
       <a href="tel:+972559144386" class="contact-card" id="phoneCard">
         <div class="contact-icon" style="background:var(--blue-mid);">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -963,7 +1035,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
           <div class="contact-val">055-914-4386</div>
         </div>
       </a>
-      <!-- Email -->
       <a href="#" class="contact-card" id="mailCard">
         <div class="contact-icon" style="background:#1e6fa8;">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1.5 3L12 11.5 5.5 7h13zM4 18V8.5l8 5 8-5V18H4z" fill="#fff"/></svg>
@@ -1096,9 +1167,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </div>
 
 <script>
-// ═══════════════════════════════════════
-//  ⚙️  הגדרות
-// ═══════════════════════════════════════
 const WORKER_URL   = "https://nsf3d-colors.nsf3d-il.workers.dev/";
 const WA_NUMBER    = "972559144386";
 const EMAIL_ADDR   = "nsf3d.il@gmail.com";
@@ -1109,7 +1177,6 @@ const EMAILJS_TEMPLATE = "template_auajv0o";
 const EMAILJS_KEY      = "0zsMlXrQhjmsDRUI9";
 const SECTIONS = { products:true, order:true, social:true, accessibility:true, privacy:true, terms:true };
 
-// Social platforms only (no WA/email — not "followable" networks)
 const SOCIALS = [
   { url:"https://www.facebook.com/profile.php?id=61586093829404", name:"פייסבוק", handle:"NSF.3D", color:"#1877F2",
     svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>` },
@@ -1121,10 +1188,8 @@ const SOCIALS = [
     svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>` },
 ];
 
-// ═══════════════════════════════════════
 let allColors=[], showingAll=false, activeFilter='popular', currentModalColor=null;
 
-// ── COOKIE ──
 function getCookieConsent(){ return localStorage.getItem('nsf-cookie-consent'); }
 function acceptCookies(){ localStorage.setItem('nsf-cookie-consent','all'); closeCookieBanner(); loadFbPixel(); }
 function declineCookies(){ localStorage.setItem('nsf-cookie-consent','none'); closeCookieBanner(); }
@@ -1136,7 +1201,6 @@ function initCookieBanner(){
   else if(consent==='all'){ loadFbPixel(); }
 }
 
-// ── DARK MODE ──
 (function(){ if(localStorage.getItem('nsf-dark')==='1') document.body.classList.add('dark'); })();
 function toggleDark(){
   const d=document.body.classList.toggle('dark');
@@ -1145,18 +1209,16 @@ function toggleDark(){
   document.getElementById('darkLabel').textContent=d?'מצב בהיר':'מצב כהה';
 }
 
-// ── WIP SECTIONS ──
 function applyWipSections(){
   const wip=`<div style="text-align:center;padding:60px 20px"><div style="font-size:48px;margin-bottom:16px">🚧</div><h3 style="font-size:20px;font-weight:800;color:var(--blue-dark);margin-bottom:8px">הקטע הזה בבנייה</h3><p style="color:var(--text2)">בקרוב! בינתיים <a href="#contact" style="color:var(--blue-mid);font-weight:700">צרו קשר</a></p></div>`;
-  if(!SECTIONS.products){ document.querySelector('#products .sw').innerHTML=wip; document.getElementById('nav-products').style.display='none'; document.getElementById('mm-products').style.display='none'; }
-  if(!SECTIONS.order){ document.querySelector('#order .sw').innerHTML=wip; document.getElementById('nav-order').style.display='none'; document.getElementById('mm-order').style.display='none'; }
+  if(!SECTIONS.products){ document.querySelector('#products .sw').innerHTML=wip; }
+  if(!SECTIONS.order){ document.querySelector('#order .sw').innerHTML=wip; }
   if(!SECTIONS.social){ document.getElementById('social').style.display='none'; }
   if(!SECTIONS.accessibility){ const b=document.getElementById('btn-accessibility'); if(b)b.style.display='none'; }
   if(!SECTIONS.privacy){ const b=document.getElementById('btn-privacy'); if(b)b.style.display='none'; }
   if(!SECTIONS.terms){ const b=document.getElementById('btn-terms'); if(b)b.style.display='none'; }
 }
 
-// ── INIT ──
 document.addEventListener('DOMContentLoaded',()=>{
   if(typeof emailjs !== 'undefined'){ emailjs.init(EMAILJS_KEY); }
   else { console.warn('[NSF3D] EmailJS not loaded!'); }
@@ -1169,7 +1231,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     document.getElementById('darkLabel').textContent='מצב בהיר';
   }
 
-  // Phone display — local format (no country code)
   const localNum = '0' + WA_NUMBER.slice(3).replace(/(\d{2})(\d{3})(\d{4})/, '$1-$2-$3');
   document.getElementById('waDisplay').textContent = localNum;
   document.getElementById('mailDisplay').textContent = EMAIL_ADDR;
@@ -1191,7 +1252,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   loadColors();
   initA11y();
 
-  // Catalog live date
   const dateEl = document.getElementById('catalogDate');
   if(dateEl){
     const now = new Date();
@@ -1203,11 +1263,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 });
 
-// ═══════════════════════════════════════
-//  🔵 ACTIVE SECTION HIGHLIGHT
-// ═══════════════════════════════════════
 function initActiveSection(){
-  const sectionIds = ['hero','catalog','products','pricing','order','about','social','contact'];
+  const sectionIds = ['hero','catalog','products','pricing','order','reviews','about','faq','social','contact'];
   const navItems = document.querySelectorAll('.nav-links a[data-section]');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1222,7 +1279,6 @@ function initActiveSection(){
   sectionIds.forEach(id => { const el = document.getElementById(id); if(el) observer.observe(el); });
 }
 
-// ── SKELETON LOADING ──
 function renderSkeletons(count=12){
   const grid = document.getElementById('colorsGrid');
   grid.innerHTML = Array.from({length:count},(_,i)=>`
@@ -1236,7 +1292,6 @@ function renderSkeletons(count=12){
     </div>`).join('');
 }
 
-// ── COLORS ──
 async function loadColors(){
   renderSkeletons(6);
   try{
@@ -1265,7 +1320,6 @@ function updateShowAllButtons(show, total, list){
     const label = showingAll ? 'הצג פחות ↑' : `הצג את כל ${total} הצבעים ↓`;
     rowBottom.style.display = 'block';
     btnBottom.textContent   = label;
-    // Show top button only when expanded (so user can collapse without scrolling down)
     rowTop.style.display  = showingAll ? 'block' : 'none';
     btnTop.textContent    = showingAll ? 'הצג פחות ↑' : label;
   } else {
@@ -1319,7 +1373,6 @@ function renderColors(list){
   }).join('');
 }
 
-// ── MODAL ──
 function openModal(dataStr){
   const c = typeof dataStr==='string' ? JSON.parse(dataStr) : dataStr;
   currentModalColor = c;
@@ -1356,7 +1409,6 @@ function orderFromModal(){
 function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
 function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
 
-// ── LIGHTBOX ──
 function openLightbox(src){ document.getElementById('lightboxImg').src=src; document.getElementById('lightbox').classList.add('open'); }
 function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
 
@@ -1364,7 +1416,6 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){ closeModalDirect(); closeLegalDirect(); closeLightbox(); }
 });
 
-// ── FORM ──
 async function submitForm(e){
   e.preventDefault();
   const name    = document.getElementById('fname').value.trim();
@@ -1387,13 +1438,9 @@ async function submitForm(e){
   btn.disabled=false; btn.textContent='✉️ שלח פניה →';
 }
 
-// ── MOBILE MENU ──
 function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
 
-// ═══════════════════════════════════════
-//  ♿ ACCESSIBILITY
-// ═══════════════════════════════════════
 let a11yFontLevel = 0;
 const a11yFeatures = { contrast:false, links:false, noanim:false, cursor:false };
 
@@ -1455,7 +1502,6 @@ document.addEventListener('click', function(e){
   }
 });
 
-// ── LEGAL MODALS ──
 const LEGAL_CONTENT = {
   accessibility:{
     title:'הצהרת נגישות',
