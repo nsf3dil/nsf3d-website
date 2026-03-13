@@ -288,8 +288,10 @@ body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 
 /* ══ PRICING ══ */
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:28px;}
-.price-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.price-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--blue-light);}
 .price-card.figurine-featured{border:2px solid var(--blue-mid);box-shadow:0 4px 24px rgba(30,111,168,.15);}
+.price-card.figurine-featured:hover{transform:translateY(-6px);box-shadow:0 8px 36px rgba(30,111,168,.28);border-color:var(--blue-light);}
 .price-card-head{background:var(--bg3);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;}
 .price-card.figurine-featured .price-card-head{background:linear-gradient(135deg,rgba(30,111,168,.12) 0%,rgba(77,184,232,.08) 100%);border-bottom-color:rgba(30,111,168,.25);}
 .price-card-icon{font-size:26px;}
@@ -454,8 +456,9 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 @media(max-width:768px){
   nav{padding:0 18px;}
   .nav-links{display:none;}
-  .nav-social-icons{display:none;}
-  .hamburger{display:flex;}
+  .nav-social-icons{display:flex;gap:4px;}
+  .nav-social-ico{width:28px;height:28px;}
+  .nav-social-ico svg{width:15px;height:15px;}  .hamburger{display:flex;}
   .sw{padding:54px 18px;}
   .about-grid,.contact-grid{grid-template-columns:1fr;}
   .about-visual{order:-1;}
@@ -587,7 +590,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   <div class="catalog-info-note">
     <span style="font-size:18px;flex-shrink:0;">🎨</span>
     <span>
-      <strong>הערה:</strong> הצבעים המוצגים הם ייצוג מיטבי — תיתכן סטייה קלה בין הגוון על המסך לתוצאה המודפסת בפועל. לצבעים מיוחדים שאינם בקטלוג — <a href="#contact" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">צרו קשר</a>, נשתדל להשיג עבורכם.
+      <strong>הערה:</strong> תיתכן סטייה קלה בין גוון הצבעים כאן על המסך לבין התוצאה המודפסת בפועל. לצבעים מיוחדים שאינם בקטלוג — <a href="#contact" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">צרו קשר</a>, נשתדל להשיג עבורכם.
     </span>
   </div>
   <div class="filter-row">
@@ -714,7 +717,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         <div class="price-card-title">שילוט</div>
       </div>
       <div class="signage-marketing-strip">
-        <strong>שלט כניסה לבית · לוגו לעסק · מספר דירה · שלטי שולחן לאירועים · שלטי אזהרה · ברקודים.</strong> כל שלט מותאם אישית בדיוק לפי הצורך — פונט, צבע, גודל.
+        <strong>שלט כניסה לבית · לוגו לעסק · מספר דירה · שלטי שולחן לאירועים · שלטי אזהרה · ברקודים.</strong> כל שלט מותאם אישית בדיוק לפי הצורך — גופן, צבע, גודל.
       </div>
       <div class="price-rows">
         <div class="price-row"><span class="price-row-label">שלט פשוט — מחיר התחלתי</span><span class="price-row-val">50 ₪</span></div>
@@ -796,7 +799,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     </div>
   </div>
   <div style="font-size:12px;color:var(--text2);margin-top:14px;padding:12px 16px;background:var(--bg3);border-radius:10px;border:1px solid var(--border);">
-    💡 <strong>הבהרה:</strong> NSF 3D פועל כעת כעוסק פטור. קבלה כחוק תישלח אליכם דיגיטלית לאחר כל תשלום.
+    💡 <strong>הבהרה:</strong> NSF 3D פועל כעוסק פטור. קבלה כחוק תישלח אליכם דיגיטלית לאחר כל תשלום.
   </div>
 </div>
 </section>
@@ -891,14 +894,14 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 
     <div class="about-visual">
       <div class="abn">NSF 3D</div>
-      <div class="abl">מידע כללי על העסק</div>
+      <div class="abl">מידע כללי</div>
       <div class="ab-chips">
         <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · TPU · ועוד בקרוב</div></div>
         <div class="ab-chip"><div class="ab-chip-l">גימורים מיוחדים</div><div class="ab-chip-v">רגיל · מט · משי · זוהר בחושך · נצנצים</div></div>
         <div class="ab-chip"><div class="ab-chip-l">תחומי עיצוב</div><div class="ab-chip-v">הנדסי · שילוט · דמויות · אומנותי · יצירתי · כללי</div></div>
         <div class="ab-chip"><div class="ab-chip-l">שפות שירות</div><div class="ab-chip-v">עברית · English · Русский</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">אזור שירות</div><div class="ab-chip-v">באר שבע, הדרום, כלל הארץ</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">ניסיון</div><div class="ab-chip-v">מעל 4 שנות ניסיון מקצועי בהדפסות 3D ובהנדסת מכונות</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">אזור שירות</div><div class="ab-chip-v">באר שבע, הדרום, בכל הארץ</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">ניסיון</div><div class="ab-chip-v">מעל 4 שנות ניסיון מקצועי בהדפסות תלת מימד ובהנדסת מכונות</div></div>
       </div>
     </div>
   </div>
@@ -1088,8 +1091,7 @@ const WORKER_URL   = "https://nsf3d-colors.nsf3d-il.workers.dev/";
 const WA_NUMBER    = "972559144386";
 const EMAIL_ADDR   = "nsf3d.il@gmail.com";
 const SITE_URL     = "https://nsf3dil.github.io/nsf3d-website/";
-const DEFAULT_SHOW = 6;
-const EMAILJS_SERVICE  = "nsf3d_gmail";
+function getDefaultShow(){ return window.innerWidth <= 768 ? 4 : 6; }const EMAILJS_SERVICE  = "nsf3d_gmail";
 const EMAILJS_TEMPLATE = "template_auajv0o";
 const EMAILJS_KEY      = "0zsMlXrQhjmsDRUI9";
 const SECTIONS = { products:true, order:true, social:true, accessibility:true, privacy:true, terms:true };
@@ -1264,9 +1266,10 @@ function filterColors(){
   else if(activeFilter==='TPU')  list = list.filter(c=>c.material==='TPU');
   if(q) list = list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q)||c.material.toLowerCase().includes(q));
 
-  const canTruncate = !q && list.length > DEFAULT_SHOW && activeFilter !== 'glow';
+  const defaultShow = getDefaultShow();
+  const canTruncate = !q && list.length > defaultShow && activeFilter !== 'glow';
   updateShowAllButtons(canTruncate, list.length, list);
-  renderColors(canTruncate && !showingAll ? list.slice(0, DEFAULT_SHOW) : list);
+  renderColors(canTruncate && !showingAll ? list.slice(0, defaultShow) : list);
 }
 
 function toggleShowAll(){ showingAll=!showingAll; filterColors(); if(!showingAll){ document.getElementById('catalog').scrollIntoView({behavior:'smooth'}); } }
