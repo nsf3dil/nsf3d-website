@@ -420,6 +420,11 @@ body.dark footer{background:#061422;}
 .legal-body .highlight strong{color:#8a4d00;}
 body.dark .legal-body .highlight strong{color:#f5c842;}
 
+/* ══ BACK TO TOP ══ */
+.back-to-top{position:fixed;bottom:24px;right:24px;z-index:980;width:48px;height:48px;border-radius:50%;background:var(--blue-mid);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(30,111,168,.40);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s,box-shadow .2s;pointer-events:none;}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+.back-to-top:hover{background:var(--blue-dark);box-shadow:0 6px 28px rgba(30,111,168,.55);transform:translateY(-2px);}
+
 /* ══ COOKIE ══ */
 #cookieBanner{display:none;position:fixed;bottom:0;right:0;left:0;z-index:500;background:var(--blue-dark);color:#fff;padding:16px 24px;border-top:2px solid var(--blue-mid);box-shadow:0 -4px 24px rgba(0,0,0,.2);}
 body.dark #cookieBanner{background:#061422;}
@@ -1057,6 +1062,9 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
 </div>
 
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="חזרה לראש הדף" title="חזרה למעלה">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 <!-- ══ ACCESSIBILITY WIDGET ══ -->
 <button class="a11y-btn" id="a11yBtn" onclick="toggleA11yPanel()" aria-label="כלי נגישות" title="כלי נגישות">♿</button>
 <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="אפשרויות נגישות" aria-modal="false">
@@ -1176,6 +1184,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     </a>`).join('');
 
   initCookieBanner();
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 300);
+  }, { passive: true });
   loadColors();
   initA11y();
 
