@@ -8,7 +8,6 @@
 <meta name="keywords" content="הדפסות תלת מימד, 3D printing, באר שבע, הדפסת 3D, PLA, PETG, שילוט תלת מימד, דמויות 3D, NSF 3D">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nsf3dil.github.io/nsf3d-website/">
-
 <meta property="og:title" content="NSF 3D — הדפסות 3D מקצועיות | באר שבע והדרום">
 <meta property="og:description" content="הדפסות 3D בהתאמה אישית — PLA, PETG, TPU במגוון צבעים. שילוט, דמויות, עיצוב. הצעת מחיר חינם, שירות אישי מהיר.">
 <meta property="og:type" content="website">
@@ -18,7 +17,6 @@
 <meta property="og:site_name" content="NSF 3D">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1e6fa8">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -69,13 +67,11 @@
   }
 }
 </script>
-
 <link rel="preload" as="image" href="NSF-logo-large-1000px.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <style>
 /* ══ LIGHT THEME ══ */
 :root{
@@ -88,6 +84,7 @@
   --shadow:0 2px 16px rgba(30,111,168,.10);
   --shadow-md:0 4px 32px rgba(30,111,168,.15);
   --radius:14px;
+  --green-mid:#16a34a;--green-dark:#15803d;
 }
 body.dark{
   --bg:#0b1622;--bg2:#0f1e2e;--bg3:#0b2038;
@@ -98,6 +95,7 @@ body.dark{
   --nav-bg:rgba(11,22,34,.97);--modal-bg:#0f1e2e;
   --shadow:0 2px 16px rgba(0,0,0,.5);
   --shadow-md:0 4px 32px rgba(0,0,0,.6);
+  --green-mid:#22c55e;--green-dark:#16a34a;
 }
 body.a11y-contrast{
   --bg:#fff;--bg2:#f0f0f0;--bg3:#e0e0e0;
@@ -115,7 +113,6 @@ body.a11y-contrast.dark{
   --card-bg:#111;--input-bg:#000;
   --nav-bg:rgba(0,0,0,.99);--modal-bg:#111;
 }
-
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direction:rtl;overflow-x:hidden;transition:background .3s,color .3s;}
@@ -130,7 +127,6 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 .nav-links{display:flex;gap:18px;list-style:none;align-items:center;}
 .nav-links a{color:var(--text2);font-size:14px;font-weight:700;text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px;}
 .nav-links a:hover{color:var(--blue-mid);}
-/* ── Active section highlight ── */
 .nav-links a.nav-active:not(.nav-cta){color:var(--blue-mid);}
 .nav-links a.nav-active:not(.nav-cta)::after{content:'';position:absolute;bottom:-4px;right:0;left:0;height:2.5px;background:var(--blue-mid);border-radius:2px;}
 .nav-cta{background:var(--blue-mid)!important;color:#fff!important;padding:8px 18px;border-radius:10px;font-weight:700!important;transition:background .2s!important;}
@@ -150,6 +146,11 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 .mobile-menu.open{display:flex;}
 .mobile-menu a{color:var(--text);font-size:16px;font-weight:700;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);}
 .mobile-menu a:last-child{border:none;}
+/* ── Mobile menu social row ── */
+.mobile-social-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+.mobile-social-ico{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:.85;flex-shrink:0;transition:transform .2s,opacity .2s;}
+.mobile-social-ico:hover{opacity:1;transform:scale(1.1);}
+.mobile-social-ico svg{width:20px;height:20px;}
 
 /* ══ HERO ══ */
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;background:linear-gradient(155deg,var(--bg3) 0%,var(--bg) 55%,var(--bg2) 100%);position:relative;overflow:hidden;transition:background .3s;}
@@ -158,10 +159,7 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 .hero-logo-wrap{width:180px;height:180px;border-radius:28px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 50%,#0d2a47 100%);box-shadow:0 8px 40px rgba(30,111,168,.35),0 0 0 1px rgba(77,184,232,.2);display:flex;align-items:center;justify-content:center;}
 .hero-logo-wrap img{width:88%;height:88%;object-fit:contain;border-radius:18px;}
 body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px rgba(77,184,232,.15);}
-
-/* ── Hero tag — bigger ── */
 .hero-tag{display:inline-block;background:rgba(77,184,232,.15);border:1px solid rgba(77,184,232,.4);color:var(--blue-mid);font-size:16px;font-weight:700;padding:10px 26px;border-radius:100px;margin-bottom:20px;}
-
 .hero-title{font-size:clamp(42px,7vw,80px);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:18px;color:var(--blue-dark);}
 .hero-title .accent{color:var(--blue-light);}
 .hero-sub{font-size:clamp(16px,2vw,19px);color:var(--text2);max-width:500px;line-height:1.75;margin-bottom:34px;}
@@ -171,8 +169,11 @@ body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px r
 .btn-secondary{background:var(--card-bg);color:#1a5a8a;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;border:2px solid var(--blue-light);transition:background .2s,transform .2s;display:inline-flex;align-items:center;gap:8px;}
 .btn-secondary:hover{background:var(--bg3);transform:translateY(-2px);}
 body.dark .btn-secondary{color:var(--blue-light);}
-.btn-cta3{background:linear-gradient(135deg,#1a3a5c 0%,#1e6fa8 100%);color:#fff;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(26,58,92,.35);display:inline-flex;align-items:center;gap:8px;}
+/* ── GREEN CTA (hero + order) ── */
+.btn-cta3{background:linear-gradient(135deg,#15803d 0%,#16a34a 100%);color:#fff;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(21,128,61,.35);display:inline-flex;align-items:center;gap:8px;}
 .btn-cta3:hover{opacity:.88;transform:translateY(-2px);}
+.btn-green-order{background:linear-gradient(135deg,#15803d 0%,#16a34a 100%);color:#fff;padding:14px 32px;border-radius:var(--radius);font-size:17px;font-weight:800;text-decoration:none;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(21,128,61,.38);display:inline-flex;align-items:center;gap:10px;}
+.btn-green-order:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 32px rgba(21,128,61,.48);}
 .hero-stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap;justify-content:center;}
 .stat{text-align:center;}
 .stat-num{font-size:34px;font-weight:900;color:var(--blue-dark);}
@@ -184,7 +185,7 @@ body.dark .btn-secondary{color:var(--blue-light);}
 .sdiv{height:1px;background:var(--border);}
 .stag{font-size:46px;font-weight:1000;color:var(--blue-mid);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
 .stitle{font-size:clamp(32px,4vw,46px);font-weight:900;color:var(--blue-dark);letter-spacing:-.5px;line-height:1.15;}
-.ssub{font-size:16px;color:var(--text2);margin-top:10px;line-height:1.65;font-weight:400;}
+.ssub{font-size:16px;color:var(--text2);margin-top:10px;line-height:1.65;font-weight:500;}
 .sh{margin-bottom:42px;}
 
 /* ══ SKELETON ══ */
@@ -203,6 +204,7 @@ body.a11y-noanim *,body.a11y-noanim *::before,body.a11y-noanim *::after{animatio
 .search-input:focus{border-color:var(--blue-mid);}
 .search-input::placeholder{color:var(--text2);}
 .show-all-row{text-align:center;margin-top:26px;}
+.show-all-row.top-row{margin-top:0;margin-bottom:18px;}
 .show-all-btn{background:var(--card-bg);color:var(--blue-mid);border:2px solid var(--blue-light);padding:10px 28px;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
 .show-all-btn:hover{background:var(--bg3);}
 .colors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px;}
@@ -224,7 +226,7 @@ body.dark .tag-outstock{color:#f07070;background:rgba(200,60,60,.12);border-colo
 .loading{text-align:center;padding:56px;color:var(--text2);font-size:16px;grid-column:1/-1;}
 .live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-left:6px;animation:pulse-dot 2s ease-in-out infinite;vertical-align:middle;position:relative;top:-1px;}
 @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
-.catalog-info-note{background:rgba(30,111,168,.06);border:1.5px solid rgba(30,111,168,.18);border-radius:10px;padding:11px 16px;font-size:13px;color:var(--text2);font-weight:500;margin-bottom:18px;display:flex;align-items:flex-start;gap:10px;line-height:1.6;}
+.catalog-info-note{background:rgba(30,111,168,.06);border:1.5px solid rgba(30,111,168,.18);border-radius:10px;padding:11px 16px;font-size:13px;color:var(--text2);font-weight:600;margin-bottom:18px;display:flex;align-items:flex-start;gap:10px;line-height:1.6;}
 body.dark .catalog-info-note{background:rgba(30,111,168,.10);border-color:rgba(77,184,232,.2);}
 
 /* ══ COLOR MODAL ══ */
@@ -256,14 +258,14 @@ body.dark .catalog-info-note{background:rgba(30,111,168,.10);border-color:rgba(7
 .ptype{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:26px;text-align:center;}
 .ptype-icon{font-size:42px;margin-bottom:10px;}
 .ptype-title{font-size:16px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
-.ptype-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:400;}
+.ptype-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:500;}
 .coming-soon{background:var(--bg3);border:2px dashed var(--border2);border-radius:var(--radius);padding:44px;text-align:center;}
 .coming-soon .cs-icon{font-size:44px;margin-bottom:12px;}
 .coming-soon h3{font-size:19px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
-.coming-soon p{font-size:14px;color:var(--text2);font-weight:400;}
+.coming-soon p{font-size:14px;color:var(--text2);font-weight:500;}
 .multicolor-banner{background:linear-gradient(135deg,rgba(138,43,226,.07) 0%,rgba(30,111,168,.06) 100%);border:1.5px solid rgba(138,43,226,.25);border-radius:14px;padding:16px 22px;display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
 .multicolor-banner-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
-.multicolor-banner-text{font-size:14px;color:var(--text2);line-height:1.7;font-weight:500;}
+.multicolor-banner-text{font-size:14px;color:var(--text2);line-height:1.7;font-weight:600;}
 .multicolor-banner-text strong{color:var(--blue-dark);}
 body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 
@@ -272,7 +274,7 @@ body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 .step{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:24px;}
 .step-num{font-size:40px;font-weight:900;color:rgba(77,184,232,.30);line-height:1;margin-bottom:12px;}
 .step-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:5px;}
-.step-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:400;}
+.step-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:500;}
 .order-cta{text-align:center;margin-top:32px;}
 .express-banner{margin-top:28px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 60%,#0e3255 100%);border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;box-shadow:0 6px 32px rgba(30,111,168,.30);border:1px solid rgba(77,184,232,.25);position:relative;overflow:hidden;}
 .express-banner::before{content:'';position:absolute;top:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,50,.07) 0%,transparent 70%);pointer-events:none;}
@@ -280,32 +282,28 @@ body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 .express-content{flex:1;min-width:200px;}
 .express-title{font-size:17px;font-weight:900;color:#fff;margin-bottom:6px;}
 .express-badge{display:inline-block;background:rgba(255,200,50,.2);border:1px solid rgba(255,200,50,.4);color:#f5c842;font-size:10px;font-weight:700;padding:2px 10px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
-.express-desc{font-size:13px;color:rgba(255,255,255,.78);line-height:1.65;font-weight:400;}
+.express-desc{font-size:13px;color:rgba(255,255,255,.78);line-height:1.65;font-weight:500;}
 .btn-express{background:linear-gradient(135deg,#f5c842 0%,#e6a800 100%);color:#1a2533;padding:13px 24px;border-radius:12px;font-size:15px;font-weight:900;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(245,200,66,.35);}
 .btn-express:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(245,200,66,.5);}
 
 /* ══ PRICING ══ */
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:28px;}
 .price-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
-/* ── Featured figurine card ── */
 .price-card.figurine-featured{border:2px solid var(--blue-mid);box-shadow:0 4px 24px rgba(30,111,168,.15);}
 .price-card-head{background:var(--bg3);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;}
 .price-card.figurine-featured .price-card-head{background:linear-gradient(135deg,rgba(30,111,168,.12) 0%,rgba(77,184,232,.08) 100%);border-bottom-color:rgba(30,111,168,.25);}
 .price-card-icon{font-size:26px;}
 .price-card-title{font-size:15px;font-weight:800;color:var(--blue-dark);}
-/* Fixed-price + multicolor badge */
 .figurine-fixed-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(30,160,90,.12);border:1.5px solid rgba(30,160,90,.3);color:#156638;border-radius:100px;font-size:11px;font-weight:800;padding:3px 10px;margin-top:5px;}
 body.dark .figurine-fixed-badge{color:#3ecf7a;background:rgba(30,160,90,.15);border-color:rgba(30,160,90,.35);}
-/* Gift marketing strip */
-.figurine-gift-strip{background:linear-gradient(135deg,rgba(245,200,66,.08) 0%,rgba(30,111,168,.05) 100%);border-bottom:1.5px dashed rgba(245,200,66,.35);padding:14px 20px;font-size:13px;color:var(--text2);line-height:1.65;font-weight:500;}
+/* Gift / signage marketing strips — stronger font */
+.figurine-gift-strip{background:linear-gradient(135deg,rgba(245,200,66,.08) 0%,rgba(30,111,168,.05) 100%);border-bottom:1.5px dashed rgba(245,200,66,.35);padding:14px 20px;font-size:13px;color:var(--text2);line-height:1.65;font-weight:700;}
 .figurine-gift-strip strong{color:var(--blue-dark);}
 body.dark .figurine-gift-strip strong{color:var(--blue-light);}
-/* Signage marketing strip */
-.signage-marketing-strip{background:rgba(30,111,168,.05);border-bottom:1.5px dashed rgba(30,111,168,.2);padding:14px 20px;font-size:13px;color:var(--text2);line-height:1.65;font-weight:500;}
+.signage-marketing-strip{background:rgba(30,111,168,.05);border-bottom:1.5px dashed rgba(30,111,168,.2);padding:14px 20px;font-size:13px;color:var(--text2);line-height:1.65;font-weight:700;}
 .signage-marketing-strip strong{color:var(--blue-dark);}
 body.dark .signage-marketing-strip strong{color:var(--blue-light);}
-/* Per-card pricing note */
-.card-pricing-note{background:rgba(30,111,168,.04);border-top:1px solid var(--border);padding:11px 16px;font-size:12px;color:var(--text2);font-weight:500;display:flex;align-items:flex-start;gap:8px;line-height:1.55;}
+.card-pricing-note{background:rgba(30,111,168,.04);border-top:1px solid var(--border);padding:11px 16px;font-size:12px;color:var(--text2);font-weight:600;display:flex;align-items:flex-start;gap:8px;line-height:1.55;}
 .price-rows{padding:8px 0;}
 .price-row{display:flex;justify-content:space-between;align-items:center;padding:9px 20px;border-bottom:1px solid var(--border);font-size:13px;}
 .price-row:last-child{border:none;}
@@ -319,7 +317,7 @@ body.dark .shipping-free{color:#3ecf7a;}
 .pay-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:14px;}
 .pay-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
 .pay-title{font-size:14px;font-weight:800;color:var(--blue-dark);}
-.pay-desc{font-size:12px;color:var(--text2);margin-top:2px;font-weight:400;}
+.pay-desc{font-size:12px;color:var(--text2);margin-top:2px;font-weight:500;}
 .shipping-row{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:14px;}
 .shipping-label{color:var(--text2);font-weight:600;display:flex;align-items:center;gap:8px;}
 
@@ -329,15 +327,14 @@ body.dark .shipping-free{color:#3ecf7a;}
 .fi{display:flex;gap:14px;align-items:flex-start;}
 .fi-icon{width:42px;height:42px;border-radius:10px;background:rgba(30,111,168,.1);border:1px solid rgba(30,111,168,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .fi-text h4{font-size:14px;font-weight:800;color:var(--blue-dark);margin-bottom:2px;}
-.fi-text p{font-size:13px;color:var(--text2);line-height:1.55;font-weight:400;}
+.fi-text p{font-size:13px;color:var(--text2);line-height:1.55;font-weight:500;}
 .hobby-origin{margin-top:18px;background:linear-gradient(135deg,rgba(77,184,232,.07) 0%,rgba(30,111,168,.05) 100%);border:1.5px solid rgba(77,184,232,.25);border-radius:14px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px;}
 .hobby-origin-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
-.hobby-origin-text{font-size:15px;color:var(--text2);line-height:1.65;font-weight:500;}
+.hobby-origin-text{font-size:15px;color:var(--text2);line-height:1.65;font-weight:600;}
 .hobby-origin-text strong{color:var(--blue-dark);}
-/* Founder portrait */
 .founder-photo-row{display:flex;align-items:center;gap:16px;margin-top:18px;padding:14px 18px;background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;}
 .founder-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--blue-mid);box-shadow:0 4px 16px rgba(30,111,168,.2);flex-shrink:0;}
-.founder-photo-text{font-size:13px;color:var(--text2);line-height:1.6;font-weight:500;}
+.founder-photo-text{font-size:13px;color:var(--text2);line-height:1.6;font-weight:600;}
 .founder-photo-text strong{color:var(--blue-dark);font-size:14px;display:block;margin-bottom:2px;}
 .sw-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
 .sw-chip{background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--blue-dark);}
@@ -346,7 +343,7 @@ body.dark .shipping-free{color:#3ecf7a;}
 .sw-chip.ai{border-color:rgba(138,43,226,.35);background:rgba(138,43,226,.07);color:#6b1fa8;}
 body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);background:rgba(138,43,226,.12);}
 .about-visual{background:var(--card-bg);border:1.5px solid var(--border);border-radius:18px;padding:32px;text-align:center;box-shadow:var(--shadow);}
-.abn{font-size:68px;font-weight:900;color:var(--blue-mid);line-height:1;}
+.abn{font-size:48px;font-weight:900;color:var(--blue-mid);line-height:1.1;}
 .abl{font-size:14px;color:var(--text2);margin-top:5px;font-weight:600;}
 .ab-chips{display:grid;gap:9px;margin-top:22px;}
 .ab-chip{background:var(--bg2);border-radius:10px;padding:12px 14px;text-align:right;}
@@ -386,7 +383,7 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .form-submit{background:var(--blue-mid);color:#fff;border:none;padding:13px 28px;border-radius:var(--radius);font-size:16px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(30,111,168,.28);}
 .form-submit:hover{background:#155f8f;transform:translateY(-1px);}
 .form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-.form-hint{font-size:12px;color:var(--text2);margin-top:5px;font-weight:400;display:flex;align-items:flex-start;gap:5px;line-height:1.5;}
+.form-hint{font-size:12px;color:var(--text2);margin-top:5px;font-weight:500;display:flex;align-items:flex-start;gap:5px;line-height:1.5;}
 .form-success{display:none;background:rgba(30,160,90,.1);border:1px solid rgba(30,160,90,.3);color:#156638;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
 body.dark .form-success{color:#3ecf7a;background:rgba(30,160,90,.12);border-color:rgba(30,160,90,.3);}
 .form-error{display:none;background:rgba(200,60,60,.1);border:1px solid rgba(200,60,60,.3);color:#9e2020;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
@@ -454,12 +451,10 @@ body.a11y-cursor,body.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns=
 body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu a,body.a11y-links footer a,body.a11y-links .footer-links a{text-decoration:underline!important;}
 
 /* ══ RESPONSIVE ══ */
-@media(max-width:900px){
-  .nav-social-icons{display:none;}
-}
 @media(max-width:768px){
   nav{padding:0 18px;}
   .nav-links{display:none;}
+  .nav-social-icons{display:none;}
   .hamburger{display:flex;}
   .sw{padding:54px 18px;}
   .about-grid,.contact-grid{grid-template-columns:1fr;}
@@ -502,17 +497,14 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <li><a href="#contact"  data-section="contact" class="nav-cta">📱 צור קשר</a></li>
   </ul>
   <div class="nav-right-cluster">
-    <!-- Social quick icons — always visible in nav -->
+    <!-- Social quick icons — desktop only -->
     <div class="nav-social-icons" aria-label="קישורי רשתות חברתיות">
-      <!-- WhatsApp -->
       <a class="nav-social-ico" href="https://wa.me/972559144386" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
         <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       </a>
-      <!-- Instagram -->
       <a class="nav-social-ico" href="https://www.instagram.com/nsf.3d/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
         <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
-      <!-- Facebook -->
       <a class="nav-social-ico" href="https://www.facebook.com/profile.php?id=61586093829404" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
         <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
       </a>
@@ -527,6 +519,21 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <!-- Social icons row in mobile menu -->
+  <div class="mobile-social-row">
+    <a class="mobile-social-ico" href="https://wa.me/972559144386" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a class="mobile-social-ico" href="https://www.instagram.com/nsf.3d/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a class="mobile-social-ico" href="https://www.facebook.com/profile.php?id=61586093829404" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a class="mobile-social-ico" href="https://www.tiktok.com/@nsf.3d" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="#000"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>
+    </a>
+  </div>
   <a href="#catalog" onclick="closeMenu()">🎨 קטלוג צבעים</a>
   <a href="#products" onclick="closeMenu()" id="mm-products">🖨️ מוצרים</a>
   <a href="#pricing" onclick="closeMenu()">💰 מחירון</a>
@@ -552,9 +559,8 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#25D366;flex-shrink:0;" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         התייעצות מהירה בוואטסאפ
       </a>
-      <!-- 🚀 Updated CTA3 emoji -->
       <a href="#order" class="btn-cta3">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="m8 12 3 3 5-5"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         להזמנה עכשיו
       </a>
     </div>
@@ -592,6 +598,10 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <button class="filter-btn" onclick="setFilter('TPU',this)">TPU</button>
     <button class="filter-btn" onclick="setFilter('glow',this)">✨ זוהר בחושך</button>
     <input class="search-input" type="text" id="searchInput" placeholder="🔍 חפשו צבע (למשל: נחושת, כחול)" oninput="filterColors()" aria-label="חיפוש צבע">
+  </div>
+  <!-- Top show-all/less button (visible only when needed) -->
+  <div class="show-all-row top-row" id="showAllRowTop" style="display:none">
+    <button class="show-all-btn" id="showAllBtnTop" onclick="toggleShowAll()">הצג את כל הצבעים ↓</button>
   </div>
   <div class="colors-grid" id="colorsGrid" role="list" aria-live="polite" aria-label="קטלוג צבעים"></div>
   <div class="show-all-row" id="showAllRow" style="display:none">
@@ -668,28 +678,22 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   <div class="sh">
     <div class="stag">מחירון</div>
     <h2 class="stitle">מחיר הוגן, שקיפות מלאה</h2>
-    <!-- Updated subtitle — marketing-friendly -->
     <p class="ssub">תמחור שקוף, ללא הפתעות — מחיר מוסכם לפני שמתחילים. תמיד.</p>
   </div>
 
   <div class="pricing-grid">
-
-    <!-- ══ FIGURINES — FEATURED ══ -->
+    <!-- ══ FIGURINES ══ -->
     <div class="price-card figurine-featured">
       <div class="price-card-head">
         <div class="price-card-icon">👤</div>
         <div>
           <div class="price-card-title">דמויות ופסלונים</div>
-          <!-- ✅ Fixed price + multicolor badge -->
           <div class="figurine-fixed-badge">✓ מחיר קבוע · ריבוי צבעים כלול!</div>
         </div>
       </div>
-
-      <!-- 🎁 Gift marketing strip -->
       <div class="figurine-gift-strip">
         🎁 <strong>המתנה האישית שלא נשכחת לעולם</strong> — מושלמת לחתונה, שחרור, בר/בת מצווה, יום הולדת, יום נישואים, פרישה לגמלאות, מזכרת לחיילים, מתנת פרידה ועוד. <strong>דמות מותאמת אישית — ישירות מהלב.</strong>
       </div>
-
       <div class="price-rows">
         <div class="price-row"><span class="price-row-label">בגובה 10 ס"מ</span><span class="price-row-val">500 ₪</span></div>
         <div class="price-row"><span class="price-row-label">בגובה 15 ס"מ</span><span class="price-row-val">600 ₪</span></div>
@@ -697,8 +701,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         <div class="price-row"><span class="price-row-label">בגובה 25 ס"מ</span><span class="price-row-val">750 ₪</span></div>
         <div class="price-row"><span class="price-row-label">בגובה 30 ס"מ</span><span class="price-row-val">800 ₪</span></div>
       </div>
-
-      <!-- 🌈 Multicolor included note — positive framing, inside figurines only -->
       <div style="background:rgba(30,160,90,.07);border-top:1px solid rgba(30,160,90,.2);padding:11px 16px;font-size:12px;color:#156638;font-weight:700;display:flex;align-items:center;gap:7px;">
         <span style="font-size:15px;">🌈</span>
         הדפסה רב-צבעונית כלולה במחיר הקבוע — זהו היתרון התחרותי שלנו.
@@ -711,12 +713,9 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         <div class="price-card-icon">🪧</div>
         <div class="price-card-title">שילוט</div>
       </div>
-
-      <!-- 🏡 Signage marketing strip -->
       <div class="signage-marketing-strip">
-        <strong>שלט כניסה לבית · לוגו לעסק · מספר דירה · שלטי שולחן לאירועים · שלטי אזהרה / חדר.</strong> כל שלט מותאם אישית בדיוק לפי הצורך — פונט, צבע, גודל.
+        <strong>שלט כניסה לבית · לוגו לעסק · מספר דירה · שלטי שולחן לאירועים · שלטי אזהרה · ברקודים.</strong> כל שלט מותאם אישית בדיוק לפי הצורך — פונט, צבע, גודל.
       </div>
-
       <div class="price-rows">
         <div class="price-row"><span class="price-row-label">שלט פשוט — מחיר התחלתי</span><span class="price-row-val">50 ₪</span></div>
         <div class="price-row"><span class="price-row-label">שלטים מורכבים / גדולים</span><span class="price-row-val">לפי הצעה</span></div>
@@ -735,18 +734,12 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         <div class="price-row"><span class="price-row-label">פרויקטים גדולים / מורכבים</span><span class="price-row-val">לפי הצעה</span></div>
         <div class="price-row"><span class="price-row-label">עיצוב מאפס (+הדפסה)</span><span class="price-row-val">לפי הצעה</span></div>
       </div>
-      <!-- Notes only relevant here -->
       <div class="card-pricing-note">
         <span>💬</span>
         <span>כל פרויקט מתומחר בנפרד לפי הפרטים המדויקים. תמיד תקבלו הצעה מפורטת לפני שמתחילים. <strong>ללא הפתעות.</strong></span>
       </div>
-      <div class="card-pricing-note" style="border-top:none;padding-top:0;">
-        <span>🌈</span>
-        <span>פרויקטים רב-צבעוניים — זמן ייצור ארוך יותר עשוי להשפיע על המחיר. תדעו מראש.</span>
-      </div>
     </div>
-
-  </div><!-- /pricing-grid -->
+  </div>
 
   <!-- Printer specs -->
   <div style="margin-bottom:10px;margin-top:8px">
@@ -836,7 +829,12 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     </div>
     <a href="#contact" class="btn-express">הזמינו אקספרס ⚡</a>
   </div>
-  <div class="order-cta"><a href="#contact" class="btn-primary">💬 שלחו הזמנה עכשיו</a></div>
+  <div class="order-cta">
+    <a href="#contact" class="btn-green-order">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.16 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      שלחו הזמנה עכשיו
+    </a>
+  </div>
 </div>
 </section>
 
@@ -863,14 +861,12 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         </div>
       </div>
 
-      <!-- ✅ Portrait photo — will show when samuel-portrait.jpg is uploaded to GitHub -->
       <div class="founder-photo-row">
         <img src="samuel-portrait.jpg" alt="סמואל נרודיצקי — מייסד NSF 3D" class="founder-photo"
           onerror="this.parentElement.style.display='none'">
         <div class="founder-photo-text">
           <strong>סמואל נרודיצקי</strong>
-          מהנדס מכונות · מומחה הדפסות 3D · בן גוריון<br>
-          <span style="font-size:12px;">עברית · English · Русский</span>
+          מהנדס מכונות · מומחה הדפסות 3D · מייסד NSF 3D
         </div>
       </div>
 
@@ -884,7 +880,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
           <span class="sw-chip ai" title="בינה מלאכותית לעיצוב ויצירה">🤖 בינה מלאכותית · AI</span>
           <span class="sw-chip ai" title="סריקת תלת מימד באמצעות LiDAR של אייפון">📱 סריקת LiDAR</span>
         </div>
-        <!-- ✅ Removed the redundant small gray text line -->
       </div>
 
       <div class="about-features" style="margin-top:22px">
@@ -894,17 +889,16 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
       </div>
     </div>
 
-    <!-- ✅ Updated about-visual subtitle + removed "כלי עיצוב" row -->
     <div class="about-visual">
-      <div class="abn">מגוון</div>
-      <div class="abl">NSF 3D — כל מה שצריך לדעת</div>
+      <div class="abn">NSF 3D</div>
+      <div class="abl">מידע כללי על העסק</div>
       <div class="ab-chips">
         <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · TPU · ועוד בקרוב</div></div>
         <div class="ab-chip"><div class="ab-chip-l">גימורים מיוחדים</div><div class="ab-chip-v">רגיל · מט · משי · זוהר בחושך · נצנצים</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">תחומי עיצוב</div><div class="ab-chip-v">הנדסי · שילוט · דמויות · יצירתי</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">תחומי עיצוב</div><div class="ab-chip-v">הנדסי · שילוט · דמויות · אומנותי · יצירתי · כללי</div></div>
         <div class="ab-chip"><div class="ab-chip-l">שפות שירות</div><div class="ab-chip-v">עברית · English · Русский</div></div>
         <div class="ab-chip"><div class="ab-chip-l">אזור שירות</div><div class="ab-chip-v">באר שבע, הדרום, כלל הארץ</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">ניסיון</div><div class="ab-chip-v">מעל 4 שנות הדפסות 3D</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">ניסיון</div><div class="ab-chip-v">מעל 4 שנות ניסיון מקצועי בהדפסות 3D ובהנדסת מכונות</div></div>
       </div>
     </div>
   </div>
@@ -935,19 +929,17 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
   <div class="contact-grid">
     <div class="contact-info">
-
       <!-- WhatsApp -->
       <a href="#" class="contact-card" id="waCard">
         <div class="contact-icon" style="background:#25D366;">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#fff"/></svg>
         </div>
         <div>
-          <div class="contact-label">WhatsApp Business</div>
+          <div class="contact-label">WhatsApp</div>
           <div class="contact-val" id="waDisplay">—</div>
         </div>
       </a>
-
-      <!-- ✅ Phone call — new card -->
+      <!-- Phone -->
       <a href="tel:+972559144386" class="contact-card" id="phoneCard">
         <div class="contact-icon" style="background:var(--blue-mid);">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -959,7 +951,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
           <div class="contact-val">055-914-4386</div>
         </div>
       </a>
-
       <!-- Email -->
       <a href="#" class="contact-card" id="mailCard">
         <div class="contact-icon" style="background:#1e6fa8;">
@@ -970,13 +961,12 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
           <div class="contact-val" id="mailDisplay">—</div>
         </div>
       </a>
-
       <div class="hours-card">
         <div class="hours-l">⏰ זמני מענה</div>
         <div class="hours-row"><span class="hours-day">ראשון–חמישי</span><span class="hours-time">09:00–21:00</span></div>
         <div class="hours-row"><span class="hours-day">שישי</span><span class="hours-time">09:00–15:00</span></div>
         <div class="hours-row"><span class="hours-day">שבת</span><span class="hours-time">סגור</span></div>
-        <div style="font-size:12px;color:var(--text2);margin-top:8px;font-weight:400;">מענה בוואטסאפ תוך מספר דקות עד מספר שעות ספורות</div>
+        <div style="font-size:12px;color:var(--text2);margin-top:8px;font-weight:500;">מענה בוואטסאפ תוך מספר דקות עד מספר שעות ספורות</div>
       </div>
     </div>
 
@@ -1098,12 +1088,13 @@ const WORKER_URL   = "https://nsf3d-colors.nsf3d-il.workers.dev/";
 const WA_NUMBER    = "972559144386";
 const EMAIL_ADDR   = "nsf3d.il@gmail.com";
 const SITE_URL     = "https://nsf3dil.github.io/nsf3d-website/";
-const DEFAULT_SHOW = 20;
+const DEFAULT_SHOW = 6;
 const EMAILJS_SERVICE  = "nsf3d_gmail";
 const EMAILJS_TEMPLATE = "template_auajv0o";
 const EMAILJS_KEY      = "0zsMlXrQhjmsDRUI9";
 const SECTIONS = { products:true, order:true, social:true, accessibility:true, privacy:true, terms:true };
 
+// Social platforms only (no WA/email — not "followable" networks)
 const SOCIALS = [
   { url:"https://www.facebook.com/profile.php?id=61586093829404", name:"פייסבוק", handle:"NSF.3D", color:"#1877F2",
     svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>` },
@@ -1113,10 +1104,6 @@ const SOCIALS = [
     svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>` },
   { url:"https://www.youtube.com/@NSFchannel", name:"יוטיוב", handle:"NSFchannel", color:"#FF0000",
     svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>` },
-  { url:`mailto:${EMAIL_ADDR}`, name:"אימייל", handle:EMAIL_ADDR, color:"#1e6fa8",
-    svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1.5 3L12 11.5 5.5 7h13zM4 18V8.5l8 5 8-5V18H4z"/></svg>` },
-  { url:`https://wa.me/${WA_NUMBER}`, name:"וואטסאפ", handle:WA_NUMBER.replace('972','0').replace(/(\d{3})(\d{4})(\d{4})/,'$1-$2-$3'), color:"#25D366",
-    svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>` },
 ];
 
 // ═══════════════════════════════════════
@@ -1167,7 +1154,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     document.getElementById('darkLabel').textContent='מצב בהיר';
   }
 
-  document.getElementById('waDisplay').textContent = '+' + WA_NUMBER.replace(/(\d{3})(\d{2})(\d{3})(\d{4})/,'$1-$2-$3-$4');
+  // Phone display — local format (no country code)
+  const localNum = '0' + WA_NUMBER.slice(3).replace(/(\d{2})(\d{3})(\d{4})/, '$1-$2-$3');
+  document.getElementById('waDisplay').textContent = localNum;
   document.getElementById('mailDisplay').textContent = EMAIL_ADDR;
   document.getElementById('waCard').href = `https://wa.me/${WA_NUMBER}`;
   document.getElementById('mailCard').href = `mailto:${EMAIL_ADDR}`;
@@ -1196,35 +1185,22 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 // ═══════════════════════════════════════
-//  🔵 ACTIVE SECTION HIGHLIGHT — IntersectionObserver
+//  🔵 ACTIVE SECTION HIGHLIGHT
 // ═══════════════════════════════════════
 function initActiveSection(){
   const sectionIds = ['hero','catalog','products','pricing','order','about','social','contact'];
   const navItems = document.querySelectorAll('.nav-links a[data-section]');
-
-  // rootMargin: top -60px (below nav), bottom -40% — so section must cover middle of viewport
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
         const id = entry.target.id;
         navItems.forEach(link => {
-          if(link.getAttribute('data-section') === id){
-            link.classList.add('nav-active');
-          } else {
-            link.classList.remove('nav-active');
-          }
+          link.classList.toggle('nav-active', link.getAttribute('data-section') === id);
         });
       }
     });
-  }, {
-    rootMargin: '-64px 0px -55% 0px',
-    threshold: 0
-  });
-
-  sectionIds.forEach(id => {
-    const el = document.getElementById(id);
-    if(el) observer.observe(el);
-  });
+  }, { rootMargin: '-64px 0px -55% 0px', threshold: 0 });
+  sectionIds.forEach(id => { const el = document.getElementById(id); if(el) observer.observe(el); });
 }
 
 // ── SKELETON LOADING ──
@@ -1243,7 +1219,7 @@ function renderSkeletons(count=12){
 
 // ── COLORS ──
 async function loadColors(){
-  renderSkeletons(12);
+  renderSkeletons(6);
   try{
     const res = await fetch(WORKER_URL);
     const data = await res.json();
@@ -1261,6 +1237,24 @@ function setFilter(f,btn){
   filterColors();
 }
 
+function updateShowAllButtons(show, total, list){
+  const rowBottom = document.getElementById('showAllRow');
+  const rowTop    = document.getElementById('showAllRowTop');
+  const btnBottom = document.getElementById('showAllBtn');
+  const btnTop    = document.getElementById('showAllBtnTop');
+  if(show){
+    const label = showingAll ? 'הצג פחות ↑' : `הצג את כל ${total} הצבעים ↓`;
+    rowBottom.style.display = 'block';
+    btnBottom.textContent   = label;
+    // Show top button only when expanded (so user can collapse without scrolling down)
+    rowTop.style.display  = showingAll ? 'block' : 'none';
+    btnTop.textContent    = showingAll ? 'הצג פחות ↑' : label;
+  } else {
+    rowBottom.style.display = 'none';
+    rowTop.style.display    = 'none';
+  }
+}
+
 function filterColors(){
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   let list = [...allColors];
@@ -1269,13 +1263,13 @@ function filterColors(){
   else if(activeFilter==='PETG') list = list.filter(c=>c.material==='PETG');
   else if(activeFilter==='TPU')  list = list.filter(c=>c.material==='TPU');
   if(q) list = list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q)||c.material.toLowerCase().includes(q));
-  const sar=document.getElementById('showAllRow'), sab=document.getElementById('showAllBtn');
-  const canT = !q&&list.length>DEFAULT_SHOW&&activeFilter!=='glow';
-  if(canT){ sar.style.display='block'; sab.textContent=showingAll?'הצג פחות ↑':`הצג את כל ${list.length} הצבעים ↓`; renderColors(showingAll?list:list.slice(0,DEFAULT_SHOW)); }
-  else{ sar.style.display='none'; renderColors(list); }
+
+  const canTruncate = !q && list.length > DEFAULT_SHOW && activeFilter !== 'glow';
+  updateShowAllButtons(canTruncate, list.length, list);
+  renderColors(canTruncate && !showingAll ? list.slice(0, DEFAULT_SHOW) : list);
 }
 
-function toggleShowAll(){ showingAll=!showingAll; filterColors(); }
+function toggleShowAll(){ showingAll=!showingAll; filterColors(); if(!showingAll){ document.getElementById('catalog').scrollIntoView({behavior:'smooth'}); } }
 function isHex(h){ return /^#[0-9A-Fa-f]{6}$/.test(h); }
 
 function renderColors(list){
