@@ -99,8 +99,6 @@ body.dark{
   --shadow:0 2px 16px rgba(0,0,0,.5);
   --shadow-md:0 4px 32px rgba(0,0,0,.6);
 }
-
-/* ── HIGH CONTRAST (no filter — uses CSS variables to avoid fixed-position bug) ── */
 body.a11y-contrast{
   --bg:#fff;--bg2:#f0f0f0;--bg3:#e0e0e0;
   --text:#000;--text2:#111;
@@ -122,18 +120,28 @@ body.a11y-contrast.dark{
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direction:rtl;overflow-x:hidden;transition:background .3s,color .3s;}
 
-/* NAV */
-nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
+/* ══ NAV ══ */
+nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-logo-img-wrap{width:40px;height:40px;border-radius:12px;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;}
 .nav-logo-img-wrap img{width:100%;height:100%;object-fit:contain;}
 .nav-logo-text{font-size:22px;font-weight:900;color:var(--blue-dark);display:none;}
 .nav-logo-text span{color:var(--blue-light);}
-.nav-links{display:flex;gap:22px;list-style:none;align-items:center;}
-.nav-links a{color:var(--text2);font-size:14px;font-weight:700;text-decoration:none;transition:color .2s;}
+.nav-links{display:flex;gap:18px;list-style:none;align-items:center;}
+.nav-links a{color:var(--text2);font-size:14px;font-weight:700;text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px;}
 .nav-links a:hover{color:var(--blue-mid);}
+/* ── Active section highlight ── */
+.nav-links a.nav-active:not(.nav-cta){color:var(--blue-mid);}
+.nav-links a.nav-active:not(.nav-cta)::after{content:'';position:absolute;bottom:-4px;right:0;left:0;height:2.5px;background:var(--blue-mid);border-radius:2px;}
 .nav-cta{background:var(--blue-mid)!important;color:#fff!important;padding:8px 18px;border-radius:10px;font-weight:700!important;transition:background .2s!important;}
 .nav-cta:hover{background:var(--blue-dark)!important;}
+/* ── Nav social icons ── */
+.nav-social-icons{display:flex;align-items:center;gap:6px;margin-left:4px;}
+.nav-social-ico{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .2s;opacity:.75;flex-shrink:0;}
+.nav-social-ico:hover{opacity:1;transform:scale(1.12);}
+.nav-social-ico svg{width:18px;height:18px;}
+/* ── Right cluster (controls) ── */
+.nav-right-cluster{display:flex;align-items:center;gap:8px;}
 .dark-toggle{background:var(--bg2);border:1.5px solid var(--border);color:var(--text);height:34px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;display:flex;align-items:center;gap:5px;padding:0 12px;transition:background .2s,border-color .2s;flex-shrink:0;white-space:nowrap;font-family:'Heebo',sans-serif;}
 .dark-toggle:hover{background:var(--border);border-color:var(--blue-mid);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
@@ -143,14 +151,17 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 .mobile-menu a{color:var(--text);font-size:16px;font-weight:700;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);}
 .mobile-menu a:last-child{border:none;}
 
-/* HERO */
+/* ══ HERO ══ */
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;background:linear-gradient(155deg,var(--bg3) 0%,var(--bg) 55%,var(--bg2) 100%);position:relative;overflow:hidden;transition:background .3s;}
 .hero-blob{position:absolute;top:-100px;left:-150px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(77,184,232,.12) 0%,transparent 70%);pointer-events:none;}
 .hero-blob2{position:absolute;bottom:-80px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(30,111,168,.08) 0%,transparent 70%);pointer-events:none;}
 .hero-logo-wrap{width:180px;height:180px;border-radius:28px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 50%,#0d2a47 100%);box-shadow:0 8px 40px rgba(30,111,168,.35),0 0 0 1px rgba(77,184,232,.2);display:flex;align-items:center;justify-content:center;}
 .hero-logo-wrap img{width:88%;height:88%;object-fit:contain;border-radius:18px;}
 body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px rgba(77,184,232,.15);}
-.hero-tag{display:inline-block;background:rgba(77,184,232,.15);border:1px solid rgba(77,184,232,.4);color:var(--blue-mid);font-size:13px;font-weight:700;padding:6px 18px;border-radius:100px;margin-bottom:18px;}
+
+/* ── Hero tag — bigger ── */
+.hero-tag{display:inline-block;background:rgba(77,184,232,.15);border:1px solid rgba(77,184,232,.4);color:var(--blue-mid);font-size:16px;font-weight:700;padding:10px 26px;border-radius:100px;margin-bottom:20px;}
+
 .hero-title{font-size:clamp(42px,7vw,80px);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:18px;color:var(--blue-dark);}
 .hero-title .accent{color:var(--blue-light);}
 .hero-sub{font-size:clamp(16px,2vw,19px);color:var(--text2);max-width:500px;line-height:1.75;margin-bottom:34px;}
@@ -160,8 +171,7 @@ body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px r
 .btn-secondary{background:var(--card-bg);color:#1a5a8a;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;border:2px solid var(--blue-light);transition:background .2s,transform .2s;display:inline-flex;align-items:center;gap:8px;}
 .btn-secondary:hover{background:var(--bg3);transform:translateY(-2px);}
 body.dark .btn-secondary{color:var(--blue-light);}
-/* Third hero CTA */
-.btn-cta3{background:linear-gradient(135deg,#1a3a5c 0%,#1e6fa8 100%);color:#fff;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(26,58,92,.35);}
+.btn-cta3{background:linear-gradient(135deg,#1a3a5c 0%,#1e6fa8 100%);color:#fff;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(26,58,92,.35);display:inline-flex;align-items:center;gap:8px;}
 .btn-cta3:hover{opacity:.88;transform:translateY(-2px);}
 .hero-stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap;justify-content:center;}
 .stat{text-align:center;}
@@ -169,7 +179,7 @@ body.dark .btn-secondary{color:var(--blue-light);}
 .stat-num span{color:var(--blue-light);}
 .stat-label{font-size:13px;color:var(--text2);margin-top:2px;font-weight:600;}
 
-/* SECTIONS */
+/* ══ SECTIONS ══ */
 .sw{padding:76px 40px;max-width:1200px;margin:0 auto;}
 .sdiv{height:1px;background:var(--border);}
 .stag{font-size:46px;font-weight:1000;color:var(--blue-mid);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
@@ -177,7 +187,7 @@ body.dark .btn-secondary{color:var(--blue-light);}
 .ssub{font-size:16px;color:var(--text2);margin-top:10px;line-height:1.65;font-weight:400;}
 .sh{margin-bottom:42px;}
 
-/* SKELETON LOADING */
+/* ══ SKELETON ══ */
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 body.a11y-noanim *,body.a11y-noanim *::before,body.a11y-noanim *::after{animation-duration:.001s!important;transition-duration:.001s!important;}
 .skeleton-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;pointer-events:none;}
@@ -185,12 +195,11 @@ body.a11y-noanim *,body.a11y-noanim *::before,body.a11y-noanim *::after{animatio
 .skeleton-line{height:11px;border-radius:6px;margin:0 12px;animation:shimmer 1.4s ease-in-out infinite;background:linear-gradient(90deg,var(--bg2) 25%,var(--border) 50%,var(--bg2) 75%);background-size:200% 100%;}
 .skeleton-info{padding:10px 0 12px;}
 
-/* CATALOG */
+/* ══ CATALOG ══ */
 .filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px;}
 .filter-btn{background:var(--card-bg);color:var(--text2);border:1.5px solid var(--border);padding:8px 18px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Heebo',sans-serif;}
 .filter-btn:hover,.filter-btn.active{background:var(--blue-mid);color:#fff;border-color:var(--blue-mid);}
-/* ✅ FIX: enough width to show full placeholder */
-.search-input{background:var(--card-bg);border:1.5px solid var(--border);color:var(--text);padding:9px 18px;border-radius:100px;font-size:14px;font-family:'Heebo',sans-serif;outline:none;width:100%;max-width:340px;transition:border-color .2s;margin-right:auto;}
+.search-input{background:var(--card-bg);border:1.5px solid var(--border);color:var(--text);padding:9px 18px;border-radius:100px;font-size:14px;font-family:'Heebo',sans-serif;outline:none;width:100%;max-width:260px;transition:border-color .2s;margin-right:auto;}
 .search-input:focus{border-color:var(--blue-mid);}
 .search-input::placeholder{color:var(--text2);}
 .show-all-row{text-align:center;margin-top:26px;}
@@ -213,16 +222,12 @@ body.dark .tag-instock{color:#3ecf7a;background:rgba(30,160,90,.15);border-color
 .tag-outstock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(200,60,60,.10);color:#9e2020;border:1px solid rgba(200,60,60,.25);}
 body.dark .tag-outstock{color:#f07070;background:rgba(200,60,60,.12);border-color:rgba(200,60,60,.3);}
 .loading{text-align:center;padding:56px;color:var(--text2);font-size:16px;grid-column:1/-1;}
-
-/* Live dot */
 .live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-left:6px;animation:pulse-dot 2s ease-in-out infinite;vertical-align:middle;position:relative;top:-1px;}
 @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
-
-/* Catalog info note */
 .catalog-info-note{background:rgba(30,111,168,.06);border:1.5px solid rgba(30,111,168,.18);border-radius:10px;padding:11px 16px;font-size:13px;color:var(--text2);font-weight:500;margin-bottom:18px;display:flex;align-items:flex-start;gap:10px;line-height:1.6;}
 body.dark .catalog-info-note{background:rgba(30,111,168,.10);border-color:rgba(77,184,232,.2);}
 
-/* COLOR MODAL */
+/* ══ COLOR MODAL ══ */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:300;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--modal-bg);border-radius:20px;max-width:500px;width:100%;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,.3);}
@@ -239,14 +244,14 @@ body.dark .catalog-info-note{background:rgba(30,111,168,.10);border-color:rgba(7
 .modal-wa:hover{background:var(--blue-dark);}
 .modal-close-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;}
 
-/* IMAGE LIGHTBOX */
+/* ══ LIGHTBOX ══ */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;align-items:center;justify-content:center;cursor:zoom-out;padding:20px;}
 .lightbox.open{display:flex;}
 .lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:12px;box-shadow:0 8px 60px rgba(0,0,0,.5);}
 .lightbox-close{position:fixed;top:20px;left:20px;width:44px;height:44px;background:rgba(255,255,255,.15);border:none;border-radius:50%;cursor:pointer;font-size:22px;color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s;}
 .lightbox-close:hover{background:rgba(255,255,255,.3);}
 
-/* PRODUCTS */
+/* ══ PRODUCTS ══ */
 .product-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:18px;}
 .ptype{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:26px;text-align:center;}
 .ptype-icon{font-size:42px;margin-bottom:10px;}
@@ -256,32 +261,20 @@ body.dark .catalog-info-note{background:rgba(30,111,168,.10);border-color:rgba(7
 .coming-soon .cs-icon{font-size:44px;margin-bottom:12px;}
 .coming-soon h3{font-size:19px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
 .coming-soon p{font-size:14px;color:var(--text2);font-weight:400;}
-
-/* Multicolor highlight banner */
-.multicolor-banner{
-  background:linear-gradient(135deg,rgba(138,43,226,.07) 0%,rgba(30,111,168,.06) 100%);
-  border:1.5px solid rgba(138,43,226,.25);border-radius:14px;padding:16px 22px;
-  display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;
-}
+.multicolor-banner{background:linear-gradient(135deg,rgba(138,43,226,.07) 0%,rgba(30,111,168,.06) 100%);border:1.5px solid rgba(138,43,226,.25);border-radius:14px;padding:16px 22px;display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
 .multicolor-banner-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
 .multicolor-banner-text{font-size:14px;color:var(--text2);line-height:1.7;font-weight:500;}
 .multicolor-banner-text strong{color:var(--blue-dark);}
 body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 
-/* ORDER */
+/* ══ ORDER ══ */
 .order-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px;}
 .step{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:24px;}
 .step-num{font-size:40px;font-weight:900;color:rgba(77,184,232,.30);line-height:1;margin-bottom:12px;}
 .step-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:5px;}
 .step-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:400;}
 .order-cta{text-align:center;margin-top:32px;}
-
-/* EXPRESS BANNER */
-.express-banner{
-  margin-top:28px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 60%,#0e3255 100%);
-  border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
-  box-shadow:0 6px 32px rgba(30,111,168,.30);border:1px solid rgba(77,184,232,.25);position:relative;overflow:hidden;
-}
+.express-banner{margin-top:28px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 60%,#0e3255 100%);border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;box-shadow:0 6px 32px rgba(30,111,168,.30);border:1px solid rgba(77,184,232,.25);position:relative;overflow:hidden;}
 .express-banner::before{content:'';position:absolute;top:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,50,.07) 0%,transparent 70%);pointer-events:none;}
 .express-icon-wrap{width:56px;height:56px;border-radius:14px;background:rgba(255,200,50,.15);border:1.5px solid rgba(255,200,50,.3);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
 .express-content{flex:1;min-width:200px;}
@@ -291,9 +284,48 @@ body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 .btn-express{background:linear-gradient(135deg,#f5c842 0%,#e6a800 100%);color:#1a2533;padding:13px 24px;border-radius:12px;font-size:15px;font-weight:900;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(245,200,66,.35);}
 .btn-express:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(245,200,66,.5);}
 
-/* ABOUT */
+/* ══ PRICING ══ */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:28px;}
+.price-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+/* ── Featured figurine card ── */
+.price-card.figurine-featured{border:2px solid var(--blue-mid);box-shadow:0 4px 24px rgba(30,111,168,.15);}
+.price-card-head{background:var(--bg3);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;}
+.price-card.figurine-featured .price-card-head{background:linear-gradient(135deg,rgba(30,111,168,.12) 0%,rgba(77,184,232,.08) 100%);border-bottom-color:rgba(30,111,168,.25);}
+.price-card-icon{font-size:26px;}
+.price-card-title{font-size:15px;font-weight:800;color:var(--blue-dark);}
+/* Fixed-price + multicolor badge */
+.figurine-fixed-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(30,160,90,.12);border:1.5px solid rgba(30,160,90,.3);color:#156638;border-radius:100px;font-size:11px;font-weight:800;padding:3px 10px;margin-top:5px;}
+body.dark .figurine-fixed-badge{color:#3ecf7a;background:rgba(30,160,90,.15);border-color:rgba(30,160,90,.35);}
+/* Gift marketing strip */
+.figurine-gift-strip{background:linear-gradient(135deg,rgba(245,200,66,.08) 0%,rgba(30,111,168,.05) 100%);border-bottom:1.5px dashed rgba(245,200,66,.35);padding:14px 20px;font-size:13px;color:var(--text2);line-height:1.65;font-weight:500;}
+.figurine-gift-strip strong{color:var(--blue-dark);}
+body.dark .figurine-gift-strip strong{color:var(--blue-light);}
+/* Signage marketing strip */
+.signage-marketing-strip{background:rgba(30,111,168,.05);border-bottom:1.5px dashed rgba(30,111,168,.2);padding:14px 20px;font-size:13px;color:var(--text2);line-height:1.65;font-weight:500;}
+.signage-marketing-strip strong{color:var(--blue-dark);}
+body.dark .signage-marketing-strip strong{color:var(--blue-light);}
+/* Per-card pricing note */
+.card-pricing-note{background:rgba(30,111,168,.04);border-top:1px solid var(--border);padding:11px 16px;font-size:12px;color:var(--text2);font-weight:500;display:flex;align-items:flex-start;gap:8px;line-height:1.55;}
+.price-rows{padding:8px 0;}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:9px 20px;border-bottom:1px solid var(--border);font-size:13px;}
+.price-row:last-child{border:none;}
+.price-row-label{color:var(--text2);font-weight:600;}
+.price-row-val{font-weight:800;color:var(--blue-dark);}
+.price-row-val.green{color:#156638;}
+body.dark .price-row-val.green{color:#3ecf7a;}
+.shipping-free{font-weight:800;color:#156638;}
+body.dark .shipping-free{color:#3ecf7a;}
+.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px;}
+.pay-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:14px;}
+.pay-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.pay-title{font-size:14px;font-weight:800;color:var(--blue-dark);}
+.pay-desc{font-size:12px;color:var(--text2);margin-top:2px;font-weight:400;}
+.shipping-row{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:14px;}
+.shipping-label{color:var(--text2);font-weight:600;display:flex;align-items:center;gap:8px;}
+
+/* ══ ABOUT ══ */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-.about-features{display:grid;gap:16px;margin-top:26px;}
+.about-features{display:grid;gap:16px;margin-top:22px;}
 .fi{display:flex;gap:14px;align-items:flex-start;}
 .fi-icon{width:42px;height:42px;border-radius:10px;background:rgba(30,111,168,.1);border:1px solid rgba(30,111,168,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .fi-text h4{font-size:14px;font-weight:800;color:var(--blue-dark);margin-bottom:2px;}
@@ -302,6 +334,11 @@ body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 .hobby-origin-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
 .hobby-origin-text{font-size:15px;color:var(--text2);line-height:1.65;font-weight:500;}
 .hobby-origin-text strong{color:var(--blue-dark);}
+/* Founder portrait */
+.founder-photo-row{display:flex;align-items:center;gap:16px;margin-top:18px;padding:14px 18px;background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;}
+.founder-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--blue-mid);box-shadow:0 4px 16px rgba(30,111,168,.2);flex-shrink:0;}
+.founder-photo-text{font-size:13px;color:var(--text2);line-height:1.6;font-weight:500;}
+.founder-photo-text strong{color:var(--blue-dark);font-size:14px;display:block;margin-bottom:2px;}
 .sw-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
 .sw-chip{background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--blue-dark);}
 .sw-chip.eng{border-color:rgba(30,111,168,.35);background:rgba(30,111,168,.07);}
@@ -316,7 +353,7 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .ab-chip-l{font-size:11px;color:var(--text2);font-weight:600;}
 .ab-chip-v{font-size:13px;font-weight:700;color:var(--text);margin-top:1px;}
 
-/* SOCIAL */
+/* ══ SOCIAL ══ */
 .social-grid{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
 .social-card{display:flex;align-items:center;gap:12px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 22px;text-decoration:none;color:var(--text);transition:transform .2s,box-shadow .2s,border-color .2s;min-width:150px;}
 .social-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--blue-light);}
@@ -325,7 +362,7 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .social-name{font-size:14px;font-weight:700;color:var(--blue-dark);}
 .social-handle{font-size:12px;color:var(--text2);font-weight:600;}
 
-/* CONTACT */
+/* ══ CONTACT ══ */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
 .contact-info{display:grid;gap:12px;}
 .contact-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);transition:background .2s,transform .2s;}
@@ -355,7 +392,7 @@ body.dark .form-success{color:#3ecf7a;background:rgba(30,160,90,.12);border-colo
 .form-error{display:none;background:rgba(200,60,60,.1);border:1px solid rgba(200,60,60,.3);color:#9e2020;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
 body.dark .form-error{color:#f07070;}
 
-/* FOOTER */
+/* ══ FOOTER ══ */
 footer{background:var(--blue-dark);color:rgba(255,255,255,.7);padding:38px 40px 28px;text-align:center;}
 body.dark footer{background:#061422;}
 .footer-links{display:flex;gap:20px;justify-content:center;list-style:none;margin-bottom:10px;flex-wrap:wrap;}
@@ -366,7 +403,7 @@ body.dark footer{background:#061422;}
 .footer-legal-btn:hover{color:rgba(255,255,255,.85);}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.3);}
 
-/* LEGAL MODALS */
+/* ══ LEGAL ══ */
 .legal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
 .legal-overlay.open{display:flex;}
 .legal-modal{background:var(--modal-bg);border-radius:18px;max-width:640px;width:100%;max-height:82vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 16px 64px rgba(0,0,0,.3);}
@@ -384,7 +421,7 @@ body.dark footer{background:#061422;}
 .legal-body .highlight strong{color:#8a4d00;}
 body.dark .legal-body .highlight strong{color:#f5c842;}
 
-/* COOKIE BANNER */
+/* ══ COOKIE ══ */
 #cookieBanner{display:none;position:fixed;bottom:0;right:0;left:0;z-index:500;background:var(--blue-dark);color:#fff;padding:16px 24px;border-top:2px solid var(--blue-mid);box-shadow:0 -4px 24px rgba(0,0,0,.2);}
 body.dark #cookieBanner{background:#061422;}
 .cookie-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
@@ -396,32 +433,7 @@ body.dark #cookieBanner{background:#061422;}
 .cookie-decline{background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.35);padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s;}
 .cookie-decline:hover{border-color:rgba(255,255,255,.8);color:#fff;}
 
-/* PRICING */
-.pricing-note{background:rgba(30,111,168,.07);border:1.5px solid rgba(30,111,168,.25);border-radius:12px;padding:14px 20px;font-size:14px;color:var(--blue-dark);font-weight:600;margin-bottom:28px;display:flex;align-items:flex-start;gap:12px;line-height:1.65;}
-body.dark .pricing-note{color:var(--blue-light);background:rgba(30,111,168,.10);border-color:rgba(77,184,232,.25);}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:28px;}
-.price-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
-.price-card-head{background:var(--bg3);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;}
-.price-card-icon{font-size:26px;}
-.price-card-title{font-size:15px;font-weight:800;color:var(--blue-dark);}
-.price-rows{padding:8px 0;}
-.price-row{display:flex;justify-content:space-between;align-items:center;padding:9px 20px;border-bottom:1px solid var(--border);font-size:13px;}
-.price-row:last-child{border:none;}
-.price-row-label{color:var(--text2);font-weight:600;}
-.price-row-val{font-weight:800;color:var(--blue-dark);}
-.price-row-val.green{color:#156638;}
-body.dark .price-row-val.green{color:#3ecf7a;}
-.shipping-free{font-weight:800;color:#156638;}
-body.dark .shipping-free{color:#3ecf7a;}
-.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px;}
-.pay-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:14px;}
-.pay-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.pay-title{font-size:14px;font-weight:800;color:var(--blue-dark);}
-.pay-desc{font-size:12px;color:var(--text2);margin-top:2px;font-weight:400;}
-.shipping-row{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:14px;}
-.shipping-label{color:var(--text2);font-weight:600;display:flex;align-items:center;gap:8px;}
-
-/* ♿ ACCESSIBILITY WIDGET */
+/* ══ ACCESSIBILITY ══ */
 .a11y-btn{position:fixed;bottom:24px;left:24px;z-index:990;width:52px;height:52px;border-radius:50%;background:var(--blue-mid);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(30,111,168,.45);display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform .2s,box-shadow .2s;font-family:'Heebo',sans-serif;}
 .a11y-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(30,111,168,.6);}
 .a11y-btn:focus-visible{outline:3px solid var(--blue-light);outline-offset:3px;}
@@ -441,7 +453,10 @@ body.a11y-links a{text-decoration:underline!important;text-underline-offset:3px;
 body.a11y-cursor,body.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M8 2 L8 28 L14 22 L18 32 L22 30 L18 20 L26 20 Z' fill='black' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 0 0,auto!important;}
 body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu a,body.a11y-links footer a,body.a11y-links .footer-links a{text-decoration:underline!important;}
 
-/* RESPONSIVE */
+/* ══ RESPONSIVE ══ */
+@media(max-width:900px){
+  .nav-social-icons{display:none;}
+}
 @media(max-width:768px){
   nav{padding:0 18px;}
   .nav-links{display:none;}
@@ -469,28 +484,48 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══ NAV ══ -->
 <nav>
   <a href="#hero" class="nav-logo">
     <div class="nav-logo-img-wrap">
-      <img src="NSF-logo-large-1000px.png" alt="NSF 3D — הדפסות תלת מימד" width="40" height="40" fetchpriority="high"
+      <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="40" height="40" fetchpriority="high"
         onerror="this.parentElement.style.display='none';document.querySelector('.nav-logo-text').style.display='block'">
     </div>
     <span class="nav-logo-text">NSF <span>3D</span></span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#catalog">קטלוג</a></li>
-    <li><a href="#products" id="nav-products">מוצרים</a></li>
-    <li><a href="#pricing" id="nav-pricing">מחירון</a></li>
-    <li><a href="#order" id="nav-order">הזמנה</a></li>
-    <li><a href="#about">אודות</a></li>
-    <li><a href="#contact" class="nav-cta">📱 צור קשר</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#catalog"  data-section="catalog">קטלוג</a></li>
+    <li><a href="#products" data-section="products" id="nav-products">מוצרים</a></li>
+    <li><a href="#pricing"  data-section="pricing"  id="nav-pricing">מחירון</a></li>
+    <li><a href="#order"    data-section="order"    id="nav-order">הזמנה</a></li>
+    <li><a href="#about"    data-section="about">אודות</a></li>
+    <li><a href="#contact"  data-section="contact" class="nav-cta">📱 צור קשר</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <button class="dark-toggle" id="darkBtn" onclick="toggleDark()" aria-label="החלף מצב כהה/בהיר"><span id="darkIcon">🌙</span><span id="darkLabel">מצב כהה</span></button>
-    <div class="hamburger" onclick="toggleMenu()" aria-label="תפריט" role="button" tabindex="0"><span></span><span></span><span></span></div>
+  <div class="nav-right-cluster">
+    <!-- Social quick icons — always visible in nav -->
+    <div class="nav-social-icons" aria-label="קישורי רשתות חברתיות">
+      <!-- WhatsApp -->
+      <a class="nav-social-ico" href="https://wa.me/972559144386" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <!-- Instagram -->
+      <a class="nav-social-ico" href="https://www.instagram.com/nsf.3d/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <!-- Facebook -->
+      <a class="nav-social-ico" href="https://www.facebook.com/profile.php?id=61586093829404" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <button class="dark-toggle" id="darkBtn" onclick="toggleDark()" aria-label="החלף מצב כהה/בהיר">
+      <span id="darkIcon">🌙</span><span id="darkLabel">מצב כהה</span>
+    </button>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="תפריט" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="#catalog" onclick="closeMenu()">🎨 קטלוג צבעים</a>
   <a href="#products" onclick="closeMenu()" id="mm-products">🖨️ מוצרים</a>
@@ -501,7 +536,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   <a href="#contact" onclick="closeMenu()">📱 צור קשר</a>
 </div>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-blob"></div><div class="hero-blob2"></div>
   <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
@@ -512,24 +547,26 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <h1 class="hero-title">הרעיון שלכם<br><span class="accent">הופך למוצר אמיתי</span></h1>
     <p class="hero-sub">הדפסות תלת-מימד איכותיות. שילוב של דיוק הנדסי וטאצ' אמנותי, עם מבחר גדול של חומרים וצבעים.</p>
     <div class="hero-btns">
-      <a href="#catalog" class="btn-primary">לקטלוג הצבעים ←</a>
-      <!-- WhatsApp icon + text -->
+      <a href="#catalog" class="btn-primary">לקטלוג הצבעים ↓</a>
       <a href="#contact" class="btn-secondary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#25D366;flex-shrink:0;" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         התייעצות מהירה בוואטסאפ
       </a>
-      <!-- 3rd CTA: הגישו הזמנה -->
-      <a href="#order" class="btn-cta3">📦 הגישו הזמנה</a>
+      <!-- 🚀 Updated CTA3 emoji -->
+      <a href="#order" class="btn-cta3">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="m8 12 3 3 5-5"/></svg>
+        להזמנה עכשיו
+      </a>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">מגוון<span> רחב</span></div><div class="stat-label">צבעים וגימורים</div></div>
       <div class="stat"><div class="stat-num">100<span>%</span></div><div class="stat-label">ישראלי מקומי</div></div>
-      <div class="stat"><div class="stat-num">7–30<span> ימים</span></div><div class="stat-label">זמן אספקה</div></div>
+      <div class="stat"><div class="stat-num">3–10<span> ימים</span></div><div class="stat-label">זמן אספקה</div></div>
     </div>
   </div>
 </section>
 
-<!-- CATALOG -->
+<!-- ══ CATALOG ══ -->
 <div class="sdiv"></div>
 <div id="catalog" style="background:var(--bg2)">
 <div class="sw">
@@ -537,19 +574,16 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <div class="stag">קטלוג</div>
     <h2 class="stitle">צבעים וחומרים</h2>
     <p class="ssub">
-      המלאי מתעדכן אוטומטית. לחצו על כרטיס לפרטים ולהזמנה.
+      המלאי מתעדכן אוטומטית
       <span id="catalogDate" style="font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:4px;"></span>
     </p>
   </div>
-
-  <!-- Color disclaimer -->
   <div class="catalog-info-note">
     <span style="font-size:18px;flex-shrink:0;">🎨</span>
     <span>
-      <strong>הערה:</strong> הצבעים המוצגים הם ייצוג מיטבי — תיתכן סטייה קלה בין הגוון על המסך לתוצאה המודפסת בפועל, בהתאם לגדרי המדפסת ולסוג החומר. לצבעים מיוחדים שאינם בקטלוג — <a href="#contact" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">צרו קשר</a>, נשתדל להשיג עבורכם.
+      <strong>הערה:</strong> הצבעים המוצגים הם ייצוג מיטבי — תיתכן סטייה קלה בין הגוון על המסך לתוצאה המודפסת בפועל. לצבעים מיוחדים שאינם בקטלוג — <a href="#contact" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">צרו קשר</a>, נשתדל להשיג עבורכם.
     </span>
   </div>
-
   <div class="filter-row">
     <button class="filter-btn active" onclick="setFilter('popular',this)">⭐ פופולריים</button>
     <button class="filter-btn" onclick="setFilter('all',this)">הכל</button>
@@ -557,7 +591,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <button class="filter-btn" onclick="setFilter('PETG',this)">PETG</button>
     <button class="filter-btn" onclick="setFilter('TPU',this)">TPU</button>
     <button class="filter-btn" onclick="setFilter('glow',this)">✨ זוהר בחושך</button>
-    <input class="search-input" type="text" id="searchInput" placeholder="🔍 חפשו צבע (למשל: נחושת, אפור, כחול)" oninput="filterColors()" aria-label="חיפוש צבע">
+    <input class="search-input" type="text" id="searchInput" placeholder="🔍 חפשו צבע (למשל: נחושת, כחול)" oninput="filterColors()" aria-label="חיפוש צבע">
   </div>
   <div class="colors-grid" id="colorsGrid" role="list" aria-live="polite" aria-label="קטלוג צבעים"></div>
   <div class="show-all-row" id="showAllRow" style="display:none">
@@ -566,7 +600,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </div>
 </div>
 
-<!-- COLOR MODAL -->
+<!-- ══ COLOR MODAL ══ -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)" role="dialog" aria-modal="true" aria-label="פרטי צבע">
   <div class="modal">
     <div id="modalTop"></div>
@@ -581,13 +615,13 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
 </div>
 
-<!-- LIGHTBOX -->
+<!-- ══ LIGHTBOX ══ -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()" aria-label="סגור תצוגה מוגדלת">✕</button>
   <img id="lightboxImg" src="" alt="תצוגה מוגדלת">
 </div>
 
-<!-- PRODUCTS -->
+<!-- ══ PRODUCTS ══ -->
 <div class="sdiv"></div>
 <section id="products" style="background:var(--bg)">
 <div class="sw">
@@ -596,15 +630,12 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <h2 class="stitle">מה אפשר להדפיס?</h2>
     <p class="ssub">כמעט כל דבר שאפשר לדמיין — אם יש לכם רעיון, בואו נדבר</p>
   </div>
-
-  <!-- Multi-color printing highlight -->
   <div class="multicolor-banner">
     <div class="multicolor-banner-icon">🌈</div>
     <div class="multicolor-banner-text">
-      <strong>לא רק צבע אחיד!</strong> המדפסת שלנו מסוגלת להדפיס מוצרים <strong>רב-צבעוניים</strong> — שילובי צבעים, גרדיאנטים, כיתובים בצבע שונה מהגוף ועוד. מוצרים רב-צבעוניים עשויים להיות מתומחרים בהתאם למספר הצבעים בפרויקט.
+      <strong>לא רק צבע אחיד!</strong> המדפסת שלנו מסוגלת להדפיס מוצרים <strong>רב-צבעוניים</strong> — שילובי צבעים, כיתובים בצבע שונה מהגוף ועוד. מוצרים רב-צבעוניים עשויים להיות מתומחרים בהתאם לריבוי הצבעים בפרויקט.
     </div>
   </div>
-
   <div class="product-types">
     <div class="ptype">
       <div class="ptype-icon">💡</div>
@@ -622,7 +653,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
       <div class="ptype-desc">ניתן ליצור מוצרים בנפח עד 32×32×32 ס"מ בהדפסה אחת. מוצרים גדולים יותר — אפשרי בתיאום אישי ועיצוב מפוצל.</div>
     </div>
   </div>
-
   <div class="coming-soon" style="margin-top:18px">
     <div class="cs-icon">📸</div>
     <h3>גלריית פרויקטים — בקרוב</h3>
@@ -631,67 +661,95 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </div>
 </section>
 
-<!-- PRICING -->
+<!-- ══ PRICING ══ -->
 <div class="sdiv"></div>
 <section id="pricing" style="background:var(--bg2)">
 <div class="sw">
   <div class="sh">
     <div class="stag">מחירון</div>
     <h2 class="stitle">מחיר הוגן, שקיפות מלאה</h2>
-    <p class="ssub">מחירי הדמויות קבועים לפי גודל. שאר הפרויקטים — הצעה אישית לפני שמתחילים</p>
-  </div>
-
-  <div class="pricing-note">
-    <span style="font-size:20px;flex-shrink:0;">💬</span>
-    <span>המחירים כאן הם נקודת פתיחה בלבד — כל פרויקט מתומחר בנפרד לפי הפרטים המדויקים. תמיד תקבלו הצעת מחיר מפורטת לפני שמתחילים. <strong>ללא הפתעות.</strong></span>
-  </div>
-
-  <!-- Multi-color pricing note -->
-  <div style="background:rgba(138,43,226,.07);border:1.5px solid rgba(138,43,226,.22);border-radius:12px;padding:13px 18px;font-size:13px;color:var(--text2);font-weight:500;margin-bottom:28px;display:flex;align-items:flex-start;gap:10px;line-height:1.6;">
-    <span style="font-size:16px;flex-shrink:0;">🌈</span>
-    <span><strong style="color:var(--blue-dark);">כלל אצבע לפרויקטים רב-צבעוניים:</strong> ככל שמספר הצבעים גדול יותר, כך זמן ההדפסה ארוך יותר — ומחיר הפרויקט עשוי לעלות בהתאם. תמיד תדעו מראש.</span>
+    <!-- Updated subtitle — marketing-friendly -->
+    <p class="ssub">תמחור שקוף, ללא הפתעות — מחיר מוסכם לפני שמתחילים. תמיד.</p>
   </div>
 
   <div class="pricing-grid">
-    <div class="price-card">
+
+    <!-- ══ FIGURINES — FEATURED ══ -->
+    <div class="price-card figurine-featured">
       <div class="price-card-head">
         <div class="price-card-icon">👤</div>
-        <div class="price-card-title">דמויות ופסלונים</div>
+        <div>
+          <div class="price-card-title">דמויות ופסלונים</div>
+          <!-- ✅ Fixed price + multicolor badge -->
+          <div class="figurine-fixed-badge">✓ מחיר קבוע · ריבוי צבעים כלול!</div>
+        </div>
       </div>
+
+      <!-- 🎁 Gift marketing strip -->
+      <div class="figurine-gift-strip">
+        🎁 <strong>המתנה האישית שלא נשכחת לעולם</strong> — מושלמת לחתונה, שחרור, בר/בת מצווה, יום הולדת, יום נישואים, פרישה לגמלאות, מזכרת לחיילים, מתנת פרידה ועוד. <strong>דמות מותאמת אישית — ישירות מהלב.</strong>
+      </div>
+
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">עד 5 ס"מ</span><span class="price-row-val">~35–60 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">5–10 ס"מ</span><span class="price-row-val">~60–120 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">10–15 ס"מ</span><span class="price-row-val">~120–200 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">15–20 ס"מ</span><span class="price-row-val">~200–320 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">מעל 20 ס"מ</span><span class="price-row-val">לפי הצעה</span></div>
+        <div class="price-row"><span class="price-row-label">בגובה 10 ס"מ</span><span class="price-row-val">500 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">בגובה 15 ס"מ</span><span class="price-row-val">600 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">בגובה 20 ס"מ</span><span class="price-row-val">700 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">בגובה 25 ס"מ</span><span class="price-row-val">750 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">בגובה 30 ס"מ</span><span class="price-row-val">800 ₪</span></div>
+      </div>
+
+      <!-- 🌈 Multicolor included note — positive framing, inside figurines only -->
+      <div style="background:rgba(30,160,90,.07);border-top:1px solid rgba(30,160,90,.2);padding:11px 16px;font-size:12px;color:#156638;font-weight:700;display:flex;align-items:center;gap:7px;">
+        <span style="font-size:15px;">🌈</span>
+        הדפסה רב-צבעונית כלולה במחיר הקבוע — זהו היתרון התחרותי שלנו.
       </div>
     </div>
+
+    <!-- ══ SIGNAGE ══ -->
     <div class="price-card">
       <div class="price-card-head">
         <div class="price-card-icon">🪧</div>
         <div class="price-card-title">שילוט</div>
       </div>
+
+      <!-- 🏡 Signage marketing strip -->
+      <div class="signage-marketing-strip">
+        <strong>שלט כניסה לבית · לוגו לעסק · מספר דירה · שלטי שולחן לאירועים · שלטי אזהרה / חדר.</strong> כל שלט מותאם אישית בדיוק לפי הצורך — פונט, צבע, גודל.
+      </div>
+
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">שלט פשוט — מחיר התחלה</span><span class="price-row-val">~50 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">שלט פשוט — מחיר התחלתי</span><span class="price-row-val">50 ₪</span></div>
         <div class="price-row"><span class="price-row-label">שלטים מורכבים / גדולים</span><span class="price-row-val">לפי הצעה</span></div>
       </div>
     </div>
+
+    <!-- ══ OTHER PROJECTS ══ -->
     <div class="price-card">
       <div class="price-card-head">
         <div class="price-card-icon">🎯</div>
         <div class="price-card-title">כל שאר הפרויקטים</div>
       </div>
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">פרויקטים קטנים / פשוטים</span><span class="price-row-val">~30–80 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">פרויקטים בינוניים</span><span class="price-row-val">~80–250 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">פרויקטים קטנים / פשוטים</span><span class="price-row-val">~40–100 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">פרויקטים בינוניים</span><span class="price-row-val">~100–400 ₪</span></div>
         <div class="price-row"><span class="price-row-label">פרויקטים גדולים / מורכבים</span><span class="price-row-val">לפי הצעה</span></div>
-        <div class="price-row"><span class="price-row-label">עיצוב מאפס (+הדפסה)</span><span class="price-row-val">+תוספת עיצוב</span></div>
+        <div class="price-row"><span class="price-row-label">עיצוב מאפס (+הדפסה)</span><span class="price-row-val">לפי הצעה</span></div>
+      </div>
+      <!-- Notes only relevant here -->
+      <div class="card-pricing-note">
+        <span>💬</span>
+        <span>כל פרויקט מתומחר בנפרד לפי הפרטים המדויקים. תמיד תקבלו הצעה מפורטת לפני שמתחילים. <strong>ללא הפתעות.</strong></span>
+      </div>
+      <div class="card-pricing-note" style="border-top:none;padding-top:0;">
+        <span>🌈</span>
+        <span>פרויקטים רב-צבעוניים — זמן ייצור ארוך יותר עשוי להשפיע על המחיר. תדעו מראש.</span>
       </div>
     </div>
-  </div>
+
+  </div><!-- /pricing-grid -->
 
   <!-- Printer specs -->
-  <div style="margin-bottom:10px;margin-top:28px">
+  <div style="margin-bottom:10px;margin-top:8px">
     <div class="stag" style="margin-bottom:14px">המדפסת שלי</div>
   </div>
   <div style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:28px;">
@@ -745,12 +803,12 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     </div>
   </div>
   <div style="font-size:12px;color:var(--text2);margin-top:14px;padding:12px 16px;background:var(--bg3);border-radius:10px;border:1px solid var(--border);">
-    💡 <strong>הבהרה:</strong> NSF 3D פועל כעת כעוסק פטור. חשבונית/קבלה תישלח לפי בקשה. אמצעי תשלום נוספים יתווספו בעתיד.
+    💡 <strong>הבהרה:</strong> NSF 3D פועל כעת כעוסק פטור. קבלה כחוק תישלח אליכם דיגיטלית לאחר כל תשלום.
   </div>
 </div>
 </section>
 
-<!-- ORDER -->
+<!-- ══ ORDER ══ -->
 <div class="sdiv"></div>
 <section id="order" style="background:var(--bg2)">
 <div class="sw">
@@ -761,12 +819,10 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
   <div class="order-steps">
     <div class="step"><div class="step-num">01</div><div class="step-title">בחרו צבע וחומר</div><div class="step-desc">עיינו בקטלוג ובחרו מה מתאים לכם. לא בטוחים? נשמח לייעץ.</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">שלחו תיאור או קובץ</div><div class="step-desc">הודעה עם תיאור, תמונה, רעיון — או קובץ מקצועי (STL, STEP, וכו'). מבין הכל ואשמח לסייע בכל שלב.</div></div>
-    <div class="step"><div class="step-num">03</div><div class="step-title">אישור ומחיר</div><div class="step-desc">אחזור אליכם מהר עם הצעת מחיר שקופה ומפורטת. מתחילים לעבוד רק אחרי אישורכם.</div></div>
-    <div class="step"><div class="step-num">04</div><div class="step-title">הדפסה ואיסוף</div><div class="step-desc">רוב ההזמנות מוכנות תוך 7–30 ימי עסקים. משלוח או איסוף עצמי.</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">שלחו תיאור או קובץ</div><div class="step-desc">הודעה עם תיאור, תמונה, רעיון — או קובץ מקצועי (STL, STEP, וכו'). נבין הכל ונשמח לסייע בכל שלב.</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">אישור ומחיר</div><div class="step-desc">נחזור אליכם מהר עם הצעת מחיר שקופה ומפורטת. מתחילים לעבוד רק אחרי אישורכם.</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">הדפסה ואיסוף</div><div class="step-desc">רוב ההזמנות מוכנות תוך 3-7 ימי עסקים. משלוח או איסוף עצמי.</div></div>
   </div>
-
-  <!-- EXPRESS BANNER — updated copy -->
   <div class="express-banner">
     <div class="express-icon-wrap">⚡</div>
     <div class="express-content">
@@ -780,12 +836,11 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     </div>
     <a href="#contact" class="btn-express">הזמינו אקספרס ⚡</a>
   </div>
-
   <div class="order-cta"><a href="#contact" class="btn-primary">💬 שלחו הזמנה עכשיו</a></div>
 </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ══ ABOUT ══ -->
 <div class="sdiv"></div>
 <section id="about" style="background:var(--bg)">
 <div class="sw">
@@ -795,17 +850,30 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
       <h2 class="stitle">הנדסה ואומנות<br>באותו הדפס</h2>
       <p class="ssub" style="margin-top:14px">
         NSF 3D הוא סטודיו שמשלב בין דיוק הנדסי לפן יצירתי-אומנותי — כי לא כל הדפסה היא ברגים ומנגנונים.
-        מאחורי העסק עומד <strong>סמואל נרודיצקי</strong>, מהנדס מכונות בוגר אוניברסיטת בן גוריון עם מעל 4 שנות ניסיון בהדפסות 3D, המשמש כמהנדס מעבדות במחלקת מדעי הסביבה, גאואינפורמטיקה ותכנון ערים.
+        מאחורי העסק עומד <strong>סמואל נרודיצקי</strong>, מהנדס מכונות בוגר אוניברסיטת בן גוריון עם מעל 4 שנות ניסיון בהדפסות 3D, המשמש בין היתר כמהנדס מעבדות במחלקת מדעי הסביבה, גאואינפורמטיקה ותכנון ערים באוניברסיטת בן גוריון.
       </p>
       <p class="ssub" style="margin-top:10px">
-        לצד גישה הנדסית מדויקת, סמואל מביא את הכלים הנדרשים לפרויקטים יצירתיים: שילוט, דמויות, פסלונים ומוצרי עיצוב — מהרעיון הראשוני ועד המוצר הסופי. בתהליך העיצוב נעשה שימוש גם בכלי בינה מלאכותית (AI) ליצירת מודלים, עיבוד תמונות ופתרון אתגרים מורכבים.
+        לצד גישה הנדסית מדויקת, סמואל מביא את הכלים הנדרשים לפרויקטים יצירתיים: שילוט, דמויות, פסלונים ומוצרי עיצוב — מהרעיון הראשוני ועד המוצר הסופי. בתהליך העיצוב נעשה שימוש גם בכלי בינה מלאכותית (AI) ליצירת מודלים, המרת תמונות וסרטונים לתלת מימד ופתרון אתגרים מורכבים.
       </p>
+
       <div class="hobby-origin">
         <div class="hobby-origin-icon">🌱</div>
         <div class="hobby-origin-text">
           <strong>איך הכל התחיל?</strong> NSF 3D צמח מתחביב אישי — הדפסות לעצמי, לחברים ולמשפחה. עם הזמן, <strong>הביקוש גדל מפה לאוזן</strong> ומה שהתחיל כהנאה אישית הפך לעסק קטן שמקבל הזמנות. כל הזמנה עדיין מקבלת את אותה תשומת הלב כאילו הייתה הראשונה.
         </div>
       </div>
+
+      <!-- ✅ Portrait photo — will show when samuel-portrait.jpg is uploaded to GitHub -->
+      <div class="founder-photo-row">
+        <img src="samuel-portrait.jpg" alt="סמואל נרודיצקי — מייסד NSF 3D" class="founder-photo"
+          onerror="this.parentElement.style.display='none'">
+        <div class="founder-photo-text">
+          <strong>סמואל נרודיצקי</strong>
+          מהנדס מכונות · מומחה הדפסות 3D · בן גוריון<br>
+          <span style="font-size:12px;">עברית · English · Русский</span>
+        </div>
+      </div>
+
       <div style="margin-top:18px">
         <div style="font-size:12px;font-weight:700;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:9px;">כלי עבודה</div>
         <div class="sw-chips">
@@ -816,31 +884,34 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
           <span class="sw-chip ai" title="בינה מלאכותית לעיצוב ויצירה">🤖 בינה מלאכותית · AI</span>
           <span class="sw-chip ai" title="סריקת תלת מימד באמצעות LiDAR של אייפון">📱 סריקת LiDAR</span>
         </div>
-        <div style="font-size:11px;color:var(--text2);margin-top:7px;font-weight:400;">הנדסי: SolidWorks · יצירתי: Blender, Inkscape, Meshmixer · בינה מלאכותית · חיישן LiDAR</div>
+        <!-- ✅ Removed the redundant small gray text line -->
       </div>
+
       <div class="about-features" style="margin-top:22px">
         <div class="fi"><div class="fi-icon">🎯</div><div class="fi-text"><h4>דיוק ואיכות בכל הדפסה</h4><p>בקרת איכות קפדנית — כל מוצר עובר בדיקה לפני שיוצא.</p></div></div>
-        <div class="fi"><div class="fi-icon">⚡</div><div class="fi-text"><h4>זמן אספקה מהיר</h4><p>רוב ההזמנות מוכנות תוך 7–30 ימי עסקים, ומסלול אקספרס לצרכים דחופים.</p></div></div>
-        <div class="fi"><div class="fi-icon">🤝</div><div class="fi-text"><h4>שירות אישי ומקצועי</h4><p>לא בוט — אדם אמיתי שמבין הדפסות, יועץ לפני שמזמין ועומד מאחורי התוצאה.</p></div></div>
+        <div class="fi"><div class="fi-icon">⚡</div><div class="fi-text"><h4>זמן אספקה מהיר</h4><p>רוב ההזמנות מוכנות תוך 3-10 ימי עסקים, ומסלול אקספרס לצרכים דחופים.</p></div></div>
+        <div class="fi"><div class="fi-icon">🤝</div><div class="fi-text"><h4>שירות אישי ומקצועי</h4><p>לא בוט — אדם אמיתי שמבין הדפסות, מייעץ לפני ההזמנה ועומד מאחורי התוצאה.</p></div></div>
       </div>
     </div>
+
+    <!-- ✅ Updated about-visual subtitle + removed "כלי עיצוב" row -->
     <div class="about-visual">
       <div class="abn">מגוון</div>
-      <div class="abl">צבעים וגימורים במלאי</div>
+      <div class="abl">NSF 3D — כל מה שצריך לדעת</div>
       <div class="ab-chips">
-        <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · ועוד בקרוב</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">גימורים מיוחדים</div><div class="ab-chip-v">מט · Silk · זוהר בחושך · נצנצים</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">חומרים</div><div class="ab-chip-v">PLA · PETG · TPU · ועוד בקרוב</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">גימורים מיוחדים</div><div class="ab-chip-v">רגיל · מט · משי · זוהר בחושך · נצנצים</div></div>
         <div class="ab-chip"><div class="ab-chip-l">תחומי עיצוב</div><div class="ab-chip-v">הנדסי · שילוט · דמויות · יצירתי</div></div>
-        <div class="ab-chip"><div class="ab-chip-l">כלי עיצוב</div><div class="ab-chip-v">SolidWorks · Blender · Inkscape · Meshmixer · AI · LiDAR</div></div>
         <div class="ab-chip"><div class="ab-chip-l">שפות שירות</div><div class="ab-chip-v">עברית · English · Русский</div></div>
         <div class="ab-chip"><div class="ab-chip-l">אזור שירות</div><div class="ab-chip-v">באר שבע, הדרום, כלל הארץ</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">ניסיון</div><div class="ab-chip-v">מעל 4 שנות הדפסות 3D</div></div>
       </div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- SOCIAL -->
+<!-- ══ SOCIAL ══ -->
 <div class="sdiv"></div>
 <section id="social" style="background:var(--bg2)">
 <div class="sw" style="text-align:center">
@@ -853,7 +924,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ══ CONTACT ══ -->
 <div class="sdiv"></div>
 <section id="contact" style="background:var(--bg)">
 <div class="sw">
@@ -864,6 +935,8 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
   <div class="contact-grid">
     <div class="contact-info">
+
+      <!-- WhatsApp -->
       <a href="#" class="contact-card" id="waCard">
         <div class="contact-icon" style="background:#25D366;">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#fff"/></svg>
@@ -873,6 +946,21 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
           <div class="contact-val" id="waDisplay">—</div>
         </div>
       </a>
+
+      <!-- ✅ Phone call — new card -->
+      <a href="tel:+972559144386" class="contact-card" id="phoneCard">
+        <div class="contact-icon" style="background:var(--blue-mid);">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#fff"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-label">שיחת טלפון</div>
+          <div class="contact-val">055-914-4386</div>
+        </div>
+      </a>
+
+      <!-- Email -->
       <a href="#" class="contact-card" id="mailCard">
         <div class="contact-icon" style="background:#1e6fa8;">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1.5 3L12 11.5 5.5 7h13zM4 18V8.5l8 5 8-5V18H4z" fill="#fff"/></svg>
@@ -882,6 +970,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
           <div class="contact-val" id="mailDisplay">—</div>
         </div>
       </a>
+
       <div class="hours-card">
         <div class="hours-l">⏰ זמני מענה</div>
         <div class="hours-row"><span class="hours-day">ראשון–חמישי</span><span class="hours-time">09:00–21:00</span></div>
@@ -890,6 +979,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         <div style="font-size:12px;color:var(--text2);margin-top:8px;font-weight:400;">מענה בוואטסאפ תוך מספר דקות עד מספר שעות ספורות</div>
       </div>
     </div>
+
     <form class="contact-form" id="contactForm" onsubmit="submitForm(event)" novalidate>
       <div class="form-group">
         <label class="form-label" for="fname">שם מלא *</label>
@@ -923,7 +1013,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer>
   <div style="margin-bottom:14px">
     <div style="font-size:26px;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:-0.5px">NSF <span style="color:#4db8e8">3D</span></div>
@@ -942,10 +1032,10 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <button class="footer-legal-btn" id="btn-privacy" onclick="openLegal('privacy')">מדיניות פרטיות</button>
     <button class="footer-legal-btn" id="btn-terms" onclick="openLegal('terms')">תקנון ותנאי שימוש</button>
   </div>
-  <div class="footer-copy">© 2025–2026 NSF 3D — כל הזכויות שמורות</div>
+  <div class="footer-copy">© 2026 NSF 3D — כל הזכויות שמורות</div>
 </footer>
 
-<!-- LEGAL MODALS -->
+<!-- ══ LEGAL MODALS ══ -->
 <div class="legal-overlay" id="legalOverlay" onclick="closeLegal(event)">
   <div class="legal-modal">
     <div class="legal-header">
@@ -956,7 +1046,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
 </div>
 
-<!-- COOKIE BANNER -->
+<!-- ══ COOKIE BANNER ══ -->
 <div id="cookieBanner" role="region" aria-label="הסכמה לעוגיות">
   <div class="cookie-inner">
     <div class="cookie-text">
@@ -970,32 +1060,32 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
 </div>
 
-<!-- ♿ ACCESSIBILITY WIDGET — outside any filter container -->
+<!-- ══ ACCESSIBILITY WIDGET ══ -->
 <button class="a11y-btn" id="a11yBtn" onclick="toggleA11yPanel()" aria-label="כלי נגישות" title="כלי נגישות">♿</button>
 <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="אפשרויות נגישות" aria-modal="false">
   <div class="a11y-panel-title">♿ כלי נגישות</div>
   <div class="a11y-row">
     <span class="a11y-label">גודל טקסט</span>
     <div class="a11y-controls">
-      <button class="a11y-ctrl" onclick="changeFontSize(-1)" aria-label="הקטן גופן" title="הקטן">א-</button>
-      <button class="a11y-ctrl" onclick="changeFontSize(1)" aria-label="הגדל גופן" title="הגדל">א+</button>
+      <button class="a11y-ctrl" onclick="changeFontSize(-1)" aria-label="הקטן גופן">א-</button>
+      <button class="a11y-ctrl" onclick="changeFontSize(1)" aria-label="הגדל גופן">א+</button>
     </div>
   </div>
   <div class="a11y-row">
     <span class="a11y-label">ניגודיות גבוהה</span>
-    <button class="a11y-ctrl" id="a11yContrast" onclick="toggleA11yFeature('contrast')" aria-pressed="false" title="ניגודיות גבוהה">⬛</button>
+    <button class="a11y-ctrl" id="a11yContrast" onclick="toggleA11yFeature('contrast')" aria-pressed="false">⬛</button>
   </div>
   <div class="a11y-row">
     <span class="a11y-label">הדגשת קישורים</span>
-    <button class="a11y-ctrl" id="a11yLinks" onclick="toggleA11yFeature('links')" aria-pressed="false" title="הדגש קישורים">🔗</button>
+    <button class="a11y-ctrl" id="a11yLinks" onclick="toggleA11yFeature('links')" aria-pressed="false">🔗</button>
   </div>
   <div class="a11y-row">
     <span class="a11y-label">עצור אנימציות</span>
-    <button class="a11y-ctrl" id="a11yNoanim" onclick="toggleA11yFeature('noanim')" aria-pressed="false" title="עצור אנימציות">⏸</button>
+    <button class="a11y-ctrl" id="a11yNoanim" onclick="toggleA11yFeature('noanim')" aria-pressed="false">⏸</button>
   </div>
   <div class="a11y-row">
     <span class="a11y-label">סמן גדול</span>
-    <button class="a11y-ctrl" id="a11yCursor" onclick="toggleA11yFeature('cursor')" aria-pressed="false" title="סמן גדול">🖱️</button>
+    <button class="a11y-ctrl" id="a11yCursor" onclick="toggleA11yFeature('cursor')" aria-pressed="false">🖱️</button>
   </div>
   <button class="a11y-reset" onclick="resetA11y()">↺ אפס הכל</button>
 </div>
@@ -1070,6 +1160,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   else { console.warn('[NSF3D] EmailJS not loaded!'); }
 
   applyWipSections();
+  initActiveSection();
 
   if(document.body.classList.contains('dark')){
     document.getElementById('darkIcon').textContent='☀️';
@@ -1092,7 +1183,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   loadColors();
   initA11y();
 
-  // ✅ Catalog date with green live dot
+  // Catalog live date
   const dateEl = document.getElementById('catalogDate');
   if(dateEl){
     const now = new Date();
@@ -1103,6 +1194,38 @@ document.addEventListener('DOMContentLoaded',()=>{
     dateEl.innerHTML = `<span class="live-dot" title="מלאי חי"></span> נכון לתאריך: ${d}/${m}/${y} (יום ${days[now.getDay()]})`;
   }
 });
+
+// ═══════════════════════════════════════
+//  🔵 ACTIVE SECTION HIGHLIGHT — IntersectionObserver
+// ═══════════════════════════════════════
+function initActiveSection(){
+  const sectionIds = ['hero','catalog','products','pricing','order','about','social','contact'];
+  const navItems = document.querySelectorAll('.nav-links a[data-section]');
+
+  // rootMargin: top -60px (below nav), bottom -40% — so section must cover middle of viewport
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        navItems.forEach(link => {
+          if(link.getAttribute('data-section') === id){
+            link.classList.add('nav-active');
+          } else {
+            link.classList.remove('nav-active');
+          }
+        });
+      }
+    });
+  }, {
+    rootMargin: '-64px 0px -55% 0px',
+    threshold: 0
+  });
+
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) observer.observe(el);
+  });
+}
 
 // ── SKELETON LOADING ──
 function renderSkeletons(count=12){
@@ -1254,18 +1377,15 @@ async function submitForm(e){
 function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
 
-// ═══════════════════════════════════════════════════════
-//  ♿ ACCESSIBILITY — FIXED VERSION
-//  Font size: uses CSS zoom (universal support 2024+)
-//  Contrast: CSS variable overrides — no filter, no position bugs
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════
+//  ♿ ACCESSIBILITY
+// ═══════════════════════════════════════
 let a11yFontLevel = 0;
 const a11yFeatures = { contrast:false, links:false, noanim:false, cursor:false };
 
 function initA11y(){
   const savedFont = parseInt(localStorage.getItem('nsf-a11y-font') || '0');
   if(savedFont){ a11yFontLevel = savedFont; applyZoom(a11yFontLevel); }
-
   ['contrast','links','noanim','cursor'].forEach(f => {
     if(localStorage.getItem('nsf-a11y-' + f) === '1'){
       a11yFeatures[f] = true;
@@ -1278,18 +1398,11 @@ function initA11y(){
 }
 
 function applyZoom(level){
-  // CSS zoom: scales entire page uniformly, preserves fixed positioning
-  if(level === 0){
-    document.body.style.zoom = '';
-  } else {
-    // level range: -2 to +3, each step = 15%
-    document.body.style.zoom = String(1 + level * 0.15);
-  }
+  if(level === 0){ document.body.style.zoom = ''; }
+  else { document.body.style.zoom = String(1 + level * 0.15); }
 }
 
-function toggleA11yPanel(){
-  document.getElementById('a11yPanel').classList.toggle('open');
-}
+function toggleA11yPanel(){ document.getElementById('a11yPanel').classList.toggle('open'); }
 
 function changeFontSize(dir){
   a11yFontLevel = Math.max(-2, Math.min(3, a11yFontLevel + dir));
@@ -1390,7 +1503,7 @@ const LEGAL_CONTENT = {
       <h3>6. אמצעי תשלום</h3>
       <p>NSF 3D מקבל תשלום ב-<strong>Bit</strong>, <strong>מזומן</strong> ו<strong>העברה בנקאית</strong>. העסק פועל כעוסק פטור.</p>
       <h3>7. זמני אספקה</h3>
-      <p>זמני האספקה (7–30 ימי עסקים / אקספרס לפי הסכמה) הינם הערכה בלבד ועשויים להשתנות.</p>
+      <p>זמני האספקה (7–14 ימי עסקים / אקספרס לפי הסכמה) הינם הערכה בלבד ועשויים להשתנות.</p>
       <h3>8. סמכות שיפוט</h3>
       <p>כל מחלוקת תדון בבתי המשפט המוסמכים במחוז תל אביב.</p>
     `
