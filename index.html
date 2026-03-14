@@ -131,12 +131,10 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 .nav-links a.nav-active:not(.nav-cta)::after{content:'';position:absolute;bottom:-4px;right:0;left:0;height:2.5px;background:var(--blue-mid);border-radius:2px;}
 .nav-cta{background:var(--blue-mid)!important;color:#fff!important;padding:8px 18px;border-radius:10px;font-weight:700!important;transition:background .2s!important;}
 .nav-cta:hover{background:var(--blue-dark)!important;}
-/* ── Nav social icons ── */
 .nav-social-icons{display:flex;align-items:center;gap:6px;margin-left:4px;}
 .nav-social-ico{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .2s;opacity:.75;flex-shrink:0;}
 .nav-social-ico:hover{opacity:1;transform:scale(1.12);}
 .nav-social-ico svg{width:18px;height:18px;}
-/* ── Right cluster (controls) ── */
 .nav-right-cluster{display:flex;align-items:center;gap:8px;}
 .dark-toggle{background:var(--bg2);border:1.5px solid var(--border);color:var(--text);height:34px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;display:flex;align-items:center;gap:5px;padding:0 12px;transition:background .2s,border-color .2s;flex-shrink:0;white-space:nowrap;font-family:'Heebo',sans-serif;}
 .dark-toggle:hover{background:var(--border);border-color:var(--blue-mid);}
@@ -146,7 +144,6 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;ali
 .mobile-menu.open{display:flex;}
 .mobile-menu a{color:var(--text);font-size:16px;font-weight:700;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);}
 .mobile-menu a:last-child{border:none;}
-/* ── Mobile menu social row ── */
 .mobile-social-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
 .mobile-social-ico{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:.85;flex-shrink:0;transition:transform .2s,opacity .2s;}
 .mobile-social-ico:hover{opacity:1;transform:scale(1.1);}
@@ -169,7 +166,6 @@ body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px r
 .btn-secondary{background:var(--card-bg);color:#1a5a8a;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;border:2px solid var(--blue-light);transition:background .2s,transform .2s;display:inline-flex;align-items:center;gap:8px;}
 .btn-secondary:hover{background:var(--bg3);transform:translateY(-2px);}
 body.dark .btn-secondary{color:var(--blue-light);}
-/* ── GREEN CTA (hero + order) ── */
 .btn-cta3{background:linear-gradient(135deg,#15803d 0%,#16a34a 100%);color:#fff;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(21,128,61,.35);display:inline-flex;align-items:center;gap:8px;}
 .btn-cta3:hover{opacity:.88;transform:translateY(-2px);}
 .btn-green-order{background:linear-gradient(135deg,#15803d 0%,#16a34a 100%);color:#fff;padding:14px 32px;border-radius:var(--radius);font-size:17px;font-weight:800;text-decoration:none;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(21,128,61,.38);display:inline-flex;align-items:center;gap:10px;}
@@ -216,7 +212,7 @@ body.a11y-noanim *,body.a11y-noanim *::before,body.a11y-noanim *::after{animatio
 .color-info{padding:10px 12px;}
 .color-name{font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.35;color:var(--text);}
 .color-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
-.color-sku{font-size:11px;color:var(--text2);font-weight:600;}
+.color-sku{font-size:12px;color:var(--text2);font-weight:600;}
 .tag-glow{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(77,184,232,.15);color:#155f8f;border:1px solid rgba(77,184,232,.4);}
 body.dark .tag-glow{color:var(--blue-mid);}
 .tag-instock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(30,160,90,.12);color:#156638;border:1px solid rgba(30,160,90,.3);}
@@ -226,7 +222,7 @@ body.dark .tag-outstock{color:#f07070;background:rgba(200,60,60,.12);border-colo
 .loading{text-align:center;padding:56px;color:var(--text2);font-size:16px;grid-column:1/-1;}
 .live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-left:6px;animation:pulse-dot 2s ease-in-out infinite;vertical-align:middle;position:relative;top:-1px;}
 @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
-.catalog-info-note{background:rgba(30,111,168,.06);border:1.5px solid rgba(30,111,168,.18);border-radius:10px;padding:11px 16px;font-size:13px;color:var(--text2);font-weight:600;margin-bottom:18px;display:flex;align-items:flex-start;gap:10px;line-height:1.6;}
+.catalog-info-note{background:rgba(30,111,168,.06);border:1.5px solid rgba(30,111,168,.18);border-radius:10px;padding:11px 16px;font-size:14px;color:var(--text2);font-weight:600;margin-bottom:18px;display:flex;align-items:flex-start;gap:10px;line-height:1.6;}
 body.dark .catalog-info-note{background:rgba(30,111,168,.10);border-color:rgba(77,184,232,.2);}
 
 /* ══ COLOR MODAL ══ */
@@ -253,12 +249,12 @@ body.dark .catalog-info-note{background:rgba(30,111,168,.10);border-color:rgba(7
 .lightbox-close{position:fixed;top:20px;left:20px;width:44px;height:44px;background:rgba(255,255,255,.15);border:none;border-radius:50%;cursor:pointer;font-size:22px;color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s;}
 .lightbox-close:hover{background:rgba(255,255,255,.3);}
 
-/* ══ PRODUCTS ══ */
+/* ══ PRODUCTS — CHANGED: font-size 13px → 15px ══ */
 .product-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:18px;}
 .ptype{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:26px;text-align:center;}
 .ptype-icon{font-size:42px;margin-bottom:10px;}
 .ptype-title{font-size:16px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
-.ptype-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:500;}
+.ptype-desc{font-size:15px;color:var(--text2);line-height:1.6;font-weight:500;}
 .coming-soon{background:var(--bg3);border:2px dashed var(--border2);border-radius:var(--radius);padding:44px;text-align:center;}
 .coming-soon .cs-icon{font-size:44px;margin-bottom:12px;}
 .coming-soon h3{font-size:19px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
@@ -269,12 +265,12 @@ body.dark .catalog-info-note{background:rgba(30,111,168,.10);border-color:rgba(7
 .multicolor-banner-text strong{color:var(--blue-dark);}
 body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 
-/* ══ ORDER ══ */
+/* ══ ORDER — CHANGED: step-desc 13px → 15px ══ */
 .order-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px;}
 .step{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:24px;}
 .step-num{font-size:40px;font-weight:900;color:rgba(77,184,232,.30);line-height:1;margin-bottom:12px;}
 .step-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:5px;}
-.step-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:500;}
+.step-desc{font-size:15px;color:var(--text2);line-height:1.6;font-weight:500;}
 .order-cta{text-align:center;margin-top:32px;}
 .express-banner{margin-top:28px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 60%,#0e3255 100%);border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;box-shadow:0 6px 32px rgba(30,111,168,.30);border:1px solid rgba(77,184,232,.25);position:relative;overflow:hidden;}
 .express-banner::before{content:'';position:absolute;top:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,50,.07) 0%,transparent 70%);pointer-events:none;}
@@ -282,7 +278,7 @@ body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 .express-content{flex:1;min-width:200px;}
 .express-title{font-size:17px;font-weight:900;color:#fff;margin-bottom:6px;}
 .express-badge{display:inline-block;background:rgba(255,200,50,.2);border:1px solid rgba(255,200,50,.4);color:#f5c842;font-size:10px;font-weight:700;padding:2px 10px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
-.express-desc{font-size:13px;color:rgba(255,255,255,.78);line-height:1.65;font-weight:500;}
+.express-desc{font-size:14px;color:rgba(255,255,255,.78);line-height:1.65;font-weight:500;}
 .btn-express{background:linear-gradient(135deg,#f5c842 0%,#e6a800 100%);color:#1a2533;padding:13px 24px;border-radius:12px;font-size:15px;font-weight:900;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(245,200,66,.35);}
 .btn-express:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(245,200,66,.5);}
 
@@ -298,16 +294,15 @@ body.dark .multicolor-banner-text strong{color:var(--blue-light);}
 .price-card-title{font-size:15px;font-weight:800;color:var(--blue-dark);}
 .figurine-fixed-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(30,160,90,.12);border:1.5px solid rgba(30,160,90,.3);color:#156638;border-radius:100px;font-size:11px;font-weight:800;padding:3px 10px;margin-top:5px;}
 body.dark .figurine-fixed-badge{color:#3ecf7a;background:rgba(30,160,90,.15);border-color:rgba(30,160,90,.35);}
-/* Gift / signage marketing strips */
-.figurine-gift-strip{background:linear-gradient(135deg,rgba(245,200,66,.08) 0%,rgba(30,111,168,.05) 100%);border-bottom:1.5px dashed rgba(245,200,66,.35);padding:14px 20px;font-size:13px;color:var(--text2);line-height:1.65;font-weight:700;}
+.figurine-gift-strip{background:linear-gradient(135deg,rgba(245,200,66,.08) 0%,rgba(30,111,168,.05) 100%);border-bottom:1.5px dashed rgba(245,200,66,.35);padding:14px 20px;font-size:14px;color:var(--text2);line-height:1.65;font-weight:700;}
 .figurine-gift-strip strong{color:var(--blue-dark);}
 body.dark .figurine-gift-strip strong{color:var(--blue-light);}
-.signage-marketing-strip{background:rgba(30,111,168,.05);border-bottom:1.5px dashed rgba(30,111,168,.2);padding:14px 20px;font-size:13px;color:var(--text2);line-height:1.65;font-weight:700;}
+.signage-marketing-strip{background:rgba(30,111,168,.05);border-bottom:1.5px dashed rgba(30,111,168,.2);padding:14px 20px;font-size:14px;color:var(--text2);line-height:1.65;font-weight:700;}
 .signage-marketing-strip strong{color:var(--blue-dark);}
 body.dark .signage-marketing-strip strong{color:var(--blue-light);}
-.card-pricing-note{background:rgba(30,111,168,.04);border-top:1px solid var(--border);padding:11px 16px;font-size:12px;color:var(--text2);font-weight:600;display:flex;align-items:flex-start;gap:8px;line-height:1.55;}
+.card-pricing-note{background:rgba(30,111,168,.04);border-top:1px solid var(--border);padding:11px 16px;font-size:14px;color:var(--text2);font-weight:600;display:flex;align-items:flex-start;gap:8px;line-height:1.55;}
 .price-rows{padding:8px 0;}
-.price-row{display:flex;justify-content:space-between;align-items:center;padding:9px 20px;border-bottom:1px solid var(--border);font-size:13px;}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:9px 20px;border-bottom:1px solid var(--border);font-size:14px;}
 .price-row:last-child{border:none;}
 .price-row-label{color:var(--text2);font-weight:600;}
 .price-row-val{font-weight:800;color:var(--blue-dark);}
@@ -319,24 +314,24 @@ body.dark .shipping-free{color:#3ecf7a;}
 .pay-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:14px;}
 .pay-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
 .pay-title{font-size:14px;font-weight:800;color:var(--blue-dark);}
-.pay-desc{font-size:12px;color:var(--text2);margin-top:2px;font-weight:500;}
+.pay-desc{font-size:14px;color:var(--text2);margin-top:2px;font-weight:500;}
 .shipping-row{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:14px;}
 .shipping-label{color:var(--text2);font-weight:600;display:flex;align-items:center;gap:8px;}
 
-/* ══ ABOUT ══ */
+/* ══ ABOUT — CHANGED: fi-text p 13px → 15px ══ */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
 .about-features{display:grid;gap:16px;margin-top:22px;}
 .fi{display:flex;gap:14px;align-items:flex-start;}
 .fi-icon{width:42px;height:42px;border-radius:10px;background:rgba(30,111,168,.1);border:1px solid rgba(30,111,168,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .fi-text h4{font-size:14px;font-weight:800;color:var(--blue-dark);margin-bottom:2px;}
-.fi-text p{font-size:13px;color:var(--text2);line-height:1.55;font-weight:500;}
+.fi-text p{font-size:15px;color:var(--text2);line-height:1.55;font-weight:500;}
 .hobby-origin{margin-top:18px;background:linear-gradient(135deg,rgba(77,184,232,.07) 0%,rgba(30,111,168,.05) 100%);border:1.5px solid rgba(77,184,232,.25);border-radius:14px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px;}
 .hobby-origin-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
 .hobby-origin-text{font-size:15px;color:var(--text2);line-height:1.65;font-weight:600;}
 .hobby-origin-text strong{color:var(--blue-dark);}
 .founder-photo-row{display:flex;align-items:center;gap:16px;margin-top:18px;padding:14px 18px;background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;}
 .founder-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--blue-mid);box-shadow:0 4px 16px rgba(30,111,168,.2);flex-shrink:0;}
-.founder-photo-text{font-size:13px;color:var(--text2);line-height:1.6;font-weight:600;}
+.founder-photo-text{font-size:14px;color:var(--text2);line-height:1.6;font-weight:600;}
 .founder-photo-text strong{color:var(--blue-dark);font-size:14px;display:block;margin-bottom:2px;}
 .sw-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
 .sw-chip{background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--blue-dark);}
@@ -349,10 +344,10 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .abl{font-size:14px;color:var(--text2);margin-top:5px;font-weight:600;}
 .ab-chips{display:grid;gap:9px;margin-top:22px;}
 .ab-chip{background:var(--bg2);border-radius:10px;padding:12px 14px;text-align:right;}
-.ab-chip-l{font-size:11px;color:var(--text2);font-weight:600;}
-.ab-chip-v{font-size:13px;font-weight:700;color:var(--text);margin-top:1px;}
+.ab-chip-l{font-size:12px;color:var(--text2);font-weight:600;}
+.ab-chip-v{font-size:14px;font-weight:700;color:var(--text);margin-top:1px;}
 
-/* ══ REVIEWS ══ */
+/* ══ REVIEWS — CHANGED: review-text 14px → 15px, review-product 12px → 14px ══ */
 .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:28px;}
 .review-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px;transition:transform .2s,box-shadow .2s;}
 .review-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
@@ -360,12 +355,14 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .review-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--blue-mid);flex-shrink:0;}
 .review-avatar-placeholder{width:48px;height:48px;border-radius:50%;background:var(--bg3);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
 .review-author{font-size:15px;font-weight:800;color:var(--blue-dark);}
-.review-city{font-size:12px;color:var(--text2);font-weight:600;}
+.review-city{font-size:13px;color:var(--text2);font-weight:600;}
 .review-stars{color:#f5c842;font-size:14px;letter-spacing:1px;margin-bottom:10px;}
-.review-text{font-size:14px;color:var(--text2);line-height:1.7;font-weight:500;font-style:italic;}
-.review-product{font-size:12px;color:var(--blue-mid);font-weight:700;margin-top:10px;}
+.review-text{font-size:15px;color:var(--text2);line-height:1.7;font-weight:500;font-style:italic;}
+.review-product{font-size:14px;color:var(--blue-mid);font-weight:700;margin-top:10px;}
+/* ═ NEW: review product image ═ */
+.review-product-img{width:100%;max-height:200px;object-fit:cover;border-radius:10px;margin-top:12px;border:1.5px solid var(--border);}
 
-/* ══ FAQ ══ */
+/* ══ FAQ — CHANGED: faq-a 14px → 15px ══ */
 .faq-list{display:grid;gap:12px;margin-top:28px;}
 .faq-item{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s;}
 .faq-item.open{border-color:var(--blue-light);}
@@ -373,7 +370,7 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .faq-q:hover{color:var(--blue-mid);}
 .faq-arrow{font-size:18px;transition:transform .25s;flex-shrink:0;color:var(--text2);}
 .faq-item.open .faq-arrow{transform:rotate(180deg);}
-.faq-a{display:none;padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.75;font-weight:500;}
+.faq-a{display:none;padding:0 22px 18px;font-size:15px;color:var(--text2);line-height:1.75;font-weight:500;}
 .faq-item.open .faq-a{display:block;}
 
 /* ══ SOCIAL ══ */
@@ -383,7 +380,7 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .social-icon{width:34px;height:34px;flex-shrink:0;}
 .social-icon svg{width:100%;height:100%;}
 .social-name{font-size:14px;font-weight:700;color:var(--blue-dark);}
-.social-handle{font-size:12px;color:var(--text2);font-weight:600;}
+.social-handle{font-size:13px;color:var(--text2);font-weight:600;}
 
 /* ══ CONTACT ══ */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
@@ -392,24 +389,24 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .contact-card:hover{background:var(--border);transform:translateX(-3px);}
 .contact-icon{width:44px;height:44px;border-radius:11px;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .contact-icon svg{width:24px;height:24px;fill:#fff;}
-.contact-label{font-size:12px;color:var(--text2);margin-bottom:2px;font-weight:600;}
+.contact-label{font-size:13px;color:var(--text2);margin-bottom:2px;font-weight:600;}
 .contact-val{font-size:15px;font-weight:700;color:var(--blue-dark);}
 .hours-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 20px;}
-.hours-l{font-size:12px;color:var(--text2);margin-bottom:8px;font-weight:700;}
-.hours-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid var(--border);}
+.hours-l{font-size:13px;color:var(--text2);margin-bottom:8px;font-weight:700;}
+.hours-row{display:flex;justify-content:space-between;font-size:14px;padding:4px 0;border-bottom:1px solid var(--border);}
 .hours-row:last-child{border:none;}
 .hours-day{color:var(--text2);font-weight:600;}
 .hours-time{font-weight:700;color:var(--blue-dark);}
 .contact-form{display:grid;gap:13px;}
 .form-group{display:grid;gap:5px;}
-.form-label{font-size:13px;font-weight:700;color:var(--blue-dark);}
+.form-label{font-size:14px;font-weight:700;color:var(--blue-dark);}
 .form-input,.form-textarea,.form-select{background:var(--input-bg);border:1.5px solid var(--border);color:var(--text);padding:11px 14px;border-radius:10px;font-size:15px;font-family:'Heebo',sans-serif;outline:none;transition:border-color .2s;width:100%;}
 .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--blue-mid);}
 .form-textarea{resize:vertical;min-height:100px;}
 .form-submit{background:var(--blue-mid);color:#fff;border:none;padding:13px 28px;border-radius:var(--radius);font-size:16px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(30,111,168,.28);}
 .form-submit:hover{background:#155f8f;transform:translateY(-1px);}
 .form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-.form-hint{font-size:12px;color:var(--text2);margin-top:5px;font-weight:500;display:flex;align-items:flex-start;gap:5px;line-height:1.5;}
+.form-hint{font-size:14px;color:var(--text2);margin-top:5px;font-weight:500;display:flex;align-items:flex-start;gap:5px;line-height:1.5;}
 .form-success{display:none;background:rgba(30,160,90,.1);border:1px solid rgba(30,160,90,.3);color:#156638;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
 body.dark .form-success{color:#3ecf7a;background:rgba(30,160,90,.12);border-color:rgba(30,160,90,.3);}
 .form-error{display:none;background:rgba(200,60,60,.1);border:1px solid rgba(200,60,60,.3);color:#9e2020;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
@@ -419,12 +416,12 @@ body.dark .form-error{color:#f07070;}
 footer{background:var(--blue-dark);color:rgba(255,255,255,.7);padding:38px 40px 28px;text-align:center;}
 body.dark footer{background:#061422;}
 .footer-links{display:flex;gap:20px;justify-content:center;list-style:none;margin-bottom:10px;flex-wrap:wrap;}
-.footer-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:13px;font-weight:600;transition:color .2s;}
+.footer-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
 .footer-links a:hover{color:#fff;}
 .footer-legal{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
-.footer-legal-btn{background:none;border:none;color:rgba(255,255,255,.45);font-size:12px;font-family:'Heebo',sans-serif;cursor:pointer;text-decoration:underline;padding:0;transition:color .2s;}
+.footer-legal-btn{background:none;border:none;color:rgba(255,255,255,.45);font-size:13px;font-family:'Heebo',sans-serif;cursor:pointer;text-decoration:underline;padding:0;transition:color .2s;}
 .footer-legal-btn:hover{color:rgba(255,255,255,.85);}
-.footer-copy{font-size:12px;color:rgba(255,255,255,.3);}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.3);}
 
 /* ══ LEGAL ══ */
 .legal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
@@ -453,7 +450,7 @@ body.dark .legal-body .highlight strong{color:#f5c842;}
 #cookieBanner{display:none;position:fixed;bottom:0;right:0;left:0;z-index:500;background:var(--blue-dark);color:#fff;padding:16px 24px;border-top:2px solid var(--blue-mid);box-shadow:0 -4px 24px rgba(0,0,0,.2);}
 body.dark #cookieBanner{background:#061422;}
 .cookie-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.cookie-text{flex:1;min-width:240px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.85);}
+.cookie-text{flex:1;min-width:240px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.85);}
 .cookie-text a{color:var(--blue-light);text-decoration:underline;cursor:pointer;}
 .cookie-btns{display:flex;gap:10px;flex-shrink:0;}
 .cookie-accept{background:var(--blue-mid);color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
@@ -580,7 +577,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     </div>
     <div class="hero-tag">✦ הדפסות תלת מימד בהתאמה אישית — באר שבע והדרום</div>
     <h1 class="hero-title">הרעיון שלכם<br><span class="accent">הופך למוצר אמיתי</span></h1>
-    <p class="hero-sub">הדפסות תלת-מימד איכותיות. שילוב של דיוק הנדסי וטאצ' אמנותי, עם מבחר גדול של חומרים וצבעים.</p>
+    <p class="hero-sub">הדפסות תלת-מימד איכותיות. שילוב של דיוק הנדסי וחוש אמנותי, עם מבחר גדול של חומרים וצבעים.</p>
     <div class="hero-btns">
       <a href="https://wa.me/972559144386?text=%D7%94%D7%99%D7%99%20NSF%203D!%20%F0%9F%91%8B%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%F0%9F%98%8A" target="_blank" rel="noopener noreferrer" class="btn-cta3" style="font-size:18px;padding:16px 36px;">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -673,12 +670,12 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <div class="ptype">
       <div class="ptype-icon">💡</div>
       <div class="ptype-title">כל רעיון — כל מוצר</div>
-      <div class="ptype-desc">שילוט, דמויות, קישוטים, חלקים, מתנות ייחודיות, אמנות, אביזרים ועוד. ניתן לשלב לדים ואורות מיוחדים. אם אתם יכולים לדמיין את זה — אני יכול להדפיס את זה.</div>
+      <div class="ptype-desc">שילוט, דמויות, קישוטים, חלקים, מתנות ייחודיות, אמנות, אביזרים ועוד. ניתן לשלב לדים ואורות מיוחדים. אם אתם יכולים לדמיין את זה — אנחנו יכולים להדפיס את זה.</div>
     </div>
     <div class="ptype">
       <div class="ptype-icon">📐</div>
       <div class="ptype-title">עיצוב מאפס או מקובץ</div>
-      <div class="ptype-desc">יש לכם קובץ STL / STEP מוכן? מצוין. אין קובץ? אעצב מאפס לפי תיאור, תמונה, או רעיון כללי.</div>
+      <div class="ptype-desc">יש לכם קובץ STL / STEP מוכן? מצוין. אין קובץ? נעצב מאפס לפי תיאור, תמונה, או רעיון כללי.</div>
     </div>
     <div class="ptype">
       <div class="ptype-icon">📏</div>
@@ -718,7 +715,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         <div class="price-row"><span class="price-row-label">בגובה 25 ס"מ</span><span class="price-row-val">750 ₪</span></div>
         <div class="price-row"><span class="price-row-label">בגובה 30 ס"מ</span><span class="price-row-val">800 ₪</span></div>
       </div>
-      <div style="background:rgba(30,160,90,.07);border-top:1px solid rgba(30,160,90,.2);padding:11px 16px;font-size:12px;color:#156638;font-weight:700;display:flex;align-items:center;gap:7px;">
+      <div style="background:rgba(30,160,90,.07);border-top:1px solid rgba(30,160,90,.2);padding:11px 16px;font-size:13px;color:#156638;font-weight:700;display:flex;align-items:center;gap:7px;">
         <span style="font-size:15px;">🌈</span>
         הדפסה רב-צבעונית כלולה במחיר הקבוע — זהו היתרון התחרותי שלנו.
       </div>
@@ -757,24 +754,6 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   </div>
 
   <div style="margin-bottom:10px;margin-top:8px">
-    <div class="stag" style="margin-bottom:14px">המדפסת שלי</div>
-  </div>
-  <div style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:28px;">
-    <div style="background:var(--bg3);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;">
-      <span style="font-size:26px;">🖨️</span>
-      <div>
-        <div style="font-size:15px;font-weight:800;color:var(--blue-dark);">Bambu Lab H2D</div>
-        <div style="font-size:12px;color:var(--text2);margin-top:2px;">מדפסת מתקדמת עם יכולות צבע מתקדמות</div>
-      </div>
-    </div>
-    <div style="padding:8px 0;">
-      <div class="price-row"><span class="price-row-label">מערכת צבע</span><span class="price-row-val">AMS 2 Pro × 2 יחידות (הדפסה רב-צבעונית)</span></div>
-      <div class="price-row"><span class="price-row-label">גודל הדפסה מקסימלי</span><span class="price-row-val">32 × 32 × 32 ס"מ</span></div>
-      <div class="price-row"><span class="price-row-label">מעל לגודל המדפסת</span><span class="price-row-val">אפשרי בתיאום אישי (עיצוב מפוצל)</span></div>
-    </div>
-  </div>
-
-  <div style="margin-bottom:10px">
     <div class="stag" style="margin-bottom:14px">משלוח ואיסוף</div>
   </div>
   <div class="shipping-row">
@@ -807,7 +786,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
       <div><div class="pay-title">העברה בנקאית</div><div class="pay-desc">לפרטים — יישלחו לאחר אישור הזמנה.</div></div>
     </div>
   </div>
-  <div style="font-size:12px;color:var(--text2);margin-top:14px;padding:12px 16px;background:var(--bg3);border-radius:10px;border:1px solid var(--border);">
+  <div style="font-size:14px;color:var(--text2);margin-top:14px;padding:12px 16px;background:var(--bg3);border-radius:10px;border:1px solid var(--border);">
     💡 <strong>הבהרה:</strong> NSF 3D פועל כעוסק פטור. קבלה כחוק תישלח אליכם דיגיטלית לאחר כל תשלום.
   </div>
 </div>
@@ -826,7 +805,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <div class="step"><div class="step-num">01</div><div class="step-title">בחרו צבע וחומר</div><div class="step-desc">עיינו בקטלוג ובחרו מה מתאים לכם. לא בטוחים? נשמח לייעץ.</div></div>
     <div class="step"><div class="step-num">02</div><div class="step-title">שלחו תיאור או קובץ</div><div class="step-desc">הודעה עם תיאור, תמונה, רעיון — או קובץ מקצועי (STL, STEP, וכו'). נבין הכל ונשמח לסייע בכל שלב.</div></div>
     <div class="step"><div class="step-num">03</div><div class="step-title">אישור ומחיר</div><div class="step-desc">נחזור אליכם מהר עם הצעת מחיר שקופה ומפורטת. מתחילים לעבוד רק אחרי אישורכם.</div></div>
-    <div class="step"><div class="step-num">04</div><div class="step-title">הדפסה ואיסוף</div><div class="step-desc">רוב ההזמנות מוכנות תוך 3-7 ימי עסקים. משלוח או איסוף עצמי.</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">הדפסה ואיסוף</div><div class="step-desc">רוב ההזמנות מוכנות תוך 3-10 ימי עסקים. משלוח או איסוף עצמי.</div></div>
   </div>
   <div class="express-banner">
     <div class="express-icon-wrap">⚡</div>
@@ -860,46 +839,69 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <p class="ssub">לקוחות אמיתיים, חוויות אמיתיות</p>
   </div>
   <div class="reviews-grid">
-    <!-- ביקורת 1 -->
+    <!-- ═══ ביקורת 1 ═══ -->
     <div class="review-card">
       <div class="review-top">
-        <!-- אם יש תמונה: <img class="review-avatar" src="reviews/reviewer1.jpg" alt="שם"> -->
+        <!-- ⬇️ תמונת מבקר: החלף reviews/reviewer1.jpg בנתיב אמיתי, או השאר placeholder -->
+        <!-- <img class="review-avatar" src="reviews/reviewer1.jpg" alt="מבקר 1" onerror="this.outerHTML=\'<div class=review-avatar-placeholder>😊</div>\'"> -->
         <div class="review-avatar-placeholder">😊</div>
         <div>
-          <div class="review-author">יוסי כ.</div>
+          <div class="review-author">מבקר 1.</div>
+          <div class="review-city">אשקלון</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"ביקורת 1."</div>
+      <div class="review-product">🎁 אקדח צעצוע מודפס</div>
+      <!-- ⬇️ תמונת מוצר: הוסף נתיב לתמונה אם יש -->
+      <!-- <img class="review-product-img" src="reviews/product1.jpg" alt="אקדח צעצוע מודפס" onerror="this.style.display='none'"> -->
+    </div>
+    <!-- ═══ ביקורת 2 ═══ -->
+    <div class="review-card">
+      <div class="review-top">
+        <!-- <img class="review-avatar" src="reviews/reviewer2.jpg" alt="מבקר 2" onerror="this.outerHTML=\'<div class=review-avatar-placeholder>😊</div>\'"> -->
+        <div class="review-avatar-placeholder">😊</div>
+        <div>
+          <div class="review-author">מבקר 2.</div>
           <div class="review-city">באר שבע</div>
         </div>
       </div>
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">"הזמנתי דמות מותאמת אישית במתנה לשחרור של חבר. התוצאה הייתה מטורפת — הוא לא האמין שזה מודפס. סמואל היה סבלני, מקצועי ומהיר."</div>
-      <div class="review-product">🎁 דמות מותאמת אישית</div>
+      <div class="review-text">"ביקורת 2."</div>
+      <div class="review-product">🪧 שלט מעוצב למשרד</div>
+      <!-- <img class="review-product-img" src="reviews/product2.jpg" alt="שלט מעוצב למשרד" onerror="this.style.display='none'"> -->
     </div>
-    <!-- ביקורת 2 -->
+    <!-- ═══ ביקורת 3 ═══ -->
     <div class="review-card">
       <div class="review-top">
+        <!-- <img class="review-avatar" src="reviews/reviewer3.jpg" alt="מבקר 3" onerror="this.outerHTML=\'<div class=review-avatar-placeholder>😊</div>\'"> -->
         <div class="review-avatar-placeholder">😊</div>
         <div>
-          <div class="review-author">מיכל ד.</div>
-          <div class="review-city">אשדוד</div>
+          <div class="review-author">מבקר 3.</div>
+          <div class="review-city">באר שבע</div>
         </div>
       </div>
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">"רצינו שלט כניסה מעוצב לדירה החדשה. קיבלנו בדיוק את מה שביקשנו — גופן, צבעים, הכל מושלם. ממליצה בחום!"</div>
-      <div class="review-product">🪧 שלט כניסה מעוצב</div>
+      <div class="review-text">"ביקורת 3."</div>
+      <div class="review-product">🔧 מארז לחיישנים</div>
+      <!-- <img class="review-product-img" src="reviews/product3.jpg" alt="מארז לחיישנים" onerror="this.style.display='none'"> -->
     </div>
-    <!-- ביקורת 3 -->
+    <!-- ═══ להוספת ביקורת נוספת: העתק מכאן ═══ -->
+    <!--
     <div class="review-card">
       <div class="review-top">
-        <div class="review-avatar-placeholder">😊</div>
+        <img class="review-avatar" src="reviews/reviewer4.jpg" alt="שם המבקר" onerror="this.outerHTML='<div class=review-avatar-placeholder>😊</div>'">
         <div>
-          <div class="review-author">אלכס ר.</div>
-          <div class="review-city">תל אביב</div>
+          <div class="review-author">שם המבקר</div>
+          <div class="review-city">עיר</div>
         </div>
       </div>
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">"שלחתי קובץ STL של חלק שנשבר במכשיר ביתי. סמואל הדפיס אותו באיכות מעולה ושלח במשלוח מהיר. חסך לי קניית מכשיר חדש!"</div>
-      <div class="review-product">🔧 חלק חלופי מותאם</div>
+      <div class="review-text">"הטקסט של הביקורת כאן."</div>
+      <div class="review-product">🎁 תיאור המוצר</div>
+      <img class="review-product-img" src="reviews/product4.jpg" alt="תיאור המוצר" onerror="this.style.display='none'">
     </div>
+    -->
   </div>
 </div>
 </section>
@@ -913,7 +915,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
       <div class="stag">אודות</div>
       <h2 class="stitle">הנדסה ואומנות<br>באותו הדפס</h2>
       <p class="ssub" style="margin-top:14px">
-        NSF 3D הוא סטודיו להדפסות תלת מימד בבאר שבע, בניהולו של <strong>סמואל נרודיצקי</strong> — מהנדס מכונות בוגר אוניברסיטת בן גוריון עם מעל 4 שנות ניסיון בתחום. שילוב של דיוק הנדסי עם טאצ' יצירתי-אומנותי.
+        NSF 3D הוא סטודיו להדפסות תלת מימד בבאר שבע, בניהולו של <strong>סמואל נרודיצקי</strong> — מהנדס מכונות בוגר אוניברסיטת בן גוריון עם מעל 4 שנות ניסיון בתחום. שילוב של דיוק הנדסי עם חוש יצירתי-אומנותי.
       </p>
 
       <div class="hobby-origin">
@@ -965,7 +967,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
   <div class="faq-list">
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">כמה עולה הדפסת 3D?<span class="faq-arrow">▼</span></div>
-      <div class="faq-a">תלוי בגודל, חומר ומורכבות. שלט פשוט מתחיל ב-50 ₪, דמות מותאמת ב-500 ₪, ופרויקטים קטנים מ-40 ₪. תמיד תקבלו הצעת מחיר מפורטת לפני שמתחילים — ללא הפתעות.</div>
+      <div class="faq-a">תלוי בגודל, חומר ומורכבות. שלט פשוט מתחיל מ-50 ₪, דמות מותאמת מ-500 ₪, ופרויקטים קטנים מ-40 ₪. תמיד תקבלו הצעת מחיר מפורטת לפני שמתחילים — ללא הפתעות.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">מה ההבדל בין PLA ל-PETG?<span class="faq-arrow">▼</span></div>
@@ -977,11 +979,11 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">אין לי קובץ מוכן — אפשר בכל זאת?<span class="faq-arrow">▼</span></div>
-      <div class="faq-a">בהחלט! אפשר לשלוח תיאור במילים, תמונה, סקיצה, או סתם רעיון כללי. אני מעצב את המודל מאפס ומתאים אותו בדיוק לבקשה שלכם.</div>
+      <div class="faq-a">בהחלט! אפשר לשלוח תיאור במילים, תמונה, סקיצה, או סתם רעיון כללי. אנחנו מעצבים את המודל מאפס ומתאימים אותו בדיוק לבקשה שלכם.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">אפשר לקבל הדפסה בכמה צבעים?<span class="faq-arrow">▼</span></div>
-      <div class="faq-a">כן! המדפסת שלנו (Bambu Lab H2D עם מערכת AMS כפולה) מאפשרת הדפסה רב-צבעונית. בדמויות — ריבוי הצבעים כלול במחיר הקבוע.</div>
+      <div class="faq-a">כן! המדפסת שלנו מאפשרת הדפסה רב-צבעונית. בדמויות — ריבוי הצבעים כלול במחיר הקבוע.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">יש משלוח לכל הארץ?<span class="faq-arrow">▼</span></div>
@@ -1004,7 +1006,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
+<!-- ══ CONTACT — CHANGED: WhatsApp + Email with pre-filled messages ══ -->
 <div class="sdiv"></div>
 <section id="contact" style="background:var(--bg)">
 <div class="sw">
@@ -1049,7 +1051,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
         <div class="hours-row"><span class="hours-day">ראשון–חמישי</span><span class="hours-time">09:00–21:00</span></div>
         <div class="hours-row"><span class="hours-day">שישי</span><span class="hours-time">09:00–15:00</span></div>
         <div class="hours-row"><span class="hours-day">שבת</span><span class="hours-time">סגור</span></div>
-        <div style="font-size:12px;color:var(--text2);margin-top:8px;font-weight:500;">מענה בוואטסאפ תוך מספר דקות עד מספר שעות ספורות</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:8px;font-weight:500;">מענה בוואטסאפ תוך מספר דקות עד מספר שעות ספורות</div>
       </div>
     </div>
 
@@ -1090,7 +1092,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 <footer>
   <div style="margin-bottom:14px">
     <div style="font-size:26px;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:-0.5px">NSF <span style="color:#4db8e8">3D</span></div>
-    <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:3px">באר שבע והדרום · הדפסות 3D בהתאמה אישית</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.45);margin-top:3px">באר שבע והדרום · הדפסות 3D בהתאמה אישית</div>
   </div>
   <ul class="footer-links">
     <li><a href="#catalog">קטלוג</a></li>
@@ -1105,7 +1107,7 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
     <button class="footer-legal-btn" id="btn-privacy" onclick="openLegal('privacy')">מדיניות פרטיות</button>
     <button class="footer-legal-btn" id="btn-terms" onclick="openLegal('terms')">תקנון ותנאי שימוש</button>
   </div>
-  <div class="footer-copy">© 2026 NSF 3D — כל הזכויות שמורות</div>
+  <div class="footer-copy">© 2025-2026 NSF 3D — כל הזכויות שמורות</div>
 </footer>
 
 <!-- ══ LEGAL MODALS ══ -->
@@ -1169,7 +1171,10 @@ body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu 
 <script>
 const WORKER_URL   = "https://nsf3d-colors.nsf3d-il.workers.dev/";
 const WA_NUMBER    = "972559144386";
+const WA_MSG       = encodeURIComponent("היי NSF 3D! 👋 אשמח לשמוע פרטים 😊");
 const EMAIL_ADDR   = "nsf3d.il@gmail.com";
+const EMAIL_SUBJECT= encodeURIComponent("פנייה מהאתר — NSF 3D");
+const EMAIL_BODY   = encodeURIComponent("היי NSF 3D,\n\nפונה אליכם מהאתר.\n\n");
 const SITE_URL     = "https://nsf3dil.github.io/nsf3d-website/";
 function getDefaultShow(){ return window.innerWidth <= 768 ? 4 : 6; }
 const EMAILJS_SERVICE  = "nsf3d_gmail";
@@ -1234,8 +1239,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   const localNum = '0' + WA_NUMBER.slice(3).replace(/(\d{2})(\d{3})(\d{4})/, '$1-$2-$3');
   document.getElementById('waDisplay').textContent = localNum;
   document.getElementById('mailDisplay').textContent = EMAIL_ADDR;
-  document.getElementById('waCard').href = `https://wa.me/${WA_NUMBER}`;
-  document.getElementById('mailCard').href = `mailto:${EMAIL_ADDR}`;
+  // ✅ CHANGED: WhatsApp link with pre-filled message
+  document.getElementById('waCard').href = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}`;
+  // ✅ CHANGED: Email link with subject + body
+  document.getElementById('mailCard').href = `mailto:${EMAIL_ADDR}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`;
 
   const sg = document.getElementById('socialGrid');
   if(sg) sg.innerHTML = SOCIALS.map(v=>`
