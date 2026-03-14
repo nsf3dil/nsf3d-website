@@ -403,7 +403,7 @@ body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);backgroun
 .review-stars{color:#f5c842;font-size:14px;letter-spacing:1px;margin-bottom:10px;}
 .review-text{font-size:15px;color:var(--text2);line-height:1.7;font-weight:500;font-style:italic;}
 .review-product{font-size:14px;color:var(--blue-mid);font-weight:700;margin-top:10px;}
-.review-product-img{width:100%;max-height:200px;object-fit:cover;border-radius:10px;margin-top:12px;border:1.5px solid var(--border);}
+.review-product-img{width:100%;max-height:200px;object-fit:cover;border-radius:10px;margin-top:12px;border:1.5px solid var(--border);cursor:zoom-in;}
 
 /* ══ FAQ ══ */
 .faq-list{display:grid;gap:12px;margin-top:28px;}
@@ -1021,7 +1021,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
       <div class="review-stars">★★★★★</div>
       <div class="review-text">"ביקורת 1."</div>
       <div class="review-product">🎁 אקדח צעצוע מודפס</div>
-      <img class="review-product-img" src="reviews/product1.jpg" alt="אקדח צעצוע מודפס" onerror="this.style.display='none'">
+      <img class="review-product-img" src="reviews/product1.jpg" alt="אקדח צעצוע מודפס" style="cursor:zoom-in" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
     </div>
     <div class="review-card">
       <div class="review-top">
@@ -1737,7 +1737,7 @@ function renderProjects(list){
       : defaultMsg;
 
     const imgHtml = p.image
-      ? `<img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=project-img-placeholder>🖨️</div>'">`
+      ? `<img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" style="cursor:zoom-in" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.parentElement.innerHTML='<div class=project-img-placeholder>🖨️</div>'">`
       : `<div class="project-img-placeholder">🖨️</div>`;
 
     const featuredBadge = p.featured
