@@ -221,6 +221,8 @@ body.a11y-noanim *,body.a11y-noanim *::before,body.a11y-noanim *::after{animatio
 .color-sku{font-size:12px;color:var(--text2);font-weight:600;}
 .tag-glow{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(77,184,232,.15);color:#155f8f;border:1px solid rgba(77,184,232,.4);}
 body.dark .tag-glow{color:var(--blue-mid);}
+.tag-special{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(138,43,226,.10);color:#6b1fa8;border:1px solid rgba(138,43,226,.35);}
+body.dark .tag-special{color:#c084fc;background:rgba(138,43,226,.15);border-color:rgba(192,132,252,.35);}
 .tag-instock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(30,160,90,.12);color:#156638;border:1px solid rgba(30,160,90,.3);}
 body.dark .tag-instock{color:#3ecf7a;background:rgba(30,160,90,.15);border-color:rgba(30,160,90,.35);}
 .tag-outstock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(200,60,60,.10);color:#9e2020;border:1px solid rgba(200,60,60,.25);}
@@ -764,6 +766,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
     <button class="filter-btn active" onclick="setFilter('popular',this)">⭐ פופולריים</button>
     <button class="filter-btn" onclick="setFilter('all',this)">הכל</button>
     <button class="filter-btn" onclick="setFilter('glow',this)">✨ זוהר בחושך</button>
+    <button class="filter-btn" onclick="setFilter('special',this)">💎 מיוחדים</button>
     <button class="filter-btn" onclick="setFilter('instock',this)">✓ במלאי</button>
     <button class="filter-btn" onclick="setFilter('outstock',this)">✗ אזל</button>
     <input class="search-input" type="text" id="searchInput" placeholder="🔍 חפשו צבע (למשל: נחושת, כחול)" oninput="filterColors()" aria-label="חיפוש צבע">
@@ -1656,12 +1659,14 @@ function filterColors(){
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   let list = [...allColors];
   if(activeFilter==='glow')         list = list.filter(c=>c.finishes.includes('זוהר בחושך'));
+  else if(activeFilter==='special') list = list.filter(c=>c.special === true);
   else if(activeFilter==='instock') list = list.filter(c=>c.inStock === true);
   else if(activeFilter==='outstock')list = list.filter(c=>c.inStock === false);
   if(q) list = list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q));
 
   const defaultShow = getDefaultShow();
-  const canTruncate = !q && list.length > defaultShow && activeFilter !== 'glow' && activeFilter !== 'instock' && activeFilter !== 'outstock';
+  // Only truncate in "popular" view (no search, no specific filter)
+  const canTruncate = !q && activeFilter === 'popular' && list.length > defaultShow;
   updateShowAllButtons(canTruncate, list.length, list);
   renderColors(canTruncate && !showingAll ? list.slice(0, defaultShow) : list);
 }
@@ -1672,15 +1677,19 @@ function isHex(h){ return /^#[0-9A-Fa-f]{6}$/.test(h); }
 function renderColors(list){
   const grid = document.getElementById('colorsGrid');
   if(!list.length){ grid.innerHTML='<div class="loading" style="grid-column:1/-1">לא נמצאו צבעים</div>'; return; }
-  grid.innerHTML = list.map(c=>{
+  // Store for modal access by index
+  window._catalogList = list;
+  grid.innerHTML = list.map((c,i)=>{
     const hex = isHex(c.hex)?c.hex:null;
     const isGlow = c.finishes.includes('זוהר בחושך');
-    const inStock = c.inStock === true;
-    const safe = JSON.stringify(c).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    // מיקום תמונה: אם הוגדר ב-Notion → משתמש בו, אם זוהר → 83%, אחרת → center
+    const posY = c.imgPos != null ? c.imgPos + '%' : (isGlow ? '83%' : '50%');
+    const imgPos = `object-position:center ${posY};`;
     const sw = c.image
-      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" decoding="async" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;object-position:center bottom;" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">`
+      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" decoding="async" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;${imgPos}" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">`
       : `<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
-    return `<div class="color-card" onclick="openModal('${safe}')" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal('${safe}')">
+    const inStock = c.inStock === true;
+    return `<div class="color-card" onclick="openModal(${i})" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal(${i})">
       <div class="color-swatch" aria-hidden="true">${sw}</div>
       <div class="color-info">
         <div class="color-name">${c.name}</div>
@@ -1688,7 +1697,8 @@ function renderColors(list){
           <span class="color-sku">מק"ט: ${c.sku}</span>
         </div>
         <div class="color-meta" style="margin-top:4px">
-          ${isGlow?'<span class="tag-glow">✨ זוהר</span>':''}
+          ${isGlow?'<span class="tag-glow">✨ זוהר בחושך</span>':''}
+          ${c.special?'<span class="tag-special">💎 מיוחד</span>':''}
           ${inStock?'<span class="tag-instock">✓ במלאי</span>':'<span class="tag-outstock">✗ אזל</span>'}
         </div>
       </div>
@@ -1786,12 +1796,14 @@ function toggleProjectsShowAll(){
 // ══════════════════════════════════════════════
 //  COLOR MODAL
 // ══════════════════════════════════════════════
-function openModal(dataStr){
-  const c = typeof dataStr==='string' ? JSON.parse(dataStr) : dataStr;
+function openModal(indexOrObj){
+  const c = typeof indexOrObj==='number' ? window._catalogList[indexOrObj] : indexOrObj;
+  if(!c) return;
   currentModalColor = c;
   const hex = isHex(c.hex)?c.hex:null;
   if(c.image){
-    document.getElementById('modalTop').innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" onclick="openLightbox('${c.image}')" title="לחצו להגדלה">`;
+    const safeUrl = c.image.replace(/'/g, "\\'");
+    document.getElementById('modalTop').innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" onclick="openLightbox('${safeUrl}')" title="לחצו להגדלה">`;
   } else {
     document.getElementById('modalTop').innerHTML = `<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
   }
