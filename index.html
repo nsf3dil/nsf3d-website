@@ -763,10 +763,9 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
   <div class="filter-row">
     <button class="filter-btn active" onclick="setFilter('popular',this)">⭐ פופולריים</button>
     <button class="filter-btn" onclick="setFilter('all',this)">הכל</button>
-    <button class="filter-btn" onclick="setFilter('PLA',this)">PLA</button>
-    <button class="filter-btn" onclick="setFilter('PETG',this)">PETG</button>
-    <button class="filter-btn" onclick="setFilter('TPU',this)">TPU</button>
     <button class="filter-btn" onclick="setFilter('glow',this)">✨ זוהר בחושך</button>
+    <button class="filter-btn" onclick="setFilter('instock',this)">✓ במלאי</button>
+    <button class="filter-btn" onclick="setFilter('outstock',this)">✗ אזל</button>
     <input class="search-input" type="text" id="searchInput" placeholder="🔍 חפשו צבע (למשל: נחושת, כחול)" oninput="filterColors()" aria-label="חיפוש צבע">
   </div>
   <div class="show-all-row top-row" id="showAllRowTop" style="display:none">
@@ -1656,14 +1655,13 @@ function updateShowAllButtons(show, total, list){
 function filterColors(){
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   let list = [...allColors];
-  if(activeFilter==='glow')      list = list.filter(c=>c.finishes.includes('זוהר בחושך'));
-  else if(activeFilter==='PLA')  list = list.filter(c=>c.material==='PLA');
-  else if(activeFilter==='PETG') list = list.filter(c=>c.material==='PETG');
-  else if(activeFilter==='TPU')  list = list.filter(c=>c.material==='TPU');
-  if(q) list = list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q)||c.material.toLowerCase().includes(q));
+  if(activeFilter==='glow')         list = list.filter(c=>c.finishes.includes('זוהר בחושך'));
+  else if(activeFilter==='instock') list = list.filter(c=>c.inStock === true);
+  else if(activeFilter==='outstock')list = list.filter(c=>c.inStock === false);
+  if(q) list = list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q));
 
   const defaultShow = getDefaultShow();
-  const canTruncate = !q && list.length > defaultShow && activeFilter !== 'glow';
+  const canTruncate = !q && list.length > defaultShow && activeFilter !== 'glow' && activeFilter !== 'instock' && activeFilter !== 'outstock';
   updateShowAllButtons(canTruncate, list.length, list);
   renderColors(canTruncate && !showingAll ? list.slice(0, defaultShow) : list);
 }
@@ -1677,17 +1675,17 @@ function renderColors(list){
   grid.innerHTML = list.map(c=>{
     const hex = isHex(c.hex)?c.hex:null;
     const isGlow = c.finishes.includes('זוהר בחושך');
-    const inStock = c.inStock !== false;
+    const inStock = c.inStock === true;
     const safe = JSON.stringify(c).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     const sw = c.image
-      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" decoding="async" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">`
+      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" decoding="async" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;object-position:center bottom;" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">`
       : `<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
     return `<div class="color-card" onclick="openModal('${safe}')" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal('${safe}')">
       <div class="color-swatch" aria-hidden="true">${sw}</div>
       <div class="color-info">
         <div class="color-name">${c.name}</div>
         <div class="color-meta">
-          <span class="color-sku">מק"ט: ${c.sku} · ${c.material}</span>
+          <span class="color-sku">מק"ט: ${c.sku}</span>
         </div>
         <div class="color-meta" style="margin-top:4px">
           ${isGlow?'<span class="tag-glow">✨ זוהר</span>':''}
@@ -1792,7 +1790,6 @@ function openModal(dataStr){
   const c = typeof dataStr==='string' ? JSON.parse(dataStr) : dataStr;
   currentModalColor = c;
   const hex = isHex(c.hex)?c.hex:null;
-  const inStock = c.inStock !== false;
   if(c.image){
     document.getElementById('modalTop').innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" onclick="openLightbox('${c.image}')" title="לחצו להגדלה">`;
   } else {
@@ -1800,9 +1797,9 @@ function openModal(dataStr){
   }
   document.getElementById('modalName').textContent = c.name;
   const fins = c.finishes.filter(f=>f!=='במלאי').join(' · ')||'—';
+  const inStock = c.inStock === true;
   const rows = [
     ['מק"ט', c.sku||'—'],
-    ['סוג חומר', c.material],
     ['גימור', fins],
     ['קוד צבע', hex||c.hex||'—'],
     ['מלאי', inStock ? '✓ במלאי' : '✗ אזל'],
@@ -1818,7 +1815,7 @@ function openModal(dataStr){
 function orderFromModal(){
   if(!currentModalColor) return;
   const c = currentModalColor;
-  const msg = encodeURIComponent(`היי NSF 3D! 👋\nאני מעוניין בצבע: ${c.name} (מק"ט: ${c.sku})\nחומר: ${c.material}\n\nאשמח לשמוע פרטים 😊`);
+  const msg = encodeURIComponent(`היי NSF 3D! 👋\nאני מעוניין בצבע: ${c.name} (מק"ט: ${c.sku})\n\nאשמח לשמוע פרטים 😊`);
   window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank','noopener');
 }
 function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
