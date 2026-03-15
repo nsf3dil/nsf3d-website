@@ -765,6 +765,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
   <div class="filter-row">
     <button class="filter-btn active" onclick="setFilter('popular',this)">⭐ פופולריים</button>
     <button class="filter-btn" onclick="setFilter('all',this)">הכל</button>
+    <button class="filter-btn" onclick="setFilter('regular',this)">🎨 רגיל</button>
     <button class="filter-btn" onclick="setFilter('glow',this)">✨ זוהר בחושך</button>
     <button class="filter-btn" onclick="setFilter('special',this)">💎 מיוחדים</button>
     <button class="filter-btn" onclick="setFilter('instock',this)">✓ במלאי</button>
@@ -1659,6 +1660,7 @@ function filterColors(){
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   let list = [...allColors];
   if(activeFilter==='glow')         list = list.filter(c=>c.finishes.includes('זוהר בחושך'));
+  else if(activeFilter==='regular') list = list.filter(c=>!c.finishes.includes('זוהר בחושך') && !c.special);
   else if(activeFilter==='special') list = list.filter(c=>c.special === true);
   else if(activeFilter==='instock') list = list.filter(c=>c.inStock === true);
   else if(activeFilter==='outstock')list = list.filter(c=>c.inStock === false);
