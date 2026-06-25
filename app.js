@@ -42,6 +42,15 @@ const SITE_CONFIG = {
 // │  🛒 SHOP_PRODUCTS — מוצרי חנות (ציוד מיובא, לא הדפסות)       │
 // │  ערוך ידנית כאן עד שיהיה לך CMS ייעודי לחנות.                │
 // └──────────────────────────────────────────────────────────────┘
+// ┌──────────────────────────────────────────────────────────────┐
+// │  🧪 הגדרות תצוגה לטבלת החומרים — true/false להראות/להחביא    │
+// │  עמודה. הדאטה (מחיר/קושי) נשארת בקובץ, רק לא מוצגת.          │
+// └──────────────────────────────────────────────────────────────┘
+const MATERIALS_TABLE_OPTIONS = {
+  showPrice:      false,
+  showDifficulty: false,
+};
+
 const SHOP_PRODUCTS = [
   // לדוגמה, מלא בהמשך:
   // { name:"דיזת נחושת 0.4mm", desc:"דיזה איכותית להדפסה מהירה ועמידה", price:35, image:"", inStock:true },
@@ -673,10 +682,17 @@ function matCell(level){
 }
 
 function buildMaterialsTableHTML(list, tableId){
-  const rows = list.map((m, i) => {
-    const safeName = escapeHTML(m.name);
-    return `<tr onclick="openMaterialModal('${tableId}',${i})" tabindex="0">
-      <td class="mat-name-cell">${safeName}</td>
+  const showPrice = MATERIALS_TABLE_OPTIONS.showPrice;
+  const showDiff  = MATERIALS_TABLE_OPTIONS.showDifficulty;
+
+  const rows = list.map((m) => {
+    const safeName  = escapeHTML(m.name);
+    const safeNotes = escapeHTML(m.notes);
+    return `<tr>
+      <td class="mat-name-cell">
+        <div class="mat-name">${safeName}</div>
+        <div class="mat-suits">${safeNotes}</div>
+      </td>
       <td>${matCell(m.strength)}</td>
       <td>${matCell(m.heat.level)}<div class="mat-temp">${escapeHTML(m.heat.temp)}</div></td>
       <td>${matCell(m.moisture)}</td>
@@ -684,9 +700,8 @@ function buildMaterialsTableHTML(list, tableId){
       <td>${matCell(m.chemical)}</td>
       <td>${matCell(m.flex)}</td>
       <td>${matCell(m.foodSafe)}</td>
-      <td class="mat-price">${PRICE_LABEL[m.price] || '—'}</td>
-      <td>${matCell(m.difficulty)}</td>
-      <td><button class="mat-info-btn" onclick="event.stopPropagation();openMaterialModal('${tableId}',${i})" aria-label="פרטים נוספים על ${safeName}">ℹ️</button></td>
+      ${showPrice ? `<td class="mat-price">${PRICE_LABEL[m.price] || '—'}</td>` : ''}
+      ${showDiff  ? `<td>${matCell(m.difficulty)}</td>` : ''}
     </tr>`;
   }).join('');
 
@@ -696,7 +711,9 @@ function buildMaterialsTableHTML(list, tableId){
         <thead>
           <tr>
             <th>חומר</th><th>חוזק</th><th>חום</th><th>לחות</th><th>UV/שמש</th>
-            <th>כימי</th><th>גמישות</th><th>מזון</th><th>מחיר</th><th>קושי הדפסה</th><th></th>
+            <th>כימי</th><th>גמישות</th><th>מזון</th>
+            ${showPrice ? '<th>מחיר</th>' : ''}
+            ${showDiff  ? '<th>קושי הדפסה</th>' : ''}
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -705,12 +722,9 @@ function buildMaterialsTableHTML(list, tableId){
     <div class="materials-legend">
       <span class="mat-ico mat-good">✅</span> טוב/עמיד &nbsp;&nbsp;
       <span class="mat-ico mat-mid">🟡</span> בינוני &nbsp;&nbsp;
-      <span class="mat-ico mat-bad">❌</span> חלש/לא מתאים &nbsp;&nbsp;
-      · מחיר: ₪ זול עד ₪₪₪ יקר · לחצו על שורה לפרטים נוספים
+      <span class="mat-ico mat-bad">❌</span> חלש/לא מתאים
     </div>`;
 }
-
-const MATERIAL_TABLES = { materials: MATERIALS, comparisonOnly: MATERIALS_COMPARISON_ONLY, resin: RESIN_MATERIALS };
 
 function renderMaterialsSection(){
   const grid = document.getElementById('materialsTableContainer');
@@ -729,33 +743,6 @@ function renderResinSection(){
     grid.innerHTML = buildMaterialsTableHTML(RESIN_MATERIALS, 'resin');
   }
 }
-
-function openMaterialModal(tableId, index){
-  const list = MATERIAL_TABLES[tableId];
-  const m = list && list[index];
-  if(!m) return;
-  document.getElementById('materialModalName').textContent = m.name;
-  const rows = [
-    ['חוזק', matCell(m.strength)],
-    ['עמידות חום', matCell(m.heat.level) + ' ' + escapeHTML(m.heat.temp)],
-    ['עמידות ללחות', matCell(m.moisture)],
-    ['עמידות UV/שמש', matCell(m.uv)],
-    ['עמידות כימית', matCell(m.chemical)],
-    ['גמישות', matCell(m.flex)],
-    ['בטיחות למזון', matCell(m.foodSafe)],
-    ['מחיר יחסי', PRICE_LABEL[m.price] || '—'],
-    ['קושי הדפסה', matCell(m.difficulty)],
-    ['גימור פני שטח', escapeHTML(m.finish)],
-  ];
-  document.getElementById('materialModalRows').innerHTML = rows.map(([l,v])=>
-    `<div class="modal-row"><span class="modal-row-label">${l}</span><span class="modal-row-val">${v}</span></div>`
-  ).join('');
-  document.getElementById('materialModalNotes').textContent = m.notes;
-  document.getElementById('materialModalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeMaterialModal(e){ if(!e || e.target===document.getElementById('materialModalOverlay')) closeMaterialModalDirect(); }
-function closeMaterialModalDirect(){ document.getElementById('materialModalOverlay').classList.remove('open'); document.body.style.overflow=''; }
 
 
 function openModal(indexOrObj){
@@ -803,7 +790,7 @@ function openLightbox(src){ document.getElementById('lightboxImg').src=src; docu
 function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
 
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){ closeAnnounce(); closeModalDirect(); closeLegalDirect(); closeLightbox(); closeMaterialModalDirect(); }
+  if(e.key==='Escape'){ closeAnnounce(); closeModalDirect(); closeLegalDirect(); closeLightbox(); }
 });
 
 // ══════════════════════════════════════════════

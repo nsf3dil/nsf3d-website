@@ -269,20 +269,19 @@ body.dark .shop-price{color:#4ade80;}
 
 /* ══ MATERIALS COMPARISON TABLE ══ */
 .materials-table-wrap{overflow-x:auto;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--card-bg);-webkit-overflow-scrolling:touch;}
-.materials-table{width:100%;border-collapse:collapse;font-size:13px;white-space:nowrap;}
-.materials-table thead th{background:var(--bg3);color:var(--blue-dark);font-weight:800;padding:11px 10px;text-align:center;border-bottom:1.5px solid var(--border);position:sticky;top:0;}
+.materials-table{width:100%;border-collapse:collapse;font-size:15px;}
+.materials-table thead th{background:var(--bg3);color:var(--blue-dark);font-weight:800;padding:14px 12px;text-align:center;border-bottom:1.5px solid var(--border);white-space:nowrap;}
 .materials-table thead th:first-child{text-align:right;}
-.materials-table tbody td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);}
-.materials-table tbody tr{cursor:pointer;transition:background .15s;}
-.materials-table tbody tr:hover{background:var(--bg2);}
+.materials-table tbody td{padding:14px 12px;text-align:center;border-bottom:1px solid var(--border);vertical-align:middle;}
 .materials-table tbody tr:last-child td{border-bottom:none;}
-.mat-name-cell{text-align:right;font-weight:800;color:var(--blue-dark);position:sticky;right:0;background:var(--card-bg);white-space:normal;min-width:130px;}
-.materials-table tbody tr:hover .mat-name-cell{background:var(--bg2);}
-.mat-ico{font-size:15px;}
-.mat-temp{font-size:10px;color:var(--text2);font-weight:600;margin-top:1px;}
+.materials-table tbody tr:hover{background:var(--bg2);}
+.mat-name-cell{text-align:right;white-space:normal;min-width:190px;}
+.mat-name{font-weight:800;color:var(--blue-dark);font-size:15px;margin-bottom:3px;}
+.mat-suits{font-size:12.5px;color:var(--text2);font-weight:500;line-height:1.5;}
+.mat-ico{font-size:18px;}
+.mat-temp{font-size:11px;color:var(--text2);font-weight:600;margin-top:3px;}
 .mat-price{font-weight:800;color:var(--blue-dark);}
-.mat-info-btn{background:none;border:none;cursor:pointer;font-size:15px;padding:2px;line-height:1;}
-.materials-legend{font-size:12.5px;color:var(--text2);font-weight:600;margin-top:12px;line-height:1.8;}
+.materials-legend{font-size:13px;color:var(--text2);font-weight:600;margin-top:14px;line-height:1.8;}
 .materials-comparison-note{display:flex;align-items:flex-start;gap:10px;background:rgba(120,120,120,.08);border:1.5px dashed var(--border2);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--text2);font-weight:600;margin:24px 0 14px;line-height:1.6;}
 .fiber-note{background:linear-gradient(135deg,rgba(30,111,168,.06) 0%,rgba(77,184,232,.05) 100%);border:1.5px solid rgba(30,111,168,.2);border-radius:14px;padding:16px 22px;margin-top:18px;font-size:14px;color:var(--text2);line-height:1.7;font-weight:600;}
 .fiber-note strong{color:var(--blue-dark);}
@@ -290,8 +289,10 @@ body.dark .fiber-note strong{color:var(--blue-light);}
 .materials-section-divider{height:1px;background:var(--border);margin:36px 0;}
 .modal-notes-box{background:var(--bg2);border-radius:10px;padding:13px 16px;margin-top:14px;font-size:14px;color:var(--text2);line-height:1.65;font-weight:500;}
 @media(max-width:768px){
-  .materials-table{font-size:12px;}
-  .mat-name-cell{min-width:100px;}
+  .materials-table{font-size:13px;}
+  .materials-table thead th,.materials-table tbody td{padding:11px 9px;}
+  .mat-name-cell{min-width:140px;}
+  .mat-ico{font-size:16px;}
 }
 
 
