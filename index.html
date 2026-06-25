@@ -19,7 +19,6 @@
 <meta name="theme-color" content="#1e6fa8">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <script type="application/ld+json">
-  
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -32,625 +31,44 @@
   "priceRange": "₪₪",
   "currenciesAccepted": "ILS",
   "paymentAccepted": "Cash, Bank Transfer, Bit",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "באר שבע",
-    "addressRegion": "הדרום",
-    "addressCountry": "IL"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 31.2518,
-    "longitude": 34.7913
-  },
+  "address": { "@type": "PostalAddress", "addressLocality": "באר שבע", "addressRegion": "הדרום", "addressCountry": "IL" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 31.2518, "longitude": 34.7913 },
   "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
-      "opens": "09:00",
-      "closes": "21:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Friday",
-      "opens": "09:00",
-      "closes": "15:00"
-    }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"], "opens": "09:00", "closes": "21:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "09:00", "closes": "15:00" }
   ],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61586093829404",
     "https://www.instagram.com/nsf.3d/",
     "https://www.tiktok.com/@nsf.3d"
   ],
-  "founder": {
-    "@type": "Person",
-    "name": "סמואל נרודיצקי",
-    "jobTitle": "מהנדס מכונות ומומחה הדפסות 3D"
-  }
+  "founder": { "@type": "Person", "name": "סמואל נרודיצקי", "jobTitle": "מהנדס מכונות ומומחה הדפסות 3D" }
+}
+</script>
+<!-- ✅ FAQPage structured data — נוסף לתוצאות עשירות בגוגל -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type":"Question","name":"כמה עולה הדפסת 3D?","acceptedAnswer":{"@type":"Answer","text":"תלוי בגודל, חומר ומורכבות. שלט פשוט מתחיל מ-50 ₪, דמות מותאמת מ-500 ₪, ופרויקטים קטנים מ-40 ₪. תמיד תקבלו הצעת מחיר מפורטת לפני שמתחילים."} },
+    { "@type":"Question","name":"מה ההבדל בין PLA ל-PETG?","acceptedAnswer":{"@type":"Answer","text":"PLA הוא החומר הפופולרי ביותר ומתאים לרוב המוצרים. PETG חזק ועמיד יותר לחום ולמים, ומתאים לחלקים טכניים."} },
+    { "@type":"Question","name":"כמה זמן לוקח לקבל את ההזמנה?","acceptedAnswer":{"@type":"Answer","text":"רוב ההזמנות מוכנות תוך 3-7 ימי עסקים. פרויקטים מורכבים עשויים לקחת עד 10 ימים. קיים מסלול אקספרס לפרויקטים דחופים."} },
+    { "@type":"Question","name":"אין לי קובץ מוכן — אפשר בכל זאת?","acceptedAnswer":{"@type":"Answer","text":"בהחלט. אפשר לשלוח תיאור, תמונה או רעיון כללי, ואנחנו מעצבים את המודל מאפס."} },
+    { "@type":"Question","name":"אפשר לקבל הדפסה בכמה צבעים?","acceptedAnswer":{"@type":"Answer","text":"כן, המדפסת מאפשרת הדפסה רב-צבעונית. בדמויות, ריבוי הצבעים כלול במחיר הקבוע."} },
+    { "@type":"Question","name":"יש משלוח לכל הארץ?","acceptedAnswer":{"@type":"Answer","text":"כן. משלוח עולה כ-50-120 ₪, ובהזמנות מעל 1,000 ₪ המשלוח חינם. איסוף עצמי בבאר שבע תמיד חינם."} }
+  ]
 }
 </script>
 <link rel="preload" as="image" href="NSF-logo-large-1000px.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- הערה: רצוי להוסיף בעתיד integrity="sha384-..." לתג הזה (SRI) — יש להפיק את ה-hash
+     הנכון מ-jsDelivr בעצמך (למשל מהעמוד https://www.jsdelivr.com/package/npm/@emailjs/browser),
+     כי hash שגוי יחסום את טעינת הסקריפט ויפיל את טופס יצירת הקשר כולו. -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<style>
-/* ══ LIGHT THEME ══ */
-:root{
-  --bg:#fff;--bg2:#f4f7fa;--bg3:#e8f4fb;
-  --text:#1a2533;--text2:#3d5166;
-  --border:#d0dde9;--border2:#b8cfe0;
-  --blue-dark:#1a3a5c;--blue-mid:#1e6fa8;--blue-light:#4db8e8;
-  --card-bg:#fff;--input-bg:#e8f4fb;
-  --nav-bg:rgba(255,255,255,.93);--modal-bg:#fff;
-  --shadow:0 2px 16px rgba(30,111,168,.10);
-  --shadow-md:0 4px 32px rgba(30,111,168,.15);
-  --radius:14px;
-  --green-mid:#16a34a;--green-dark:#15803d;
-}
-body.dark{
-  --bg:#0b1622;--bg2:#0f1e2e;--bg3:#0b2038;
-  --text:#f5faff;--text2:#c8dff0;
-  --border:#1e3a55;--border2:#2a5a7a;
-  --blue-dark:#b8e0f7;--blue-mid:#5ecff7;--blue-light:#90def9;
-  --card-bg:#0f1e2e;--input-bg:#0b1622;
-  --nav-bg:rgba(11,22,34,.97);--modal-bg:#0f1e2e;
-  --shadow:0 2px 16px rgba(0,0,0,.5);
-  --shadow-md:0 4px 32px rgba(0,0,0,.6);
-  --green-mid:#22c55e;--green-dark:#16a34a;
-}
-body.a11y-contrast{
-  --bg:#fff;--bg2:#f0f0f0;--bg3:#e0e0e0;
-  --text:#000;--text2:#111;
-  --border:#555;--border2:#444;
-  --blue-dark:#00255c;--blue-mid:#0044aa;--blue-light:#006fd6;
-  --card-bg:#fff;--input-bg:#f0f0f0;
-  --nav-bg:rgba(255,255,255,.99);--modal-bg:#fff;
-}
-body.a11y-contrast.dark{
-  --bg:#000;--bg2:#111;--bg3:#0a0a1a;
-  --text:#fff;--text2:#eee;
-  --border:#aaa;--border2:#bbb;
-  --blue-dark:#90d4ff;--blue-mid:#60c8ff;--blue-light:#a8e0ff;
-  --card-bg:#111;--input-bg:#000;
-  --nav-bg:rgba(0,0,0,.99);--modal-bg:#111;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direction:rtl;overflow-x:hidden;transition:background .3s,color .3s;}
-
-/* ══ NAV ══ */
-nav{position:fixed;top:0;right:0;left:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-img-wrap{width:40px;height:40px;border-radius:12px;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;}
-.nav-logo-img-wrap img{width:100%;height:100%;object-fit:contain;}
-.nav-logo-text{font-size:22px;font-weight:900;color:var(--blue-dark);display:none;}
-.nav-logo-text span{color:var(--blue-light);}
-.nav-links{display:flex;gap:18px;list-style:none;align-items:center;}
-.nav-links a{color:var(--text2);font-size:14px;font-weight:700;text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px;}
-.nav-links a:hover{color:var(--blue-mid);}
-.nav-links a.nav-active:not(.nav-cta){color:var(--blue-mid);}
-.nav-links a.nav-active:not(.nav-cta)::after{content:'';position:absolute;bottom:-4px;right:0;left:0;height:2.5px;background:var(--blue-mid);border-radius:2px;}
-.nav-cta{background:var(--blue-mid)!important;color:#fff!important;padding:8px 18px;border-radius:10px;font-weight:700!important;transition:background .2s!important;}
-.nav-cta:hover{background:var(--blue-dark)!important;}
-.nav-social-icons{display:flex;align-items:center;gap:6px;margin-left:4px;}
-.nav-social-ico{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .2s;opacity:.75;flex-shrink:0;}
-.nav-social-ico:hover{opacity:1;transform:scale(1.12);}
-.nav-social-ico svg{width:18px;height:18px;}
-.nav-right-cluster{display:flex;align-items:center;gap:8px;}
-.dark-toggle{background:var(--bg2);border:1.5px solid var(--border);color:var(--text);height:34px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;display:flex;align-items:center;gap:5px;padding:0 12px;transition:background .2s,border-color .2s;flex-shrink:0;white-space:nowrap;font-family:'Heebo',sans-serif;}
-.dark-toggle:hover{background:var(--border);border-color:var(--blue-mid);}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
-.hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s;}
-.mobile-menu{display:none;position:fixed;top:64px;right:0;left:0;z-index:199;background:var(--bg);border-bottom:1px solid var(--border);padding:20px 24px;flex-direction:column;gap:4px;box-shadow:0 4px 24px rgba(0,0,0,.12);transition:background .3s;}
-.mobile-menu.open{display:flex;}
-.mobile-menu a{color:var(--text);font-size:16px;font-weight:700;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);}
-.mobile-menu a:last-child{border:none;}
-.mobile-social-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
-.mobile-social-ico{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:.85;flex-shrink:0;transition:transform .2s,opacity .2s;}
-.mobile-social-ico:hover{opacity:1;transform:scale(1.1);}
-.mobile-social-ico svg{width:20px;height:20px;}
-
-/* ══ HERO ══ */
-#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;background:linear-gradient(155deg,var(--bg3) 0%,var(--bg) 55%,var(--bg2) 100%);position:relative;overflow:hidden;transition:background .3s;}
-.hero-blob{position:absolute;top:-100px;left:-150px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(77,184,232,.12) 0%,transparent 70%);pointer-events:none;}
-.hero-blob2{position:absolute;bottom:-80px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(30,111,168,.08) 0%,transparent 70%);pointer-events:none;}
-.hero-logo-wrap{width:180px;height:180px;border-radius:28px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 50%,#0d2a47 100%);box-shadow:0 8px 40px rgba(30,111,168,.35),0 0 0 1px rgba(77,184,232,.2);display:flex;align-items:center;justify-content:center;}
-.hero-logo-wrap img{width:88%;height:88%;object-fit:contain;border-radius:18px;}
-body.dark .hero-logo-wrap{box-shadow:0 8px 40px rgba(77,184,232,.25),0 0 0 1px rgba(77,184,232,.15);}
-.hero-tag{display:inline-block;background:rgba(77,184,232,.15);border:1px solid rgba(77,184,232,.4);color:var(--blue-mid);font-size:16px;font-weight:700;padding:10px 26px;border-radius:100px;margin-bottom:20px;}
-
-/* ══ SEO H1 FIX: two-line H1 with local keyword ══ */
-.hero-title{font-size:clamp(36px,6vw,70px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin-bottom:18px;color:var(--blue-dark);}
-.hero-title .line-seo{display:block;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--blue-mid);letter-spacing:-.5px;margin-bottom:6px;opacity:.9;}
-.hero-title .line-main{display:block;}
-.hero-title .accent{color:var(--blue-light);}
-
-.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--text2);max-width:500px;line-height:1.75;margin-bottom:34px;}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
-.btn-primary{background:var(--blue-mid);color:#fff;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;transition:background .2s,transform .2s;box-shadow:0 4px 20px rgba(30,111,168,.30);}
-.btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);}
-.btn-secondary{background:var(--card-bg);color:#1a5a8a;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;border:2px solid var(--blue-light);transition:background .2s,transform .2s;display:inline-flex;align-items:center;gap:8px;}
-.btn-secondary:hover{background:var(--bg3);transform:translateY(-2px);}
-body.dark .btn-secondary{color:var(--blue-light);}
-.btn-cta3{background:linear-gradient(135deg,#15803d 0%,#16a34a 100%);color:#fff;padding:14px 30px;border-radius:var(--radius);font-size:16px;font-weight:700;text-decoration:none;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(21,128,61,.35);display:inline-flex;align-items:center;gap:8px;}
-.btn-cta3:hover{opacity:.88;transform:translateY(-2px);}
-.btn-green-order{background:linear-gradient(135deg,#15803d 0%,#16a34a 100%);color:#fff;padding:14px 32px;border-radius:var(--radius);font-size:17px;font-weight:800;text-decoration:none;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(21,128,61,.38);display:inline-flex;align-items:center;gap:10px;}
-.btn-green-order:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 32px rgba(21,128,61,.48);}
-.hero-stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap;justify-content:center;}
-.stat{text-align:center;}
-.stat-num{font-size:34px;font-weight:900;color:var(--blue-dark);}
-.stat-num span{color:var(--blue-light);}
-.stat-label{font-size:13px;color:var(--text2);margin-top:2px;font-weight:600;}
-
-/* ══ SECTIONS ══ */
-.sw{padding:76px 40px;max-width:1200px;margin:0 auto;}
-.sdiv{height:1px;background:var(--border);}
-.stag{font-size:46px;font-weight:1000;color:var(--blue-mid);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
-.stitle{font-size:clamp(32px,4vw,46px);font-weight:900;color:var(--blue-dark);letter-spacing:-.5px;line-height:1.15;}
-.ssub{font-size:16px;color:var(--text2);margin-top:10px;line-height:1.65;font-weight:500;}
-.sh{margin-bottom:42px;}
-
-/* ══ SKELETON ══ */
-@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-body.a11y-noanim *,body.a11y-noanim *::before,body.a11y-noanim *::after{animation-duration:.001s!important;transition-duration:.001s!important;}
-.skeleton-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;pointer-events:none;}
-.skeleton-swatch{height:92px;animation:shimmer 1.4s ease-in-out infinite;background:linear-gradient(90deg,var(--bg2) 25%,var(--border) 50%,var(--bg2) 75%);background-size:200% 100%;}
-.skeleton-line{height:11px;border-radius:6px;margin:0 12px;animation:shimmer 1.4s ease-in-out infinite;background:linear-gradient(90deg,var(--bg2) 25%,var(--border) 50%,var(--bg2) 75%);background-size:200% 100%;}
-.skeleton-info{padding:10px 0 12px;}
-
-/* ══ CATALOG ══ */
-.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px;}
-.filter-btn{background:var(--card-bg);color:var(--text2);border:1.5px solid var(--border);padding:8px 18px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Heebo',sans-serif;}
-.filter-btn:hover,.filter-btn.active{background:var(--blue-mid);color:#fff;border-color:var(--blue-mid);}
-.search-input{background:var(--card-bg);border:1.5px solid var(--border);color:var(--text);padding:9px 18px;border-radius:100px;font-size:14px;font-family:'Heebo',sans-serif;outline:none;width:100%;max-width:260px;transition:border-color .2s;margin-right:auto;}
-.search-input:focus{border-color:var(--blue-mid);}
-.search-input::placeholder{color:var(--text2);}
-.show-all-row{text-align:center;margin-top:26px;}
-.show-all-row.top-row{margin-top:0;margin-bottom:18px;}
-.show-all-btn{background:var(--card-bg);color:var(--blue-mid);border:2px solid var(--blue-light);padding:10px 28px;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
-.show-all-btn:hover{background:var(--bg3);}
-.colors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px;}
-.color-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;cursor:pointer;}
-.color-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--blue-light);}
-.color-swatch{height:92px;width:100%;overflow:hidden;}
-.color-swatch img{width:100%;height:100%;object-fit:cover;}
-.color-swatch-block{width:100%;height:100%;}
-.color-info{padding:10px 12px;}
-.color-name{font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.35;color:var(--text);}
-.color-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
-.color-sku{font-size:12px;color:var(--text2);font-weight:600;}
-.tag-glow{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(77,184,232,.15);color:#155f8f;border:1px solid rgba(77,184,232,.4);}
-body.dark .tag-glow{color:var(--blue-mid);}
-.tag-special{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(138,43,226,.10);color:#6b1fa8;border:1px solid rgba(138,43,226,.35);}
-body.dark .tag-special{color:#c084fc;background:rgba(138,43,226,.15);border-color:rgba(192,132,252,.35);}
-.tag-instock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(30,160,90,.12);color:#156638;border:1px solid rgba(30,160,90,.3);}
-body.dark .tag-instock{color:#3ecf7a;background:rgba(30,160,90,.15);border-color:rgba(30,160,90,.35);}
-.tag-outstock{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;background:rgba(200,60,60,.10);color:#9e2020;border:1px solid rgba(200,60,60,.25);}
-body.dark .tag-outstock{color:#f07070;background:rgba(200,60,60,.12);border-color:rgba(200,60,60,.3);}
-.loading{text-align:center;padding:56px;color:var(--text2);font-size:16px;grid-column:1/-1;}
-.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-left:6px;animation:pulse-dot 2s ease-in-out infinite;vertical-align:middle;position:relative;top:-1px;}
-@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
-.catalog-info-note{background:rgba(30,111,168,.06);border:1.5px solid rgba(30,111,168,.18);border-radius:10px;padding:11px 16px;font-size:14px;color:var(--text2);font-weight:600;margin-bottom:18px;display:flex;align-items:flex-start;gap:10px;line-height:1.6;}
-body.dark .catalog-info-note{background:rgba(30,111,168,.10);border-color:rgba(77,184,232,.2);}
-
-/* ══ COLOR MODAL ══ */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:300;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
-.modal-overlay.open{display:flex;}
-.modal{background:var(--modal-bg);border-radius:20px;max-width:500px;width:100%;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,.3);}
-.modal-img{width:100%;height:280px;object-fit:cover;cursor:zoom-in;}
-.modal-swatch{width:100%;height:280px;}
-.modal-body{padding:24px;}
-.modal-title{font-size:24px;font-weight:900;color:var(--blue-dark);margin-bottom:16px;}
-.modal-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px;}
-.modal-row:last-of-type{border:none;}
-.modal-row-label{color:var(--text2);font-weight:600;}
-.modal-row-val{font-weight:700;color:var(--text);}
-.modal-actions{display:flex;gap:10px;margin-top:16px;}
-.modal-wa{flex:1;background:var(--blue-mid);color:#fff;border:none;padding:12px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
-.modal-wa:hover{background:var(--blue-dark);}
-.modal-close-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;}
-
-/* ══ LIGHTBOX ══ */
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;align-items:center;justify-content:center;cursor:zoom-out;padding:20px;}
-.lightbox.open{display:flex;}
-.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:12px;box-shadow:0 8px 60px rgba(0,0,0,.5);}
-.lightbox-close{position:fixed;top:20px;left:20px;width:44px;height:44px;background:rgba(255,255,255,.15);border:none;border-radius:50%;cursor:pointer;font-size:22px;color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s;}
-.lightbox-close:hover{background:rgba(255,255,255,.3);}
-
-/* ══ PROJECTS SECTION ══ */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-bottom:24px;}
-.project-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .22s,box-shadow .22s,border-color .22s;display:flex;flex-direction:column;}
-.project-card:hover{transform:translateY(-5px);box-shadow:0 8px 36px rgba(30,111,168,.18);border-color:var(--blue-light);}
-.project-card.featured{border-color:rgba(30,111,168,.4);box-shadow:0 4px 20px rgba(30,111,168,.10);}
-.project-img-wrap{position:relative;height:210px;background:var(--bg3);overflow:hidden;flex-shrink:0;}
-.project-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
-.project-card:hover .project-img-wrap img{transform:scale(1.04);}
-.project-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--border2);}
-.project-featured-badge{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,#f5c842,#e6a800);color:#1a2533;font-size:11px;font-weight:800;padding:3px 10px;border-radius:100px;box-shadow:0 2px 8px rgba(0,0,0,.15);}
-.project-category-badge{position:absolute;bottom:12px;right:12px;background:rgba(11,22,34,.72);backdrop-filter:blur(8px);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:100px;border:1px solid rgba(255,255,255,.18);}
-.project-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;}
-.project-name{font-size:17px;font-weight:800;color:var(--blue-dark);margin-bottom:8px;line-height:1.3;}
-.project-desc{font-size:14px;color:var(--text2);line-height:1.65;font-weight:500;flex:1;margin-bottom:16px;}
-.project-wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#15803d 0%,#16a34a 100%);color:#fff;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:800;text-decoration:none;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 3px 14px rgba(21,128,61,.32);width:100%;}
-.project-wa-btn:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 5px 20px rgba(21,128,61,.42);}
-.project-wa-btn svg{flex-shrink:0;}
-/* skeleton for projects */
-.project-skeleton{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
-.project-skeleton-img{height:210px;animation:shimmer 1.4s ease-in-out infinite;background:linear-gradient(90deg,var(--bg2) 25%,var(--border) 50%,var(--bg2) 75%);background-size:200% 100%;}
-.project-skeleton-body{padding:18px 20px;}
-.project-skeleton-line{height:13px;border-radius:6px;margin-bottom:10px;animation:shimmer 1.4s ease-in-out infinite;background:linear-gradient(90deg,var(--bg2) 25%,var(--border) 50%,var(--bg2) 75%);background-size:200% 100%;}
-/* show more button */
-.projects-show-more{text-align:center;margin-top:8px;margin-bottom:4px;}
-.projects-show-more-btn{background:var(--card-bg);color:var(--blue-mid);border:2px solid var(--blue-light);padding:10px 28px;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
-.projects-show-more-btn:hover{background:var(--bg3);}
-/* section divider inside products */
-.products-divider{height:1px;background:var(--border);margin:48px 0 44px;}
-
-/* ══ PRODUCTS ══ */
-.product-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:18px;}
-.ptype{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:26px;text-align:center;}
-.ptype-icon{font-size:42px;margin-bottom:10px;}
-.ptype-title{font-size:16px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
-.ptype-desc{font-size:15px;color:var(--text2);line-height:1.6;font-weight:500;}
-.coming-soon{background:var(--bg3);border:2px dashed var(--border2);border-radius:var(--radius);padding:44px;text-align:center;}
-.coming-soon .cs-icon{font-size:44px;margin-bottom:12px;}
-.coming-soon h3{font-size:19px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
-.coming-soon p{font-size:14px;color:var(--text2);font-weight:500;}
-.multicolor-banner{background:linear-gradient(135deg,rgba(138,43,226,.07) 0%,rgba(30,111,168,.06) 100%);border:1.5px solid rgba(138,43,226,.25);border-radius:14px;padding:16px 22px;display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
-.multicolor-banner-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
-.multicolor-banner-text{font-size:14px;color:var(--text2);line-height:1.7;font-weight:600;}
-.multicolor-banner-text strong{color:var(--blue-dark);}
-body.dark .multicolor-banner-text strong{color:var(--blue-light);}
-
-/* ══ ORDER ══ */
-.order-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px;}
-.step{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:24px;}
-.step-num{font-size:40px;font-weight:900;color:rgba(77,184,232,.30);line-height:1;margin-bottom:12px;}
-.step-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:5px;}
-.step-desc{font-size:15px;color:var(--text2);line-height:1.6;font-weight:500;}
-.order-cta{text-align:center;margin-top:32px;}
-.express-banner{margin-top:28px;background:linear-gradient(135deg,#0d2a47 0%,#1a4a70 60%,#0e3255 100%);border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;box-shadow:0 6px 32px rgba(30,111,168,.30);border:1px solid rgba(77,184,232,.25);position:relative;overflow:hidden;}
-.express-banner::before{content:'';position:absolute;top:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,50,.07) 0%,transparent 70%);pointer-events:none;}
-.express-icon-wrap{width:56px;height:56px;border-radius:14px;background:rgba(255,200,50,.15);border:1.5px solid rgba(255,200,50,.3);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
-.express-content{flex:1;min-width:200px;}
-.express-title{font-size:17px;font-weight:900;color:#fff;margin-bottom:6px;}
-.express-badge{display:inline-block;background:rgba(255,200,50,.2);border:1px solid rgba(255,200,50,.4);color:#f5c842;font-size:10px;font-weight:700;padding:2px 10px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
-.express-desc{font-size:14px;color:rgba(255,255,255,.78);line-height:1.65;font-weight:500;}
-.btn-express{background:linear-gradient(135deg,#f5c842 0%,#e6a800 100%);color:#1a2533;padding:13px 24px;border-radius:12px;font-size:15px;font-weight:900;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(245,200,66,.35);}
-.btn-express:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(245,200,66,.5);}
-
-/* ══ PRICING ══ */
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:28px;}
-.price-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;}
-.price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--blue-light);}
-.price-card.figurine-featured{border:1.5px solid rgba(30,111,168,.45);box-shadow:0 4px 20px rgba(30,111,168,.10);}
-.price-card.figurine-featured:hover{transform:translateY(-6px);box-shadow:0 8px 36px rgba(30,111,168,.28);border-color:var(--blue-light);}
-.price-card-head{background:var(--bg3);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;}
-.price-card.figurine-featured .price-card-head{background:linear-gradient(135deg,rgba(30,111,168,.12) 0%,rgba(77,184,232,.08) 100%);border-bottom-color:rgba(30,111,168,.25);}
-.price-card-icon{font-size:26px;}
-.price-card-title{font-size:15px;font-weight:800;color:var(--blue-dark);}
-.figurine-fixed-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(30,160,90,.12);border:1.5px solid rgba(30,160,90,.3);color:#156638;border-radius:100px;font-size:11px;font-weight:800;padding:3px 10px;margin-top:5px;}
-body.dark .figurine-fixed-badge{color:#3ecf7a;background:rgba(30,160,90,.15);border-color:rgba(30,160,90,.35);}
-.figurine-gift-strip{background:linear-gradient(135deg,rgba(245,200,66,.08) 0%,rgba(30,111,168,.05) 100%);border-bottom:1.5px dashed rgba(245,200,66,.35);padding:14px 20px;font-size:14px;color:var(--text2);line-height:1.65;font-weight:700;}
-.figurine-gift-strip strong{color:var(--blue-dark);}
-body.dark .figurine-gift-strip strong{color:var(--blue-light);}
-.figurine-multicolor-strip{transition:background .3s,color .3s,border-color .3s,box-shadow .3s;}
-body.dark .figurine-multicolor-strip{background:rgba(34,197,94,.12)!important;border-top-color:rgba(34,197,94,.35)!important;color:#4ade80!important;box-shadow:inset 0 0 20px rgba(34,197,94,.08),0 0 12px rgba(34,197,94,.10);text-shadow:0 0 8px rgba(34,197,94,.3);}
-.signage-marketing-strip{background:rgba(30,111,168,.05);border-bottom:1.5px dashed rgba(30,111,168,.2);padding:14px 20px;font-size:14px;color:var(--text2);line-height:1.65;font-weight:700;}
-.signage-marketing-strip strong{color:var(--blue-dark);}
-body.dark .signage-marketing-strip strong{color:var(--blue-light);}
-.card-pricing-note{background:rgba(30,111,168,.04);border-top:1px solid var(--border);padding:11px 16px;font-size:14px;color:var(--text2);font-weight:600;display:flex;align-items:flex-start;gap:8px;line-height:1.55;}
-.price-rows{padding:8px 0;}
-.price-row{display:flex;justify-content:space-between;align-items:center;padding:9px 20px;border-bottom:1px solid var(--border);font-size:14px;}
-.price-row:last-child{border:none;}
-.price-row-label{color:var(--text2);font-weight:600;}
-.price-row-val{font-weight:800;color:var(--blue-dark);}
-.price-row-val.green{color:#156638;}
-body.dark .price-row-val.green{color:#3ecf7a;}
-/* ══ SALE / PROMO PRICING ══ */
-.price-row-sale{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.price-row-sale .price-was{font-size:13px;font-weight:600;color:var(--text2);text-decoration:line-through;opacity:.65;}
-.price-row-sale .price-now{font-weight:900;color:#156638;font-size:16px;}
-body.dark .price-row-sale .price-now{color:#4ade80;}
-.price-row-sale .price-save-badge{display:inline-flex;align-items:center;gap:3px;background:linear-gradient(135deg,rgba(220,38,38,.10) 0%,rgba(220,38,38,.05) 100%);border:1px solid rgba(220,38,38,.22);color:#dc2626;font-size:10px;font-weight:800;padding:2px 7px;border-radius:100px;letter-spacing:.2px;white-space:nowrap;}
-body.dark .price-row-sale .price-save-badge{background:rgba(248,113,113,.10);border-color:rgba(248,113,113,.25);color:#f87171;}
-.shipping-free{font-weight:800;color:#156638;}
-body.dark .shipping-free{color:#3ecf7a;}
-.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px;}
-.pay-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:14px;}
-.pay-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.pay-title{font-size:14px;font-weight:800;color:var(--blue-dark);}
-.pay-desc{font-size:14px;color:var(--text2);margin-top:2px;font-weight:500;}
-.shipping-row{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:14px;}
-.shipping-label{color:var(--text2);font-weight:600;display:flex;align-items:center;gap:8px;}
-
-/* ══ ABOUT ══ */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-.about-features{display:grid;gap:16px;margin-top:22px;}
-.fi{display:flex;gap:14px;align-items:flex-start;}
-.fi-icon{width:42px;height:42px;border-radius:10px;background:rgba(30,111,168,.1);border:1px solid rgba(30,111,168,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.fi-text h4{font-size:14px;font-weight:800;color:var(--blue-dark);margin-bottom:2px;}
-.fi-text p{font-size:15px;color:var(--text2);line-height:1.55;font-weight:500;}
-.hobby-origin{margin-top:18px;background:linear-gradient(135deg,rgba(77,184,232,.07) 0%,rgba(30,111,168,.05) 100%);border:1.5px solid rgba(77,184,232,.25);border-radius:14px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px;}
-.hobby-origin-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
-.hobby-origin-text{font-size:15px;color:var(--text2);line-height:1.65;font-weight:600;}
-.hobby-origin-text strong{color:var(--blue-dark);}
-.founder-photo-row{display:flex;align-items:center;gap:16px;margin-top:18px;padding:14px 18px;background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;}
-.founder-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--blue-mid);box-shadow:0 4px 16px rgba(30,111,168,.2);flex-shrink:0;}
-.founder-photo-text{font-size:14px;color:var(--text2);line-height:1.6;font-weight:600;}
-.founder-photo-text strong{color:var(--blue-dark);font-size:14px;display:block;margin-bottom:2px;}
-.sw-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
-.sw-chip{background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--blue-dark);}
-.sw-chip.eng{border-color:rgba(30,111,168,.35);background:rgba(30,111,168,.07);}
-.sw-chip.art{border-color:rgba(77,184,232,.35);background:rgba(77,184,232,.08);}
-.sw-chip.ai{border-color:rgba(138,43,226,.35);background:rgba(138,43,226,.07);color:#6b1fa8;}
-body.dark .sw-chip.ai{color:#c084fc;border-color:rgba(192,132,252,.35);background:rgba(138,43,226,.12);}
-.about-visual{background:var(--card-bg);border:1.5px solid var(--border);border-radius:18px;padding:32px;text-align:center;box-shadow:var(--shadow);}
-.abn{font-size:48px;font-weight:900;color:var(--blue-mid);line-height:1.1;}
-.abl{font-size:14px;color:var(--text2);margin-top:5px;font-weight:600;}
-.ab-chips{display:grid;gap:9px;margin-top:22px;}
-.ab-chip{background:var(--bg2);border-radius:10px;padding:12px 14px;text-align:right;}
-.ab-chip-l{font-size:12px;color:var(--text2);font-weight:600;}
-.ab-chip-v{font-size:14px;font-weight:700;color:var(--text);margin-top:1px;}
-
-/* ══ REVIEWS ══ */
-.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:28px;}
-.review-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px;transition:transform .2s,box-shadow .2s;}
-.review-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
-.review-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-.review-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--blue-mid);flex-shrink:0;}
-.review-avatar-placeholder{width:48px;height:48px;border-radius:50%;background:var(--bg3);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
-.review-author{font-size:15px;font-weight:800;color:var(--blue-dark);}
-.review-city{font-size:13px;color:var(--text2);font-weight:600;}
-.review-stars{color:#f5c842;font-size:14px;letter-spacing:1px;margin-bottom:10px;}
-.review-text{font-size:15px;color:var(--text2);line-height:1.7;font-weight:500;font-style:italic;}
-.review-product{font-size:14px;color:var(--blue-mid);font-weight:700;margin-top:10px;}
-.review-product-img{width:100%;max-height:200px;object-fit:cover;border-radius:10px;margin-top:12px;border:1.5px solid var(--border);cursor:zoom-in;}
-
-/* ══ FAQ ══ */
-.faq-list{display:grid;gap:12px;margin-top:28px;}
-.faq-item{background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s;}
-.faq-item.open{border-color:var(--blue-light);}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:700;color:var(--blue-dark);gap:12px;-webkit-user-select:none;user-select:none;}
-.faq-q:hover{color:var(--blue-mid);}
-.faq-arrow{font-size:18px;transition:transform .25s;flex-shrink:0;color:var(--text2);}
-.faq-item.open .faq-arrow{transform:rotate(180deg);}
-.faq-a{display:none;padding:0 22px 18px;font-size:15px;color:var(--text2);line-height:1.75;font-weight:500;}
-.faq-item.open .faq-a{display:block;}
-
-/* ══ SOCIAL ══ */
-.social-grid{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
-.social-card{display:flex;align-items:center;gap:12px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 22px;text-decoration:none;color:var(--text);transition:transform .2s,box-shadow .2s,border-color .2s;min-width:150px;}
-.social-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--blue-light);}
-.social-icon{width:34px;height:34px;flex-shrink:0;}
-.social-icon svg{width:100%;height:100%;}
-.social-name{font-size:14px;font-weight:700;color:var(--blue-dark);}
-.social-handle{font-size:13px;color:var(--text2);font-weight:600;}
-
-/* ══ CONTACT ══ */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
-.contact-info{display:grid;gap:12px;}
-.contact-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);transition:background .2s,transform .2s;}
-.contact-card:hover{background:var(--border);transform:translateX(-3px);}
-.contact-icon{width:44px;height:44px;border-radius:11px;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.contact-icon svg{width:24px;height:24px;fill:#fff;}
-.contact-label{font-size:13px;color:var(--text2);margin-bottom:2px;font-weight:600;}
-.contact-val{font-size:15px;font-weight:700;color:var(--blue-dark);}
-.hours-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 20px;}
-.hours-l{font-size:13px;color:var(--text2);margin-bottom:8px;font-weight:700;}
-.hours-row{display:flex;justify-content:space-between;font-size:14px;padding:4px 0;border-bottom:1px solid var(--border);}
-.hours-row:last-child{border:none;}
-.hours-day{color:var(--text2);font-weight:600;}
-.hours-time{font-weight:700;color:var(--blue-dark);}
-.contact-form{display:grid;gap:13px;}
-.form-group{display:grid;gap:5px;}
-.form-label{font-size:14px;font-weight:700;color:var(--blue-dark);}
-.form-input,.form-textarea,.form-select{background:var(--input-bg);border:1.5px solid var(--border);color:var(--text);padding:11px 14px;border-radius:10px;font-size:15px;font-family:'Heebo',sans-serif;outline:none;transition:border-color .2s;width:100%;}
-.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--blue-mid);}
-.form-textarea{resize:vertical;min-height:100px;}
-.form-submit{background:var(--blue-mid);color:#fff;border:none;padding:13px 28px;border-radius:var(--radius);font-size:16px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(30,111,168,.28);}
-.form-submit:hover{background:#155f8f;transform:translateY(-1px);}
-.form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-.form-hint{font-size:14px;color:var(--text2);margin-top:5px;font-weight:500;display:flex;align-items:flex-start;gap:5px;line-height:1.5;}
-.form-success{display:none;background:rgba(30,160,90,.1);border:1px solid rgba(30,160,90,.3);color:#156638;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
-body.dark .form-success{color:#3ecf7a;background:rgba(30,160,90,.12);border-color:rgba(30,160,90,.3);}
-.form-error{display:none;background:rgba(200,60,60,.1);border:1px solid rgba(200,60,60,.3);color:#9e2020;padding:13px;border-radius:10px;text-align:center;font-weight:700;}
-body.dark .form-error{color:#f07070;}
-
-/* ══ FOOTER ══ */
-footer{background:var(--blue-dark);color:rgba(255,255,255,.7);padding:38px 40px 28px;text-align:center;}
-body.dark footer{background:#061422;}
-.footer-links{display:flex;gap:20px;justify-content:center;list-style:none;margin-bottom:10px;flex-wrap:wrap;}
-.footer-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
-.footer-links a:hover{color:#fff;}
-.footer-legal{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
-.footer-legal-btn{background:none;border:none;color:rgba(255,255,255,.45);font-size:13px;font-family:'Heebo',sans-serif;cursor:pointer;text-decoration:underline;padding:0;transition:color .2s;}
-.footer-legal-btn:hover{color:rgba(255,255,255,.85);}
-.footer-copy{font-size:13px;color:rgba(255,255,255,.3);}
-
-/* ══ LEGAL ══ */
-.legal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
-.legal-overlay.open{display:flex;}
-.legal-modal{background:var(--modal-bg);border-radius:18px;max-width:640px;width:100%;max-height:82vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 16px 64px rgba(0,0,0,.3);}
-.legal-header{padding:22px 26px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.legal-header h2{font-size:20px;font-weight:900;color:var(--blue-dark);}
-.legal-close{background:var(--bg2);border:1px solid var(--border);color:var(--text);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.legal-body{padding:24px 26px;overflow-y:auto;font-size:14px;line-height:1.75;color:var(--text);}
-.legal-body h3{font-size:15px;font-weight:800;color:var(--blue-dark);margin:20px 0 8px;}
-.legal-body h3:first-child{margin-top:0;}
-.legal-body p{margin-bottom:10px;color:var(--text2);}
-.legal-body ul{margin:6px 0 10px 0;padding-right:18px;}
-.legal-body ul li{margin-bottom:5px;color:var(--text2);}
-.legal-body strong{color:var(--text);}
-.legal-body .highlight{background:rgba(255,180,0,.12);border:1px solid rgba(255,180,0,.3);border-radius:8px;padding:12px 16px;margin:12px 0;}
-.legal-body .highlight strong{color:#8a4d00;}
-body.dark .legal-body .highlight strong{color:#f5c842;}
-
-/* ══ BACK TO TOP ══ */
-.back-to-top{position:fixed;bottom:24px;right:24px;z-index:980;width:48px;height:48px;border-radius:50%;background:var(--blue-mid);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(30,111,168,.40);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s,box-shadow .2s;pointer-events:none;}
-.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
-.back-to-top:hover{background:var(--blue-dark);box-shadow:0 6px 28px rgba(30,111,168,.55);transform:translateY(-2px);}
-
-/* ══ WHATSAPP FLOAT BUTTON — NEW ══ */
-.wa-float{
-  position:fixed;
-  bottom:82px;
-  right:24px;
-  z-index:979;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:0;
-  background:linear-gradient(135deg,#22c55e 0%,#16a34a 100%);
-  color:#fff;
-  text-decoration:none;
-  border-radius:100px;
-  padding:0;
-  width:52px;
-  height:52px;
-  box-shadow:0 4px 22px rgba(22,163,74,.50);
-  font-family:'Heebo',sans-serif;
-  font-size:15px;
-  font-weight:800;
-  transition:transform .22s,box-shadow .22s,width .28s,padding .28s,gap .28s;
-  white-space:nowrap;
-  overflow:hidden;
-}
-.wa-float:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 32px rgba(22,163,74,.60);
-  width:220px;
-  padding:0 18px 0 14px;
-  gap:10px;
-  justify-content:flex-start;
-}
-.wa-float-icon{
-  width:26px;
-  height:26px;
-  flex-shrink:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.wa-float-icon svg{width:26px;height:26px;}
-.wa-float-label{
-  overflow:hidden;
-  white-space:nowrap;
-  max-width:0;
-  opacity:0;
-  transition:max-width .22s,opacity .18s;
-  font-size:14px;
-  font-weight:800;
-  letter-spacing:.2px;
-}
-.wa-float:hover .wa-float-label{
-  max-width:160px;
-  opacity:1;
-}
-/* pulse ring on the icon */
-@keyframes wa-pulse{
-  0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}
-  70%{box-shadow:0 0 0 10px rgba(22,163,74,0)}
-  100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}
-}
-.wa-float{animation:wa-pulse 2.8s ease-in-out infinite;}
-.wa-float:hover{animation:none;}
-
-/* ══ COOKIE ══ */
-#cookieBanner{display:none;position:fixed;bottom:0;right:0;left:0;z-index:500;background:var(--blue-dark);color:#fff;padding:16px 24px;border-top:2px solid var(--blue-mid);box-shadow:0 -4px 24px rgba(0,0,0,.2);}
-body.dark #cookieBanner{background:#061422;}
-.cookie-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.cookie-text{flex:1;min-width:240px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.85);}
-.cookie-text a{color:var(--blue-light);text-decoration:underline;cursor:pointer;}
-.cookie-btns{display:flex;gap:10px;flex-shrink:0;}
-.cookie-accept{background:var(--blue-mid);color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
-.cookie-accept:hover{background:#3aa0d0;}
-.cookie-decline{background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.35);padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s;}
-.cookie-decline:hover{border-color:rgba(255,255,255,.8);color:#fff;}
-
-/* ══ ACCESSIBILITY ══ */
-.a11y-btn{position:fixed;bottom:24px;left:24px;z-index:990;width:52px;height:52px;border-radius:50%;background:var(--blue-mid);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(30,111,168,.45);display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform .2s,box-shadow .2s;font-family:'Heebo',sans-serif;}
-.a11y-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(30,111,168,.6);}
-.a11y-btn:focus-visible{outline:3px solid var(--blue-light);outline-offset:3px;}
-.a11y-panel{display:none;position:fixed;bottom:88px;left:24px;z-index:990;background:var(--modal-bg);border:1.5px solid var(--border);border-radius:18px;padding:20px;min-width:240px;box-shadow:0 8px 40px rgba(0,0,0,.22);}
-.a11y-panel.open{display:block;}
-.a11y-panel-title{font-size:15px;font-weight:800;color:var(--blue-dark);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.a11y-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;gap:10px;}
-.a11y-label{font-size:13px;font-weight:600;color:var(--text);}
-.a11y-controls{display:flex;gap:6px;}
-.a11y-ctrl{background:var(--bg2);border:1.5px solid var(--border);color:var(--text);min-width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Heebo',sans-serif;transition:background .2s,border-color .2s;padding:0 10px;}
-.a11y-ctrl:hover{background:var(--border);}
-.a11y-ctrl.active{background:var(--blue-mid);color:#fff;border-color:var(--blue-mid);}
-.a11y-ctrl:focus-visible{outline:2px solid var(--blue-mid);outline-offset:2px;}
-.a11y-reset{width:100%;margin-top:12px;background:var(--bg2);border:1.5px solid var(--border);color:var(--text2);padding:9px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
-.a11y-reset:hover{background:var(--border);}
-body.a11y-links a{text-decoration:underline!important;text-underline-offset:3px;}
-body.a11y-cursor,body.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M8 2 L8 28 L14 22 L18 32 L22 30 L18 20 L26 20 Z' fill='black' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 0 0,auto!important;}
-body.a11y-links nav a,body.a11y-links .nav-links a,body.a11y-links .mobile-menu a,body.a11y-links footer a,body.a11y-links .footer-links a{text-decoration:underline!important;}
-
-/* ══ ANNOUNCEMENT POPUP ══ */
-.announce-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:600;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);opacity:0;transition:opacity .35s;}
-.announce-overlay.open{display:flex;opacity:1;}
-.announce-modal{background:var(--modal-bg);border-radius:22px;max-width:480px;width:100%;overflow:hidden;box-shadow:0 20px 72px rgba(0,0,0,.35);transform:translateY(24px) scale(.97);transition:transform .4s cubic-bezier(.22,1,.36,1);position:relative;}
-.announce-overlay.open .announce-modal{transform:translateY(0) scale(1);}
-.announce-top-accent{height:5px;background:linear-gradient(90deg,var(--blue-mid),var(--blue-light),var(--blue-mid));background-size:200% 100%;animation:announce-gradient 3s ease infinite;}
-@keyframes announce-gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.announce-close{position:absolute;top:14px;left:14px;width:34px;height:34px;background:var(--bg2);border:1.5px solid var(--border);color:var(--text2);border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;z-index:2;}
-.announce-close:hover{background:var(--border);border-color:var(--blue-mid);}
-.announce-body{padding:32px 28px 28px;text-align:center;}
-.announce-icon{font-size:48px;margin-bottom:14px;line-height:1;}
-.announce-title{font-size:22px;font-weight:900;color:var(--blue-dark);margin-bottom:10px;line-height:1.25;}
-.announce-text{font-size:15px;color:var(--text2);line-height:1.75;font-weight:500;margin-bottom:22px;}
-.announce-text strong{color:var(--text);font-weight:700;}
-.announce-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-.announce-btn-primary{background:var(--blue-mid);color:#fff;padding:12px 26px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(30,111,168,.28);}
-.announce-btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px);}
-.announce-btn-wa{background:linear-gradient(135deg,#22c55e 0%,#16a34a 100%);color:#fff;padding:12px 26px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:'Heebo',sans-serif;transition:opacity .2s,transform .2s;box-shadow:0 4px 18px rgba(22,163,74,.32);display:inline-flex;align-items:center;gap:8px;}
-.announce-btn-wa:hover{opacity:.9;transform:translateY(-1px);}
-.announce-btn-secondary{background:var(--bg2);color:var(--text2);padding:12px 26px;border-radius:12px;font-size:15px;font-weight:700;border:1.5px solid var(--border);cursor:pointer;font-family:'Heebo',sans-serif;transition:background .2s;}
-.announce-btn-secondary:hover{background:var(--border);}
-.announce-footer-note{font-size:12px;color:var(--text2);margin-top:16px;opacity:.7;font-weight:500;}
-body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-duration:.001s!important;}
-
-/* ══ RESPONSIVE ══ */
-@media(max-width:768px){
-  nav{padding:0 18px;}
-  .nav-links{display:none;}
-  .nav-social-icons{display:flex;gap:6px;}
-  .nav-social-ico{width:36px;height:36px;}
-  .nav-social-ico svg{width:20px;height:20px;}
-  .hamburger{display:flex;}
-  .sw{padding:54px 18px;}
-  .about-grid,.contact-grid{grid-template-columns:1fr;}
-  .about-visual{order:-1;}
-  .hero-stats{gap:26px;}
-  footer{padding:28px 18px;}
-  .announce-modal{max-width:calc(100vw - 32px);margin:0 auto;}
-  .announce-body{padding:24px 20px 22px;}
-  .announce-title{font-size:19px;}
-  .announce-btns{flex-direction:column;gap:8px;}
-  .announce-btn-wa,.announce-btn-primary,.announce-btn-secondary{width:100%;text-align:center;justify-content:center;}
-  .filter-row{gap:7px;}
-  .search-input{max-width:100%;margin-right:0;}
-  .cookie-inner{flex-direction:column;align-items:stretch;}
-  .cookie-btns{justify-content:stretch;}
-  .cookie-accept,.cookie-decline{flex:1;text-align:center;}
-  .express-banner{flex-direction:column;align-items:flex-start;}
-  .btn-express{width:100%;text-align:center;}
-  .a11y-btn{bottom:18px;left:18px;}
-  .a11y-panel{bottom:82px;left:18px;}
-  .hero-btns{flex-direction:column;align-items:center;}
-  .projects-grid{grid-template-columns:1fr;}
-  /* WA float: always show label on mobile */
-  .wa-float{width:200px;padding:0 18px 0 14px;gap:10px;justify-content:flex-start;}
-  .wa-float-label{max-width:160px;opacity:1;}
-  .wa-float{bottom:88px;}
-}
-@media(max-width:480px){
-  .colors-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
-}
-</style>
 </head>
 <body>
 
@@ -664,10 +82,13 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
     <span class="nav-logo-text">NSF <span>3D</span></span>
   </a>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#projects" data-section="projects">פרויקטים</a></li>
     <li><a href="#catalog"  data-section="catalog">קטלוג</a></li>
-    <li><a href="#products" data-section="products" id="nav-products">מוצרים</a></li>
-    <li><a href="#pricing"  data-section="pricing"  id="nav-pricing">מחירון</a></li>
-    <li><a href="#order"    data-section="order"    id="nav-order">הזמנה</a></li>
+    <li><a href="#shop"     data-section="shop">חנות</a></li>
+    <li><a href="#products" data-section="products">שירות ההדפסה</a></li>
+    <li><a href="#pricing"  data-section="pricing">מחירון</a></li>
+    <li><a href="#order"    data-section="order">הזמנה</a></li>
+    <li><a href="#articles" data-section="articles">מאמרים</a></li>
     <li><a href="#about"    data-section="about">אודות</a></li>
     <li><a href="#contact"  data-section="contact" class="nav-cta">📱 צור קשר</a></li>
   </ul>
@@ -707,10 +128,14 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
       <svg viewBox="0 0 24 24" fill="#000"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>
     </a>
   </div>
-  <a href="#catalog" onclick="closeMenu()">🎨 קטלוג צבעים</a>
-  <a href="#pricing" onclick="closeMenu()">💰 מחירון</a>
-  <a href="#order" onclick="closeMenu()" id="mm-order">📦 הזמנה</a>
-  <a href="#contact" onclick="closeMenu()">📱 צור קשר</a>
+  <a href="#projects" onclick="closeMenu()" data-section="projects">🖨️ פרויקטים לדוגמה</a>
+  <a href="#catalog" onclick="closeMenu()" data-section="catalog">🎨 קטלוג צבעים</a>
+  <a href="#shop" onclick="closeMenu()" data-section="shop">📦 חנות</a>
+  <a href="#products" onclick="closeMenu()" data-section="products">🛠️ שירות ההדפסה</a>
+  <a href="#pricing" onclick="closeMenu()" data-section="pricing">💰 מחירון</a>
+  <a href="#order" onclick="closeMenu()" data-section="order">📦 הזמנה</a>
+  <a href="#articles" onclick="closeMenu()" data-section="articles">📝 מאמרים</a>
+  <a href="#contact" onclick="closeMenu()" data-section="contact">📱 צור קשר</a>
 </div>
 
 <!-- ══ HERO ══ -->
@@ -721,20 +146,17 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
       <img src="NSF-logo-large-1000px.png" alt="NSF 3D" width="124" height="124" fetchpriority="high" onerror="this.style.display='none'">
     </div>
     <div class="hero-tag">✦ עיצוב אישי · מתנות ייחודיות · משלוחים לכל הארץ</div>
-
-    <!-- ✅ SEO FIX: H1 now contains "הדפסות 3D בבאר שבע" for Local SEO -->
     <h1 class="hero-title">
       <span class="line-seo">הדפסות בתלת מימד בבאר שבע</span>
       <span class="line-main">הרעיון שלכם<br><span class="accent">הופך למוצר אמיתי</span></span>
     </h1>
-
     <p class="hero-sub">הדפסות תלת-מימד איכותיות. שילוב של דיוק הנדסי ומגע אמנותי, עם מבחר גדול של חומרים וצבעים.</p>
     <div class="hero-btns">
       <a href="https://wa.me/972559144386?text=%D7%94%D7%99%D7%99%20NSF%203D!%20%F0%9F%91%8B%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%F0%9F%98%8A" target="_blank" rel="noopener noreferrer" class="btn-cta3" style="font-size:18px;padding:16px 36px;">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         שלחו הודעה בוואטסאפ
       </a>
-      <a href="#catalog" style="color:var(--blue-mid);font-size:14px;font-weight:700;text-decoration:none;margin-top:4px;">או עיינו בקטלוג הצבעים ←</a>
+      <a href="#projects" style="color:var(--blue-mid);font-size:14px;font-weight:700;text-decoration:none;margin-top:4px;">או עיינו בפרויקטים לדוגמה ←</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">20<span>+</span></div><div class="stat-label">פרויקטים בוצעו</div></div>
@@ -745,9 +167,29 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
   </div>
 </section>
 
+<!-- ══ PROJECTS (עכשיו סקשן עצמאי, לפני הקטלוג) ══ -->
+<div class="sdiv"></div>
+<section id="projects" style="background:var(--bg)">
+<div class="sw">
+  <div class="sh">
+    <div class="stag">פרויקטים</div>
+    <h2 class="stitle">פרויקטים לדוגמה</h2>
+    <p class="ssub">הנה כמה דוגמאות — רוצים גם? דברו איתנו</p>
+  </div>
+  <div class="projects-grid" id="projectsGrid" aria-live="polite" aria-label="פרויקטים לדוגמה">
+    <div class="project-skeleton"><div class="project-skeleton-img"></div><div class="project-skeleton-body"><div class="project-skeleton-line" style="width:65%"></div><div class="project-skeleton-line" style="width:90%"></div><div class="project-skeleton-line" style="width:45%"></div></div></div>
+    <div class="project-skeleton"><div class="project-skeleton-img"></div><div class="project-skeleton-body"><div class="project-skeleton-line" style="width:55%"></div><div class="project-skeleton-line" style="width:80%"></div><div class="project-skeleton-line" style="width:50%"></div></div></div>
+    <div class="project-skeleton"><div class="project-skeleton-img"></div><div class="project-skeleton-body"><div class="project-skeleton-line" style="width:70%"></div><div class="project-skeleton-line" style="width:85%"></div><div class="project-skeleton-line" style="width:40%"></div></div></div>
+  </div>
+  <div class="projects-show-more" id="projectsShowMore" style="display:none">
+    <button class="projects-show-more-btn" id="projectsShowMoreBtn" onclick="toggleProjectsShowAll()">הצג עוד פרויקטים ↓</button>
+  </div>
+</div>
+</section>
+
 <!-- ══ CATALOG ══ -->
 <div class="sdiv"></div>
-<div id="catalog" style="background:var(--bg2)">
+<section id="catalog" style="background:var(--bg2)">
 <div class="sw">
   <div class="sh">
     <div class="stag">קטלוג</div>
@@ -764,7 +206,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
     </span>
   </div>
   <div class="filter-row">
-    <button class="filter-btn active" onclick="setFilter('popular',this)">⭐ פופולריים</button>
+    <button class="filter-btn active" onclick="setFilter('popular',this)">⭐ נבחרים</button>
     <button class="filter-btn" onclick="setFilter('all',this)">הכל</button>
     <button class="filter-btn" onclick="setFilter('regular',this)">🎨 רגיל</button>
     <button class="filter-btn" onclick="setFilter('glow',this)">✨ זוהר בחושך</button>
@@ -781,7 +223,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
     <button class="show-all-btn" id="showAllBtn" onclick="toggleShowAll()">הצג את כל הצבעים ↓</button>
   </div>
 </div>
-</div>
+</section>
 
 <!-- ══ COLOR MODAL ══ -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)" role="dialog" aria-modal="true" aria-label="פרטי צבע">
@@ -804,34 +246,32 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
   <img id="lightboxImg" src="" alt="תצוגה מוגדלת">
 </div>
 
-<!-- ══ PRODUCTS ══ -->
+<!-- ══ SHOP — ציוד מיובא (דיזות / פילמנט / מייבשים) ══ -->
+<!-- כבוי כרגע (SITE_CONFIG.sections.shop.enabled = false) עד שיהיה מלאי לייבוא -->
 <div class="sdiv"></div>
-<section id="products" style="background:var(--bg)">
+<section id="shop" style="background:var(--bg)">
 <div class="sw">
-
-  <!-- ✅ NEW: Projects sub-section -->
   <div class="sh">
-    <div class="stag">מוצרים ופרויקטים</div>
-    <h2 class="stitle">פרויקטים לדוגמה</h2>
-    <p class="ssub">הנה כמה דוגמאות — רוצים גם? דברו איתנו</p>
+    <div class="stag">חנות</div>
+    <h2 class="stitle">ציוד והתקנים להדפסת 3D</h2>
+    <p class="ssub">מוצרים מוכנים שאנחנו מייבאים — לא בהתאמה אישית, לרכישה ישירה</p>
   </div>
-
-  <!-- skeleton while loading -->
-  <div class="projects-grid" id="projectsGrid" aria-live="polite" aria-label="פרויקטים לדוגמה">
-    <div class="project-skeleton"><div class="project-skeleton-img"></div><div class="project-skeleton-body"><div class="project-skeleton-line" style="width:65%"></div><div class="project-skeleton-line" style="width:90%"></div><div class="project-skeleton-line" style="width:45%"></div></div></div>
-    <div class="project-skeleton"><div class="project-skeleton-img"></div><div class="project-skeleton-body"><div class="project-skeleton-line" style="width:55%"></div><div class="project-skeleton-line" style="width:80%"></div><div class="project-skeleton-line" style="width:50%"></div></div></div>
-    <div class="project-skeleton"><div class="project-skeleton-img"></div><div class="project-skeleton-body"><div class="project-skeleton-line" style="width:70%"></div><div class="project-skeleton-line" style="width:85%"></div><div class="project-skeleton-line" style="width:40%"></div></div></div>
+  <div class="section-explainer shop">
+    <span class="section-explainer-icon">📦</span>
+    <span>
+      <strong>מה ההבדל מהשירות שלמעלה?</strong> כל מה שראיתם עד כה (פרויקטים, קטלוג צבעים) הוא שירות הדפסה <strong>בהתאמה אישית</strong> — אנחנו מדפיסים בשבילכם לפי בקשה. החנות כאן היא ציוד <strong>מוכן ומיובא</strong> — דיזות, פילמנטים, מכשירי ייבוש ועוד — למי שמדפיס בעצמו ורוצה לקנות מקור אמין.
+    </span>
   </div>
+  <div class="shop-grid" id="shopGrid" aria-live="polite" aria-label="מוצרי חנות"></div>
+</div>
+</section>
 
-  <div class="projects-show-more" id="projectsShowMore" style="display:none">
-    <button class="projects-show-more-btn" id="projectsShowMoreBtn" onclick="toggleProjectsShowAll()">הצג עוד פרויקטים ↓</button>
-  </div>
-
-  <!-- divider before "מה אפשר להדפיס?" -->
-  <div class="products-divider"></div>
-
-  <!-- ✅ ORIGINAL: "מה אפשר להדפיס?" kept intact below -->
+<!-- ══ PRODUCTS — שירות ההדפסה (מה אפשר להדפיס) ══ -->
+<div class="sdiv"></div>
+<section id="products" style="background:var(--bg2)">
+<div class="sw">
   <div class="sh">
+    <div class="stag">שירות ההדפסה</div>
     <h2 class="stitle">מה אפשר להדפיס?</h2>
     <p class="ssub">כמעט כל דבר שאפשר לדמיין — אם יש לכם רעיון, בואו נדבר</p>
   </div>
@@ -863,7 +303,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
 
 <!-- ══ PRICING ══ -->
 <div class="sdiv"></div>
-<section id="pricing" style="background:var(--bg2)">
+<section id="pricing" style="background:var(--bg)">
 <div class="sw">
   <div class="sh">
     <div class="stag">מחירון</div>
@@ -1004,9 +444,28 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
 </div>
 </section>
 
-<!-- ══ REVIEWS ══ -->
+<!-- ══ ARTICLES / BLOG ══ -->
+<!-- כבוי כרגע (SITE_CONFIG.sections.articles.enabled = false) עד שיהיה תוכן -->
 <div class="sdiv"></div>
-<section id="reviews" style="background:var(--bg)">
+<section id="articles" style="background:var(--bg)">
+<div class="sw">
+  <div class="sh">
+    <div class="stag">מאמרים</div>
+    <h2 class="stitle">טיפים וכתבות בנושא הדפסת 3D</h2>
+    <p class="ssub">כל מה שכדאי לדעת לפני שמדפיסים</p>
+  </div>
+  <div class="section-explainer articles">
+    <span class="section-explainer-icon">📝</span>
+    <span>מדריכים קצרים, השוואות חומרים וטיפים מהשטח — כדי שתדעו בדיוק מה לבחור לפני שאתם מזמינים.</span>
+  </div>
+  <div class="articles-grid" id="articlesGrid" aria-live="polite" aria-label="מאמרים"></div>
+</div>
+</section>
+
+<!-- ══ REVIEWS ══ -->
+<!-- כבוי כרגע (SITE_CONFIG.sections.reviews.enabled = false) — Placeholder עד שיהיו ביקורות אמיתיות -->
+<div class="sdiv"></div>
+<section id="reviews" style="background:var(--bg2)">
 <div class="sw">
   <div class="sh" style="text-align:center;">
     <div class="stag">לקוחות ממליצים</div>
@@ -1057,7 +516,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
 
 <!-- ══ ABOUT ══ -->
 <div class="sdiv"></div>
-<section id="about" style="background:var(--bg2)">
+<section id="about" style="background:var(--bg)">
 <div class="sw">
   <div class="about-grid">
     <div>
@@ -1103,7 +562,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
 
 <!-- ══ FAQ ══ -->
 <div class="sdiv"></div>
-<section id="faq" style="background:var(--bg)">
+<section id="faq" style="background:var(--bg2)">
 <div class="sw">
   <div class="sh" style="text-align:center;">
     <div class="stag">שאלות נפוצות</div>
@@ -1140,7 +599,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
 
 <!-- ══ SOCIAL ══ -->
 <div class="sdiv"></div>
-<section id="social" style="background:var(--bg2)">
+<section id="social" style="background:var(--bg)">
 <div class="sw" style="text-align:center">
   <div class="sh">
     <div class="stag">עקבו אחרינו</div>
@@ -1153,7 +612,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
 
 <!-- ══ CONTACT ══ -->
 <div class="sdiv"></div>
-<section id="contact" style="background:var(--bg)">
+<section id="contact" style="background:var(--bg2)">
 <div class="sw">
   <div class="sh">
     <div class="stag">צור קשר</div>
@@ -1225,6 +684,11 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
         <textarea class="form-textarea" id="fmessage" required placeholder="ספרו לנו מה אתם צריכים — מה להדפיס, באיזה צבע, כמות..."></textarea>
         <div class="form-hint">💡 תמונות וקבצים רלוונטיים ניתן לצרף גם בוואטסאפ או באימייל בנפרד, בציון שם מלא.</div>
       </div>
+      <!-- 🐝 Honeypot — שדה מוסתר לעיני בני-אדם, מלכודת לבוטים אוטומטיים -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="fwebsite">אתר אינטרנט (אל תמלאו שדה זה)</label>
+        <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off">
+      </div>
       <button type="submit" class="form-submit" id="submitBtn">✉️ שלח פניה →</button>
       <div class="form-success" id="formSuccess">✅ הפניה נשלחה בהצלחה! נחזור אליכם בהקדם.</div>
       <div class="form-error" id="formError">⚠️ שגיאה בשליחה. נסו שוב או פנו ישירות בוואטסאפ.</div>
@@ -1240,12 +704,15 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
     <div style="font-size:13px;color:rgba(255,255,255,.45);margin-top:3px">באר שבע והדרום · הדפסות 3D בהתאמה אישית</div>
   </div>
   <ul class="footer-links">
-    <li><a href="#catalog">קטלוג</a></li>
-    <li><a href="#products">מוצרים</a></li>
-    <li><a href="#pricing">מחירון</a></li>
-    <li><a href="#order">הזמנה</a></li>
-    <li><a href="#about">אודות</a></li>
-    <li><a href="#contact">צור קשר</a></li>
+    <li><a href="#projects" data-section="projects">פרויקטים</a></li>
+    <li><a href="#catalog" data-section="catalog">קטלוג</a></li>
+    <li><a href="#shop" data-section="shop">חנות</a></li>
+    <li><a href="#products" data-section="products">שירות ההדפסה</a></li>
+    <li><a href="#pricing" data-section="pricing">מחירון</a></li>
+    <li><a href="#order" data-section="order">הזמנה</a></li>
+    <li><a href="#articles" data-section="articles">מאמרים</a></li>
+    <li><a href="#about" data-section="about">אודות</a></li>
+    <li><a href="#contact" data-section="contact">צור קשר</a></li>
   </ul>
   <div class="footer-legal">
     <button class="footer-legal-btn" id="btn-accessibility" onclick="openLegal('accessibility')">הצהרת נגישות</button>
@@ -1285,7 +752,7 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<!-- ══ WHATSAPP FLOAT BUTTON — NEW ══ -->
+<!-- ══ WHATSAPP FLOAT BUTTON ══ -->
 <a class="wa-float"
    id="waFloat"
    href="https://wa.me/972559144386?text=%D7%94%D7%99%D7%99%20NSF%203D!%20%F0%9F%91%8B%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%F0%9F%98%8A"
@@ -1346,672 +813,6 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
   </div>
 </div>
 
-<script>
-// ══════════════════════════════════════════════
-//  CONFIG
-// ══════════════════════════════════════════════
-
-// ┌──────────────────────────────────────────────────────────────┐
-// │  🔔 SITE ANNOUNCEMENT — EDIT HERE                          │
-// │  enabled: true/false — show or hide                        │
-// │  id: unique string — change to force re-show to everyone   │
-// │  persistence:                                              │
-// │    "forever"  — show once, never again (localStorage)      │
-// │    "session"  — show once per visit/tab (like clothing     │
-// │                 sites — closes tab → shows again)          │
-// │    24         — show again after 24 hours (any number)     │
-// │    "always"   — show every single page load, no memory     │
-// │  delay: ms before popup appears                            │
-// └──────────────────────────────────────────────────────────────┘
-const SITE_ANNOUNCEMENT = {
-  enabled: true,               // ← false כדי לכבות
-  id: "site-construction-v1",  // ← שנה כדי להציג שוב לכולם
-  persistence: "always",      // ← "forever" / "session" / 24 (שעות) / "always"
-  delay: 500,                  // השהיה במילישניות
-  icon: "🚧",
-  title: "האתר והעסק כרגע בשלבי הקמה!",
-  text: `כלל השירותים לא יהיו זמינים במהלך החודשים הקרובים, למעט פרויקטים חריגים שיכולים להתקבל לפי בקשה, לכל נושא אחר ניתן לדבר איתנו בווטסאפ.`,
-  buttons: [
-    { type:"wa", label:"📱 דברו איתנו בוואטסאפ", href:"__WA__" },
-    { type:"secondary", label:"אוקיי, אמשיך לגלוש", action:"close" }
-  ],
-  footerNote: "📍 באר שבע · משלוח לכל הארץ · מענה מהיר"
-};
-// ═══════ END ANNOUNCEMENT CONFIG ═══════
-const WORKER_URL          = "https://nsf3d-colors.nsf3d-il.workers.dev/";
-// ✅ NEW: replace with your deployed projects worker URL
-const PROJECTS_WORKER_URL = "https://nsf3d-projects.nsf3d-il.workers.dev/";
-
-const WA_NUMBER    = "972559144386";
-const WA_MSG       = encodeURIComponent("היי NSF 3D! 👋 אשמח לשמוע פרטים 😊");
-const EMAIL_ADDR   = "sales@nsf3d.co.il";
-const EMAIL_SUBJECT= encodeURIComponent("פנייה מהאתר — NSF 3D");
-const EMAIL_BODY   = encodeURIComponent("היי NSF 3D,\n\nפונה אליכם מהאתר.\n\n");
-const SITE_URL     = "https://nsf3d.co.il/";
-const PROJECTS_DEFAULT_SHOW = 3; // ✅ show 3 by default
-function getDefaultShow(){ return window.innerWidth <= 768 ? 4 : 6; }
-const EMAILJS_SERVICE  = "nsf3d_gmail";
-const EMAILJS_TEMPLATE = "template_auajv0o";
-const EMAILJS_KEY      = "0zsMlXrQhjmsDRUI9";
-const SECTIONS = { products:true, order:true, social:true, accessibility:true, privacy:true, terms:true };
-
-// ══════════════════════════════════════════════
-//  SOCIALS
-// ══════════════════════════════════════════════
-const SOCIALS = [
-  { url:"https://www.facebook.com/profile.php?id=61586093829404", name:"פייסבוק", handle:"NSF.3D", color:"#1877F2",
-    svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>` },
-  { url:"https://www.instagram.com/nsf.3d/", name:"אינסטגרם", handle:"@nsf.3d", color:"#E1306C",
-    svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>` },
-  { url:"https://www.tiktok.com/@nsf.3d", name:"טיקטוק", handle:"@nsf.3d", color:"#000000",
-    svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>` },
-  { url:"https://www.youtube.com/@NSFchannel", name:"יוטיוב", handle:"NSFchannel", color:"#FF0000",
-    svg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>` },
-];
-
-// ══════════════════════════════════════════════
-//  STATE
-// ══════════════════════════════════════════════
-let allColors=[], showingAll=false, activeFilter='popular', currentModalColor=null;
-let allProjects=[], projectsShowingAll=false;
-
-// ══════════════════════════════════════════════
-//  COOKIE
-// ══════════════════════════════════════════════
-function getCookieConsent(){ return localStorage.getItem('nsf-cookie-consent'); }
-function acceptCookies(){ localStorage.setItem('nsf-cookie-consent','all'); closeCookieBanner(); loadFbPixel(); }
-function declineCookies(){ localStorage.setItem('nsf-cookie-consent','none'); closeCookieBanner(); }
-function closeCookieBanner(){ document.getElementById('cookieBanner').style.display='none'; }
-function loadFbPixel(){ console.log('[NSF3D] Facebook Pixel loaded after consent'); }
-// ══════════════════════════════════════════════
-//  ANNOUNCEMENT POPUP
-// ══════════════════════════════════════════════
-function initAnnouncement(){
-  const a = SITE_ANNOUNCEMENT;
-  if(!a.enabled) return;
-
-  const key = 'nsf-announce-' + a.id;
-  const mode = a.persistence ?? 'forever';
-
-  // Check if should be hidden based on persistence mode
-  if(mode === 'forever'){
-    if(localStorage.getItem(key) === '1') return;
-  } else if(mode === 'session'){
-    if(sessionStorage.getItem(key) === '1') return;
-  } else if(typeof mode === 'number' && mode > 0){
-    const saved = localStorage.getItem(key);
-    if(saved){
-      const hoursAgo = (Date.now() - parseInt(saved)) / (1000 * 60 * 60);
-      if(hoursAgo < mode) return; // still within the timer window
-    }
-  }
-  // mode === 'always' → never skip, always show
-
-  const overlay = document.getElementById('announceOverlay');
-  if(!overlay) return;
-
-  document.getElementById('announceIcon').textContent = a.icon || '';
-  document.getElementById('announceTitle').textContent = a.title || '';
-  document.getElementById('announceText').innerHTML = a.text || '';
-  document.getElementById('announceFooter').textContent = a.footerNote || '';
-
-  const btnsEl = document.getElementById('announceBtns');
-  const waLink = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}`;
-  btnsEl.innerHTML = (a.buttons || []).map(b => {
-    const href = b.href === '__WA__' ? waLink : (b.href || '#');
-    if(b.action === 'close'){
-      return `<button class="announce-btn-${b.type || 'secondary'}" onclick="closeAnnounce()">${b.label}</button>`;
-    }
-    if(b.type === 'wa'){
-      return `<a class="announce-btn-wa" href="${href}" target="_blank" rel="noopener noreferrer">${b.label}</a>`;
-    }
-    return `<a class="announce-btn-${b.type || 'primary'}" href="${href}" ${href.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${b.label}</a>`;
-  }).join('');
-
-  setTimeout(()=>{
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }, a.delay || 600);
-}
-function closeAnnounce(){
-  const a = SITE_ANNOUNCEMENT;
-  const overlay = document.getElementById('announceOverlay');
-  if(!overlay) return;
-  overlay.style.opacity = '0';
-  setTimeout(()=>{
-    overlay.classList.remove('open');
-    overlay.style.opacity = '';
-    document.body.style.overflow = '';
-  }, 300);
-
-  // Save dismissal based on persistence mode
-  const key = 'nsf-announce-' + a.id;
-  const mode = a.persistence ?? 'forever';
-  if(mode === 'forever'){
-    localStorage.setItem(key, '1');
-  } else if(mode === 'session'){
-    sessionStorage.setItem(key, '1');
-  } else if(typeof mode === 'number' && mode > 0){
-    localStorage.setItem(key, String(Date.now()));
-  }
-  // mode === 'always' → save nothing
-}
-
-// ══════════════════════════════════════════════
-//  COOKIE
-// ══════════════════════════════════════════════
-function initCookieBanner(){
-  const consent = getCookieConsent();
-  if(!consent){ setTimeout(()=>{ document.getElementById('cookieBanner').style.display='block'; }, 1500); }
-  else if(consent==='all'){ loadFbPixel(); }
-}
-
-// ══════════════════════════════════════════════
-//  DARK MODE
-// ══════════════════════════════════════════════
-(function(){ if(localStorage.getItem('nsf-dark')==='1') document.body.classList.add('dark'); })();
-function toggleDark(){
-  const d=document.body.classList.toggle('dark');
-  localStorage.setItem('nsf-dark',d?'1':'0');
-  document.getElementById('darkIcon').textContent=d?'☀️':'🌙';
-  document.getElementById('darkLabel').textContent=d?'מצב בהיר':'מצב כהה';
-}
-
-// ══════════════════════════════════════════════
-//  WIP SECTIONS
-// ══════════════════════════════════════════════
-function applyWipSections(){
-  const wip=`<div style="text-align:center;padding:60px 20px"><div style="font-size:48px;margin-bottom:16px">🚧</div><h3 style="font-size:20px;font-weight:800;color:var(--blue-dark);margin-bottom:8px">הקטע הזה בבנייה</h3><p style="color:var(--text2)">בקרוב! בינתיים <a href="#contact" style="color:var(--blue-mid);font-weight:700">צרו קשר</a></p></div>`;
-  if(!SECTIONS.products){ document.querySelector('#products .sw').innerHTML=wip; }
-  if(!SECTIONS.order){ document.querySelector('#order .sw').innerHTML=wip; }
-  if(!SECTIONS.social){ document.getElementById('social').style.display='none'; }
-  if(!SECTIONS.accessibility){ const b=document.getElementById('btn-accessibility'); if(b)b.style.display='none'; }
-  if(!SECTIONS.privacy){ const b=document.getElementById('btn-privacy'); if(b)b.style.display='none'; }
-  if(!SECTIONS.terms){ const b=document.getElementById('btn-terms'); if(b)b.style.display='none'; }
-}
-
-// ══════════════════════════════════════════════
-//  DOM READY
-// ══════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded',()=>{
-  if(typeof emailjs !== 'undefined'){ emailjs.init(EMAILJS_KEY); }
-  else { console.warn('[NSF3D] EmailJS not loaded!'); }
-
-  applyWipSections();
-  initActiveSection();
-
-  if(document.body.classList.contains('dark')){
-    document.getElementById('darkIcon').textContent='☀️';
-    document.getElementById('darkLabel').textContent='מצב בהיר';
-  }
-
-  const localNum = '0' + WA_NUMBER.slice(3).replace(/(\d{2})(\d{3})(\d{4})/, '$1-$2-$3');
-  document.getElementById('waDisplay').textContent = localNum;
-  document.getElementById('mailDisplay').textContent = EMAIL_ADDR;
-  document.getElementById('waCard').href = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}`;
-  document.getElementById('mailCard').href = `mailto:${EMAIL_ADDR}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`;
-
-  // Social grid
-  const sg = document.getElementById('socialGrid');
-  if(sg) sg.innerHTML = SOCIALS.map(v=>`
-    <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="social-card">
-      <div class="social-icon" style="color:${v.color}">${v.svg}</div>
-      <div><div class="social-name">${v.name}</div><div class="social-handle">${v.handle}</div></div>
-    </a>`).join('');
-
-  initAnnouncement();
-  initCookieBanner();
-
-  // Back to top
-  const btt = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    btt.classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
-
-  loadColors();
-  loadProjects();  // ✅ NEW
-  initA11y();
-
-  // Catalog date
-  const dateEl = document.getElementById('catalogDate');
-  if(dateEl){
-    const now = new Date();
-    const days = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
-    const d = now.getDate().toString().padStart(2,'0');
-    const m = (now.getMonth()+1).toString().padStart(2,'0');
-    const y = now.getFullYear();
-    dateEl.innerHTML = `<span class="live-dot" title="מלאי חי"></span> נכון לתאריך: ${d}/${m}/${y} (יום ${days[now.getDay()]})`;
-  }
-});
-
-// ══════════════════════════════════════════════
-//  NAV ACTIVE SECTION
-// ══════════════════════════════════════════════
-function initActiveSection(){
-  const sectionIds = ['hero','catalog','products','pricing','order','reviews','about','faq','social','contact'];
-  const navItems = document.querySelectorAll('.nav-links a[data-section]');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const id = entry.target.id;
-        navItems.forEach(link => {
-          link.classList.toggle('nav-active', link.getAttribute('data-section') === id);
-        });
-      }
-    });
-  }, { rootMargin: '-64px 0px -55% 0px', threshold: 0 });
-  sectionIds.forEach(id => { const el = document.getElementById(id); if(el) observer.observe(el); });
-}
-
-// ══════════════════════════════════════════════
-//  COLORS CATALOG
-// ══════════════════════════════════════════════
-function renderSkeletons(count=12){
-  const grid = document.getElementById('colorsGrid');
-  grid.innerHTML = Array.from({length:count},(_,i)=>`
-    <div class="skeleton-card" aria-hidden="true" style="animation-delay:${i*0.06}s">
-      <div class="skeleton-swatch"></div>
-      <div class="skeleton-info">
-        <div class="skeleton-line" style="width:78%;margin-bottom:8px"></div>
-        <div class="skeleton-line" style="width:52%;margin-bottom:6px"></div>
-        <div class="skeleton-line" style="width:38%"></div>
-      </div>
-    </div>`).join('');
-}
-
-async function loadColors(){
-  renderSkeletons(6);
-  try{
-    const res = await fetch(WORKER_URL);
-    const data = await res.json();
-    allColors = (data.colors||[]).filter(c=>c.name&&c.name!=='ללא שם');
-    filterColors();
-  }catch(e){
-    document.getElementById('colorsGrid').innerHTML='<div class="loading" style="grid-column:1/-1">⚠️ שגיאה בטעינת הצבעים. נסו לרענן.</div>';
-  }
-}
-
-function setFilter(f,btn){
-  activeFilter=f; showingAll=false;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  filterColors();
-}
-
-function updateShowAllButtons(show, total, list){
-  const rowBottom = document.getElementById('showAllRow');
-  const rowTop    = document.getElementById('showAllRowTop');
-  const btnBottom = document.getElementById('showAllBtn');
-  const btnTop    = document.getElementById('showAllBtnTop');
-  if(show){
-    const label = showingAll ? 'הצג פחות ↑' : `הצג את כל ${total} הצבעים ↓`;
-    rowBottom.style.display = 'block';
-    btnBottom.textContent   = label;
-    rowTop.style.display  = showingAll ? 'block' : 'none';
-    btnTop.textContent    = showingAll ? 'הצג פחות ↑' : label;
-  } else {
-    rowBottom.style.display = 'none';
-    rowTop.style.display    = 'none';
-  }
-}
-
-function filterColors(){
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  let list = [...allColors];
-  if(activeFilter==='glow')         list = list.filter(c=>c.finishes.includes('זוהר בחושך'));
-  else if(activeFilter==='regular') list = list.filter(c=>!c.finishes.includes('זוהר בחושך') && !c.special);
-  else if(activeFilter==='special') list = list.filter(c=>c.special === true);
-  else if(activeFilter==='instock') list = list.filter(c=>c.inStock === true);
-  else if(activeFilter==='outstock')list = list.filter(c=>c.inStock === false);
-  if(q) list = list.filter(c=>c.name.toLowerCase().includes(q)||c.sku.toLowerCase().includes(q));
-
-  const defaultShow = getDefaultShow();
-  // Only truncate in "popular" view (no search, no specific filter)
-  const canTruncate = !q && activeFilter === 'popular' && list.length > defaultShow;
-  updateShowAllButtons(canTruncate, list.length, list);
-  renderColors(canTruncate && !showingAll ? list.slice(0, defaultShow) : list);
-}
-
-function toggleShowAll(){ showingAll=!showingAll; filterColors(); if(!showingAll){ document.getElementById('catalog').scrollIntoView({behavior:'smooth'}); } }
-function isHex(h){ return /^#[0-9A-Fa-f]{6}$/.test(h); }
-
-function renderColors(list){
-  const grid = document.getElementById('colorsGrid');
-  if(!list.length){ grid.innerHTML='<div class="loading" style="grid-column:1/-1">לא נמצאו צבעים</div>'; return; }
-  // Store for modal access by index
-  window._catalogList = list;
-  grid.innerHTML = list.map((c,i)=>{
-    const hex = isHex(c.hex)?c.hex:null;
-    const isGlow = c.finishes.includes('זוהר בחושך');
-    // מיקום תמונה: אם הוגדר ב-Notion → משתמש בו, אם זוהר → 83%, אחרת → center
-    const posY = c.imgPos != null ? c.imgPos + '%' : (isGlow ? '83%' : '50%');
-    const imgPos = `object-position:center ${posY};`;
-    const sw = c.image
-      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" decoding="async" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;${imgPos}" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">`
-      : `<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
-    const inStock = c.inStock === true;
-    return `<div class="color-card" onclick="openModal(${i})" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal(${i})">
-      <div class="color-swatch" aria-hidden="true">${sw}</div>
-      <div class="color-info">
-        <div class="color-name">${c.name}</div>
-        <div class="color-meta">
-          <span class="color-sku">מק"ט: ${c.sku}</span>
-        </div>
-        <div class="color-meta" style="margin-top:4px">
-          ${isGlow?'<span class="tag-glow">✨ זוהר בחושך</span>':''}
-          ${c.special?'<span class="tag-special">💎 מיוחד</span>':''}
-          ${inStock?'<span class="tag-instock">✓ במלאי</span>':'<span class="tag-outstock">✗ אזל</span>'}
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-// ══════════════════════════════════════════════
-//  PROJECTS — NEW
-// ══════════════════════════════════════════════
-async function loadProjects(){
-  try{
-    const res  = await fetch(PROJECTS_WORKER_URL);
-    const data = await res.json();
-    allProjects = data.projects || [];
-    renderProjects(allProjects.slice(0, PROJECTS_DEFAULT_SHOW));
-    const showMoreEl = document.getElementById('projectsShowMore');
-    if(allProjects.length > PROJECTS_DEFAULT_SHOW){
-      showMoreEl.style.display = 'block';
-    } else {
-      showMoreEl.style.display = 'none';
-    }
-  }catch(e){
-    document.getElementById('projectsGrid').innerHTML =
-      `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text2)">⚠️ שגיאה בטעינת הפרויקטים. <a href="#contact" style="color:var(--blue-mid);font-weight:700">צרו קשר ישירות</a></div>`;
-  }
-}
-
-function renderProjects(list){
-  const grid = document.getElementById('projectsGrid');
-  if(!list.length){
-    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px 20px;color:var(--text2)">
-      <div style="font-size:40px;margin-bottom:12px">🖨️</div>
-      <div style="font-size:16px;font-weight:700">פרויקטים בדרך — בקרוב!</div>
-      <div style="font-size:14px;margin-top:6px">בינתיים <a href="#contact" style="color:var(--blue-mid);font-weight:700">שלחו לנו הודעה</a> ונראה מה נוכל לעשות יחד</div>
-    </div>`;
-    return;
-  }
-
-  grid.innerHTML = list.map(p => {
-    const defaultMsg = encodeURIComponent(`היי NSF 3D! 👋\nראיתי את הפרויקט "${p.name}" באתר ואני רוצה משהו דומה.\nאשמח לשמוע פרטים ומחיר 😊`);
-    const waMsg = p.waMsg
-      ? encodeURIComponent(p.waMsg)
-      : defaultMsg;
-
-    const imgHtml = p.image
-      ? `<img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" style="cursor:zoom-in" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.parentElement.innerHTML='<div class=project-img-placeholder>🖨️</div>'">`
-      : `<div class="project-img-placeholder">🖨️</div>`;
-
-    const featuredBadge = p.featured
-      ? `<div class="project-featured-badge">⭐ מומלץ</div>`
-      : '';
-    const catBadge = p.category
-      ? `<div class="project-category-badge">${p.category}</div>`
-      : '';
-
-    return `
-      <div class="project-card${p.featured?' featured':''}">
-        <div class="project-img-wrap">
-          ${imgHtml}
-          ${featuredBadge}
-          ${catBadge}
-        </div>
-        <div class="project-body">
-          <div class="project-name">${p.name}</div>
-          ${p.description ? `<div class="project-desc">${p.description}</div>` : ''}
-          <a href="https://wa.me/${WA_NUMBER}?text=${waMsg}"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="project-wa-btn"
-             aria-label="הזמינו פרויקט דומה ל-${p.name} בוואטסאפ">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            הזמינו כזה ←
-          </a>
-        </div>
-      </div>`;
-  }).join('');
-}
-
-function toggleProjectsShowAll(){
-  projectsShowingAll = !projectsShowingAll;
-  const btn = document.getElementById('projectsShowMoreBtn');
-  if(projectsShowingAll){
-    renderProjects(allProjects);
-    btn.textContent = 'הצג פחות ↑';
-  } else {
-    renderProjects(allProjects.slice(0, PROJECTS_DEFAULT_SHOW));
-    btn.textContent = 'הצג עוד פרויקטים ↓';
-    document.getElementById('products').scrollIntoView({behavior:'smooth'});
-  }
-}
-
-// ══════════════════════════════════════════════
-//  COLOR MODAL
-// ══════════════════════════════════════════════
-function openModal(indexOrObj){
-  const c = typeof indexOrObj==='number' ? window._catalogList[indexOrObj] : indexOrObj;
-  if(!c) return;
-  currentModalColor = c;
-  const hex = isHex(c.hex)?c.hex:null;
-  if(c.image){
-    const safeUrl = c.image.replace(/'/g, "\\'");
-    document.getElementById('modalTop').innerHTML = `<img class="modal-img" src="${c.image}" alt="${c.name}" onclick="openLightbox('${safeUrl}')" title="לחצו להגדלה">`;
-  } else {
-    document.getElementById('modalTop').innerHTML = `<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
-  }
-  document.getElementById('modalName').textContent = c.name;
-  const fins = c.finishes.filter(f=>f!=='במלאי').join(' · ')||'—';
-  const inStock = c.inStock === true;
-  const rows = [
-    ['מק"ט', c.sku||'—'],
-    ['גימור', fins],
-    ['קוד צבע', hex||c.hex||'—'],
-    ['מלאי', inStock ? '✓ במלאי' : '✗ אזל'],
-  ];
-  if(c.notes) rows.push(['הערות', c.notes]);
-  document.getElementById('modalRows').innerHTML = rows.map(([l,v])=>
-    `<div class="modal-row"><span class="modal-row-label">${l}</span><span class="modal-row-val">${v}</span></div>`
-  ).join('');
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function orderFromModal(){
-  if(!currentModalColor) return;
-  const c = currentModalColor;
-  const msg = encodeURIComponent(`היי NSF 3D! 👋\nאני מעוניין בצבע: ${c.name} (מק"ט: ${c.sku})\n\nאשמח לשמוע פרטים 😊`);
-  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank','noopener');
-}
-function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
-function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
-
-// ══════════════════════════════════════════════
-//  LIGHTBOX
-// ══════════════════════════════════════════════
-function openLightbox(src){ document.getElementById('lightboxImg').src=src; document.getElementById('lightbox').classList.add('open'); }
-function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
-
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){ closeAnnounce(); closeModalDirect(); closeLegalDirect(); closeLightbox(); }
-});
-
-// ══════════════════════════════════════════════
-//  CONTACT FORM
-// ══════════════════════════════════════════════
-async function submitForm(e){
-  e.preventDefault();
-  const name    = document.getElementById('fname').value.trim();
-  const phone   = document.getElementById('fphone').value.trim();
-  const subject = document.getElementById('fsubject').value;
-  const message = document.getElementById('fmessage').value.trim();
-  if(!name || !phone){ alert('נא למלא שם וטלפון'); return; }
-  const btn=document.getElementById('submitBtn'), success=document.getElementById('formSuccess'), errEl=document.getElementById('formError');
-  btn.disabled=true; btn.textContent='⏳ שולח...';
-  success.style.display='none'; errEl.style.display='none';
-  try{
-    await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, { from_name:name, from_phone:phone, subject, message });
-    success.style.display='block';
-    document.getElementById('contactForm').reset();
-    setTimeout(()=>{ success.style.display='none'; }, 6000);
-  }catch(err){
-    console.error('[NSF3D] Email error:', err);
-    errEl.style.display='block';
-  }
-  btn.disabled=false; btn.textContent='✉️ שלח פניה →';
-}
-
-// ══════════════════════════════════════════════
-//  MOBILE MENU
-// ══════════════════════════════════════════════
-function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
-function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
-
-// ══════════════════════════════════════════════
-//  ACCESSIBILITY
-// ══════════════════════════════════════════════
-let a11yFontLevel = 0;
-const a11yFeatures = { contrast:false, links:false, noanim:false, cursor:false };
-
-function initA11y(){
-  const savedFont = parseInt(localStorage.getItem('nsf-a11y-font') || '0');
-  if(savedFont){ a11yFontLevel = savedFont; applyZoom(a11yFontLevel); }
-  ['contrast','links','noanim','cursor'].forEach(f => {
-    if(localStorage.getItem('nsf-a11y-' + f) === '1'){
-      a11yFeatures[f] = true;
-      document.body.classList.add('a11y-' + f);
-      const id = 'a11y' + f.charAt(0).toUpperCase() + f.slice(1);
-      const btn = document.getElementById(id);
-      if(btn){ btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
-    }
-  });
-}
-function applyZoom(level){
-  if(level === 0){ document.body.style.zoom = ''; }
-  else { document.body.style.zoom = String(1 + level * 0.15); }
-}
-function toggleA11yPanel(){ document.getElementById('a11yPanel').classList.toggle('open'); }
-function changeFontSize(dir){
-  a11yFontLevel = Math.max(-2, Math.min(3, a11yFontLevel + dir));
-  applyZoom(a11yFontLevel);
-  localStorage.setItem('nsf-a11y-font', a11yFontLevel);
-}
-function toggleA11yFeature(feature){
-  a11yFeatures[feature] = !a11yFeatures[feature];
-  document.body.classList.toggle('a11y-' + feature, a11yFeatures[feature]);
-  const id = 'a11y' + feature.charAt(0).toUpperCase() + feature.slice(1);
-  const btn = document.getElementById(id);
-  if(btn){ btn.classList.toggle('active', a11yFeatures[feature]); btn.setAttribute('aria-pressed', String(a11yFeatures[feature])); }
-  localStorage.setItem('nsf-a11y-' + feature, a11yFeatures[feature] ? '1' : '0');
-}
-function resetA11y(){
-  a11yFontLevel = 0; applyZoom(0);
-  Object.keys(a11yFeatures).forEach(f => {
-    a11yFeatures[f] = false;
-    document.body.classList.remove('a11y-' + f);
-    const id = 'a11y' + f.charAt(0).toUpperCase() + f.slice(1);
-    const btn = document.getElementById(id);
-    if(btn){ btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
-    localStorage.removeItem('nsf-a11y-' + f);
-  });
-  localStorage.removeItem('nsf-a11y-font');
-}
-document.addEventListener('click', function(e){
-  const panel = document.getElementById('a11yPanel');
-  const btn   = document.getElementById('a11yBtn');
-  if(panel && panel.classList.contains('open') && !panel.contains(e.target) && e.target !== btn){
-    panel.classList.remove('open');
-  }
-});
-
-// ══════════════════════════════════════════════
-//  LEGAL MODALS
-// ══════════════════════════════════════════════
-const LEGAL_CONTENT = {
-  accessibility:{
-    title:'הצהרת נגישות',
-    body:`
-      <h3>מחויבות לנגישות</h3>
-      <p>NSF 3D מאמין שכולם — ללא יוצא מן הכלל — מגיעים לחוויית שימוש נוחה ונגישה באתר.</p>
-      <h3>♿ כלי הנגישות המובנה</h3>
-      <p>האתר כולל לחצן נגישות קבוע בפינה הימנית התחתונה של המסך, המאפשר:</p>
-      <ul>
-        <li>📝 <strong>שינוי גודל טקסט</strong> — הגדלה או הקטנה של הגופן</li>
-        <li>⬛ <strong>ניגודיות גבוהה</strong> — הגברת הניגוד לנוחות קריאה</li>
-        <li>🔗 <strong>הדגשת קישורים</strong> — קו תחתון לכל הקישורים</li>
-        <li>⏸ <strong>עצירת אנימציות</strong> — לרגישים לתנועה</li>
-        <li>🖱️ <strong>סמן גדול</strong> — להתמצאות נוחה יותר</li>
-      </ul>
-      <p>כל ההגדרות נשמרות אוטומטית בדפדפן לביקורים הבאים.</p>
-      <h3>פעולות נגישות נוספות</h3>
-      <ul>
-        <li>ניגודיות צבעים נאותה בשני מצבי תצוגה (בהיר / כהה)</li>
-        <li>תיאורי alt לכל התמונות המשמעותיות</li>
-        <li>מבנה כותרות היררכי (H1, H2, H3)</li>
-        <li>תמיכה מלאה בניווט מקלדת (Tab, Enter, Escape)</li>
-        <li>תוויות aria לרכיבים אינטראקטיביים</li>
-      </ul>
-      <h3>פטור לפי חוק שוויון זכויות לאנשים עם מוגבלויות</h3>
-      <div class="highlight"><strong>⚠️ הבהרה:</strong> עסק זה הינו עוסק זעיר / פטור, ועל כן חלות עליו הוראות הפטור הקבועות בתקנות שוויון זכויות לאנשים עם מוגבלויות.</div>
-      <h3>נתקלתם בבעיה? ספרו לנו</h3>
-      <p><strong>שם:</strong> סמואל נרודיצקי | <strong>טלפון:</strong> 055-9144386 | <strong>אימייל:</strong> sales@nsf3d.co.il</p>
-    `
-  },
-  privacy:{
-    title:'מדיניות פרטיות',
-    body:`
-      <h3>מהו המידע שאנו אוספים?</h3>
-      <p>שם, מספר טלפון, כתובת אימייל, ותוכן הפניה.</p>
-      <h3>כיצד אנו משתמשים במידע?</h3>
-      <ul><li>מענה לפניות ועיבוד הזמנות</li><li>שיפור השירות והאתר</li><li>פרסום ממוקד ברשתות החברתיות (בכפוף להסכמה)</li></ul>
-      <h3>העברת מידע לצד שלישי</h3>
-      <p><strong>אנו לא מוכרים, מעבירים או משתפים את פרטיכם האישיים עם צדדים שלישיים</strong>, למעט כלי שיווק סטנדרטיים (Meta/Facebook Pixel) בהסכמתכם.</p>
-      <h3>זכויותיכם</h3>
-      <p>בהתאם לחוק הגנת הפרטיות (ישראל), יש לכם זכות לעיין, לתקן או למחוק מידע אישי. לפניות: <strong>sales@nsf3d.co.il</strong></p>
-    `
-  },
-  terms:{
-    title:'תקנון ותנאי שימוש — NSF 3D',
-    body:`
-      <p style="font-size:12px;color:var(--text2);margin-bottom:16px">עדכון אחרון: מרץ 2026 | גרסה 1.2</p>
-      <h3>1. כללי ותחולה</h3>
-      <p>תקנון זה מסדיר את תנאי ההתקשרות בין <strong>NSF 3D</strong> לבין כל לקוח המבצע הזמנה. ביצוע הזמנה מהווה הסכמה מלאה לתנאי תקנון זה.</p>
-      <h3>2. קניין רוחני</h3>
-      <p>הלקוח מצהיר כי הוא הבעלים החוקי של כל קובץ שהוא מוסר לייצור. NSF 3D אינה אחראית לגבי זכויות קניין רוחני הגלומות בקבצים.</p>
-      <div class="highlight"><strong>⚠️ דגש:</strong> אין להגיש לייצור קבצים של דמויות מוגנות ללא אישור מחזיק הזכויות.</div>
-      <h3>3. טיב המוצר</h3>
-      <p>סימני שכבות, קווי חיבור ועקבות תמיכות הם חלק אינהרנטי מתהליך ההדפסה ואינם מהווים פגם. תיתכן סטייה מידתית של עד ±0.2 מ"מ.</p>
-      <h3>4. ביטולים והחזרים</h3>
-      <div class="highlight"><strong>⚠️ כלל מוצרי NSF 3D מיוצרים בהזמנה אישית — לא תינתן זכות ביטול לאחר תחילת הייצור.</strong></div>
-      <h3>5. מסלול אקספרס</h3>
-      <p>מסלול האקספרס כרוך בתוספת תשלום המסוכמת מראש. ביטול הזמנת אקספרס לאחר תחילת הייצור אינה מזכה בהחזר.</p>
-      <h3>6. אמצעי תשלום</h3>
-      <p>NSF 3D מקבל תשלום ב-<strong>Bit</strong>, <strong>מזומן</strong> ו<strong>העברה בנקאית</strong>. העסק פועל כעוסק פטור.</p>
-      <h3>7. זמני אספקה</h3>
-      <p>זמני האספקה (7–14 ימי עסקים / אקספרס לפי הסכמה) הינם הערכה בלבד ועשויים להשתנות.</p>
-      <h3>8. סמכות שיפוט</h3>
-      <p>כל מחלוקת תדון בבתי המשפט המוסמכים במחוז תל אביב.</p>
-    `
-  }
-};
-
-function openLegal(type){
-  const c=LEGAL_CONTENT[type]; if(!c) return;
-  document.getElementById('legalTitle').textContent=c.title;
-  document.getElementById('legalBody').innerHTML=c.body;
-  document.getElementById('legalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeLegal(e){ if(e.target===document.getElementById('legalOverlay')) closeLegalDirect(); }
-function closeLegalDirect(){ document.getElementById('legalOverlay').classList.remove('open'); document.body.style.overflow=''; }
-</script>
+<script src="app.js"></script>
 </body>
 </html>
