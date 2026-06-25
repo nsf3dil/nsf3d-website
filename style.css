@@ -267,7 +267,54 @@ body.dark .shop-price{color:#4ade80;}
 .article-excerpt{font-size:13.5px;color:var(--text2);line-height:1.6;font-weight:500;}
 .article-readmore{font-size:13px;font-weight:700;color:var(--blue-mid);margin-top:10px;display:inline-block;}
 
-/* ══ ORDER ══ */
+/* ══ MATERIALS COMPARISON TABLE ══ */
+.materials-table-wrap{overflow-x:auto;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--card-bg);-webkit-overflow-scrolling:touch;}
+.materials-table{width:100%;border-collapse:collapse;font-size:15px;}
+.materials-table thead th{background:var(--bg3);color:var(--blue-dark);font-weight:800;padding:14px 12px;text-align:center;border-bottom:1.5px solid var(--border);white-space:nowrap;}
+.materials-table thead th:first-child{text-align:right;}
+.materials-table tbody td{padding:14px 12px;text-align:center;border-bottom:1px solid var(--border);vertical-align:middle;}
+.materials-table tbody tr:last-child td{border-bottom:none;}
+.materials-table tbody tr:hover{background:var(--bg2);}
+.mat-name-cell{text-align:right;white-space:normal;min-width:170px;}
+.mat-name{font-weight:800;color:var(--blue-dark);font-size:15px;}
+.mat-meaning{font-size:12px;color:var(--text2);font-weight:500;margin-top:2px;}
+.mat-suits-cell{text-align:right;white-space:normal;font-size:13px;color:var(--text2);font-weight:600;min-width:170px;}
+/* ✓ ירוק / ✓ צהוב עם קו (חצי-וי) / ✗ אדום */
+.mat-ico{font-size:19px;font-weight:900;display:inline-block;}
+.mat-good{color:#16a34a;}
+body.dark .mat-good{color:#22c55e;}
+.mat-mid{color:#d4a017;text-decoration:line-through;text-decoration-thickness:2.5px;text-decoration-color:#d4a017;}
+body.dark .mat-mid{color:#f0c040;text-decoration-color:#f0c040;}
+.mat-bad{color:#dc2626;}
+body.dark .mat-bad{color:#f87171;}
+.mat-temp{font-size:11px;color:var(--text2);font-weight:600;margin-top:3px;}
+.mat-price{font-weight:800;color:var(--blue-dark);}
+/* כוכבי חוזק */
+.mat-stars{font-size:15px;letter-spacing:1px;white-space:nowrap;}
+.star-filled{color:#f5c842;}
+.star-empty{color:rgba(245,200,66,.25);}
+.materials-legend{font-size:13px;color:var(--text2);font-weight:600;margin-top:14px;line-height:1.8;}
+.materials-comparison-note{display:flex;align-items:flex-start;gap:10px;background:rgba(120,120,120,.08);border:1.5px dashed var(--border2);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--text2);font-weight:600;margin:24px 0 14px;line-height:1.6;}
+.fiber-note{background:linear-gradient(135deg,rgba(30,111,168,.06) 0%,rgba(77,184,232,.05) 100%);border:1.5px solid rgba(30,111,168,.2);border-radius:14px;padding:16px 22px;margin-top:18px;font-size:14px;color:var(--text2);line-height:1.7;font-weight:600;}
+.fiber-note strong{color:var(--blue-dark);}
+body.dark .fiber-note strong{color:var(--blue-light);}
+.materials-section-divider{height:1px;background:var(--border);margin:36px 0;}
+/* כרטיסי חומרי תמיכה */
+.support-materials-intro{font-size:14px;color:var(--text2);line-height:1.7;font-weight:600;margin-bottom:16px;}
+.support-materials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+.support-card{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:16px 18px;}
+.support-name{font-size:15px;font-weight:800;color:var(--blue-dark);}
+.support-meaning{font-size:12px;color:var(--text2);font-weight:500;margin-top:2px;}
+.support-note{font-size:13.5px;color:var(--text2);font-weight:600;margin-top:8px;line-height:1.6;}
+@media(max-width:768px){
+  .materials-table{font-size:13px;}
+  .materials-table thead th,.materials-table tbody td{padding:11px 9px;}
+  .mat-name-cell,.mat-suits-cell{min-width:130px;}
+  .mat-ico{font-size:16px;}
+  .mat-stars{font-size:13px;}
+}
+
+
 .order-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px;}
 .step{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);padding:24px;}
 .step-num{font-size:40px;font-weight:900;color:rgba(77,184,232,.30);line-height:1;margin-bottom:12px;}
