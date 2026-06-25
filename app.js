@@ -21,8 +21,6 @@ const SITE_CONFIG = {
     products: { enabled: true  },   // "מה אפשר להדפיס" — שירות ההדפסה
     pricing:  { enabled: true  },
     order:    { enabled: true  },
-    materials:{ enabled: true  },   // ✅ טבלת השוואת חומרי הדפסה — מידע קבוע, לא תלוי "מאמרים"
-    resinMaterials:{ enabled: false }, // ✅ טבלת חומרי רזין — כבוי עד שתכיר את התחום ותאשר את התוכן
     articles: { enabled: false },   // ✅ מאמרים/כתבות — דלוק כשיהיה תוכן
     reviews:  { enabled: false },   // ✅ כבוי כרגע — Placeholder, תדליק כשיהיו ביקורות אמיתיות
     about:    { enabled: true  },
@@ -42,15 +40,6 @@ const SITE_CONFIG = {
 // │  🛒 SHOP_PRODUCTS — מוצרי חנות (ציוד מיובא, לא הדפסות)       │
 // │  ערוך ידנית כאן עד שיהיה לך CMS ייעודי לחנות.                │
 // └──────────────────────────────────────────────────────────────┘
-// ┌──────────────────────────────────────────────────────────────┐
-// │  🧪 הגדרות תצוגה לטבלת החומרים — true/false להראות/להחביא    │
-// │  עמודה. הדאטה (מחיר/קושי) נשארת בקובץ, רק לא מוצגת.          │
-// └──────────────────────────────────────────────────────────────┘
-const MATERIALS_TABLE_OPTIONS = {
-  showPrice:      false,
-  showDifficulty: false,
-};
-
 const SHOP_PRODUCTS = [
   // לדוגמה, מלא בהמשך:
   // { name:"דיזת נחושת 0.4mm", desc:"דיזה איכותית להדפסה מהירה ועמידה", price:35, image:"", inStock:true },
@@ -61,75 +50,6 @@ const SHOP_PRODUCTS = [
 // └──────────────────────────────────────────────────────────────┘
 const ARTICLES = [
   // { title:"PLA מול PETG — מה ההבדל?", date:"01/2026", excerpt:"...", image:"", url:"#" },
-];
-
-// ┌──────────────────────────────────────────────────────────────┐
-// │  🧪 MATERIALS — טבלת השוואת חומרי הדפסה                      │
-// │  level: 'good' (✅) / 'mid' (🟡) / 'bad' (❌)                  │
-// │  כל הציונים מתייחסים למוצר המוגמר שהלקוח מקבל — לא לגליל     │
-// │  הגלם. לעריכה: שנה ערכים כאן, אין צורך לגעת ב-HTML/CSS.       │
-// │  price: 1=₪ (זול) · 2=₪₪ (בינוני) · 3=₪₪₪ (יקר)               │
-// └──────────────────────────────────────────────────────────────┘
-const MATERIALS = [
-  { name:"PLA", strength:"mid", heat:{level:"bad",temp:"~55°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"mid", difficulty:"good", price:2,
-    finish:"חלק ויפה מאוד, הכי "+"מתאים לפרטים עדינים", notes:"מתאים לדגמים, קישוטים, מתנות, אביזרי בית שלא נחשפים לחום או שמש." },
-  { name:"PETG", strength:"good", heat:{level:"mid",temp:"~75°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1,
-    finish:"חלק, מעט פחות מדויק מ-PLA בפרטים זעירים", notes:"מתאים לכלי מטבח, אריזות, חלקים טכניים קלים שצריכים גם חוזק וגם בטיחות." },
-  { name:"TPU", strength:"mid", heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2,
-    finish:"גומי מאט, גמיש למגע", notes:"מתאים לרצועות, אטמים, מארזי טלפון מגן, סוליות וחלקים שצריכים לכפוף ולחזור." },
-  { name:"PVA", strength:"bad", heat:{level:"bad",temp:"~45°C"}, moisture:"bad", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"bad", difficulty:"mid", price:3,
-    finish:"לא רלוונטי — חומר תמיכה בלבד", notes:"מתמוסס במים בכוונה — משמש לתמיכות פנימיות במבנים מורכבים, לא מוצר סופי." },
-  { name:"BVOH", strength:"bad", heat:{level:"mid",temp:"~55°C"}, moisture:"bad", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"bad", difficulty:"mid", price:3,
-    finish:"לא רלוונטי — חומר תמיכה בלבד", notes:"שיפור של PVA — מתמוסס במים קרים, עמיד יותר ללחות לפני ההמסה המכוונת." },
-  { name:"ABS", strength:"good", heat:{level:"good",temp:"~95°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"bad", price:1,
-    finish:"ניתן להחליק ולהבריק עם אצטון", notes:"מתאים לחלקי רכב, צעצועים עמידים, חלקים שנושמים חום קל בשימוש יומיומי." },
-  { name:"ASA", strength:"good", heat:{level:"good",temp:"~95°C"}, moisture:"mid", uv:"good", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"bad", price:2,
-    finish:"דומה ל-ABS, מעט יותר מאט", notes:"כמו ABS אך עמיד לשמש — לשילוט חוץ, רהיטי גינה, תושבות לרכב." },
-  { name:"PC (פוליקרבונט)", strength:"good", heat:{level:"good",temp:"~120°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"mid", difficulty:"bad", price:3,
-    finish:"שקוף או חזק במיוחד, מצריך הדפסה ב-Enclosure", notes:"מהחומרים הקשיחים והחזקים — לחלקים תעשייתיים, מגנים, תושבות עומס." },
-  { name:"PA (ניילון)", strength:"good", heat:{level:"good",temp:"~120°C"}, moisture:"bad", uv:"mid", chemical:"good", flex:"mid", foodSafe:"mid", difficulty:"bad", price:3,
-    finish:"גימור משיי, סופג לחות מהאוויר", notes:"חזק וגמיש בו-זמנית — לגלגלי שיניים, צירים, חלקי מכונה הנדסיים." },
-  { name:"PET", strength:"good", heat:{level:"mid",temp:"~70°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1,
-    finish:"חלק ושקוף, דומה לבקבוקי שתייה", notes:"קל יחסית להדפסה ועמיד למזון — לאריזות, כלים חד-פעמיים איכותיים." },
-  { name:"PPA-CF/GF", strength:"good", heat:{level:"good",temp:"~180°C"}, moisture:"mid", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3,
-    finish:"מט וקשיח, מצריך נחיר מוקשח", notes:"חומר הנדסי-תעשייתי לחלקים שצריכים גם חום וגם חוזק גבוהים יחד." },
-  { name:"PPS", strength:"good", heat:{level:"good",temp:"~220°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3,
-    finish:"מט, יציב מאוד מבחינה מימדית", notes:"לעומסי חום קיצוניים וסביבה כימית קשה — תעשיית רכב ותעופה." },
-  { name:"PPS-CF/GF", strength:"good", heat:{level:"good",temp:"~240°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3,
-    finish:"מט וקשיח מאוד", notes:"PPS עם סיבים — ליציבות מבנית קיצונית בחום, לחלקים תעשייתיים מתקדמים." },
-  { name:"PP (פוליפרופילן)", strength:"mid", heat:{level:"mid",temp:"~100°C"}, moisture:"good", uv:"bad", chemical:"good", flex:"good", foodSafe:"good", difficulty:"bad", price:2,
-    finish:"מט וגמיש, קשה מאוד לא להתעוות", notes:"עמיד כימית וגמיש כמו מכסי טאפרוור — בעיקר לחלקים שצריכים 'ציר חי'." },
-  { name:"PVB", strength:"mid", heat:{level:"bad",temp:"~50°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"mid", foodSafe:"bad", difficulty:"mid", price:2,
-    finish:"מבריק וחלק מאוד אחרי החלקה באלכוהול", notes:"משמש בעיקר לקבלת גימור מבריק (כמו ABS+אצטון) על מודלים נוי." },
-  { name:"TPE", strength:"bad", heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2,
-    finish:"רך וגומי, רך יותר מ-TPU", notes:"משפחת חומרים גמישים כמו TPU ברכות גבוהה יותר — אטמים ורצועות רכות." },
-];
-
-// שורות "להשוואה בלבד" — חומרים שלא מודפסים בשירות, רק לידע כללי
-const MATERIALS_COMPARISON_ONLY = [
-  { name:"PEEK", strength:"good", heat:{level:"good",temp:"~250°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"good", difficulty:"bad", price:3,
-    finish:"קשיח ומט", notes:"חומר רפואי/תעופתי יוקרתי — דורש מדפסות תעשייתיות בטמפ' קיצונית." },
-  { name:"PEKK", strength:"good", heat:{level:"good",temp:"~260°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"mid", difficulty:"bad", price:3,
-    finish:"קשיח ומט", notes:"דומה ל-PEEK עם התגבשות מהירה יותר — תעופה ורפואה." },
-  { name:"PEI / ULTEM", strength:"good", heat:{level:"good",temp:"~170°C"}, moisture:"mid", uv:"good", chemical:"good", flex:"bad", foodSafe:"mid", difficulty:"bad", price:3,
-    finish:"שקוף-ענברי", notes:"עמיד אש (FST) — שימושים בתעופה ואלקטרוניקה תעשייתית." },
-];
-
-// ┌──────────────────────────────────────────────────────────────┐
-// │  🧫 RESIN_MATERIALS — טבלת חומרי רזין (טיוטה ראשונית!)        │
-// │  הסקשן כבוי (resinMaterials.enabled=false) עד שתאשר/תערוך.   │
-// └──────────────────────────────────────────────────────────────┘
-const RESIN_MATERIALS = [
-  { name:"Standard Resin", strength:"mid", heat:{level:"mid",temp:"~55°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"good", price:1,
-    finish:"דיוק וחלקות פני שטח גבוהים מאוד", notes:"לפרטים זעירים, דמויות, מיניאטורות — לא לחלקים שעובדים תחת מאמץ." },
-  { name:"Tough / Durable Resin", strength:"good", heat:{level:"mid",temp:"~60°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"mid", foodSafe:"bad", difficulty:"mid", price:2,
-    finish:"חלק, פחות שביר מ-Standard", notes:"מדמה ABS — לחלקים פונקציונליים שדורשים גם דיוק וגם עמידות לזעזוע." },
-  { name:"Flexible Resin", strength:"bad", heat:{level:"bad",temp:"~45°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"good", foodSafe:"bad", difficulty:"mid", price:2,
-    finish:"גומי רך וחלק", notes:"לאטמים, מודלים גמישים ופרוטוטייפים שצריכים להתכופף." },
-  { name:"High-Temp Resin", strength:"good", heat:{level:"good",temp:"~120°C"}, moisture:"mid", uv:"bad", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3,
-    finish:"קשיח ושביר יחסית", notes:"לתבניות יציקה, חלקים שנחשפים לחום גבוה — שביר יותר מהאחרים." },
-  { name:"Water-Washable Resin", strength:"mid", heat:{level:"bad",temp:"~50°C"}, moisture:"bad", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"bad", difficulty:"good", price:2,
-    finish:"חלק, ניקוי קל יחסית", notes:"נשטף במים רגילים במקום אלכוהול — נוח יותר לעבודה אך פחות עמיד בלחות." },
 ];
 
 const WORKER_URL          = "https://nsf3d-colors.nsf3d-il.workers.dev/";
@@ -376,8 +296,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   loadColors();
   loadProjects();
-  if(SITE_CONFIG.sections.materials.enabled)      renderMaterialsSection();
-  if(SITE_CONFIG.sections.resinMaterials.enabled) renderResinSection();
   if(SITE_CONFIG.sections.shop.enabled)     renderShop();
   if(SITE_CONFIG.sections.articles.enabled) renderArticles();
   initA11y();
@@ -672,79 +590,8 @@ function renderArticles(){
 }
 
 // ══════════════════════════════════════════════
-//  🧪 MATERIALS TABLE
+//  COLOR MODAL
 // ══════════════════════════════════════════════
-const MAT_ICON = { good:'✅', mid:'🟡', bad:'❌' };
-const PRICE_LABEL = { 1:'₪', 2:'₪₪', 3:'₪₪₪' };
-
-function matCell(level){
-  return `<span class="mat-ico mat-${level}">${MAT_ICON[level] || '—'}</span>`;
-}
-
-function buildMaterialsTableHTML(list, tableId){
-  const showPrice = MATERIALS_TABLE_OPTIONS.showPrice;
-  const showDiff  = MATERIALS_TABLE_OPTIONS.showDifficulty;
-
-  const rows = list.map((m) => {
-    const safeName  = escapeHTML(m.name);
-    const safeNotes = escapeHTML(m.notes);
-    return `<tr>
-      <td class="mat-name-cell">
-        <div class="mat-name">${safeName}</div>
-        <div class="mat-suits">${safeNotes}</div>
-      </td>
-      <td>${matCell(m.strength)}</td>
-      <td>${matCell(m.heat.level)}<div class="mat-temp">${escapeHTML(m.heat.temp)}</div></td>
-      <td>${matCell(m.moisture)}</td>
-      <td>${matCell(m.uv)}</td>
-      <td>${matCell(m.chemical)}</td>
-      <td>${matCell(m.flex)}</td>
-      <td>${matCell(m.foodSafe)}</td>
-      ${showPrice ? `<td class="mat-price">${PRICE_LABEL[m.price] || '—'}</td>` : ''}
-      ${showDiff  ? `<td>${matCell(m.difficulty)}</td>` : ''}
-    </tr>`;
-  }).join('');
-
-  return `
-    <div class="materials-table-wrap">
-      <table class="materials-table">
-        <thead>
-          <tr>
-            <th>חומר</th><th>חוזק</th><th>חום</th><th>לחות</th><th>UV/שמש</th>
-            <th>כימי</th><th>גמישות</th><th>מזון</th>
-            ${showPrice ? '<th>מחיר</th>' : ''}
-            ${showDiff  ? '<th>קושי הדפסה</th>' : ''}
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-    <div class="materials-legend">
-      <span class="mat-ico mat-good">✅</span> טוב/עמיד &nbsp;&nbsp;
-      <span class="mat-ico mat-mid">🟡</span> בינוני &nbsp;&nbsp;
-      <span class="mat-ico mat-bad">❌</span> חלש/לא מתאים
-    </div>`;
-}
-
-function renderMaterialsSection(){
-  const grid = document.getElementById('materialsTableContainer');
-  if(grid){
-    grid.innerHTML = buildMaterialsTableHTML(MATERIALS, 'materials');
-  }
-  const cmp = document.getElementById('materialsComparisonOnlyContainer');
-  if(cmp){
-    cmp.innerHTML = buildMaterialsTableHTML(MATERIALS_COMPARISON_ONLY, 'comparisonOnly');
-  }
-}
-
-function renderResinSection(){
-  const grid = document.getElementById('resinTableContainer');
-  if(grid){
-    grid.innerHTML = buildMaterialsTableHTML(RESIN_MATERIALS, 'resin');
-  }
-}
-
-
 function openModal(indexOrObj){
   const c = typeof indexOrObj==='number' ? window._catalogList[indexOrObj] : indexOrObj;
   if(!c) return;
