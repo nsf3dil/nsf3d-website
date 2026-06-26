@@ -279,19 +279,18 @@ body.dark .shop-price{color:#4ade80;}
 .mat-name{font-weight:800;color:var(--blue-dark);font-size:15px;}
 .mat-meaning{font-size:12px;color:var(--text2);font-weight:500;margin-top:2px;}
 .mat-suits-cell{text-align:right;white-space:normal;font-size:13px;color:var(--text2);font-weight:600;min-width:170px;}
-/* ✓ ירוק (good) / ✓ עם קו חוצה צהוב (mid) / ✗ אדום (bad) — אייקוני SVG */
-.mat-ico{display:inline-flex;align-items:center;justify-content:center;}
-.mat-ico svg{display:block;}
-.mat-good{color:#16a34a;}
-body.dark .mat-good{color:#22c55e;}
-.mat-mid{color:#d4a017;}
-body.dark .mat-mid{color:#f0c040;}
-.mat-bad{color:#dc2626;}
-body.dark .mat-bad{color:#f87171;}
+/* מד-נקודות (Dot Indicator) — צבע אחיד (כחול האתר) לכל העמודות */
+.mat-dots{display:inline-flex;gap:3px;align-items:center;justify-content:center;}
+.mat-dot{width:7px;height:7px;border-radius:50%;display:inline-block;background:var(--border2);}
+.mat-dot-filled{background:var(--blue-mid);}
+/* תא כפול (CF/GF) — שני מדים זה מעל זה עם תווית קטנה */
+.mat-dual{display:flex;flex-direction:column;gap:5px;align-items:center;}
+.mat-dual-row{display:flex;align-items:center;gap:6px;}
+.mat-dual-label{font-size:10px;color:var(--text2);font-weight:800;min-width:16px;text-align:center;}
 .mat-temp{font-size:11px;color:var(--text2);font-weight:600;margin-top:3px;}
 .mat-price{font-weight:800;color:var(--blue-dark);}
 .materials-legend{font-size:13px;color:var(--text2);font-weight:600;margin-top:14px;line-height:1.8;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
-.materials-legend .mat-ico{margin-left:2px;}
+.materials-legend .mat-dots{margin-left:2px;}
 .materials-comparison-note{display:flex;align-items:flex-start;gap:10px;background:rgba(120,120,120,.08);border:1.5px dashed var(--border2);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--text2);font-weight:600;margin:24px 0 14px;line-height:1.6;}
 .fiber-note{background:linear-gradient(135deg,rgba(30,111,168,.06) 0%,rgba(77,184,232,.05) 100%);border:1.5px solid rgba(30,111,168,.2);border-radius:14px;padding:16px 22px;margin-top:18px;font-size:14px;color:var(--text2);line-height:1.7;font-weight:600;}
 .fiber-note strong{color:var(--blue-dark);}
@@ -308,7 +307,7 @@ body.dark .fiber-note strong{color:var(--blue-light);}
   .materials-table{font-size:13px;}
   .materials-table thead th,.materials-table tbody td{padding:11px 9px;}
   .mat-name-cell,.mat-suits-cell{min-width:130px;}
-  .mat-ico svg{width:16px;height:16px;}
+  .mat-dot{width:6px;height:6px;}
 }
 
 

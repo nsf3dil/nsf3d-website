@@ -66,16 +66,14 @@ const ARTICLES = [
 
 // ┌──────────────────────────────────────────────────────────────┐
 // │  🧪 MATERIALS — טבלת השוואת חומרי הדפסה                      │
-// │  level: 'good' (✅) / 'mid' (🟡) / 'bad' (❌)                  │
-// │  כל הציונים מתייחסים למוצר המוגמר שהלקוח מקבל — לא לגליל     │
-// │  הגלם. לעריכה: שנה ערכים כאן, אין צורך לגעת ב-HTML/CSS.       │
-// │  price: 1=₪ (זול) · 2=₪₪ (בינוני) · 3=₪₪₪ (יקר)               │
-// └──────────────────────────────────────────────────────────────┘
-// ┌──────────────────────────────────────────────────────────────┐
-// │  🧪 MATERIALS — טבלת השוואת חומרי הדפסה                      │
-// │  strength: 'good'/'mid' בלבד (בכוונה בלי 'bad' — כל החומרים   │
-// │  כאן תקפים להדפסה, ההבדל הוא יחסי, לא "לא בטוח").             │
-// │  שאר השדות: 'good'/'mid'/'bad'                                │
+// │  כל השדות (heat/moisture/uv/chemical/strength/flex/...)      │
+// │  מקבלים 'good'/'mid'/'bad' ומוצגים כמד-נקודות (4/5,3/5,2/5).  │
+// │  strength: בכוונה בלי 'bad' — כל החומרים כאן תקפים להדפסה,   │
+// │  ההבדל הוא יחסי, לא "לא בטוח".                                │
+// │  ערך כפול (CF/GF): כששדה מסוים מתנהג אחרת בגרסת סיבי-פחמן     │
+// │  לעומת סיבי-זכוכית של אותו חומר, כותבים אובייקט               │
+// │  {cf:'bad', gf:'mid'} במקום מחרוזת — הרינדור מזהה את זה       │
+// │  אוטומטית ומציג שני מדים זה מעל זה עם תווית CF/GF.            │
 // │  meaning: פירוש/תרגום השם · suits: 3-5 מילים "למה מתאים"      │
 // │  disabled:true — מסתיר את השורה בלי למחוק אותה.               │
 // │  הסדר בקוד = הסדר בטבלה (קבוצות לפי קרבת חומרים).             │
@@ -89,6 +87,8 @@ const MATERIALS = [
   // --- משפחת PETG / PET ---
   { name:"PETG", meaning:"פוליאתילן טרפתאלט מחוזק גליקול", suits:"כלי מטבח · אריזות · חלקים טכניים", strength:"good",
     heat:{level:"mid",temp:"~75°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1 },
+  { name:"PETG-CF/GF", meaning:"PETG מחוזק בסיבי פחמן/זכוכית", suits:"תושבות נוקשות · ברקטים · רחפנים", strength:"good",
+    heat:{level:"mid",temp:"~80°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:{cf:"bad",gf:"mid"}, foodSafe:"bad", difficulty:"mid", price:2 },
   { name:"PET", disabled:true, meaning:"פוליאתילן טרפתאלט", suits:"אריזות · כלים חד-פעמיים איכותיים", strength:"good",
     heat:{level:"mid",temp:"~70°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1 },
 
@@ -101,6 +101,8 @@ const MATERIALS = [
   // --- משפחת הגמישים: TPU → TPE → Flex → PVB ---
   { name:"TPU", meaning:"פוליאוריתן תרמופלסטי", suits:"סוליות · אטמים · מארזי הגנה", strength:"mid",
     heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
+  { name:"PEBA", meaning:"פוליאתר בלוק אמיד (\"TPU מתקדם\")", suits:"סוליות ביצועים · רובוטיקה · כיפוף חזרתי", strength:"mid",
+    heat:{level:"mid",temp:"~60°C"}, moisture:"bad", uv:"mid", chemical:"good", flex:"good", foodSafe:"bad", difficulty:"bad", price:3 },
   { name:"TPE", meaning:"אלסטומר תרמופלסטי", suits:"גריפים · רצועות רכות · אטמים רכים", strength:"mid",
     heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
   { name:"Flex", meaning:"חומר גמיש מבוסס פוליאוריתן (כמו TPU, נוח יותר להדפסה)", suits:"כמו TPU — אטמים · רצועות · מארזים", strength:"mid",
@@ -111,16 +113,22 @@ const MATERIALS = [
   // --- ניילון ---
   { name:"PA", meaning:"פוליאמיד (ניילון)", suits:"גלגלי שיניים · צירים · חלקי מכונה", strength:"good",
     heat:{level:"good",temp:"~120°C"}, moisture:"bad", uv:"mid", chemical:"good", flex:"mid", foodSafe:"mid", difficulty:"bad", price:3 },
+  { name:"PAHT", meaning:"פוליאמיד עמיד חום גבוה", suits:"חלקי מנוע וחום · ברקטים תעשייתיים", strength:"good",
+    heat:{level:"good",temp:"~150°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
 
   // --- הנדסיים/תעשייתיים ---
   { name:"PC", meaning:"פוליקרבונט", suits:"מגנים · תושבות עומס · חלקים שקופים", strength:"good",
     heat:{level:"good",temp:"~120°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"mid", difficulty:"bad", price:3 },
   { name:"PPA", meaning:"פוליפתלאמיד", suits:"חלקים הנדסיים בחום וחוזק גבוהים", strength:"good",
     heat:{level:"good",temp:"~180°C"}, moisture:"mid", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
+  { name:"PPA-CF/GF", meaning:"PPA מחוזק בסיבי פחמן/זכוכית", suits:"חלקים הנדסיים בעומס וחום קיצוניים", strength:"good",
+    heat:{level:"good",temp:"~200°C"}, moisture:"good", uv:"mid", chemical:"good", flex:{cf:"bad",gf:"mid"}, foodSafe:"bad", difficulty:"bad", price:3 },
   { name:"PP", meaning:"פוליפרופילן", suits:"מכסים · ציר חי · קופסאות", strength:"mid",
     heat:{level:"mid",temp:"~100°C"}, moisture:"good", uv:"bad", chemical:"good", flex:"good", foodSafe:"good", difficulty:"bad", price:2 },
   { name:"PPS", meaning:"פוליפנילן סולפיד", suits:"רכב · תעופה · סביבה כימית קשה", strength:"good",
     heat:{level:"good",temp:"~220°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
+  { name:"PPS-CF/GF", meaning:"PPS מחוזק בסיבי פחמן/זכוכית", suits:"תעופה · רכב · עומס מבני בסביבה כימית", strength:"good",
+    heat:{level:"good",temp:"~240°C"}, moisture:"good", uv:"mid", chemical:"good", flex:{cf:"bad",gf:"mid"}, foodSafe:"bad", difficulty:"bad", price:3 },
 ];
 
 // שורות "להשוואה בלבד" — חומרים הנדסיים מתקדמים שלא מודפסים בשירות, רק לידע כללי
@@ -703,19 +711,33 @@ function renderArticles(){
 // ══════════════════════════════════════════════
 //  🧪 MATERIALS TABLE
 // ══════════════════════════════════════════════
-// אייקונים מצוירים (SVG) — לא תווי טקסט/אמוג'י — כדי לשלוט בדיוק בצורה:
-// ✓ ירוק = טוב/עמיד · ✓ עם קו חוצה (כמו בסקיצה) בצהוב = בינוני · ✗ אדום = חלש/לא מתאים
-const MAT_ICON_PATHS = {
-  good: '<path d="M4 13 L9.5 18.5 L20 6"/>',
-  mid:  '<path d="M4 13 L9.5 18.5 L20 6"/><path d="M11 4.5 L18.5 12"/>',
-  bad:  '<path d="M5 5 L19 19"/><path d="M19 5 L5 19"/>',
-};
+// מד-נקודות (Dot Indicator) — צבע אחיד (כחול האתר) לכל העמודות, בלי
+// ירוק/צהוב/אדום. כל רמה מוצגת כ-X מתוך 5 נקודות מלאות:
+// good = 4/5 · mid = 3/5 · bad = 2/5
+const MAT_LEVEL_DOTS = { good: 4, mid: 3, bad: 2 };
 const PRICE_LABEL = { 1:'₪', 2:'₪₪', 3:'₪₪₪' };
 
-function matCell(level){
-  const path = MAT_ICON_PATHS[level];
-  if(!path) return '—';
-  return `<span class="mat-ico mat-${level}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${path}</svg></span>`;
+// מציג מד נקודות בודד לרמה נתונה
+function matDots(level){
+  const filled = MAT_LEVEL_DOTS[level] || 0;
+  let dots = '';
+  for(let i=1;i<=5;i++){
+    dots += `<span class="mat-dot${i<=filled ? ' mat-dot-filled' : ''}"></span>`;
+  }
+  return `<span class="mat-dots">${dots}</span>`;
+}
+
+// matCell מקבל ערך תא: מחרוזת רמה רגילה ('good'/'mid'/'bad'), או — לשורות
+// CF/GF שמתנהגות אחרת בכל גרסה — אובייקט {cf:'...', gf:'...'} שמוצג כשני
+// מדים זה מעל זה עם תווית CF/GF.
+function matCell(value){
+  if(value && typeof value === 'object'){
+    return `<div class="mat-dual">
+      <div class="mat-dual-row"><span class="mat-dual-label">CF</span>${matDots(value.cf)}</div>
+      <div class="mat-dual-row"><span class="mat-dual-label">GF</span>${matDots(value.gf)}</div>
+    </div>`;
+  }
+  return matDots(value);
 }
 
 function buildMaterialsTableHTML(list){
@@ -732,11 +754,11 @@ function buildMaterialsTableHTML(list){
         <div class="mat-name">${safeName}</div>
         ${safeMeaning ? `<div class="mat-meaning">${safeMeaning}</div>` : ''}
       </td>
-      <td>${matCell(m.strength)}</td>
       <td>${matCell(m.heat.level)}<div class="mat-temp">${escapeHTML(m.heat.temp)}</div></td>
-      <td>${matCell(m.moisture)}</td>
       <td>${matCell(m.uv)}</td>
+      <td>${matCell(m.moisture)}</td>
       <td>${matCell(m.chemical)}</td>
+      <td>${matCell(m.strength)}</td>
       <td>${matCell(m.flex)}</td>
       ${showFoodSafe ? `<td>${matCell(m.foodSafe)}</td>` : ''}
       ${showPrice ? `<td class="mat-price">${PRICE_LABEL[m.price] || '—'}</td>` : ''}
@@ -750,8 +772,8 @@ function buildMaterialsTableHTML(list){
       <table class="materials-table">
         <thead>
           <tr>
-            <th>חומר</th><th>חוזק</th><th>עמידות חום</th><th>עמידות לחות</th><th>עמידות UV/שמש</th>
-            <th>עמידות כימית</th><th>גמישות</th>
+            <th>חומר</th><th>עמידות חום</th><th>עמידות UV/שמש</th><th>עמידות לחות</th>
+            <th>עמידות כימית</th><th>חוזק</th><th>גמישות</th>
             ${showFoodSafe ? '<th>מזון</th>' : ''}
             ${showPrice ? '<th>מחיר</th>' : ''}
             ${showDiff  ? '<th>קושי הדפסה</th>' : ''}
@@ -762,9 +784,9 @@ function buildMaterialsTableHTML(list){
       </table>
     </div>
     <div class="materials-legend">
-      ${matCell('good')} טוב/עמיד &nbsp;&nbsp;
-      ${matCell('mid')} בינוני &nbsp;&nbsp;
-      ${matCell('bad')} חלש/לא מתאים
+      ${matDots('good')} טוב/עמיד &nbsp;&nbsp;
+      ${matDots('mid')} בינוני &nbsp;&nbsp;
+      ${matDots('bad')} חלש/לא מתאים
     </div>`;
 }
 
