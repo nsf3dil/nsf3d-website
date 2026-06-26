@@ -73,68 +73,64 @@ const ARTICLES = [
 // └──────────────────────────────────────────────────────────────┘
 // ┌──────────────────────────────────────────────────────────────┐
 // │  🧪 MATERIALS — טבלת השוואת חומרי הדפסה                      │
-// │  strength: 1-5 (כוכבים) · שאר השדות: 'good'/'mid'/'bad'       │
+// │  strength: 'good'/'mid' בלבד (בכוונה בלי 'bad' — כל החומרים   │
+// │  כאן תקפים להדפסה, ההבדל הוא יחסי, לא "לא בטוח").             │
+// │  שאר השדות: 'good'/'mid'/'bad'                                │
 // │  meaning: פירוש/תרגום השם · suits: 3-5 מילים "למה מתאים"      │
-// │  כל הציונים מתייחסים למוצר המוגמר שהלקוח מקבל — לא לגליל הגלם.│
+// │  disabled:true — מסתיר את השורה בלי למחוק אותה.               │
 // │  הסדר בקוד = הסדר בטבלה (קבוצות לפי קרבת חומרים).             │
 // │  price: 1=₪ (זול) · 2=₪₪ (בינוני) · 3=₪₪₪ (יקר) — כבוי כרגע   │
 // └──────────────────────────────────────────────────────────────┘
 const MATERIALS = [
   // --- משפחת PLA ---
-  { name:"PLA", meaning:"חומצה פולילקטית", suits:"פסלונים · דגמי נוי · מתנות", strength:3,
+  { name:"PLA", meaning:"חומצה פולילקטית", suits:"פסלונים · דגמי נוי · מתנות", strength:"mid",
     heat:{level:"bad",temp:"~55°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"mid", difficulty:"good", price:2 },
 
   // --- משפחת PETG / PET ---
-  { name:"PETG", meaning:"פוליאתילן טרפתאלט מחוזק גליקול", suits:"כלי מטבח · אריזות · חלקים טכניים", strength:4,
+  { name:"PETG", meaning:"פוליאתילן טרפתאלט מחוזק גליקול", suits:"כלי מטבח · אריזות · חלקים טכניים", strength:"good",
     heat:{level:"mid",temp:"~75°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1 },
-  { name:"PET", meaning:"פוליאתילן טרפתאלט", suits:"אריזות · כלים חד-פעמיים איכותיים", strength:4,
+  { name:"PET", disabled:true, meaning:"פוליאתילן טרפתאלט", suits:"אריזות · כלים חד-פעמיים איכותיים", strength:"good",
     heat:{level:"mid",temp:"~70°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1 },
 
-  // --- משפחת ABS / ASA, ו-PVB כבן-לוויה לגימור ---
-  { name:"ABS", meaning:"אקרילוניטריל בוטדיין סטירן", suits:"צעצועים · חלקי רכב · כיסויים", strength:4,
+  // --- משפחת ABS / ASA ---
+  { name:"ABS", meaning:"אקרילוניטריל בוטדיין סטירן", suits:"צעצועים · חלקי רכב · כיסויים", strength:"good",
     heat:{level:"good",temp:"~95°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"bad", price:1 },
-  { name:"ASA", meaning:"אקרילוניטריל סטירן אקרילט", suits:"שילוט חוץ · רהיטי גינה · תושבות רכב", strength:4,
+  { name:"ASA", meaning:"אקרילוניטריל סטירן אקרילט", suits:"שילוט חוץ · רהיטי גינה · תושבות רכב", strength:"good",
     heat:{level:"good",temp:"~95°C"}, moisture:"mid", uv:"good", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"bad", price:2 },
-  { name:"PVB", meaning:"פוליויניל בוטיראל", suits:"גימור מבריק · מודלי תצוגה", strength:2,
+
+  // --- משפחת הגמישים: TPU → TPE → Flex → PVB ---
+  { name:"TPU", meaning:"פוליאוריתן תרמופלסטי", suits:"סוליות · אטמים · מארזי הגנה", strength:"mid",
+    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
+  { name:"TPE", meaning:"אלסטומר תרמופלסטי", suits:"גריפים · רצועות רכות · אטמים רכים", strength:"mid",
+    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
+  { name:"Flex", meaning:"חומר גמיש מבוסס פוליאוריתן (כמו TPU, נוח יותר להדפסה)", suits:"כמו TPU — אטמים · רצועות · מארזים", strength:"mid",
+    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"mid", price:2 },
+  { name:"PVB", meaning:"פוליויניל בוטיראל", suits:"גימור מבריק · מודלי תצוגה", strength:"mid",
     heat:{level:"bad",temp:"~50°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"mid", foodSafe:"bad", difficulty:"mid", price:2 },
 
-  // --- משפחת הגמישים: TPU → Flex → TPE ---
-  { name:"TPU", meaning:"פוליאוריתן תרמופלסטי", suits:"סוליות · אטמים · מארזי הגנה", strength:3,
-    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
-  { name:"Flex", meaning:"חומר גמיש מבוסס פוליאוריתן (כמו TPU, נוח יותר להדפסה)", suits:"כמו TPU — אטמים · רצועות · מארזים", strength:3,
-    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"mid", price:2 },
-  { name:"TPE", meaning:"אלסטומר תרמופלסטי", suits:"גריפים · רצועות רכות · אטמים רכים", strength:2,
-    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
-
   // --- ניילון ---
-  { name:"PA (ניילון)", meaning:"פוליאמיד", suits:"גלגלי שיניים · צירים · חלקי מכונה", strength:5,
+  { name:"PA", meaning:"פוליאמיד (ניילון)", suits:"גלגלי שיניים · צירים · חלקי מכונה", strength:"good",
     heat:{level:"good",temp:"~120°C"}, moisture:"bad", uv:"mid", chemical:"good", flex:"mid", foodSafe:"mid", difficulty:"bad", price:3 },
 
   // --- הנדסיים/תעשייתיים ---
-  { name:"PC (פוליקרבונט)", meaning:"פוליקרבונט", suits:"מגנים · תושבות עומס · חלקים שקופים", strength:5,
+  { name:"PC", meaning:"פוליקרבונט", suits:"מגנים · תושבות עומס · חלקים שקופים", strength:"good",
     heat:{level:"good",temp:"~120°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"mid", difficulty:"bad", price:3 },
-  { name:"PPA-CF/GF", meaning:"פוליפתלאמיד מחוזק סיבים", suits:"חלקים הנדסיים בחום וחוזק גבוהים", strength:5,
+  { name:"PPA", meaning:"פוליפתלאמיד", suits:"חלקים הנדסיים בחום וחוזק גבוהים", strength:"good",
     heat:{level:"good",temp:"~180°C"}, moisture:"mid", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
-  { name:"PP (פוליפרופילן)", meaning:"פוליפרופילן", suits:"מכסים · ציר חי · קופסאות", strength:3,
+  { name:"PP", meaning:"פוליפרופילן", suits:"מכסים · ציר חי · קופסאות", strength:"mid",
     heat:{level:"mid",temp:"~100°C"}, moisture:"good", uv:"bad", chemical:"good", flex:"good", foodSafe:"good", difficulty:"bad", price:2 },
-  { name:"PPS", meaning:"פוליפנילן סולפיד", suits:"רכב · תעופה · סביבה כימית קשה", strength:5,
+  { name:"PPS", meaning:"פוליפנילן סולפיד", suits:"רכב · תעופה · סביבה כימית קשה", strength:"good",
     heat:{level:"good",temp:"~220°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
-  { name:"PPS-CF/GF", meaning:"פוליפנילן סולפיד מחוזק סיבים", suits:"חלקים תעשייתיים בעומס חום קיצוני", strength:5,
-    heat:{level:"good",temp:"~240°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
 ];
 
 // שורות "להשוואה בלבד" — חומרים הנדסיים מתקדמים שלא מודפסים בשירות, רק לידע כללי
 const MATERIALS_COMPARISON_ONLY = [
-  { name:"PEEK", meaning:"פוליאתר אתר קטון", suits:"רפואה · תעופה", strength:5,
+  { name:"PEEK", meaning:"פוליאתר אתר קטון", suits:"רפואה · תעופה", strength:"good",
     heat:{level:"good",temp:"~250°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"good", difficulty:"bad", price:3 },
-  { name:"PEKK", meaning:"פוליאתר קטון קטון", suits:"רפואה · תעופה", strength:5,
+  { name:"PEKK", meaning:"פוליאתר קטון קטון", suits:"רפואה · תעופה", strength:"good",
     heat:{level:"good",temp:"~260°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"mid", difficulty:"bad", price:3 },
-  { name:"PEI / ULTEM", meaning:"פוליאתרימיד", suits:"אלקטרוניקה תעשייתית · עמיד אש", strength:5,
+  { name:"PEI / ULTEM", meaning:"פוליאתרימיד", suits:"אלקטרוניקה תעשייתית · עמיד אש", strength:"good",
     heat:{level:"good",temp:"~170°C"}, moisture:"mid", uv:"good", chemical:"good", flex:"bad", foodSafe:"mid", difficulty:"bad", price:3 },
-  { name:"PSU", meaning:"פוליסולפון", suits:"ציוד רפואי · סטריליזציה", strength:4,
-    heat:{level:"good",temp:"~160°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"good", difficulty:"bad", price:3 },
-  { name:"PPSU", meaning:"פוליפניל סולפון", suits:"ציוד רפואי · עמידות חום גבוהה", strength:4,
-    heat:{level:"good",temp:"~180°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"good", difficulty:"bad", price:3 },
 ];
 
 // ┌──────────────────────────────────────────────────────────────┐
@@ -153,15 +149,15 @@ const SUPPORT_MATERIALS = [
 // │  הסקשן כבוי (resinMaterials.enabled=false) עד שתאשר/תערוך.   │
 // └──────────────────────────────────────────────────────────────┘
 const RESIN_MATERIALS = [
-  { name:"Standard Resin", meaning:"שרף סטנדרטי", suits:"דמויות · מיניאטורות · פרטים זעירים", strength:2,
+  { name:"Standard Resin", meaning:"שרף סטנדרטי", suits:"דמויות · מיניאטורות · פרטים זעירים", strength:"mid",
     heat:{level:"mid",temp:"~55°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"good", price:1 },
-  { name:"Tough / Durable Resin", meaning:"שרף קשיח ועמיד", suits:"חלקים פונקציונליים · פרוטוטייפים", strength:4,
+  { name:"Tough / Durable Resin", meaning:"שרף קשיח ועמיד", suits:"חלקים פונקציונליים · פרוטוטייפים", strength:"good",
     heat:{level:"mid",temp:"~60°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"mid", foodSafe:"bad", difficulty:"mid", price:2 },
-  { name:"Flexible Resin", meaning:"שרף גמיש", suits:"אטמים · מודלים גמישים", strength:1,
+  { name:"Flexible Resin", meaning:"שרף גמיש", suits:"אטמים · מודלים גמישים", strength:"mid",
     heat:{level:"bad",temp:"~45°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"good", foodSafe:"bad", difficulty:"mid", price:2 },
-  { name:"High-Temp Resin", meaning:"שרף עמיד חום גבוה", suits:"תבניות יציקה · חלקי חום", strength:4,
+  { name:"High-Temp Resin", meaning:"שרף עמיד חום גבוה", suits:"תבניות יציקה · חלקי חום", strength:"good",
     heat:{level:"good",temp:"~120°C"}, moisture:"mid", uv:"bad", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
-  { name:"Water-Washable Resin", meaning:"שרף נשטף במים", suits:"עבודה נוחה · דמויות בסיסיות", strength:2,
+  { name:"Water-Washable Resin", meaning:"שרף נשטף במים", suits:"עבודה נוחה · דמויות בסיסיות", strength:"mid",
     heat:{level:"bad",temp:"~50°C"}, moisture:"bad", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"bad", difficulty:"good", price:2 },
 ];
 
@@ -707,21 +703,19 @@ function renderArticles(){
 // ══════════════════════════════════════════════
 //  🧪 MATERIALS TABLE
 // ══════════════════════════════════════════════
-// ✓ ירוק = טוב/עמיד · ✓ צהוב עם קו (חצי-וי) = בינוני · ✗ אדום = חלש/לא מתאים
-const MAT_ICON = { good:'✓', mid:'✓', bad:'✗' };
+// אייקונים מצוירים (SVG) — לא תווי טקסט/אמוג'י — כדי לשלוט בדיוק בצורה:
+// ✓ ירוק = טוב/עמיד · ✓ עם קו חוצה (כמו בסקיצה) בצהוב = בינוני · ✗ אדום = חלש/לא מתאים
+const MAT_ICON_PATHS = {
+  good: '<path d="M4 13 L9.5 18.5 L20 6"/>',
+  mid:  '<path d="M4 13 L9.5 18.5 L20 6"/><path d="M11 4.5 L18.5 12"/>',
+  bad:  '<path d="M5 5 L19 19"/><path d="M19 5 L5 19"/>',
+};
 const PRICE_LABEL = { 1:'₪', 2:'₪₪', 3:'₪₪₪' };
 
 function matCell(level){
-  return `<span class="mat-ico mat-${level}">${MAT_ICON[level] || '—'}</span>`;
-}
-
-// כוכבי חוזק: 1-5, מלאים בצהוב-זהב, החסרים בגוון צהוב שקוף (לא אפור/מפחיד)
-function starRating(n){
-  let html = '';
-  for(let i=1;i<=5;i++){
-    html += `<span class="${i<=n?'star-filled':'star-empty'}">★</span>`;
-  }
-  return `<span class="mat-stars" title="${n}/5">${html}</span>`;
+  const path = MAT_ICON_PATHS[level];
+  if(!path) return '—';
+  return `<span class="mat-ico mat-${level}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${path}</svg></span>`;
 }
 
 function buildMaterialsTableHTML(list){
@@ -729,7 +723,7 @@ function buildMaterialsTableHTML(list){
   const showDiff     = MATERIALS_TABLE_OPTIONS.showDifficulty;
   const showFoodSafe = MATERIALS_TABLE_OPTIONS.showFoodSafe;
 
-  const rows = list.map((m) => {
+  const rows = list.filter(m => !m.disabled).map((m) => {
     const safeName    = escapeHTML(m.name);
     const safeMeaning  = m.meaning ? escapeHTML(m.meaning) : '';
     const safeSuits    = m.suits ? escapeHTML(m.suits) : '';
@@ -738,7 +732,7 @@ function buildMaterialsTableHTML(list){
         <div class="mat-name">${safeName}</div>
         ${safeMeaning ? `<div class="mat-meaning">${safeMeaning}</div>` : ''}
       </td>
-      <td>${starRating(m.strength)}</td>
+      <td>${matCell(m.strength)}</td>
       <td>${matCell(m.heat.level)}<div class="mat-temp">${escapeHTML(m.heat.temp)}</div></td>
       <td>${matCell(m.moisture)}</td>
       <td>${matCell(m.uv)}</td>
@@ -768,10 +762,9 @@ function buildMaterialsTableHTML(list){
       </table>
     </div>
     <div class="materials-legend">
-      <span class="mat-ico mat-good">✓</span> טוב/עמיד &nbsp;&nbsp;
-      <span class="mat-ico mat-mid">✓</span> בינוני &nbsp;&nbsp;
-      <span class="mat-ico mat-bad">✗</span> חלש/לא מתאים &nbsp;&nbsp;
-      <span class="star-filled">★</span> רמת חוזק (מתוך 5)
+      ${matCell('good')} טוב/עמיד &nbsp;&nbsp;
+      ${matCell('mid')} בינוני &nbsp;&nbsp;
+      ${matCell('bad')} חלש/לא מתאים
     </div>`;
 }
 
