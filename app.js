@@ -21,8 +21,6 @@ const SITE_CONFIG = {
     products: { enabled: true  },   // "מה אפשר להדפיס" — שירות ההדפסה
     pricing:  { enabled: true  },
     order:    { enabled: true  },
-    materials:{ enabled: true  },   // ✅ טבלת השוואת חומרי הדפסה — מידע קבוע, לא תלוי "מאמרים"
-    resinMaterials:{ enabled: false }, // ✅ טבלת חומרי רזין — כבוי עד שתכיר את התחום ותאשר את התוכן
     articles: { enabled: false },   // ✅ מאמרים/כתבות — דלוק כשיהיה תוכן
     reviews:  { enabled: false },   // ✅ כבוי כרגע — Placeholder, תדליק כשיהיו ביקורות אמיתיות
     about:    { enabled: true  },
@@ -42,16 +40,6 @@ const SITE_CONFIG = {
 // │  🛒 SHOP_PRODUCTS — מוצרי חנות (ציוד מיובא, לא הדפסות)       │
 // │  ערוך ידנית כאן עד שיהיה לך CMS ייעודי לחנות.                │
 // └──────────────────────────────────────────────────────────────┘
-// ┌──────────────────────────────────────────────────────────────┐
-// │  🧪 הגדרות תצוגה לטבלת החומרים — true/false להראות/להחביא    │
-// │  עמודה. הדאטה (מחיר/קושי) נשארת בקובץ, רק לא מוצגת.          │
-// └──────────────────────────────────────────────────────────────┘
-const MATERIALS_TABLE_OPTIONS = {
-  showPrice:      false,
-  showDifficulty: false,
-  showFoodSafe:   false,
-};
-
 const SHOP_PRODUCTS = [
   // לדוגמה, מלא בהמשך:
   // { name:"דיזת נחושת 0.4mm", desc:"דיזה איכותית להדפסה מהירה ועמידה", price:35, image:"", inStock:true },
@@ -62,81 +50,6 @@ const SHOP_PRODUCTS = [
 // └──────────────────────────────────────────────────────────────┘
 const ARTICLES = [
   // { title:"PLA מול PETG — מה ההבדל?", date:"01/2026", excerpt:"...", image:"", url:"#" },
-];
-
-// ┌──────────────────────────────────────────────────────────────┐
-// │  🧪 MATERIALS — טבלת השוואת חומרי הדפסה                      │
-// │  כל השדות (heat/moisture/uv/chemical/strength/flex/...)      │
-// │  מקבלים 'good'/'mid'/'bad' ומוצגים כמד-כוכבי-זהב (3/3,2/3,1/3). │
-// │  strength: בכוונה בלי 'bad' — כל החומרים כאן תקפים להדפסה,   │
-// │  ההבדל הוא יחסי, לא "לא בטוח".                                │
-// │  ערך כפול (CF/GF): כששדה מסוים מתנהג אחרת בגרסת סיבי-פחמן     │
-// │  לעומת סיבי-זכוכית של אותו חומר, כותבים אובייקט               │
-// │  {cf:'bad', gf:'mid'} במקום מחרוזת — הרינדור מזהה את זה       │
-// │  אוטומטית ומציג שני מדים זה מעל זה עם תווית CF/GF.            │
-// │  meaning: השם המלא באנגלית (לא תרגום עברי) · suits: 3-5 מילים "למה מתאים" │
-// │  disabled:true — מסתיר את השורה בלי למחוק אותה.               │
-// │  הסדר בקוד = הסדר בטבלה (קבוצות לפי קרבת חומרים).             │
-// │  price: 1=₪ (זול) · 2=₪₪ (בינוני) · 3=₪₪₪ (יקר) — כבוי כרגע   │
-// └──────────────────────────────────────────────────────────────┘
-// סדר השורות בקוד = סדר השורות בטבלה — מסודר לפי עמידות חום בפועל
-// (m.heat.temp), מהטמפרטורה הנמוכה ביותר עד הגבוהה ביותר.
-const MATERIALS = [
-  { name:"PVB", meaning:"Polyvinyl Butyral", suits:"גימור מבריק · מודלי תצוגה", strength:"mid",
-    heat:{level:"bad",temp:"~50°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"mid", foodSafe:"bad", difficulty:"mid", price:2 },
-  { name:"PLA", meaning:"Polylactic Acid", suits:"פסלונים · דגמי נוי · מתנות", strength:"mid",
-    heat:{level:"bad",temp:"~55°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"mid", difficulty:"good", price:2 },
-  { name:"TPU", meaning:"Thermoplastic Polyurethane", suits:"סוליות · אטמים · מארזי הגנה", strength:"mid",
-    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
-  { name:"PEBA", meaning:"Polyether Block Amide", suits:"סוליות ביצועים · רובוטיקה · כיפוף חזרתי", strength:"mid",
-    heat:{level:"mid",temp:"~60°C"}, moisture:"bad", uv:"mid", chemical:"good", flex:"good", foodSafe:"bad", difficulty:"bad", price:3 },
-  { name:"TPE", meaning:"Thermoplastic Elastomer", suits:"גריפים · רצועות רכות · אטמים רכים", strength:"mid",
-    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
-  { name:"Flex", meaning:"Flexible Polyurethane Blend", suits:"כמו TPU — אטמים · רצועות · מארזים", strength:"mid",
-    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"mid", price:2 },
-  { name:"PET", disabled:true, meaning:"Polyethylene Terephthalate", suits:"אריזות · כלים חד-פעמיים איכותיים", strength:"good",
-    heat:{level:"mid",temp:"~70°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1 },
-  { name:"PETG", meaning:"Polyethylene Terephthalate Glycol", suits:"כלי מטבח · אריזות · חלקים טכניים", strength:"good",
-    heat:{level:"mid",temp:"~75°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1 },
-  { name:"PETG-CF/GF", meaning:"PETG + Carbon / Glass Fiber", suits:"תושבות נוקשות · ברקטים · רחפנים", strength:"good",
-    heat:{level:"mid",temp:"~80°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:{cf:"bad",gf:"mid"}, foodSafe:"bad", difficulty:"mid", price:2 },
-  { name:"ABS", meaning:"Acrylonitrile Butadiene Styrene", suits:"צעצועים · חלקי רכב · כיסויים", strength:"good",
-    heat:{level:"good",temp:"~95°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"bad", price:1 },
-  { name:"ASA", meaning:"Acrylonitrile Styrene Acrylate", suits:"שילוט חוץ · רהיטי גינה · תושבות רכב", strength:"good",
-    heat:{level:"good",temp:"~95°C"}, moisture:"mid", uv:"good", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"bad", price:2 },
-  { name:"PP", meaning:"Polypropylene", suits:"מכסים · ציר חי · קופסאות", strength:"mid",
-    heat:{level:"mid",temp:"~100°C"}, moisture:"good", uv:"bad", chemical:"good", flex:"good", foodSafe:"good", difficulty:"bad", price:2 },
-  { name:"PA", meaning:"Polyamide (Nylon)", suits:"גלגלי שיניים · צירים · חלקי מכונה", strength:"good",
-    heat:{level:"good",temp:"~120°C"}, moisture:"bad", uv:"mid", chemical:"good", flex:"mid", foodSafe:"mid", difficulty:"bad", price:3 },
-  { name:"PC", meaning:"Polycarbonate", suits:"מגנים · תושבות עומס · חלקים שקופים", strength:"good",
-    heat:{level:"good",temp:"~120°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"mid", difficulty:"bad", price:3 },
-  { name:"PAHT", meaning:"High-Temperature Polyamide", suits:"חלקי מנוע וחום · ברקטים תעשייתיים", strength:"good",
-    heat:{level:"good",temp:"~150°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
-  { name:"PPA", meaning:"Polyphthalamide", suits:"חלקים הנדסיים בחום וחוזק גבוהים", strength:"good",
-    heat:{level:"good",temp:"~180°C"}, moisture:"mid", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
-  { name:"PPA-CF/GF", meaning:"PPA + Carbon / Glass Fiber", suits:"חלקים הנדסיים בעומס וחום קיצוניים", strength:"good",
-    heat:{level:"good",temp:"~200°C"}, moisture:"good", uv:"mid", chemical:"good", flex:{cf:"bad",gf:"mid"}, foodSafe:"bad", difficulty:"bad", price:3 },
-  { name:"PPS", meaning:"Polyphenylene Sulfide", suits:"רכב · תעופה · סביבה כימית קשה", strength:"good",
-    heat:{level:"good",temp:"~220°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
-  { name:"PPS-CF/GF", meaning:"PPS + Carbon / Glass Fiber", suits:"תעופה · רכב · עומס מבני בסביבה כימית", strength:"good",
-    heat:{level:"good",temp:"~240°C"}, moisture:"good", uv:"mid", chemical:"good", flex:{cf:"bad",gf:"mid"}, foodSafe:"bad", difficulty:"bad", price:3 },
-];
-
-// ┌──────────────────────────────────────────────────────────────┐
-// │  🧫 RESIN_MATERIALS — טבלת חומרי רזין (טיוטה ראשונית!)        │
-// │  הסקשן כבוי (resinMaterials.enabled=false) עד שתאשר/תערוך.   │
-// └──────────────────────────────────────────────────────────────┘
-const RESIN_MATERIALS = [
-  { name:"Standard Resin", meaning:"שרף סטנדרטי", suits:"דמויות · מיניאטורות · פרטים זעירים", strength:"mid",
-    heat:{level:"mid",temp:"~55°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"good", price:1 },
-  { name:"Tough / Durable Resin", meaning:"שרף קשיח ועמיד", suits:"חלקים פונקציונליים · פרוטוטייפים", strength:"good",
-    heat:{level:"mid",temp:"~60°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"mid", foodSafe:"bad", difficulty:"mid", price:2 },
-  { name:"Flexible Resin", meaning:"שרף גמיש", suits:"אטמים · מודלים גמישים", strength:"mid",
-    heat:{level:"bad",temp:"~45°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"good", foodSafe:"bad", difficulty:"mid", price:2 },
-  { name:"High-Temp Resin", meaning:"שרף עמיד חום גבוה", suits:"תבניות יציקה · חלקי חום", strength:"good",
-    heat:{level:"good",temp:"~120°C"}, moisture:"mid", uv:"bad", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
-  { name:"Water-Washable Resin", meaning:"שרף נשטף במים", suits:"עבודה נוחה · דמויות בסיסיות", strength:"mid",
-    heat:{level:"bad",temp:"~50°C"}, moisture:"bad", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"bad", difficulty:"good", price:2 },
 ];
 
 const WORKER_URL          = "https://nsf3d-colors.nsf3d-il.workers.dev/";
@@ -383,8 +296,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   loadColors();
   loadProjects();
-  if(SITE_CONFIG.sections.materials.enabled)      renderMaterialsSection();
-  if(SITE_CONFIG.sections.resinMaterials.enabled) renderResinSection();
   if(SITE_CONFIG.sections.shop.enabled)     renderShop();
   if(SITE_CONFIG.sections.articles.enabled) renderArticles();
   initA11y();
@@ -679,108 +590,8 @@ function renderArticles(){
 }
 
 // ══════════════════════════════════════════════
-//  🧪 MATERIALS TABLE
+//  COLOR MODAL
 // ══════════════════════════════════════════════
-// מד-כוכבים (Star Indicator) — 3 כוכבים בגוון זהב (var(--gold-mid),
-// מסתגל אוטומטית לבהיר/כהה): good = 3/3 · mid = 2/3 · bad = 1/3.
-// כוכב מלא גדול ומוצק, כוכב ריק קטן וחלול (קו מתאר בלבד).
-const MAT_DOTS_TOTAL = 3;
-const MAT_LEVEL_DOTS = { good: 3, mid: 2, bad: 1 };
-const MAT_STAR_PATH = "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z";
-const PRICE_LABEL = { 1:'₪', 2:'₪₪', 3:'₪₪₪' };
-
-// מציג מד כוכבים בודד לרמה נתונה
-function matDots(level){
-  const filled = MAT_LEVEL_DOTS[level] || 0;
-  let stars = '';
-  for(let i=1;i<=MAT_DOTS_TOTAL;i++){
-    if(i<=filled){
-      stars += `<svg class="mat-star mat-star-filled" viewBox="0 0 24 24" fill="currentColor"><path d="${MAT_STAR_PATH}"/></svg>`;
-    } else {
-      stars += `<svg class="mat-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="${MAT_STAR_PATH}"/></svg>`;
-    }
-  }
-  return `<span class="mat-dots">${stars}</span>`;
-}
-
-// matCell מקבל ערך תא: מחרוזת רמה רגילה ('good'/'mid'/'bad'), או — לשורות
-// CF/GF שמתנהגות אחרת בכל גרסה — אובייקט {cf:'...', gf:'...'} שמוצג כשני
-// מדים זה מעל זה עם תווית CF/GF.
-function matCell(value){
-  if(value && typeof value === 'object'){
-    return `<div class="mat-dual">
-      <div class="mat-dual-row"><span class="mat-dual-label">CF</span>${matDots(value.cf)}</div>
-      <div class="mat-dual-row"><span class="mat-dual-label">GF</span>${matDots(value.gf)}</div>
-    </div>`;
-  }
-  return matDots(value);
-}
-
-function buildMaterialsTableHTML(list){
-  const showPrice    = MATERIALS_TABLE_OPTIONS.showPrice;
-  const showDiff     = MATERIALS_TABLE_OPTIONS.showDifficulty;
-  const showFoodSafe = MATERIALS_TABLE_OPTIONS.showFoodSafe;
-
-  const rows = list.filter(m => !m.disabled).map((m) => {
-    const safeName    = escapeHTML(m.name);
-    const safeMeaning  = m.meaning ? escapeHTML(m.meaning) : '';
-    const safeSuits    = m.suits ? escapeHTML(m.suits) : '';
-    return `<tr>
-      <td class="mat-name-cell">
-        <div class="mat-name">${safeName}</div>
-        ${safeMeaning ? `<div class="mat-meaning">${safeMeaning}</div>` : ''}
-      </td>
-      <td>${matCell(m.heat.level)}<div class="mat-temp">${escapeHTML(m.heat.temp)}</div></td>
-      <td>${matCell(m.uv)}</td>
-      <td>${matCell(m.moisture)}</td>
-      <td>${matCell(m.chemical)}</td>
-      <td>${matCell(m.strength)}</td>
-      <td>${matCell(m.flex)}</td>
-      ${showFoodSafe ? `<td>${matCell(m.foodSafe)}</td>` : ''}
-      ${showPrice ? `<td class="mat-price">${PRICE_LABEL[m.price] || '—'}</td>` : ''}
-      ${showDiff  ? `<td>${matCell(m.difficulty)}</td>` : ''}
-      <td class="mat-suits-cell">${safeSuits}</td>
-    </tr>`;
-  }).join('');
-
-  return `
-    <div class="materials-table-wrap">
-      <table class="materials-table">
-        <thead>
-          <tr>
-            <th>חומר</th><th>עמידות חום</th><th>עמידות UV/שמש</th><th>עמידות לחות</th>
-            <th>עמידות כימית</th><th>חוזק</th><th>גמישות</th>
-            ${showFoodSafe ? '<th>מזון</th>' : ''}
-            ${showPrice ? '<th>מחיר</th>' : ''}
-            ${showDiff  ? '<th>קושי הדפסה</th>' : ''}
-            <th>למה מתאים</th>
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-    <div class="materials-legend">
-      ${matDots('good')} טוב/עמיד &nbsp;&nbsp;
-      ${matDots('mid')} בינוני &nbsp;&nbsp;
-      ${matDots('bad')} חלש/לא מתאים
-    </div>`;
-}
-
-function renderMaterialsSection(){
-  const grid = document.getElementById('materialsTableContainer');
-  if(grid){
-    grid.innerHTML = buildMaterialsTableHTML(MATERIALS);
-  }
-}
-
-function renderResinSection(){
-  const grid = document.getElementById('resinTableContainer');
-  if(grid){
-    grid.innerHTML = buildMaterialsTableHTML(RESIN_MATERIALS);
-  }
-}
-
-
 function openModal(indexOrObj){
   const c = typeof indexOrObj==='number' ? window._catalogList[indexOrObj] : indexOrObj;
   if(!c) return;
