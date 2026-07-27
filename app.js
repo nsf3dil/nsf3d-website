@@ -21,6 +21,8 @@ const SITE_CONFIG = {
     products: { enabled: true  },   // "מה אפשר להדפיס" — שירות ההדפסה
     pricing:  { enabled: true  },
     order:    { enabled: true  },
+    materials:{ enabled: true  },   // ✅ טבלת השוואת חומרי הדפסה — מידע קבוע, לא תלוי "מאמרים"
+    resinMaterials:{ enabled: false }, // ✅ טבלת חומרי רזין — כבוי עד שתכיר את התחום ותאשר את התוכן
     articles: { enabled: false },   // ✅ מאמרים/כתבות — דלוק כשיהיה תוכן
     reviews:  { enabled: false },   // ✅ כבוי כרגע — Placeholder, תדליק כשיהיו ביקורות אמיתיות
     about:    { enabled: true  },
@@ -29,10 +31,10 @@ const SITE_CONFIG = {
     contact:  { enabled: true  },
   },
   features: {
-    expressTrack:     true,
+    expressTrack:     false, // 🔕 הוסר מהאתר לבקשת הבעלים (מבלבל/מיותר בשלב זה)
     multicolorBanner: true,
     saleBadges:       true,
-    paymentMethods:   { bit: true, cash: true, bankTransfer: true, creditCard: false }, // creditCard לעתיד הרחוק
+    paymentMethods:   { bit: true, payBox: true, cash: true, bankTransfer: true, creditCard: false }, // creditCard לעתיד הרחוק
   }
 };
 
@@ -40,6 +42,16 @@ const SITE_CONFIG = {
 // │  🛒 SHOP_PRODUCTS — מוצרי חנות (ציוד מיובא, לא הדפסות)       │
 // │  ערוך ידנית כאן עד שיהיה לך CMS ייעודי לחנות.                │
 // └──────────────────────────────────────────────────────────────┘
+// ┌──────────────────────────────────────────────────────────────┐
+// │  🧪 הגדרות תצוגה לטבלת החומרים — true/false להראות/להחביא    │
+// │  עמודה. הדאטה (מחיר/קושי) נשארת בקובץ, רק לא מוצגת.          │
+// └──────────────────────────────────────────────────────────────┘
+const MATERIALS_TABLE_OPTIONS = {
+  showPrice:      false,
+  showDifficulty: false,
+  showFoodSafe:   false,
+};
+
 const SHOP_PRODUCTS = [
   // לדוגמה, מלא בהמשך:
   // { name:"דיזת נחושת 0.4mm", desc:"דיזה איכותית להדפסה מהירה ועמידה", price:35, image:"", inStock:true },
@@ -50,6 +62,81 @@ const SHOP_PRODUCTS = [
 // └──────────────────────────────────────────────────────────────┘
 const ARTICLES = [
   // { title:"PLA מול PETG — מה ההבדל?", date:"01/2026", excerpt:"...", image:"", url:"#" },
+];
+
+// ┌──────────────────────────────────────────────────────────────┐
+// │  🧪 MATERIALS — טבלת השוואת חומרי הדפסה                      │
+// │  כל השדות (heat/moisture/uv/chemical/strength/flex/...)      │
+// │  מקבלים 'good'/'mid'/'bad' ומוצגים כמד-כוכבי-זהב (3/3,2/3,1/3). │
+// │  strength: בכוונה בלי 'bad' — כל החומרים כאן תקפים להדפסה,   │
+// │  ההבדל הוא יחסי, לא "לא בטוח".                                │
+// │  ערך כפול (CF/GF): כששדה מסוים מתנהג אחרת בגרסת סיבי-פחמן     │
+// │  לעומת סיבי-זכוכית של אותו חומר, כותבים אובייקט               │
+// │  {cf:'bad', gf:'mid'} במקום מחרוזת — הרינדור מזהה את זה       │
+// │  אוטומטית ומציג שני מדים זה מעל זה עם תווית CF/GF.            │
+// │  meaning: השם המלא באנגלית (לא תרגום עברי) · suits: 3-5 מילים "למה מתאים" │
+// │  disabled:true — מסתיר את השורה בלי למחוק אותה.               │
+// │  הסדר בקוד = הסדר בטבלה (קבוצות לפי קרבת חומרים).             │
+// │  price: 1=₪ (זול) · 2=₪₪ (בינוני) · 3=₪₪₪ (יקר) — כבוי כרגע   │
+// └──────────────────────────────────────────────────────────────┘
+// סדר השורות בקוד = סדר השורות בטבלה — מסודר לפי עמידות חום בפועל
+// (m.heat.temp), מהטמפרטורה הנמוכה ביותר עד הגבוהה ביותר.
+const MATERIALS = [
+  { name:"PVB", meaning:"Polyvinyl Butyral", suits:"גימור מבריק · מודלי תצוגה", strength:"mid",
+    heat:{level:"bad",temp:"~50°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"mid", foodSafe:"bad", difficulty:"mid", price:2 },
+  { name:"PLA", meaning:"Polylactic Acid", suits:"פסלונים · דגמי נוי · מתנות", strength:"mid",
+    heat:{level:"bad",temp:"~55°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"mid", difficulty:"good", price:2 },
+  { name:"TPU", meaning:"Thermoplastic Polyurethane", suits:"סוליות · אטמים · מארזי הגנה", strength:"mid",
+    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
+  { name:"PEBA", meaning:"Polyether Block Amide", suits:"סוליות ביצועים · רובוטיקה · כיפוף חזרתי", strength:"mid",
+    heat:{level:"mid",temp:"~60°C"}, moisture:"bad", uv:"mid", chemical:"good", flex:"good", foodSafe:"bad", difficulty:"bad", price:3 },
+  { name:"TPE", meaning:"Thermoplastic Elastomer", suits:"גריפים · רצועות רכות · אטמים רכים", strength:"mid",
+    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"bad", price:2 },
+  { name:"Flex", meaning:"Flexible Polyurethane Blend", suits:"כמו TPU — אטמים · רצועות · מארזים", strength:"mid",
+    heat:{level:"mid",temp:"~60°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"good", foodSafe:"bad", difficulty:"mid", price:2 },
+  { name:"PET", disabled:true, meaning:"Polyethylene Terephthalate", suits:"אריזות · כלים חד-פעמיים איכותיים", strength:"good",
+    heat:{level:"mid",temp:"~70°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1 },
+  { name:"PETG", meaning:"Polyethylene Terephthalate Glycol", suits:"כלי מטבח · אריזות · חלקים טכניים", strength:"good",
+    heat:{level:"mid",temp:"~75°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:"mid", foodSafe:"good", difficulty:"mid", price:1 },
+  { name:"PETG-CF/GF", meaning:"PETG + Carbon / Glass Fiber", suits:"תושבות נוקשות · ברקטים · רחפנים", strength:"good",
+    heat:{level:"mid",temp:"~80°C"}, moisture:"good", uv:"mid", chemical:"mid", flex:{cf:"bad",gf:"mid"}, foodSafe:"bad", difficulty:"mid", price:2 },
+  { name:"ABS", meaning:"Acrylonitrile Butadiene Styrene", suits:"צעצועים · חלקי רכב · כיסויים", strength:"good",
+    heat:{level:"good",temp:"~95°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"bad", price:1 },
+  { name:"ASA", meaning:"Acrylonitrile Styrene Acrylate", suits:"שילוט חוץ · רהיטי גינה · תושבות רכב", strength:"good",
+    heat:{level:"good",temp:"~95°C"}, moisture:"mid", uv:"good", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"bad", price:2 },
+  { name:"PP", meaning:"Polypropylene", suits:"מכסים · ציר חי · קופסאות", strength:"mid",
+    heat:{level:"mid",temp:"~100°C"}, moisture:"good", uv:"bad", chemical:"good", flex:"good", foodSafe:"good", difficulty:"bad", price:2 },
+  { name:"PA", meaning:"Polyamide (Nylon)", suits:"גלגלי שיניים · צירים · חלקי מכונה", strength:"good",
+    heat:{level:"good",temp:"~120°C"}, moisture:"bad", uv:"mid", chemical:"good", flex:"mid", foodSafe:"mid", difficulty:"bad", price:3 },
+  { name:"PC", meaning:"Polycarbonate", suits:"מגנים · תושבות עומס · חלקים שקופים", strength:"good",
+    heat:{level:"good",temp:"~120°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"mid", difficulty:"bad", price:3 },
+  { name:"PAHT", meaning:"High-Temperature Polyamide", suits:"חלקי מנוע וחום · ברקטים תעשייתיים", strength:"good",
+    heat:{level:"good",temp:"~150°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
+  { name:"PPA", meaning:"Polyphthalamide", suits:"חלקים הנדסיים בחום וחוזק גבוהים", strength:"good",
+    heat:{level:"good",temp:"~180°C"}, moisture:"mid", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
+  { name:"PPA-CF/GF", meaning:"PPA + Carbon / Glass Fiber", suits:"חלקים הנדסיים בעומס וחום קיצוניים", strength:"good",
+    heat:{level:"good",temp:"~200°C"}, moisture:"good", uv:"mid", chemical:"good", flex:{cf:"bad",gf:"mid"}, foodSafe:"bad", difficulty:"bad", price:3 },
+  { name:"PPS", meaning:"Polyphenylene Sulfide", suits:"רכב · תעופה · סביבה כימית קשה", strength:"good",
+    heat:{level:"good",temp:"~220°C"}, moisture:"good", uv:"mid", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
+  { name:"PPS-CF/GF", meaning:"PPS + Carbon / Glass Fiber", suits:"תעופה · רכב · עומס מבני בסביבה כימית", strength:"good",
+    heat:{level:"good",temp:"~240°C"}, moisture:"good", uv:"mid", chemical:"good", flex:{cf:"bad",gf:"mid"}, foodSafe:"bad", difficulty:"bad", price:3 },
+];
+
+// ┌──────────────────────────────────────────────────────────────┐
+// │  🧫 RESIN_MATERIALS — טבלת חומרי רזין (טיוטה ראשונית!)        │
+// │  הסקשן כבוי (resinMaterials.enabled=false) עד שתאשר/תערוך.   │
+// └──────────────────────────────────────────────────────────────┘
+const RESIN_MATERIALS = [
+  { name:"Standard Resin", meaning:"שרף סטנדרטי", suits:"דמויות · מיניאטורות · פרטים זעירים", strength:"mid",
+    heat:{level:"mid",temp:"~55°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"bad", foodSafe:"bad", difficulty:"good", price:1 },
+  { name:"Tough / Durable Resin", meaning:"שרף קשיח ועמיד", suits:"חלקים פונקציונליים · פרוטוטייפים", strength:"good",
+    heat:{level:"mid",temp:"~60°C"}, moisture:"mid", uv:"bad", chemical:"mid", flex:"mid", foodSafe:"bad", difficulty:"mid", price:2 },
+  { name:"Flexible Resin", meaning:"שרף גמיש", suits:"אטמים · מודלים גמישים", strength:"mid",
+    heat:{level:"bad",temp:"~45°C"}, moisture:"mid", uv:"bad", chemical:"bad", flex:"good", foodSafe:"bad", difficulty:"mid", price:2 },
+  { name:"High-Temp Resin", meaning:"שרף עמיד חום גבוה", suits:"תבניות יציקה · חלקי חום", strength:"good",
+    heat:{level:"good",temp:"~120°C"}, moisture:"mid", uv:"bad", chemical:"good", flex:"bad", foodSafe:"bad", difficulty:"bad", price:3 },
+  { name:"Water-Washable Resin", meaning:"שרף נשטף במים", suits:"עבודה נוחה · דמויות בסיסיות", strength:"mid",
+    heat:{level:"bad",temp:"~50°C"}, moisture:"bad", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"bad", difficulty:"good", price:2 },
 ];
 
 const WORKER_URL          = "https://nsf3d-colors.nsf3d-il.workers.dev/";
@@ -296,18 +383,28 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   loadColors();
   loadProjects();
+  if(SITE_CONFIG.sections.materials.enabled)      renderMaterialsSection();
+  if(SITE_CONFIG.sections.resinMaterials.enabled) renderResinSection();
   if(SITE_CONFIG.sections.shop.enabled)     renderShop();
   if(SITE_CONFIG.sections.articles.enabled) renderArticles();
   initA11y();
 
   const dateEl = document.getElementById('catalogDate');
   if(dateEl){
-    const now = new Date();
     const days = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+    const now = new Date();
+    // ⚠️ העדכון היומי "נכנס לתוקף" רק מ-08:00 בבוקר — לפני השעה הזו (כולל כל שעות הלילה
+    // שלאחר חצות) ממשיכים להציג את התאריך של היום הקודם, כי בפועל המלאי עדיין לא התעדכן.
+    if(now.getHours() < 8) now.setDate(now.getDate() - 1);
+    // ⚠️ לא מציגים שהעדכון "התרחש" בשישי/שבת (לכבד לקוחות שומרי שבת) —
+    // גם אם בפועל יש עדכון אוטומטי, מציגים את תאריך יום חמישי הקרוב שלפניו.
+    const dow = now.getDay(); // 0=ראשון ... 5=שישי, 6=שבת
+    if(dow === 5)      now.setDate(now.getDate() - 1); // שישי → חמישי
+    else if(dow === 6) now.setDate(now.getDate() - 2); // שבת → חמישי
     const d = now.getDate().toString().padStart(2,'0');
     const m = (now.getMonth()+1).toString().padStart(2,'0');
     const y = now.getFullYear();
-    dateEl.innerHTML = `<span class="live-dot" title="מלאי חי"></span> נכון לתאריך: ${d}/${m}/${y} (יום ${days[now.getDay()]})`;
+    dateEl.innerHTML = `<span class="live-dot" title="מלאי חי"></span> נכון בתאריך: ${d}/${m}/${y} (יום ${days[now.getDay()]})`;
   }
 });
 
@@ -414,7 +511,7 @@ function renderColors(list){
     const safeName = escapeHTML(c.name);
     const safeSku  = escapeHTML(c.sku);
     const sw = c.image
-      ? `<img src="${safeImg}" alt="${safeName}" loading="lazy" decoding="async" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;${imgPos}" onclick="event.stopPropagation();openLightbox(this.src)" onerror="this.style.display='none'">`
+      ? `<img src="${safeImg}" alt="${safeName}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;${imgPos}" onerror="this.style.display='none'">`
       : `<div class="color-swatch-block" style="background:${hex||'#9ab4c8'}"></div>`;
     const inStock = c.inStock === true;
     return `<div class="color-card" onclick="openModal(${i})" role="listitem" tabindex="0" onkeydown="if(event.key==='Enter')openModal(${i})">
@@ -442,12 +539,7 @@ async function loadProjects(){
     const data  = await cachedFetchJSON(PROJECTS_WORKER_URL, 'nsf-cache-projects');
     allProjects = data.projects || [];
     renderProjects(allProjects.slice(0, PROJECTS_DEFAULT_SHOW));
-    const showMoreEl = document.getElementById('projectsShowMore');
-    if(allProjects.length > PROJECTS_DEFAULT_SHOW){
-      showMoreEl.style.display = 'block';
-    } else {
-      showMoreEl.style.display = 'none';
-    }
+    updateProjectsShowMoreButtons(allProjects.length > PROJECTS_DEFAULT_SHOW);
   }catch(e){
     document.getElementById('projectsGrid').innerHTML =
       `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text2)">⚠️ שגיאה בטעינת הפרויקטים. <a href="#contact" style="color:var(--blue-mid);font-weight:700">צרו קשר ישירות</a></div>`;
@@ -506,16 +598,56 @@ function renderProjects(list){
   }).join('');
 }
 
+function updateProjectsShowMoreButtons(show){
+  const rowBottom = document.getElementById('projectsShowMore');
+  const rowTop    = document.getElementById('projectsShowMoreTop');
+  const btnBottom = document.getElementById('projectsShowMoreBtn');
+  const btnTop    = document.getElementById('projectsShowMoreBtnTop');
+  if(show){
+    const label = projectsShowingAll ? 'הצג פחות ↑' : 'הצג עוד פרויקטים ↓';
+    rowBottom.style.display = 'block';
+    btnBottom.textContent   = label;
+    rowTop.style.display    = projectsShowingAll ? 'block' : 'none';
+    btnTop.textContent      = label;
+  } else {
+    rowBottom.style.display = 'none';
+    rowTop.style.display    = 'none';
+  }
+}
+
 function toggleProjectsShowAll(){
   projectsShowingAll = !projectsShowingAll;
-  const btn = document.getElementById('projectsShowMoreBtn');
   if(projectsShowingAll){
     renderProjects(allProjects);
-    btn.textContent = 'הצג פחות ↑';
   } else {
     renderProjects(allProjects.slice(0, PROJECTS_DEFAULT_SHOW));
-    btn.textContent = 'הצג עוד פרויקטים ↓';
     document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+  }
+  updateProjectsShowMoreButtons(allProjects.length > PROJECTS_DEFAULT_SHOW);
+}
+
+// ══════════════════════════════════════════════
+//  MATERIALS — אקורדיון לטבלת ההשוואה
+// ══════════════════════════════════════════════
+function toggleMaterialsTable(forceOpen){
+  const restBody = document.getElementById('materialsRestBody');
+  const btn      = document.getElementById('materialsToggleBtn');
+  const rowTop   = document.getElementById('materialsShowMoreTop');
+  const btnTop   = document.getElementById('materialsToggleBtnTop');
+  if(!restBody || !btn) return;
+  const isOpen = typeof forceOpen === 'boolean' ? forceOpen : (restBody.style.display === 'none');
+  const collapseLabel = 'הצג פחות ↑';
+  const expandLabel   = 'לצפייה בכל החומרים והתכונות המתקדמות ↓';
+  restBody.style.display = isOpen ? 'table-row-group' : 'none';
+  btn.textContent = isOpen ? collapseLabel : expandLabel;
+  if(rowTop && btnTop){
+    rowTop.style.display = isOpen ? 'block' : 'none';
+    btnTop.textContent = collapseLabel;
+  }
+  if(isOpen){
+    restBody.scrollIntoView({behavior:'smooth', block:'nearest'});
+  } else {
+    document.getElementById('materials').scrollIntoView({behavior:'smooth'});
   }
 }
 
@@ -590,8 +722,121 @@ function renderArticles(){
 }
 
 // ══════════════════════════════════════════════
-//  COLOR MODAL
+//  🧪 MATERIALS TABLE
 // ══════════════════════════════════════════════
+// מד-כוכבים (Star Indicator) — 3 כוכבים בגוון זהב (var(--gold-mid),
+// מסתגל אוטומטית לבהיר/כהה): good = 3/3 · mid = 2/3 · bad = 1/3.
+// כוכב מלא גדול ומוצק, כוכב ריק קטן וחלול (קו מתאר בלבד).
+const MAT_DOTS_TOTAL = 3;
+const MAT_LEVEL_DOTS = { good: 3, mid: 2, bad: 1 };
+const MAT_STAR_PATH = "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z";
+const PRICE_LABEL = { 1:'₪', 2:'₪₪', 3:'₪₪₪' };
+// חומרים שמוצגים גלויים תמיד בטבלה (ללא לחיצה) — הנפוצים והמוכרים ביותר ללקוח רגיל
+const MATERIALS_PREVIEW_NAMES = ['PLA','TPU','PETG','ASA'];
+
+// מציג מד כוכבים בודד לרמה נתונה
+function matDots(level){
+  const filled = MAT_LEVEL_DOTS[level] || 0;
+  let stars = '';
+  for(let i=1;i<=MAT_DOTS_TOTAL;i++){
+    if(i<=filled){
+      stars += `<svg class="mat-star mat-star-filled" viewBox="0 0 24 24" fill="currentColor"><path d="${MAT_STAR_PATH}"/></svg>`;
+    } else {
+      stars += `<svg class="mat-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="${MAT_STAR_PATH}"/></svg>`;
+    }
+  }
+  return `<span class="mat-dots">${stars}</span>`;
+}
+
+// matCell מקבל ערך תא: מחרוזת רמה רגילה ('good'/'mid'/'bad'), או — לשורות
+// CF/GF שמתנהגות אחרת בכל גרסה — אובייקט {cf:'...', gf:'...'} שמוצג כשני
+// מדים זה מעל זה עם תווית CF/GF.
+function matCell(value){
+  if(value && typeof value === 'object'){
+    return `<div class="mat-dual">
+      <div class="mat-dual-row"><span class="mat-dual-label">CF</span>${matDots(value.cf)}</div>
+      <div class="mat-dual-row"><span class="mat-dual-label">GF</span>${matDots(value.gf)}</div>
+    </div>`;
+  }
+  return matDots(value);
+}
+
+function buildMaterialsTableHTML(list, previewNames){
+  const showPrice    = MATERIALS_TABLE_OPTIONS.showPrice;
+  const showDiff     = MATERIALS_TABLE_OPTIONS.showDifficulty;
+  const showFoodSafe = MATERIALS_TABLE_OPTIONS.showFoodSafe;
+
+  const buildRow = (m) => {
+    const safeName    = escapeHTML(m.name);
+    const safeMeaning  = m.meaning ? escapeHTML(m.meaning) : '';
+    const safeSuits    = m.suits ? escapeHTML(m.suits) : '';
+    return `<tr>
+      <td class="mat-name-cell">
+        <div class="mat-name">${safeName}</div>
+        ${safeMeaning ? `<div class="mat-meaning">${safeMeaning}</div>` : ''}
+      </td>
+      <td>${matCell(m.heat.level)}<div class="mat-temp">${escapeHTML(m.heat.temp)}</div></td>
+      <td>${matCell(m.uv)}</td>
+      <td>${matCell(m.moisture)}</td>
+      <td>${matCell(m.chemical)}</td>
+      <td>${matCell(m.strength)}</td>
+      <td>${matCell(m.flex)}</td>
+      ${showFoodSafe ? `<td>${matCell(m.foodSafe)}</td>` : ''}
+      ${showPrice ? `<td class="mat-price">${PRICE_LABEL[m.price] || '—'}</td>` : ''}
+      ${showDiff  ? `<td>${matCell(m.difficulty)}</td>` : ''}
+      <td class="mat-suits-cell">${safeSuits}</td>
+    </tr>`;
+  };
+
+  const activeList = list.filter(m => !m.disabled);
+  let tbodyHTML;
+  if(previewNames && previewNames.length){
+    const previewList = activeList.filter(m => previewNames.includes(m.name));
+    const restList     = activeList.filter(m => !previewNames.includes(m.name));
+    tbodyHTML = `<tbody>${previewList.map(buildRow).join('')}</tbody>` +
+                `<tbody id="materialsRestBody" style="display:none">${restList.map(buildRow).join('')}</tbody>`;
+  } else {
+    tbodyHTML = `<tbody>${activeList.map(buildRow).join('')}</tbody>`;
+  }
+
+  return `
+    <div class="materials-table-wrap">
+      <table class="materials-table">
+        <thead>
+          <tr>
+            <th>חומר</th><th>עמידות לחום</th><th>עמידות ל-UV/שמש</th><th>עמידות ללחות</th>
+            <th>עמידות כימית</th><th>חוזק</th><th>גמישות</th>
+            ${showFoodSafe ? '<th>מזון</th>' : ''}
+            ${showPrice ? '<th>מחיר</th>' : ''}
+            ${showDiff  ? '<th>קושי הדפסה</th>' : ''}
+            <th>למה מתאים</th>
+          </tr>
+        </thead>
+        ${tbodyHTML}
+      </table>
+    </div>
+    <div class="materials-legend">
+      ${matDots('good')} טוב/עמיד &nbsp;&nbsp;
+      ${matDots('mid')} בינוני &nbsp;&nbsp;
+      ${matDots('bad')} חלש/לא מתאים
+    </div>`;
+}
+
+function renderMaterialsSection(){
+  const grid = document.getElementById('materialsTableContainer');
+  if(grid){
+    grid.innerHTML = buildMaterialsTableHTML(MATERIALS, MATERIALS_PREVIEW_NAMES);
+  }
+}
+
+function renderResinSection(){
+  const grid = document.getElementById('resinTableContainer');
+  if(grid){
+    grid.innerHTML = buildMaterialsTableHTML(RESIN_MATERIALS);
+  }
+}
+
+
 function openModal(indexOrObj){
   const c = typeof indexOrObj==='number' ? window._catalogList[indexOrObj] : indexOrObj;
   if(!c) return;
@@ -605,12 +850,9 @@ function openModal(indexOrObj){
     document.getElementById('modalTop').innerHTML = `<div class="modal-swatch" style="background:${hex||'#9ab4c8'}"></div>`;
   }
   document.getElementById('modalName').textContent = c.name;
-  const fins = c.finishes.filter(f=>f!=='במלאי').join(' · ')||'—';
   const inStock = c.inStock === true;
   const rows = [
     ['מק"ט', escapeHTML(c.sku||'—')],
-    ['גימור', escapeHTML(fins)],
-    ['קוד צבע', escapeHTML(hex||c.hex||'—')],
     ['מלאי', inStock ? '✓ במלאי' : '✗ אזל'],
   ];
   if(c.notes) rows.push(['הערות', escapeHTML(c.notes)]);
@@ -633,7 +875,13 @@ function closeModalDirect(){ document.getElementById('modalOverlay').classList.r
 // ══════════════════════════════════════════════
 //  LIGHTBOX
 // ══════════════════════════════════════════════
-function openLightbox(src){ document.getElementById('lightboxImg').src=src; document.getElementById('lightbox').classList.add('open'); }
+function openLightbox(src, maxSizePx){
+  const img = document.getElementById('lightboxImg');
+  img.src = src;
+  img.style.maxWidth  = maxSizePx ? maxSizePx + 'px' : '';
+  img.style.maxHeight = maxSizePx ? maxSizePx + 'px' : '';
+  document.getElementById('lightbox').classList.add('open');
+}
 function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
 
 document.addEventListener('keydown',e=>{
@@ -669,15 +917,18 @@ async function submitForm(e){
 
   const name    = document.getElementById('fname').value.trim();
   const phone   = document.getElementById('fphone').value.trim();
+  const email   = document.getElementById('femail').value.trim();
   const subject = document.getElementById('fsubject').value;
   const message = document.getElementById('fmessage').value.trim();
+  const consent = document.getElementById('fconsent');
   if(!name || !phone){ alert('נא למלא שם וטלפון'); return; }
+  if(consent && !consent.checked){ alert('יש לאשר את מדיניות הפרטיות לפני שליחת הפנייה'); return; }
 
   const btn=document.getElementById('submitBtn'), success=document.getElementById('formSuccess'), errEl=document.getElementById('formError');
   btn.disabled=true; btn.textContent='⏳ שולח...';
   success.style.display='none'; errEl.style.display='none';
   try{
-    await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, { from_name:name, from_phone:phone, subject, message });
+    await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, { from_name:name, from_phone:phone, from_email:email, subject, message });
     success.style.display='block';
     document.getElementById('contactForm').reset();
     localStorage.setItem('nsf-last-submit', String(Date.now()));
@@ -715,8 +966,9 @@ function initA11y(){
   });
 }
 function applyZoom(level){
-  // הערה: שינוי font-size ב-root יציב יותר בין דפדפנים מ-body.style.zoom (לא נתמך ב-Firefox).
-  document.documentElement.style.fontSize = level === 0 ? '' : (16 + level * 2) + 'px';
+  // CSS zoom נתמך כיום בכל הדפדפנים המרכזיים (כולל Firefox מגרסה 126, 2024) ומגדיל/מקטין
+  // את כל התוכן באופן יחסי — ללא תלות ביחידות ה-px הקבועות שבהן בנוי שאר ה-CSS באתר.
+  document.documentElement.style.zoom = level === 0 ? '' : ((16 + level * 2) / 16).toFixed(3);
 }
 function toggleA11yPanel(){ document.getElementById('a11yPanel').classList.toggle('open'); }
 function changeFontSize(dir){
@@ -776,49 +1028,57 @@ const LEGAL_CONTENT = {
         <li>ניגודיות צבעים נאותה בשני מצבי תצוגה (בהיר / כהה)</li>
         <li>תיאורי alt לכל התמונות המשמעותיות</li>
         <li>מבנה כותרות היררכי (H1, H2, H3)</li>
-        <li>תמיכה מלאה בניווט מקלדת (Tab, Enter, Escape)</li>
+        <li>ניווט מקלדת לכל הרכיבים המרכזיים באתר (Tab, Enter, Escape)</li>
         <li>תוויות aria לרכיבים אינטראקטיביים</li>
       </ul>
-      <h3>פטור לפי חוק שוויון זכויות לאנשים עם מוגבלויות</h3>
-      <div class="highlight"><strong>⚠️ הבהרה:</strong> עסק זה הינו עוסק זעיר / פטור, ועל כן חלות עליו הוראות הפטור הקבועות בתקנות שוויון זכויות לאנשים עם מוגבלויות.</div>
-      <h3>נתקלתם בבעיה? ספרו לנו</h3>
-      <p><strong>שם:</strong> סמואל נרודיצקי | <strong>טלפון:</strong> 055-9144386 | <strong>אימייל:</strong> sales@nsf3d.co.il</p>
+      <h3>מעמד משפטי</h3>
+      <div class="highlight">NSF 3D פועל כעוסק פטור, ובהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), חל על העסק פטור מלא מחובת ביצוע התאמות נגישות מקיפות באתר. <strong>יחד עם זאת, ומתוך מחויבות אמיתית לנושא — יישמנו באתר את ההתאמות המפורטות לעיל, מעבר לנדרש מאיתנו על פי חוק.</strong></div>
+      <h3>נתקלתם בבעיה בנגישות? נשמח לעזור</h3>
+      <p><strong>אחראי נגישות:</strong> סמואל נרודיצקי פינקל | <strong>טלפון:</strong> 055-9144386 | <strong>מייל:</strong> sales@nsf3d.co.il</p>
+      <p style="font-size:13px;color:var(--text2);margin-top:10px">עדכון אחרון: יוני 2026</p>
     `
   },
   privacy:{
     title:'מדיניות פרטיות',
     body:`
       <h3>מהו המידע שאנו אוספים?</h3>
-      <p>שם, מספר טלפון, כתובת אימייל, ותוכן הפניה.</p>
+      <p>בטופס יצירת הקשר באתר: שם מלא, מספר טלפון, כתובת מייל (לא חובה), ותוכן הפנייה. מסירת הפרטים היא לבחירתכם ובהסכמתכם, ונדרשת לצורך מענה לפנייתכם — בלעדיה לא נוכל לחזור אליכם.</p>
       <h3>כיצד אנו משתמשים במידע?</h3>
-      <ul><li>מענה לפניות ועיבוד הזמנות</li><li>שיפור השירות והאתר</li><li>פרסום ממוקד ברשתות החברתיות (בכפוף להסכמה)</li></ul>
-      <h3>העברת מידע לצד שלישי</h3>
-      <p><strong>אנו לא מוכרים, מעבירים או משתפים את פרטיכם האישיים עם צדדים שלישיים</strong>, למעט כלי שיווק סטנדרטיים (Meta/Facebook Pixel) בהסכמתכם.</p>
+      <ul><li>מענה לפניות, הצעות מחיר ועיבוד הזמנות</li><li>שיפור השירות והאתר</li></ul>
+      <h3>שירותי צד שלישי</h3>
+      <p>לצורך משלוח הפנייה שלכם אלינו, אנו משתמשים בשירות הדיוור <strong>EmailJS</strong> להעברת תוכן הפנייה לתיבת המייל שלנו. ככל שתאשרו זאת באנר העוגיות, ייתכן שימוש בכלי שיווק/אנליטיקה (כגון Meta Pixel או Google Analytics) למדידת ביצועי האתר. <strong>אנו לא מוכרים, משתפים או מעבירים את פרטיכם לכל גורם אחר, ולכל מטרה אחרת.</strong></p>
+      <h3>שמירת מידע</h3>
+      <p>אנו שומרים את פרטי הפנייה למשך הזמן הנדרש למתן השירות ולתיעוד עסקי סביר בלבד.</p>
+      <h3>עוגיות (Cookies)</h3>
+      <p>האתר משתמש בעוגיות הכרחיות לתפעולו, ובעוגיות נוספות (שיווק/אנליטיקה) רק בכפוף להסכמתכם המפורשת באנר העוגיות. ניתן לשנות את ההסכמה בכל עת.</p>
       <h3>זכויותיכם</h3>
-      <p>בהתאם לחוק הגנת הפרטיות (ישראל), יש לכם זכות לעיין, לתקן או למחוק מידע אישי. לפניות: <strong>sales@nsf3d.co.il</strong></p>
+      <p>בהתאם לחוק הגנת הפרטיות (ישראל), יש לכם זכות לעיין, לתקן או למחוק את המידע האישי שנמסר לנו. לפניות: <strong>sales@nsf3d.co.il</strong></p>
+      <p style="font-size:13px;color:var(--text2);margin-top:10px">עדכון אחרון: יוני 2026</p>
     `
   },
   terms:{
     title:'תקנון ותנאי שימוש — NSF 3D',
     body:`
-      <p style="font-size:12px;color:var(--text2);margin-bottom:16px">עדכון אחרון: מרץ 2026 | גרסה 1.2</p>
+      <p style="font-size:12px;color:var(--text2);margin-bottom:16px">עדכון אחרון: יוני 2026 | גרסה 1.3</p>
       <h3>1. כללי ותחולה</h3>
       <p>תקנון זה מסדיר את תנאי ההתקשרות בין <strong>NSF 3D</strong> לבין כל לקוח המבצע הזמנה. ביצוע הזמנה מהווה הסכמה מלאה לתנאי תקנון זה.</p>
-      <h3>2. קניין רוחני</h3>
+      <h3>2. איך עובד תהליך ההזמנה</h3>
+      <p>האתר משמש להצגת מידע, קטלוג צבעים וחומרים, ופרויקטים לדוגמה — ההזמנה עצמה אינה מתבצעת באופן אוטומטי באתר. התהליך: גלישה באתר ובחירת מה שמתאים ← פנייה ותיאום בוואטסאפ, טלפון או טופס יצירת קשר ← אישור מחיר מפורט מול הלקוח ← תשלום ← ייצור ומסירה (איסוף עצמי או משלוח). העסקה נכרתת בשלב אישור המחיר בין הצדדים, ולא לפני כן.</p>
+      <h3>3. קניין רוחני</h3>
       <p>הלקוח מצהיר כי הוא הבעלים החוקי של כל קובץ שהוא מוסר לייצור. NSF 3D אינה אחראית לגבי זכויות קניין רוחני הגלומות בקבצים.</p>
       <div class="highlight"><strong>⚠️ דגש:</strong> אין להגיש לייצור קבצים של דמויות מוגנות ללא אישור מחזיק הזכויות.</div>
-      <h3>3. טיב המוצר</h3>
+      <h3>4. טיב המוצר</h3>
       <p>סימני שכבות, קווי חיבור ועקבות תמיכות הם חלק אינהרנטי מתהליך ההדפסה ואינם מהווים פגם. תיתכן סטייה מידתית של עד ±0.2 מ"מ.</p>
-      <h3>4. ביטולים והחזרים</h3>
-      <div class="highlight"><strong>⚠️ כלל מוצרי NSF 3D מיוצרים בהזמנה אישית — לא תינתן זכות ביטול לאחר תחילת הייצור.</strong></div>
-      <h3>5. מסלול אקספרס</h3>
-      <p>מסלול האקספרס כרוך בתוספת תשלום המסוכמת מראש. ביטול הזמנת אקספרס לאחר תחילת הייצור אינה מזכה בהחזר.</p>
-      <h3>6. אמצעי תשלום</h3>
-      <p>NSF 3D מקבל תשלום ב-<strong>Bit</strong>, <strong>מזומן</strong> ו<strong>העברה בנקאית</strong>. העסק פועל כעוסק פטור.</p>
-      <h3>7. זמני אספקה</h3>
-      <p>זמני האספקה (3–10 ימי עסקים / אקספרס לפי הסכמה) הינם הערכה בלבד ועשויים להשתנות.</p>
-      <h3>8. סמכות שיפוט</h3>
-      <p>כל מחלוקת תדון בבתי המשפט המוסמכים במחוז הדרום / באר שבע.</p>
+      <h3>5. ביטולים והחזרים</h3>
+      <div class="highlight"><strong>⚠️ בהתאם לסעיף 14ג(ד) לחוק הגנת הצרכן, התשמ"א-1981, הקובע כי זכות הביטול בעסקת מכר מרחוק אינה חלה על טובין שיוצרו במיוחד בעבור הצרכן בעקבות העסקה — מוצרי NSF 3D, המיוצרים בהזמנה אישית ולפי דרישת הלקוח, נכללים בחריג זה, ואינם כפופים לזכות ביטול חד-צדדית.</strong></div>
+      <h3>6. טיפול בפגמים ואי-התאמות</h3>
+      <p>במקרה שבו המוצר שהתקבל אינו תואם את שהוסכם (לדוגמה: צבע, מימדים או פרטים שונים מהותית מההזמנה) — יש לפנות אלינו בהקדם עם תיאור ותמונה. נבדוק את המקרה ונפעל לתיקון, להדפסה חדשה או להחזר כספי חלקי/מלא, בהתאם לנסיבות ובתיאום מול הלקוח.</p>
+      <h3>7. אמצעי תשלום</h3>
+      <p>NSF 3D מקבל תשלום ב-<strong>Bit</strong>, <strong>PayBox</strong>, <strong>מזומן</strong> ו<strong>העברה בנקאית</strong>. העסק פועל כעוסק פטור.</p>
+      <h3>8. זמני אספקה</h3>
+      <p>זמני האספקה (1–10 ימי עסקים, בהתאם לעומס ומורכבות הפרויקט) מדויקים, למעט מקרים חריגים.</p>
+      <h3>9. סמכות שיפוט</h3>
+      <p>כל מחלוקת תדון בבתי המשפט המוסמכים במחוז הדרום.</p>
     `
   }
 };
