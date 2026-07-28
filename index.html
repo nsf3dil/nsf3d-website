@@ -77,6 +77,8 @@
      הנכון מ-jsDelivr בעצמך (למשל מהעמוד https://www.jsdelivr.com/package/npm/@emailjs/browser),
      כי hash שגוי יחסום את טעינת הסקריפט ויפיל את טופס יצירת הקשר כולו. -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!-- 🛡️ Cloudflare Turnstile — הגנת בוט לטופס יצירת הקשר -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -774,6 +776,8 @@
         <label for="fwebsite">אתר אינטרנט (אל תמלאו שדה זה)</label>
         <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off">
       </div>
+      <!-- 🛡️ Cloudflare Turnstile — ווידג'ט אימות אנושי (בד"כ בלתי נראה) -->
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAD_-vMknZLNVdyY5" data-theme="auto" style="margin-bottom:14px"></div>
       <button type="submit" class="form-submit" id="submitBtn">✉️ שלח פניה →</button>
       <div class="form-success" id="formSuccess">✅ הפניה נשלחה בהצלחה! נחזור אליכם בהקדם.</div>
       <div class="form-error" id="formError">⚠️ שגיאה בשליחה. נסו שוב או פנו ישירות בוואטסאפ.</div>

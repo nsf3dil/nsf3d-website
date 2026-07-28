@@ -106,6 +106,7 @@ const RESIN_MATERIALS = [
 
 const WORKER_URL          = "https://nsf3d-colors.nsf3d-il.workers.dev/";
 const PROJECTS_WORKER_URL = "https://nsf3d-projects.nsf3d-il.workers.dev/";
+const TURNSTILE_VERIFY_URL = "https://nsf3d-verify-turnstile.nsf3d-il.workers.dev/";
 
 const WA_NUMBER    = "972559144386";
 const WA_MSG       = encodeURIComponent("היי NSF 3D! 👋 אשמח לשמוע פרטים 😊");
@@ -883,18 +884,41 @@ async function submitForm(e){
   if(!name || !phone){ alert('נא למלא שם וטלפון'); return; }
   if(consent && !consent.checked){ alert('יש לאשר את מדיניות הפרטיות לפני שליחת הפנייה'); return; }
 
+  // ── 3. Turnstile — אימות אנושי לפני שליחה בפועל ──
+  const turnstileResponse = typeof turnstile !== 'undefined' ? turnstile.getResponse() : '';
+  if(!turnstileResponse){
+    const errEl0 = document.getElementById('formError');
+    errEl0.textContent = '⚠️ נא לאשר שאתם לא רובוט (סמן/י את תיבת האימות) ולנסות שוב.';
+    errEl0.style.display='block';
+    setTimeout(()=>{ errEl0.style.display='none'; errEl0.textContent='⚠️ שגיאה בשליחה. נסו שוב או פנו ישירות בוואטסאפ.'; }, 5000);
+    return;
+  }
+
   const btn=document.getElementById('submitBtn'), success=document.getElementById('formSuccess'), errEl=document.getElementById('formError');
   btn.disabled=true; btn.textContent='⏳ שולח...';
   success.style.display='none'; errEl.style.display='none';
   try{
+    // ── אימות הטוקן מול ה-Worker (בדיקה אמיתית בצד שרת, לא ניתנת לעקיפה מהקונסול) ──
+    const verifyRes  = await fetch(TURNSTILE_VERIFY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: turnstileResponse })
+    });
+    const verifyData = await verifyRes.json();
+    if(!verifyData.success){
+      throw new Error('turnstile_verification_failed');
+    }
+
     await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, { from_name:name, from_phone:phone, from_email:email, subject, message });
     success.style.display='block';
     document.getElementById('contactForm').reset();
+    if(typeof turnstile !== 'undefined') turnstile.reset();
     localStorage.setItem('nsf-last-submit', String(Date.now()));
     setTimeout(()=>{ success.style.display='none'; }, 6000);
   }catch(err){
-    console.error('[NSF3D] Email error:', err);
+    console.error('[NSF3D] Email/Turnstile error:', err);
     errEl.style.display='block';
+    if(typeof turnstile !== 'undefined') turnstile.reset();
   }
   btn.disabled=false; btn.textContent='✉️ שלח פניה →';
 }
