@@ -104,8 +104,8 @@ const RESIN_MATERIALS = [
     heat:{level:"bad",temp:"~50°C"}, moisture:"bad", uv:"bad", chemical:"bad", flex:"bad", foodSafe:"bad", difficulty:"good", price:2 },
 ];
 
-const WORKER_URL          = "https://nsf3d-colors.nsf3d-il.workers.dev/";
-const PROJECTS_WORKER_URL = "https://nsf3d-projects.nsf3d-il.workers.dev/";
+const COLORS_DATA_URL   = "data/colors.json";
+const PROJECTS_DATA_URL = "data/projects.json";
 const TURNSTILE_VERIFY_URL = "https://nsf3d-verify-turnstile.nsf3d-il.workers.dev/";
 
 const WA_NUMBER    = "972559144386";
@@ -178,23 +178,9 @@ function escapeAttr(str){
   return escapeHTML(str).replace(/`/g, '&#96;');
 }
 
-// קאש קצר-מועד ל-fetch מה-Workers, כדי לא להפציץ אותם בכל רענון/חזרה לטאב.
-// TTL של 5 דקות מספיק כדי לחתוך עומס בלי לפגוע בעדכניות בפועל.
-const FETCH_CACHE_TTL_MS = 5 * 60 * 1000;
-async function cachedFetchJSON(url, cacheKey){
-  try{
-    const cached = sessionStorage.getItem(cacheKey);
-    if(cached){
-      const { ts, data } = JSON.parse(cached);
-      if(Date.now() - ts < FETCH_CACHE_TTL_MS) return data;
-    }
-  }catch(e){ /* cache corrupted — ignore, fetch fresh */ }
-
-  const res  = await fetch(url);
-  const data = await res.json();
-  try{ sessionStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), data })); }catch(e){ /* storage full — ignore */ }
-  return data;
-}
+// (cachedFetchJSON הוסר — התוכן נטען כעת כקבצי JSON סטטיים מאותו דומיין,
+//  ראה loadColors/loadProjects, שהם מהירים מיידית בזכות ה-HTTP cache הרגיל
+//  של הדפדפן ולא צריכים שכבת קאש נפרדת ב-sessionStorage.)
 
 // ══════════════════════════════════════════════
 //  ⚙️ SECTION CONFIG ENGINE
@@ -412,7 +398,11 @@ function renderSkeletons(count=12){
 async function loadColors(){
   renderSkeletons(6);
   try{
-    const data = await cachedFetchJSON(WORKER_URL, 'nsf-cache-colors');
+    // ✅ טעינה ישירה מקובץ JSON סטטי באותו דומיין — אין יותר תלות ב-Worker/Notion
+    // בזמן אמת, ולכן אין יותר עיכוב רשת חיצוני. הדפדפן גם שומר את הקובץ בקאש
+    // הרגיל שלו (HTTP cache), כך שטעינות חוזרות מהירות עוד יותר.
+    const res  = await fetch(COLORS_DATA_URL);
+    const data = await res.json();
     allColors = (data.colors||[]).filter(c=>c.name&&c.name!=='ללא שם');
     filterColors();
   }catch(e){
@@ -502,7 +492,9 @@ function renderColors(list){
 // ══════════════════════════════════════════════
 async function loadProjects(){
   try{
-    const data  = await cachedFetchJSON(PROJECTS_WORKER_URL, 'nsf-cache-projects');
+    // ✅ טעינה ישירה מקובץ JSON סטטי — אין יותר תלות ב-Worker/Notion בזמן אמת
+    const res   = await fetch(PROJECTS_DATA_URL);
+    const data  = await res.json();
     allProjects = data.projects || [];
     renderProjects(allProjects.slice(0, PROJECTS_DEFAULT_SHOW));
     updateProjectsShowMoreButtons(allProjects.length > PROJECTS_DEFAULT_SHOW);

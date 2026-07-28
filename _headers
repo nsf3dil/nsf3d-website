@@ -3,7 +3,7 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://nsf3d-colors.nsf3d-il.workers.dev https://nsf3d-projects.nsf3d-il.workers.dev https://nsf3d-verify-turnstile.nsf3d-il.workers.dev https://api.emailjs.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://nsf3d-verify-turnstile.nsf3d-il.workers.dev https://api.emailjs.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'
   Access-Control-Allow-Origin: https://nsf3d.co.il
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
