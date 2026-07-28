@@ -882,6 +882,10 @@ async function submitForm(e){
   const message = document.getElementById('fmessage').value.trim();
   const consent = document.getElementById('fconsent');
   if(!name || !phone){ alert('נא למלא שם וטלפון'); return; }
+  // ולידציה: טלפון — ספרות/מקף/פלוס/רווח בלבד, אורך סביר
+  if(!/^[0-9\-\+\s]{9,15}$/.test(phone)){ alert('נא להזין מספר טלפון תקין (9-15 ספרות)'); return; }
+  // ולידציה: פרטים — לפחות 5 תווים משמעותיים (לא רק רווחים)
+  if(message.length < 5){ alert('נא לפרט מעט יותר מה אתם צריכים (לפחות כמה מילים)'); return; }
   if(consent && !consent.checked){ alert('יש לאשר את מדיניות הפרטיות לפני שליחת הפנייה'); return; }
 
   // ── 3. Turnstile — אימות אנושי לפני שליחה בפועל ──

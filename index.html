@@ -581,7 +581,7 @@
         </div>
       </div>
       <div class="about-features" style="margin-top:22px">
-        <div class="fi"><div class="fi-icon">📍</div><div class="fi-text"><h4>אזור שירות</h4><p>באר שבע, הדרום, ומשלוח לכל הארץ · בשלב זה אין קבלת קהל.</p></div></div>
+        <div class="fi"><div class="fi-icon">📍</div><div class="fi-text"><h4>אזור שירות</h4><p>באר שבע, הדרום, ומשלוחים לכל הארץ · בשלב זה אין קבלת קהל.</p></div></div>
         <div class="fi"><div class="fi-icon">⚡</div><div class="fi-text"><h4>זמן אספקה מהיר</h4><p>רוב ההזמנות מוכנות תוך 1-10 ימי עסקים.</p></div></div>
         <div class="fi"><div class="fi-icon">🤝</div><div class="fi-text"><h4>שירות מהיר, אישי ומקצועי</h4><p>לא בוט — אדם אמיתי ומומחה בתחום, מייעץ לפני ההזמנה ועומד מאחורי התוצאה.</p></div></div>
       </div>
@@ -744,7 +744,8 @@
       </div>
       <div class="form-group">
         <label class="form-label" for="fphone">טלפון *</label>
-        <input class="form-input" type="tel" id="fphone" required placeholder="050-0000000" autocomplete="tel">
+        <input class="form-input" type="tel" id="fphone" required placeholder="050-0000000" autocomplete="tel"
+          pattern="[0-9\-\+\s]{9,15}" minlength="9" maxlength="15" title="נא להזין מספר טלפון תקין (ספרות בלבד, 9-15 תווים)">
       </div>
       <div class="form-group">
         <label class="form-label" for="femail">מייל</label>
@@ -754,15 +755,14 @@
         <label class="form-label" for="fsubject">נושא</label>
         <select class="form-select" id="fsubject">
           <option value="הזמנה חדשה">הזמנה חדשה</option>
-          <option value="שאלה על צבעים">שאלה על צבעים / חומרים</option>
           <option value="הצעת מחיר">הצעת מחיר</option>
-          <option value="בקשת צבע מיוחד">🎨 בקשת צבע מיוחד שאינו במלאי</option>
+          <option value="שאלה כללית">שאלה כללית</option>
           <option value="אחר">אחר</option>
         </select>
       </div>
       <div class="form-group">
         <label class="form-label" for="fmessage">פרטים *</label>
-        <textarea class="form-textarea" id="fmessage" required placeholder="ספרו לנו מה אתם צריכים — מה להדפיס, באיזה צבע, כמות..."></textarea>
+        <textarea class="form-textarea" id="fmessage" required minlength="5" placeholder="ספרו לנו מה אתם צריכים — מה להדפיס, באיזה צבע, כמות..."></textarea>
         <div class="form-hint">💡 תמונות וקבצים רלוונטיים ניתן לצרף גם בוואטסאפ או במייל בנפרד, בציון שם מלא.</div>
       </div>
       <div class="form-group form-consent-group">

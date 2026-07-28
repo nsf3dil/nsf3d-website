@@ -405,7 +405,7 @@ body.dark .shipping-free{color:#3ecf7a;}
 .hobby-origin-text{font-size:15px;color:var(--text2);line-height:1.65;font-weight:600;}
 .hobby-origin-text strong{color:var(--blue-dark);}
 .founder-photo-row{display:flex;align-items:center;gap:16px;margin-top:18px;padding:14px 18px;background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;}
-.founder-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--blue-mid);box-shadow:0 4px 16px rgba(30,111,168,.2);flex-shrink:0;}
+.founder-photo{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--blue-mid);box-shadow:0 4px 16px rgba(30,111,168,.2);flex-shrink:0;}
 .founder-photo-text{font-size:14px;color:var(--text2);line-height:1.6;font-weight:600;}
 .founder-photo-text strong{color:var(--blue-dark);font-size:14px;display:block;margin-bottom:2px;}
 .sw-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
