@@ -1,0 +1,45 @@
+name: Sync Notion Content
+
+# מופעל רק ידנית — לחיצה על "Run workflow" בלשונית Actions ב-GitHub.
+# אין תזמון אוטומטי (cron) בכוונה, לפי בקשת בעל האתר.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Sync colors from Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          COLORS_DB_ID: ${{ secrets.COLORS_DB_ID }}
+        run: node scripts/sync-colors.js
+
+      - name: Sync projects from Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          PROJECTS_DB_ID: ${{ secrets.PROJECTS_DB_ID }}
+        run: node scripts/sync-projects.js
+
+      - name: Commit and push updated data
+        run: |
+          git config user.name "nsf3d-sync-bot"
+          git config user.email "actions@github.com"
+          git add data/ images/
+          if git diff --cached --quiet; then
+            echo "אין שינויים חדשים מ-Notion — לא נדרש commit."
+          else
+            git commit -m "🔄 עדכון אוטומטי: סנכרון תוכן מ-Notion"
+            git push
+          fi
