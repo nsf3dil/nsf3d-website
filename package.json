@@ -1,0 +1,9 @@
+{
+  "name": "nsf3d-notion-sync",
+  "private": true,
+  "type": "module",
+  "description": "סקריפטים לסנכרון תוכן מ-Notion לקבצי JSON סטטיים (רץ רק דרך GitHub Actions, ידני בלבד)",
+  "engines": {
+    "node": ">=20"
+  }
+}
