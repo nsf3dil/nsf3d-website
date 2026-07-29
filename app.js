@@ -75,16 +75,16 @@ const ARTICLES = [
 // │  לעריכה עצמאית: כל ערך הוא פשוט מספר 1/2/3.                   │
 // └──────────────────────────────────────────────────────────────┘
 const MATERIALS = [
-  { name:"PLA",        load:1, impact:1, heat:1, uv:1, chemical:2, suits:"פסלונים · דגמי נוי · מתנות" },
-  { name:"PETG",       load:2, impact:3, heat:2, uv:2, chemical:2, suits:"כלי מטבח · אריזות · חלקים טכניים" },
-  { name:"TPU",        load:1, impact:3, heat:2, uv:2, chemical:2, suits:"סוליות · אטמים · מארזי הגנה" },
-  { name:"ASA",        load:2, impact:3, heat:2, uv:3, chemical:2, suits:"שילוט חוץ · רהיטי גינה · תושבות רכב" },
-  { name:"ABS",        load:2, impact:3, heat:2, uv:1, chemical:2, suits:"צעצועים · חלקי רכב · כיסויים" },
-  { name:"PA (Nylon)", load:2, impact:3, heat:2, uv:1, chemical:3, suits:"גלגלי שיניים · צירים · חלקי מכונה" },
-  { name:"PC",         load:3, impact:3, heat:3, uv:2, chemical:2, suits:"מגנים · תושבות עומס · חלקים שקופים" },
-  { name:"PP",         load:1, impact:3, heat:2, uv:1, chemical:3, suits:"מכסים · ציר חי · קופסאות" },
-  { name:"PPA-CF",     load:3, impact:2, heat:3, uv:2, chemical:2, suits:"חלקים הנדסיים בעומס וחום קיצוניים" },
-  { name:"PPS-CF",     load:3, impact:2, heat:3, uv:3, chemical:3, suits:"תעופה · רכב · עומס מבני בסביבה כימית" },
+  { name:"PLA",        load:1, impact:1, heat:1, uv:1, chemical:1, suits:"פסלונים · דגמי נוי · מתנות" },
+  { name:"PETG",       load:2, impact:2, heat:2, uv:2, chemical:2, suits:"מארזים · חלקים טכניים כלליים · תגים" },
+  { name:"TPU",        load:1, impact:3, heat:2, uv:1, chemical:2, suits:"אטמים · בולמי זעזועים · כיסויי הגנה" },
+  { name:"ASA",        load:2, impact:2, heat:2, uv:3, chemical:2, suits:"שילוט חוץ · רהיטי גינה · אביזרים לרכב" },
+  { name:"ABS",        load:2, impact:2, heat:2, uv:1, chemical:2, suits:"מארזי אלקטרוניקה · חלקי רכב · כיסויים קשיחים" },
+  { name:"PA (Nylon)", load:2, impact:3, heat:3, uv:1, chemical:2, suits:"גלגלי שיניים · צירים · חלקי מכונה" },
+  { name:"PC",         load:3, impact:3, heat:3, uv:1, chemical:2, suits:"מגנים · תושבות עומס · חלקים קשיחים" },
+  { name:"PP",         load:1, impact:3, heat:2, uv:1, chemical:3, suits:"מכסים · ציר חי · מיכלים עמידים לכימיכלים" },
+  { name:"PPA-CF",     load:3, impact:2, heat:3, uv:2, chemical:3, suits:"תושבות מכניות · חלקים עמידים בחום" },
+  { name:"PPS-CF",     load:3, impact:2, heat:3, uv:3, chemical:3, suits:"פתרונות מעולם הרכב · רכיבים בסביבה חמה · עומס מבני בסביבה כימית" },
 ];
 
 // ┌──────────────────────────────────────────────────────────────┐
