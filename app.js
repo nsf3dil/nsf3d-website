@@ -124,7 +124,7 @@ const PROJECTS_DEFAULT_SHOW = 3;
 //  🔔 SITE ANNOUNCEMENT
 // ══════════════════════════════════════════════
 const SITE_ANNOUNCEMENT = {
-  enabled: true,
+  enabled: false,
   id: "site-construction-v1",
   persistence: "always",
   delay: 500,
@@ -135,7 +135,7 @@ const SITE_ANNOUNCEMENT = {
     { type:"wa", label:"📱 דברו איתנו בוואטסאפ", href:"__WA__" },
     { type:"secondary", label:"אוקיי, אמשיך לגלוש", action:"close" }
   ],
-  footerNote: "📍 באר שבע · משלוח לכל הארץ · מענה מהיר"
+  footerNote: "📍 באר שבע · משלוחים לכל הארץ · מענה מהיר"
 };
 
 // ══════════════════════════════════════════════
