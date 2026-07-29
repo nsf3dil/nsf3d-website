@@ -73,10 +73,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<!-- ✅ SRI מוגדר: גרסה נעולה 4.4.1 + integrity hash — מונע הרצת קוד זדוני אם ה-CDN ייפגע -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"
-        integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS"
-        crossorigin="anonymous"></script>
+<!-- (סקריפט EmailJS הוסר — השליחה עוברת כעת דרך Worker בצד שרת, ה-JS בדפדפן לא צריך את הספרייה) -->
 <!-- 🛡️ Cloudflare Turnstile — הגנת בוט לטופס יצירת הקשר -->
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>

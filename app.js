@@ -106,7 +106,9 @@ const RESIN_MATERIALS = [
 
 const COLORS_DATA_URL   = "data/colors.json";
 const PROJECTS_DATA_URL = "data/projects.json";
-const TURNSTILE_VERIFY_URL = "https://nsf3d-verify-turnstile.nsf3d-il.workers.dev/";
+// ✅ שליחת הטופס עוברת עכשיו דרך Worker בצד שרת — הדפדפן לא שולח ל-EmailJS ישירות יותר
+// (Worker זה גם מאמת את Turnstile בעצמו, כך שאין יותר צורך ב-Worker נפרד לאימות)
+const CONTACT_WORKER_URL = "https://nsf3d-contact.nsf3d-il.workers.dev/";
 
 const WA_NUMBER    = "972559144386";
 const WA_MSG       = encodeURIComponent("היי NSF 3D! 👋 אשמח לשמוע פרטים 😊");
@@ -115,9 +117,6 @@ const EMAIL_SUBJECT= encodeURIComponent("פנייה מהאתר — NSF 3D");
 const EMAIL_BODY   = encodeURIComponent("היי NSF 3D,\n\nפונה אליכם מהאתר.\n\n");
 const SITE_URL     = "https://nsf3d.co.il/";
 function getDefaultShow(){ return window.innerWidth <= 768 ? 4 : 6; }
-const EMAILJS_SERVICE  = "nsf3d_gmail";
-const EMAILJS_TEMPLATE = "template_auajv0o";
-const EMAILJS_KEY      = "0zsMlXrQhjmsDRUI9";
 const PROJECTS_DEFAULT_SHOW = 3;
 
 // ══════════════════════════════════════════════
@@ -301,8 +300,7 @@ function toggleDark(){
 //  DOM READY
 // ══════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded',()=>{
-  if(typeof emailjs !== 'undefined'){ emailjs.init(EMAILJS_KEY); }
-  else { console.warn('[NSF3D] EmailJS not loaded!'); }
+  // (emailjs.init הוסר — השליחה עוברת כעת דרך Worker בצד שרת, ראה submitForm)
 
   applySiteConfig();
   initActiveSection();
@@ -894,18 +892,23 @@ async function submitForm(e){
   btn.disabled=true; btn.textContent='⏳ שולח...';
   success.style.display='none'; errEl.style.display='none';
   try{
-    // ── אימות הטוקן מול ה-Worker (בדיקה אמיתית בצד שרת, לא ניתנת לעקיפה מהקונסול) ──
-    const verifyRes  = await fetch(TURNSTILE_VERIFY_URL, {
+    // ✅ קריאה יחידה ל-Worker: הוא מאמת את Turnstile ושולח את המייל בעצמו בצד שרת.
+    // הדפדפן לא שולח ל-EmailJS ישירות יותר — אי אפשר לעקוף את הטופס ולשלוח מיילים
+    // ישירות מהקונסול, כי המפתחות והלוגיקה נמצאים רק ב-Worker.
+    const res  = await fetch(CONTACT_WORKER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token: turnstileResponse })
+      body: JSON.stringify({
+        token: turnstileResponse,
+        from_name: name, from_phone: phone, from_email: email, subject, message,
+        website: honeypot ? honeypot.value : '' // honeypot נשלח גם לשרת כהגנה כפולה
+      })
     });
-    const verifyData = await verifyRes.json();
-    if(!verifyData.success){
-      throw new Error('turnstile_verification_failed');
+    const data = await res.json();
+    if(!data.success){
+      throw new Error(data.error || 'send_failed');
     }
 
-    await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, { from_name:name, from_phone:phone, from_email:email, subject, message });
     success.style.display='block';
     document.getElementById('contactForm').reset();
     if(typeof turnstile !== 'undefined') turnstile.reset();
