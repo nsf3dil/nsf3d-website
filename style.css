@@ -633,8 +633,8 @@ body.a11y-noanim .announce-overlay,body.a11y-noanim .announce-modal{transition-d
   .a11y-panel{bottom:82px;left:18px;}
   .hero-btns{flex-direction:column;align-items:center;}
   .projects-grid{grid-template-columns:1fr;}
-  .wa-float{width:200px;padding:0 18px 0 14px;gap:10px;justify-content:flex-start;}
-  .wa-float-label{max-width:160px;opacity:1;}
+  .wa-float{width:auto;max-width:150px;padding:0 14px 0 12px;gap:8px;justify-content:flex-start;}
+  .wa-float-label{max-width:110px;opacity:1;font-size:13px;}
   .wa-float{bottom:88px;}
 }
 @media(max-width:480px){
