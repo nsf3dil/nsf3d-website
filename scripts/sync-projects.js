@@ -57,7 +57,8 @@ async function downloadImage(url, pageId) {
     const filename = `${pageId}${ext}`;
     const filepath = path.join(IMAGES_DIR, filename);
     fs.writeFileSync(filepath, buffer);
-    return `images/projects/${filename}`;
+    // ⚠️ נתיב מוחלט (מתחיל ב-/) — ראו הערה מקבילה ב-sync-colors.js
+    return `/images/projects/${filename}`;
   } catch (e) {
     console.warn(`⚠️  נכשלה הורדת תמונה עבור ${pageId}:`, e.message);
     return null;
