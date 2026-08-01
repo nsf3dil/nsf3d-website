@@ -1,5 +1,5 @@
 // ══════════════════════════════════════════════════
-//  NSF 3D — sync-colors.js 
+//  NSF 3D — sync-colors.js
 //  מושך את קטלוג הצבעים מ-Notion, מוריד את התמונות בפועל
 //  לריפו (כדי לפתור פקיעת קישורי S3 של Notion), ושומר
 //  colors.json סטטי בתיקיית data/.
@@ -56,7 +56,10 @@ async function downloadImage(url, pageId) {
     const filename = `${pageId}${ext}`;
     const filepath = path.join(IMAGES_DIR, filename);
     fs.writeFileSync(filepath, buffer);
-    return `images/colors/${filename}`;
+    // ⚠️ נתיב מוחלט (מתחיל ב-/) בכוונה — הדף נטען גם מ-/en/ ו-/ru/,
+    // ונתיב יחסי כמו "images/colors/..." ייפתר שם ל-/en/images/colors/...
+    // שלא קיים. נתיב מוחלט תמיד מצביע לשורש האתר בלי קשר לתת-תיקייה.
+    return `/images/colors/${filename}`;
   } catch (e) {
     console.warn(`⚠️  נכשלה הורדת תמונה עבור ${pageId}:`, e.message);
     return null;
