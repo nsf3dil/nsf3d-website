@@ -8,6 +8,11 @@
 <meta name="keywords" content="הדפסות תלת מימד, 3D printing, באר שבע, הדפסת 3D, PLA, PETG, שילוט תלת מימד, דמויות 3D, NSF 3D">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nsf3d.co.il/">
+<!-- 🌐 hreflang — מגדיר לגוגל את קיום הגרסאות בשפות אחרות של אותו עמוד -->
+<link rel="alternate" hreflang="he" href="https://nsf3d.co.il/">
+<link rel="alternate" hreflang="en" href="https://nsf3d.co.il/en/">
+<link rel="alternate" hreflang="ru" href="https://nsf3d.co.il/ru/">
+<link rel="alternate" hreflang="x-default" href="https://nsf3d.co.il/">
 <meta property="og:title" content=" NSF 3D — הדפסות תלת מימד בהתאמה אישית | באר שבע והדרום">
 <meta property="og:description" content="דמויות, שילוט, עיצוב ועוד — במגוון צבעים, שירות אישי מהיר, משלוח לכל הארץ.">
 <meta property="og:type" content="website">
@@ -113,6 +118,17 @@
         <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
       </a>
     </div>
+    <!-- 🌐 מתג שפה — עברית / אנגלית / רוסית -->
+    <div class="lang-switch" id="langSwitch">
+      <button class="lang-btn" onclick="toggleLangMenu()" aria-label="החלף שפה" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-current" aria-hidden="true">🇮🇱</span>
+      </button>
+      <div class="lang-menu" id="langMenu" role="menu">
+        <a href="/" role="menuitem" class="lang-option active"><span aria-hidden="true">🇮🇱</span> עברית</a>
+        <a href="/en/" role="menuitem" class="lang-option"><span aria-hidden="true">🇺🇸</span> English</a>
+        <a href="/ru/" role="menuitem" class="lang-option"><span aria-hidden="true">🇷🇺</span> Русский</a>
+      </div>
+    </div>
     <button class="dark-toggle" id="darkBtn" onclick="toggleDark()" aria-label="החלף מצב כהה/בהיר">
       <span id="darkIcon">🌙</span><span id="darkLabel">מצב כהה</span>
     </button>
@@ -148,6 +164,11 @@
   <a href="#about" onclick="closeMenu()" data-section="about">אודות</a>
   <a href="#faq" onclick="closeMenu()" data-section="faq">שאלות ותשובות</a>
   <a href="#contact" onclick="closeMenu()" data-section="contact">צור קשר</a>
+  <div class="mobile-lang-row" aria-label="החלף שפה">
+    <a href="/" class="mobile-lang-option active"><span aria-hidden="true">🇮🇱</span> עברית</a>
+    <a href="/en/" class="mobile-lang-option"><span aria-hidden="true">🇺🇸</span> English</a>
+    <a href="/ru/" class="mobile-lang-option"><span aria-hidden="true">🇷🇺</span> Русский</a>
+  </div>
 </div>
 
 <!-- ══ HERO ══ -->
@@ -329,7 +350,7 @@
     <div class="ptype">
       <div class="ptype-icon">💡</div>
       <div class="ptype-title">כל רעיון — כל מוצר</div>
-      <div class="ptype-desc">דמויות ופסלונים, חלקים טכניים, קישוטים, מתנות ייחודיות, אומנות, אביזרים, שילוט, ועוד. ניתן לשלב לדים ואורות מיוחדים. אם אתם יכולים לדמיין את זה — אנחנו יכולים להדפיס את זה.</div>
+      <div class="ptype-desc">דמויות ופסלונים, חלקים טכניים, קישוטים, מתנות ייחודיות, אומנות, אביזרים, שילוט, ועוד. ניתן לשלב לדים ואורות מיוחדים.</div>
     </div>
     <div class="ptype">
       <div class="ptype-icon">📐</div>
@@ -592,7 +613,7 @@
       <div class="about-features" style="margin-top:22px">
         <div class="fi"><div class="fi-icon">📍</div><div class="fi-text"><h4>אזור שירות</h4><p>באר שבע, הדרום, ומשלוחים לכל הארץ · בשלב זה אין קבלת קהל.</p></div></div>
         <div class="fi"><div class="fi-icon">⚡</div><div class="fi-text"><h4>זמן אספקה מהיר</h4><p>רוב ההזמנות מוכנות תוך 1-10 ימי עסקים.</p></div></div>
-        <div class="fi"><div class="fi-icon">🤝</div><div class="fi-text"><h4>שירות מהיר, אישי ומקצועי</h4><p>לא בוט — אדם אמיתי ומומחה בתחום, מייעץ לפני ההזמנה ועומד מאחורי התוצאה.</p></div></div>
+        <div class="fi"><div class="fi-icon">🤝</div><div class="fi-text"><h4>שירות מהיר, אישי ומקצועי</h4><p>מענה אישי ומהיר — מומחה בתחום, מייעץ לפני ההזמנה ועומד מאחורי התוצאה.</p></div></div>
       </div>
     </div>
     <div class="about-visual">
@@ -798,7 +819,11 @@
 <!-- ══ FOOTER ══ -->
 <footer>
   <div style="margin-bottom:14px">
-    <div style="font-size:26px;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:-0.5px">NSF <span style="color:#4db8e8">3D</span></div>
+    <div class="footer-logo-wrap">
+      <img class="footer-logo-img" src="NSF-logo-large-1000px.png" alt="NSF 3D" width="52" height="52"
+        onerror="this.style.display='none';document.getElementById('footerLogoText').style.display='block'">
+      <div id="footerLogoText" style="display:none;font-size:26px;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:-0.5px">NSF <span style="color:#4db8e8">3D</span></div>
+    </div>
     <div style="font-size:13px;color:rgba(255,255,255,.45);margin-top:3px">באר שבע והדרום · הדפסות 3D בהתאמה אישית</div>
   </div>
   <ul class="footer-links">
