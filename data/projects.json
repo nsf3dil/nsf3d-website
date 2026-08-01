@@ -7,7 +7,7 @@
       "waMsg": "",
       "featured": true,
       "order": 1,
-      "image": "images/projects/323ab47e-1c92-801d-b6a2-db3eec8bfce9.png"
+      "image": "/images/projects/323ab47e-1c92-801d-b6a2-db3eec8bfce9.png"
     },
     {
       "name": "דמות בהתאמה אישית - ריאליסטי",
@@ -16,7 +16,7 @@
       "waMsg": "",
       "featured": true,
       "order": 2,
-      "image": "images/projects/323ab47e-1c92-80cd-9711-dbe65b403628.png"
+      "image": "/images/projects/323ab47e-1c92-80cd-9711-dbe65b403628.png"
     },
     {
       "name": "דמות בהתאמה אישית - חיית מחמד",
@@ -25,7 +25,7 @@
       "waMsg": "",
       "featured": true,
       "order": 3,
-      "image": "images/projects/324ab47e-1c92-80be-986b-c186d9bf1d93.png"
+      "image": "/images/projects/324ab47e-1c92-80be-986b-c186d9bf1d93.png"
     },
     {
       "name": "שלט מותאם אישית",
@@ -34,7 +34,7 @@
       "waMsg": "",
       "featured": false,
       "order": 4,
-      "image": "images/projects/324ab47e-1c92-806b-bc93-f7d38d077497.jpg"
+      "image": "/images/projects/324ab47e-1c92-806b-bc93-f7d38d077497.jpg"
     }
   ],
   "_generatedAt": "2026-07-29T14:57:56.683Z"
