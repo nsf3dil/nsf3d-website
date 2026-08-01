@@ -84,6 +84,7 @@ nav{position:fixed;top:0;inset-inline:0;z-index:200;height:64px;display:flex;ali
 .lang-option{display:flex;align-items:center;gap:8px;padding:10px 16px;color:var(--text);text-decoration:none;font-size:14px;font-weight:600;transition:background .15s;}
 .lang-option:hover{background:var(--bg2);}
 .lang-option.active{color:var(--blue-mid);background:var(--bg2);}
+.flag-img{width:18px;height:13px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.08);vertical-align:middle;display:inline-block;}
 
 /* 🌐 Language switcher — mobile menu row */
 .mobile-lang-row{display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);}
