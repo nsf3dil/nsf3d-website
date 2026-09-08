@@ -286,31 +286,31 @@ const PROJECTS_DEFAULT_SHOW = 3;
 // ══════════════════════════════════════════════
 const ANNOUNCEMENT_I18N = {
   he: {
-    title: "האתר והעסק כרגע בשלבי הקמה!",
-    text: `כלל השירותים לא יהיו זמינים במהלך החודשים הקרובים, למעט פרויקטים חריגים שיכולים להתקבל לפי בקשה, לכל נושא אחר ניתן לדבר איתנו בווטסאפ.`,
-    btnWa: "📱 דברו איתנו בוואטסאפ", btnClose: "אוקיי, אמשיך לגלוש",
-    footerNote: "📍 באר שבע · משלוחים לכל הארץ · מענה מהיר"
+    title: "יוצאים לחופשה 🏖️",
+    text: `בין התאריכים 8.9.26–15.9.26 לא תתקיים פעילות ולא נהיה זמינים. חוזרים לפעילות מלאה ב-16.9.26.`,
+    btnWa: "📱 השאירו הודעה בוואטסאפ", btnClose: "אוקיי, הבנתי",
+    footerNote: "📍 באר שבע · חוזרים ב-16.9.26"
   },
   en: {
-    title: "The website and business are currently being set up!",
-    text: `Most services won't be available over the coming months, except for special projects considered on request. For anything else, feel free to reach us on WhatsApp.`,
-    btnWa: "📱 Message us on WhatsApp", btnClose: "OK, keep browsing",
-    footerNote: "📍 Beer Sheva · Nationwide shipping · Fast response"
+    title: "We're on vacation 🏖️",
+    text: `Between September 8–15, 2026, there will be no activity and we won't be available. We're back to full service on September 16, 2026.`,
+    btnWa: "📱 Leave a message on WhatsApp", btnClose: "OK, got it",
+    footerNote: "📍 Beer Sheva · Back on Sep 16, 2026"
   },
   ru: {
-    title: "Сайт и бизнес сейчас находятся в стадии запуска!",
-    text: `Большинство услуг будет недоступно в ближайшие месяцы, за исключением отдельных проектов по запросу. По любым другим вопросам пишите нам в WhatsApp.`,
-    btnWa: "📱 Написать нам в WhatsApp", btnClose: "Хорошо, продолжить",
-    footerNote: "📍 Беэр-Шева · Доставка по всей стране · Быстрый ответ"
+    title: "Мы в отпуске 🏖️",
+    text: `С 8 по 15 сентября 2026 года мы не работаем и недоступны. Возвращаемся к полноценной работе 16 сентября 2026 года.`,
+    btnWa: "📱 Оставить сообщение в WhatsApp", btnClose: "Хорошо, понятно",
+    footerNote: "📍 Беэр-Шева · Возвращаемся 16.09.2026"
   }
 };
 const ANN_T = ANNOUNCEMENT_I18N[LANG] || ANNOUNCEMENT_I18N.he;
 const SITE_ANNOUNCEMENT = {
-  enabled: false,
-  id: "site-construction-v1",
-  persistence: "always",
+  enabled: true,
+  id: "site-vacation-sep2026",
+  persistence: "session",
   delay: 500,
-  icon: "🚧",
+  icon: "🏖️",
   title: ANN_T.title,
   text: ANN_T.text,
   buttons: [
