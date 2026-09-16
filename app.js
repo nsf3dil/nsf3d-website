@@ -306,7 +306,7 @@ const ANNOUNCEMENT_I18N = {
 };
 const ANN_T = ANNOUNCEMENT_I18N[LANG] || ANNOUNCEMENT_I18N.he;
 const SITE_ANNOUNCEMENT = {
-  enabled: true,
+  enabled: false,
   id: "site-vacation-sep2026",
   persistence: "session",
   delay: 500,
