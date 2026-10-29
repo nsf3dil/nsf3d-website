@@ -165,7 +165,7 @@ const T = I18N[LANG] || I18N.he;
 const SITE_CONFIG = {
   sections: {
     projects: { enabled: true  },   // פרויקטים לדוגמה
-    catalog:  { enabled: true  },   // קטלוג צבעים/חומרים
+    catalog:  { enabled: false },   // קטלוג צבעים — הוסר מהאתר לבקשת הלקוח (אוקטובר 2026)
     shop:     { enabled: false },   // ✅ חנות ציוד מיובא (דיזות/פילמנט/מייבשים) — דלוק כשיהיה מלאי
     products: { enabled: true  },   // "מה אפשר להדפיס" — שירות ההדפסה
     pricing:  { enabled: true  },
@@ -520,7 +520,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     btt.classList.toggle('visible', window.scrollY > 300);
   }, { passive: true });
 
-  loadColors();
+  if(SITE_CONFIG.sections.catalog.enabled) loadColors();
   loadProjects();
   if(SITE_CONFIG.sections.materials.enabled)      renderMaterialsSection();
   if(SITE_CONFIG.sections.resinMaterials.enabled) renderResinSection();
@@ -1255,7 +1255,7 @@ const LEGAL_CONTENT_ALL = {
         <h3>1. כללי ותחולה</h3>
         <p>תקנון זה מסדיר את תנאי ההתקשרות בין <strong>NSF 3D</strong> לבין כל לקוח המבצע הזמנה. ביצוע הזמנה מהווה הסכמה מלאה לתנאי תקנון זה.</p>
         <h3>2. איך עובד תהליך ההזמנה</h3>
-        <p>האתר משמש להצגת מידע, קטלוג צבעים וחומרים, ופרויקטים לדוגמה — ההזמנה עצמה אינה מתבצעת באופן אוטומטי באתר. התהליך: גלישה באתר ובחירת מה שמתאים ← פנייה ותיאום בוואטסאפ, טלפון או טופס יצירת קשר ← אישור מחיר מפורט מול הלקוח ← תשלום ← ייצור ומסירה (איסוף עצמי או משלוח). העסקה נכרתת בשלב אישור המחיר בין הצדדים, ולא לפני כן.</p>
+        <p>האתר משמש להצגת מידע, חומרי הדפסה, ופרויקטים לדוגמה — ההזמנה עצמה אינה מתבצעת באופן אוטומטי באתר. התהליך: גלישה באתר ובחירת מה שמתאים ← פנייה ותיאום בוואטסאפ, טלפון או טופס יצירת קשר ← אישור מחיר מפורט מול הלקוח ← תשלום ← ייצור ומסירה (איסוף עצמי או משלוח). העסקה נכרתת בשלב אישור המחיר בין הצדדים, ולא לפני כן.</p>
         <h3>3. קניין רוחני</h3>
         <p>הלקוח מצהיר כי הוא הבעלים החוקי של כל קובץ שהוא מוסר לייצור. NSF 3D אינה אחראית לגבי זכויות קניין רוחני הגלומות בקבצים.</p>
         <div class="highlight"><strong>⚠️ דגש:</strong> אין להגיש לייצור קבצים של דמויות מוגנות ללא אישור מחזיק הזכויות.</div>
@@ -1264,11 +1264,12 @@ const LEGAL_CONTENT_ALL = {
         <h3>5. ביטולים והחזרים</h3>
         <div class="highlight"><strong>⚠️ בהתאם לסעיף 14ג(ד) לחוק הגנת הצרכן, התשמ"א-1981, הקובע כי זכות הביטול בעסקת מכר מרחוק אינה חלה על טובין שיוצרו במיוחד בעבור הצרכן בעקבות העסקה — מוצרי NSF 3D, המיוצרים בהזמנה אישית ולפי דרישת הלקוח, נכללים בחריג זה, ואינם כפופים לזכות ביטול חד-צדדית.</strong></div>
         <h3>6. טיפול בפגמים ואי-התאמות</h3>
-        <p>במקרה שבו המוצר שהתקבל אינו תואם את שהוסכם (לדוגמה: צבע, מימדים או פרטים שונים מהותית מההזמנה) — יש לפנות אלינו בהקדם עם תיאור ותמונה. נבדוק את המקרה ונפעל לתיקון, להדפסה חדשה או להחזר כספי חלקי/מלא, בהתאם לנסיבות ובתיאום מול הלקוח.</p>
+        <p>הדפסת תלת מימד, ובפרט פסלונים ודמויות בהתאמה אישית, היא תהליך ייצור פיזי ולא צילום או הדמיה דיגיטלית. הדמיות, תמונות ותצוגות מקדימות שמוצגות לפני ההזמנה נועדו להמחשה בלבד, ולא ניתן להבטיח דמיון מלא (100%) בין התוצר הסופי לבין ההדמיה או לדמות המקורית. הבדלים קלים בגוון, בפרטים, בפרופורציות ובגימור הם חלק טבעי מהתהליך ואינם נחשבים פגם או אי-התאמה.</p>
+        <p>אם המוצר שהתקבל שונה מהותית ממה שהוסכם (לדוגמה: צבע, מימדים או פרטים מרכזיים) — יש לפנות אלינו בהקדם עם תיאור ותמונה. נבדוק את המקרה ונפעל לתיקון ולהסדרת הפנייה, בהתאם לנסיבות ובתיאום מול הלקוח.</p>
         <h3>7. אמצעי תשלום</h3>
         <p>NSF 3D מקבל תשלום ב-<strong>Bit</strong>, <strong>PayBox</strong>, <strong>מזומן</strong> ו<strong>העברה בנקאית</strong>. העסק פועל כעוסק פטור.</p>
         <h3>8. זמני אספקה</h3>
-        <p>זמני האספקה (1–10 ימי עסקים, בהתאם לעומס ומורכבות הפרויקט) מדויקים, למעט מקרים חריגים.</p>
+        <p>זמני האספקה (7 ימי עסקים, בהתאם לעומס ומורכבות הפרויקט) מדויקים, למעט מקרים חריגים.</p>
         <h3>9. סמכות שיפוט</h3>
         <p>כל מחלוקת תדון בבתי המשפט המוסמכים במחוז הדרום.</p>
       `
@@ -1330,7 +1331,7 @@ const LEGAL_CONTENT_ALL = {
         <h3>1. General and scope</h3>
         <p>These Terms govern the relationship between <strong>NSF 3D</strong> and any customer placing an order. Placing an order constitutes full agreement to these Terms.</p>
         <h3>2. How the ordering process works</h3>
-        <p>The website is used to present information, a catalog of colors and materials, and sample projects — orders themselves are not placed automatically through the site. The process: browse the site and choose what suits you → reach out and coordinate via WhatsApp, phone, or the contact form → confirm a detailed price with the customer → payment → production and delivery (self pickup or shipping). The transaction is formed at the point the price is confirmed between the parties, and not before.</p>
+        <p>The website is used to present information, printing materials, and sample projects — orders themselves are not placed automatically through the site. The process: browse the site and choose what suits you → reach out and coordinate via WhatsApp, phone, or the contact form → confirm a detailed price with the customer → payment → production and delivery (self pickup or shipping). The transaction is formed at the point the price is confirmed between the parties, and not before.</p>
         <h3>3. Intellectual property</h3>
         <p>The customer represents that they are the lawful owner of any file submitted for production. NSF 3D is not responsible for intellectual property rights embedded in submitted files.</p>
         <div class="highlight"><strong>⚠️ Important:</strong> Do not submit files of copyrighted characters for production without the rights holder's permission.</div>
@@ -1339,11 +1340,12 @@ const LEGAL_CONTENT_ALL = {
         <h3>5. Cancellations and refunds</h3>
         <div class="highlight"><strong>⚠️ Under Section 14c(d) of Israel's Consumer Protection Law, 5741-1981, which provides that the right of cancellation in a distance sale does not apply to goods specially manufactured for the consumer as a result of the transaction — NSF 3D products, which are custom-made to order per the customer's request, fall under this exception and are not subject to a unilateral right of cancellation.</strong></div>
         <h3>6. Handling defects and discrepancies</h3>
-        <p>If the product received does not match what was agreed (for example: color, dimensions, or details that differ materially from the order) — please contact us as soon as possible with a description and photo. We will review the case and act to repair it, reprint it, or issue a partial/full refund, depending on the circumstances and in coordination with the customer.</p>
+        <p>3D printing, and custom figurines and characters in particular, is a physical manufacturing process — not a photograph or a digital rendering. Renderings, images, and previews shown before the order are for illustration only, and we cannot guarantee a full (100%) match between the final product and the rendering or the original character. Minor differences in shade, details, proportions, and finish are a natural part of the process and are not considered a defect or discrepancy.</p>
+        <p>If the product received differs materially from what was agreed (for example: color, dimensions, or key details) — please contact us as soon as possible with a description and photo. We will review the case and act to correct it and resolve your request, depending on the circumstances and in coordination with the customer.</p>
         <h3>7. Payment methods</h3>
         <p>NSF 3D accepts payment via <strong>Bit</strong>, <strong>PayBox</strong>, <strong>cash</strong>, and <strong>bank transfer</strong>. The business operates as an Israeli exempt dealer (osek patur).</p>
         <h3>8. Delivery times</h3>
-        <p>Delivery times (1–10 business days, depending on workload and project complexity) are estimates, except in exceptional cases.</p>
+        <p>Delivery times (7 business days, depending on workload and project complexity) are estimates, except in exceptional cases.</p>
         <h3>9. Jurisdiction</h3>
         <p>Any dispute will be heard in the competent courts of Israel's Southern District.</p>
       `
@@ -1405,7 +1407,7 @@ const LEGAL_CONTENT_ALL = {
         <h3>1. Общие положения и сфера действия</h3>
         <p>Настоящие условия регулируют отношения между <strong>NSF 3D</strong> и любым клиентом, оформляющим заказ. Оформление заказа означает полное согласие с условиями настоящего документа.</p>
         <h3>2. Как проходит процесс заказа</h3>
-        <p>Сайт используется для представления информации, каталога цветов и материалов, а также примеров проектов — сам заказ не оформляется автоматически через сайт. Процесс: просмотр сайта и выбор подходящего варианта → обращение и согласование через WhatsApp, телефон или контактную форму → подтверждение точной цены с клиентом → оплата → изготовление и передача (самовывоз или доставка). Сделка считается заключённой на этапе подтверждения цены между сторонами, а не ранее.</p>
+        <p>Сайт используется для представления информации, материалов для печати, а также примеров проектов — сам заказ не оформляется автоматически через сайт. Процесс: просмотр сайта и выбор подходящего варианта → обращение и согласование через WhatsApp, телефон или контактную форму → подтверждение точной цены с клиентом → оплата → изготовление и передача (самовывоз или доставка). Сделка считается заключённой на этапе подтверждения цены между сторонами, а не ранее.</p>
         <h3>3. Интеллектуальная собственность</h3>
         <p>Клиент подтверждает, что является законным владельцем любого файла, переданного для изготовления. NSF 3D не несёт ответственности за права интеллектуальной собственности, заложенные в переданных файлах.</p>
         <div class="highlight"><strong>⚠️ Важно:</strong> запрещается передавать для изготовления файлы защищённых авторским правом персонажей без разрешения правообладателя.</div>
@@ -1414,11 +1416,12 @@ const LEGAL_CONTENT_ALL = {
         <h3>5. Отмена заказа и возврат средств</h3>
         <div class="highlight"><strong>⚠️ В соответствии со статьёй 14в(г) израильского Закона о защите прав потребителей 5741-1981, согласно которой право на отмену дистанционной сделки не распространяется на товары, изготовленные специально для потребителя в результате сделки — изделия NSF 3D, изготавливаемые на заказ по индивидуальному запросу клиента, подпадают под это исключение и не подлежат одностороннему праву отмены.</strong></div>
         <h3>6. Работа с дефектами и несоответствиями</h3>
-        <p>Если полученное изделие не соответствует согласованному (например: цвет, размеры или детали существенно отличаются от заказа) — свяжитесь с нами как можно скорее, приложив описание и фото. Мы рассмотрим случай и предпримем меры: исправление, повторную печать или частичный/полный возврат средств — в зависимости от обстоятельств и по согласованию с клиентом.</p>
+        <p>3D-печать, и в особенности фигурки и персонажи на заказ, — это физический производственный процесс, а не фотография и не цифровая визуализация. Визуализации, изображения и предварительные макеты, показанные до оформления заказа, носят исключительно иллюстративный характер, и мы не можем гарантировать полное (100%) сходство готового изделия с визуализацией или исходным персонажем. Небольшие различия в оттенке, деталях, пропорциях и отделке — естественная часть процесса и не считаются дефектом или несоответствием.</p>
+        <p>Если полученное изделие существенно отличается от согласованного (например: цвет, размеры или ключевые детали) — свяжитесь с нами как можно скорее, приложив описание и фото. Мы рассмотрим случай и предпримем меры для исправления и урегулирования обращения — в зависимости от обстоятельств и по согласованию с клиентом.</p>
         <h3>7. Способы оплаты</h3>
         <p>NSF 3D принимает оплату через <strong>Bit</strong>, <strong>PayBox</strong>, <strong>наличными</strong> и <strong>банковским переводом</strong>. Бизнес работает в статусе «осек патур» (индивидуальный предприниматель, освобождённый от НДС).</p>
         <h3>8. Сроки изготовления</h3>
-        <p>Сроки изготовления (1–10 рабочих дней, в зависимости от загруженности и сложности проекта) являются ориентировочными, за исключением особых случаев.</p>
+        <p>Сроки изготовления (7 рабочих дней, в зависимости от загруженности и сложности проекта) являются ориентировочными, за исключением особых случаев.</p>
         <h3>9. Подсудность</h3>
         <p>Любой спор будет рассматриваться в компетентных судах Южного округа Израиля.</p>
       `
