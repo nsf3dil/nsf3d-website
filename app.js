@@ -163,6 +163,8 @@ const T = I18N[LANG] || I18N.he;
 // │  וגם בפוטר). הסדר באתר נקבע לפי הסדר ב-HTML עצמו — לא כאן.   │
 // └──────────────────────────────────────────────────────────────┘
 const SITE_CONFIG = {
+  // מבצע נובמבר — מכבה את עצמו אוטומטית אחרי endDate (שעון ישראל). לביטול ידני: enabled:false
+  sale: { enabled: true, endDate: '2026-11-30' },
   sections: {
     projects: { enabled: true  },   // פרויקטים לדוגמה
     catalog:  { enabled: false },   // קטלוג צבעים — הוסר מהאתר לבקשת הלקוח (אוקטובר 2026)
@@ -492,6 +494,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   // (emailjs.init הוסר — השליחה עוברת כעת דרך Worker בצד שרת, ראה submitForm)
 
   applySiteConfig();
+  try{ const s=SITE_CONFIG.sale, today=new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Jerusalem'}); if(s&&s.enabled&&today<=s.endDate) document.body.classList.add('sale-on'); }catch(e){}
   initActiveSection();
 
   if(document.body.classList.contains('dark')){
