@@ -7,7 +7,7 @@
       "waMsg": "",
       "featured": true,
       "order": 1,
-      "image": "/images/projects/40cab47e-1c92-80af-afa9-e266e1e4178e.jpg"
+      "image": "/images/projects/40cab47e-1c92-80af-afa9-e266e1e4178e.png"
     },
     {
       "name": "סבתא ונכד - רגע מתוק שיישאר לנצח",
@@ -75,7 +75,7 @@
     {
       "name": "פסלון בהתאמה אישית",
       "category": "",
-      "description": "ינאי, תל אביב - “מבסוטים ממש, גם השירות וגם המוצר”\n\nדמות תלת מימד בהשראת תמונה או תיאור.  ",
+      "description": "ינאי, תל אביב - “מבסוטים ממש, גם השירות וגם המוצר”.\n\nדמות תלת מימד בהשראת תמונה או תיאור.  ",
       "waMsg": "",
       "featured": true,
       "order": 9,
@@ -91,5 +91,5 @@
       "image": "/images/projects/40cab47e-1c92-8049-a908-d359b30c63fa.jpg"
     }
   ],
-  "_generatedAt": "2026-11-02T15:33:56.357Z"
+  "_generatedAt": "2026-11-02T15:42:51.744Z"
 }
