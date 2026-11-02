@@ -28,6 +28,15 @@
       "image": "/images/projects/324ab47e-1c92-80be-986b-c186d9bf1d93.png"
     },
     {
+      "name": "פסלון בהתאמה אישית משפחתי",
+      "category": "",
+      "description": "הורים וכלב - רגע מתוק שיישאר לנצח",
+      "waMsg": "",
+      "featured": false,
+      "order": 4,
+      "image": "/images/projects/40cab47e-1c92-8075-8392-c07b976e00cf.png"
+    },
+    {
       "name": "דמות בהתאמה אישית - ריאליסטי",
       "category": "",
       "description": "דמות תלת מימד בהשראת תמונה אמיתית. סגנון ריאליסטי. \nמתנה אישית שלא שוכחים",
@@ -46,33 +55,6 @@
       "image": "/images/projects/323ab47e-1c92-801d-b6a2-db3eec8bfce9.jpg"
     },
     {
-      "name": "פסלון בהתאמה אישית",
-      "category": "",
-      "description": "דמות תלת מימד בהשראת תמונה או תיאור. \nינאי, תל אביב - “מבסוטים ממש, גם השירות וגם המוצר”",
-      "waMsg": "",
-      "featured": true,
-      "order": 9,
-      "image": "/images/projects/40cab47e-1c92-8029-a5cf-c82c4346b0f1.jpg"
-    },
-    {
-      "name": "פסלון בהתאמה אישית",
-      "category": "",
-      "description": "פסלון החירות, גימור משי",
-      "waMsg": "",
-      "featured": true,
-      "order": 10,
-      "image": "/images/projects/40cab47e-1c92-8049-a908-d359b30c63fa.jpg"
-    },
-    {
-      "name": "פסלון בהתאמה אישית משפחתי",
-      "category": "",
-      "description": "הורים וכלב - רגע מתוק שיישאר לנצח",
-      "waMsg": "",
-      "featured": false,
-      "order": 4,
-      "image": "/images/projects/40cab47e-1c92-8075-8392-c07b976e00cf.png"
-    },
-    {
       "name": "פסלון בהתאמה אישית - אופנוע",
       "category": "",
       "description": "מתן - “המפקד התלהב מאוד מהמתנה, לא ישכח אותי, תודה”",
@@ -89,7 +71,25 @@
       "featured": false,
       "order": 8,
       "image": "/images/projects/40cab47e-1c92-8067-adaf-eba71ced65fd.jpg"
+    },
+    {
+      "name": "פסלון בהתאמה אישית",
+      "category": "",
+      "description": "דמות תלת מימד בהשראת תמונה או תיאור. \nינאי, תל אביב - “מבסוטים ממש, גם השירות וגם המוצר”",
+      "waMsg": "",
+      "featured": true,
+      "order": 9,
+      "image": "/images/projects/40cab47e-1c92-8029-a5cf-c82c4346b0f1.jpg"
+    },
+    {
+      "name": "פסלון בהתאמה אישית",
+      "category": "",
+      "description": "פסלון החירות, גימור משי",
+      "waMsg": "",
+      "featured": true,
+      "order": 10,
+      "image": "/images/projects/40cab47e-1c92-8049-a908-d359b30c63fa.jpg"
     }
   ],
-  "_generatedAt": "2026-11-02T15:09:27.320Z"
+  "_generatedAt": "2026-11-02T15:26:39.391Z"
 }
