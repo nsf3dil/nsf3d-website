@@ -43,7 +43,7 @@
       "waMsg": "",
       "featured": true,
       "order": 5,
-      "image": "/images/projects/40cab47e-1c92-808c-9535-dda442aae33c.jpg"
+      "image": "/images/projects/40cab47e-1c92-8071-8464-cf5367ea2c5a.png"
     },
     {
       "name": "פסלון בהתאמה אישית - קריקטורה",
@@ -75,7 +75,7 @@
     {
       "name": "פסלון בהתאמה אישית",
       "category": "",
-      "description": "ינאי, תל אביב - “מבסוטים ממש, גם השירות וגם המוצר”.\n\nדמות תלת מימד בהשראת תמונה או תיאור.  ",
+      "description": "ינאי, תל אביב - “מבסוטים ממש, גם השירות וגם המוצר”\n\nדמות תלת מימד בהשראת תמונה או תיאור.  ",
       "waMsg": "",
       "featured": true,
       "order": 9,
@@ -91,5 +91,5 @@
       "image": "/images/projects/40cab47e-1c92-8049-a908-d359b30c63fa.jpg"
     }
   ],
-  "_generatedAt": "2026-11-02T15:49:17.349Z"
+  "_generatedAt": "2026-11-02T17:18:46.525Z"
 }
