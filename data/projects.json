@@ -1,22 +1,22 @@
 {
   "projects": [
     {
-      "name": "פסלון בהתאמה אישית - קריקטורה",
+      "name": "פסלון בהתאמה אישית פרימיום למשרד",
       "category": "",
-      "description": "דמות תלת מימד בהשראת תמונה אמיתית. סגנון פופ קריקטורה. \nמתנה אישית שלא שוכחים",
+      "description": "עו”ד רוסלן בונדר, אשדוד - “יצא מהמם, תודה רבה”",
       "waMsg": "",
       "featured": true,
       "order": 1,
-      "image": "/images/projects/323ab47e-1c92-801d-b6a2-db3eec8bfce9.png"
+      "image": "/images/projects/40cab47e-1c92-80af-afa9-e266e1e4178e.jpg"
     },
     {
-      "name": "דמות בהתאמה אישית - ריאליסטי",
+      "name": "סבתא ונכד - רגע מתוק שיישאר לנצח",
       "category": "",
-      "description": "דמות תלת מימד בהשראת תמונה אמיתית. סגנון ריאליסטי. \nמתנה אישית שלא שוכחים",
+      "description": "דמות תלת מימד בהשראת תמונה אמיתית. מתנה אישית שלא שוכחים",
       "waMsg": "",
       "featured": true,
       "order": 2,
-      "image": "/images/projects/323ab47e-1c92-80cd-9711-dbe65b403628.png"
+      "image": "/images/projects/40cab47e-1c92-80d5-8092-caade5bf7190.jpg"
     },
     {
       "name": "דמות בהתאמה אישית - חיית מחמד",
@@ -28,14 +28,68 @@
       "image": "/images/projects/324ab47e-1c92-80be-986b-c186d9bf1d93.png"
     },
     {
-      "name": "שלט מותאם אישית",
+      "name": "דמות בהתאמה אישית - ריאליסטי",
       "category": "",
-      "description": "שלט בהתאמה אישית, מושלם לעסקים, משרדים, לגינה ועוד. ",
+      "description": "דמות תלת מימד בהשראת תמונה אמיתית. סגנון ריאליסטי. \nמתנה אישית שלא שוכחים",
+      "waMsg": "",
+      "featured": true,
+      "order": 5,
+      "image": "/images/projects/323ab47e-1c92-80cd-9711-dbe65b403628.png"
+    },
+    {
+      "name": "פסלון בהתאמה אישית - קריקטורה",
+      "category": "",
+      "description": "דמות תלת מימד בהשראת תמונה אמיתית. סגנון פופ קריקטורה. \nמתנה אישית שלא שוכחים",
+      "waMsg": "",
+      "featured": true,
+      "order": 6,
+      "image": "/images/projects/323ab47e-1c92-801d-b6a2-db3eec8bfce9.jpg"
+    },
+    {
+      "name": "פסלון בהתאמה אישית",
+      "category": "",
+      "description": "דמות תלת מימד בהשראת תמונה או תיאור. \nינאי, תל אביב - “מבסוטים ממש, גם השירות וגם המוצר”",
+      "waMsg": "",
+      "featured": true,
+      "order": 9,
+      "image": "/images/projects/40cab47e-1c92-8029-a5cf-c82c4346b0f1.jpg"
+    },
+    {
+      "name": "פסלון בהתאמה אישית",
+      "category": "",
+      "description": "פסלון החירות, גימור משי",
+      "waMsg": "",
+      "featured": true,
+      "order": 10,
+      "image": "/images/projects/40cab47e-1c92-8049-a908-d359b30c63fa.jpg"
+    },
+    {
+      "name": "פסלון בהתאמה אישית משפחתי",
+      "category": "",
+      "description": "הורים וכלב - רגע מתוק שיישאר לנצח",
       "waMsg": "",
       "featured": false,
       "order": 4,
-      "image": "/images/projects/324ab47e-1c92-806b-bc93-f7d38d077497.jpg"
+      "image": "/images/projects/40cab47e-1c92-8075-8392-c07b976e00cf.png"
+    },
+    {
+      "name": "פסלון בהתאמה אישית - אופנוע",
+      "category": "",
+      "description": "מתן - “המפקד התלהב מאוד מהמתנה, לא ישכח אותי, תודה”",
+      "waMsg": "",
+      "featured": false,
+      "order": 7,
+      "image": "/images/projects/40cab47e-1c92-8048-b57a-dc62eb1dc101.png"
+    },
+    {
+      "name": "פסלון בהתאמה אישית - אופנוע",
+      "category": "",
+      "description": "שירן, אשדוד: “ואוו פשוט וואו מתנה מדהימה לבן זוג”",
+      "waMsg": "",
+      "featured": false,
+      "order": 8,
+      "image": "/images/projects/40cab47e-1c92-8067-adaf-eba71ced65fd.jpg"
     }
   ],
-  "_generatedAt": "2026-07-29T14:57:56.683Z"
+  "_generatedAt": "2026-11-02T15:09:27.320Z"
 }
