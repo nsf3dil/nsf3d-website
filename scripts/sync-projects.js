@@ -48,6 +48,33 @@ async function fetchAllPages() {
   return results;
 }
 
+// מחזיר את הכתובת של התמונה הראשונה בגוף העמוד ב-Notion (אם יש)
+async function fetchFirstBodyImage(pageId) {
+  let cursor = undefined;
+  do {
+    const url = new URL(`https://api.notion.com/v1/blocks/${pageId}/children`);
+    url.searchParams.set("page_size", "100");
+    if (cursor) url.searchParams.set("start_cursor", cursor);
+    const res = await fetch(url, {
+      headers: {
+        "Authorization": `Bearer ${NOTION_TOKEN}`,
+        "Notion-Version": "2022-06-28",
+      },
+    });
+    if (!res.ok) {
+      console.warn(`⚠️  לא הצלחתי לקרוא את גוף העמוד ${pageId}: ${res.status}`);
+      return null;
+    }
+    const data = await res.json();
+    const img = data.results.find(b => b.type === "image");
+    if (img) {
+      return img.image.type === "external" ? img.image.external.url : img.image.file?.url ?? null;
+    }
+    cursor = data.has_more ? data.next_cursor : undefined;
+  } while (cursor);
+  return null;
+}
+
 async function downloadImage(url, pageId) {
   try {
     const res = await fetch(url);
@@ -100,13 +127,14 @@ async function main() {
     const featured = p["מומלץ"]?.checkbox ?? false;
     const order = p["סדר"]?.number ?? 999;
 
-    let remoteImage = null;
-    if (page.cover?.type === "external") remoteImage = page.cover.external.url;
-    if (page.cover?.type === "file")     remoteImage = page.cover.file.url;
+    // סדר עדיפויות לתמונה: 1) התמונה הראשונה בגוף העמוד  2) שדה "תמונה"  3) תמונת הכיסוי (cover)
+    let remoteImage = await fetchFirstBodyImage(page.id);
     if (!remoteImage && p["תמונה"]?.files?.[0]) {
       const f = p["תמונה"].files[0];
       remoteImage = f.type === "external" ? f.external.url : f.file?.url ?? null;
     }
+    if (!remoteImage && page.cover?.type === "external") remoteImage = page.cover.external.url;
+    if (!remoteImage && page.cover?.type === "file")     remoteImage = page.cover.file.url;
 
     let localImage = null;
     if (remoteImage) {
@@ -116,10 +144,8 @@ async function main() {
     projects.push({ name, category, description, waMsg, featured, order, image: localImage });
   }
 
-  projects.sort((a, b) => {
-    if (a.featured !== b.featured) return b.featured - a.featured;
-    return a.order - b.order;
-  });
+  // הסדר באתר נקבע אך ורק לפי עמודת "סדר" ב-Notion (תג "מומלץ" ⭐ ממשיך להופיע על הכרטיס)
+  projects.sort((a, b) => a.order - b.order);
 
   const output = {
     projects,
