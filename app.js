@@ -1,17 +1,17 @@
 /* ══════════════════════════════════════════════
-   NSF 3D — app.js
+   NSF 3D - app.js
    ══════════════════════════════════════════════
    הקובץ הזה מרכז את כל ה-JS של האתר. שינויים בשלב הזה:
-   1. SITE_CONFIG — מקום אחד להדליק/לכבות סקשנים ופיצ'רים
+   1. SITE_CONFIG - מקום אחד להדליק/לכבות סקשנים ופיצ'רים
    2. אבטחה: honeypot + throttle בטופס, caching לקריאות ל-Workers
-   3. escapeHTML — מניעת XSS בתוכן שמגיע מ-Notion/Workers
+   3. escapeHTML - מניעת XSS בתוכן שמגיע מ-Notion/Workers
    4. רינדור לסקשנים החדשים: חנות (ציוד מיובא) ומאמרים
-   5. 🌐 I18N — מילון תרגומים למחרוזות דינמיות. קובץ JS אחד משותף
-      לכל 3 השפות (he/en/ru) — הבחירה נקבעת לפי document.documentElement.lang.
+   5. 🌐 I18N - מילון תרגומים למחרוזות דינמיות. קובץ JS אחד משותף
+      לכל 3 השפות (he/en/ru) - הבחירה נקבעת לפי document.documentElement.lang.
    ══════════════════════════════════════════════ */
 
 // ┌──────────────────────────────────────────────────────────────┐
-// │  🌐 I18N — מילון תרגומים למחרוזות שנוצרות דינמית ב-JS         │
+// │  🌐 I18N - מילון תרגומים למחרוזות שנוצרות דינמית ב-JS         │
 // │  כל שאר טקסטי האתר חיים ישירות ב-HTML של כל שפה (he/en/ru).   │
 // └──────────────────────────────────────────────────────────────┘
 const LANG = (document.documentElement.lang || 'he').slice(0,2);
@@ -28,7 +28,7 @@ const I18N = {
     matLegend: { good:'מעולה', mid:'בינוני', bad:'חלש' },
     formSending: '⏳ שולח...',
     formSubmit: '✉️ שלח פניה →',
-    formThrottled: '⚠️ נשלחה פנייה לפני רגע — נא להמתין דקה לפני שליחה נוספת.',
+    formThrottled: '⚠️ נשלחה פנייה לפני רגע - נא להמתין דקה לפני שליחה נוספת.',
     formErrorDefault: '⚠️ שגיאה בשליחה. נסו שוב או פנו ישירות בוואטסאפ.',
     formNeedTurnstile: '⚠️ נא לאשר שאתם לא רובוט (סמן/י את תיבת האימות) ולנסות שוב.',
     alertNamePhone: 'נא למלא שם וטלפון',
@@ -37,7 +37,7 @@ const I18N = {
     alertConsent: 'יש לאשר את מדיניות הפרטיות לפני שליחת הפנייה',
     darkModeOn: 'מצב כהה', darkModeOff: 'מצב בהיר',
     defaultWaMsg: 'היי NSF 3D! 👋 אשמח לשמוע פרטים 😊',
-    emailSubject: 'פנייה מהאתר — NSF 3D',
+    emailSubject: 'פנייה מהאתר - NSF 3D',
     emailBody: 'היי NSF 3D,\n\nפונה אליכם מהאתר.\n\n',
     colorsLoadError: '⚠️ שגיאה בטעינת הצבעים. נסו לרענן.',
     showLess: 'הצג פחות ↑',
@@ -51,11 +51,11 @@ const I18N = {
     orderSimilar: 'הזמינו כזה ←',
     orderSimilarAria: (name) => `הזמינו פרויקט דומה ל-${name} בוואטסאפ`,
     showFewerProjects: 'הצג פחות ↑', showMoreProjects: 'הצג עוד פרויקטים ↓',
-    projectsComingTitle: 'פרויקטים בדרך — בקרוב!',
+    projectsComingTitle: 'פרויקטים בדרך - בקרוב!',
     projectsComingDesc: (link) => `בינתיים ${link} ונראה מה נוכל לעשות יחד`,
     sendUsMsg: 'שלחו לנו הודעה',
     showFewerMaterials: 'הצג פחות ↑', showAllMaterials: 'לצפייה בכל החומרים ↓',
-    shopComingTitle: 'המוצרים בדרך — בקרוב בחנות',
+    shopComingTitle: 'המוצרים בדרך - בקרוב בחנות',
     waShopMsg: (name) => `היי NSF 3D! 👋\nמעוניין במוצר: ${name}\nאשמח לפרטים ולתיאום רכישה 😊`,
     onRequest: 'לפי בקשה',
     articlesComingTitle: 'מאמרים ראשונים בדרך 📝',
@@ -74,7 +74,7 @@ const I18N = {
     matLegend: { good:'Excellent', mid:'Medium', bad:'Low' },
     formSending: '⏳ Sending...',
     formSubmit: '✉️ Send message →',
-    formThrottled: '⚠️ A message was just sent — please wait a minute before sending another.',
+    formThrottled: '⚠️ A message was just sent - please wait a minute before sending another.',
     formErrorDefault: '⚠️ Something went wrong. Try again or reach us directly on WhatsApp.',
     formNeedTurnstile: '⚠️ Please confirm you\'re not a robot (check the verification box) and try again.',
     alertNamePhone: 'Please fill in your name and phone number',
@@ -83,7 +83,7 @@ const I18N = {
     alertConsent: 'Please accept the privacy policy before sending your message',
     darkModeOn: 'Dark mode', darkModeOff: 'Light mode',
     defaultWaMsg: 'Hi NSF 3D! 👋 I\'d love to hear more details 😊',
-    emailSubject: 'Website inquiry — NSF 3D',
+    emailSubject: 'Website inquiry - NSF 3D',
     emailBody: 'Hi NSF 3D,\n\nI\'m reaching out from your website.\n\n',
     colorsLoadError: '⚠️ Error loading colors. Please refresh.',
     showLess: 'Show less ↑',
@@ -120,7 +120,7 @@ const I18N = {
     matLegend: { good:'Отлично', mid:'Средне', bad:'Слабо' },
     formSending: '⏳ Отправка...',
     formSubmit: '✉️ Отправить →',
-    formThrottled: '⚠️ Сообщение уже было отправлено — подождите минуту перед повторной отправкой.',
+    formThrottled: '⚠️ Сообщение уже было отправлено - подождите минуту перед повторной отправкой.',
     formErrorDefault: '⚠️ Ошибка отправки. Попробуйте снова или напишите нам напрямую в WhatsApp.',
     formNeedTurnstile: '⚠️ Пожалуйста, подтвердите, что вы не робот (отметьте галочку) и попробуйте снова.',
     alertNamePhone: 'Пожалуйста, укажите имя и телефон',
@@ -129,7 +129,7 @@ const I18N = {
     alertConsent: 'Пожалуйста, примите политику конфиденциальности перед отправкой',
     darkModeOn: 'Тёмный режим', darkModeOff: 'Светлый режим',
     defaultWaMsg: 'Привет, NSF 3D! 👋 Буду рад(а) узнать подробности 😊',
-    emailSubject: 'Обращение с сайта — NSF 3D',
+    emailSubject: 'Обращение с сайта - NSF 3D',
     emailBody: 'Здравствуйте, NSF 3D,\n\nПишу вам с сайта.\n\n',
     colorsLoadError: '⚠️ Ошибка загрузки цветов. Попробуйте обновить страницу.',
     showLess: 'Свернуть ↑',
@@ -144,7 +144,7 @@ const I18N = {
     orderSimilarAria: (name) => `Заказать проект, похожий на ${name}, в WhatsApp`,
     showFewerProjects: 'Свернуть ↑', showMoreProjects: 'Показать больше проектов ↓',
     projectsComingTitle: 'Проекты уже скоро!',
-    projectsComingDesc: (link) => `А пока ${link} — и посмотрим, что мы можем сделать вместе`,
+    projectsComingDesc: (link) => `А пока ${link} - и посмотрим, что мы можем сделать вместе`,
     sendUsMsg: 'напишите нам',
     showFewerMaterials: 'Свернуть ↑', showAllMaterials: 'Смотреть все материалы ↓',
     shopComingTitle: 'Товары в магазине уже скоро',
@@ -158,24 +158,24 @@ const I18N = {
 const T = I18N[LANG] || I18N.he;
 
 // ┌──────────────────────────────────────────────────────────────┐
-// │  ⚙️  SITE_CONFIG — הדלקה/כיבוי של סקשנים ופיצ'רים           │
+// │  ⚙️  SITE_CONFIG - הדלקה/כיבוי של סקשנים ופיצ'רים           │
 // │  enabled:true/false שולט אם הסקשן מוצג באתר (גם בניווט       │
-// │  וגם בפוטר). הסדר באתר נקבע לפי הסדר ב-HTML עצמו — לא כאן.   │
+// │  וגם בפוטר). הסדר באתר נקבע לפי הסדר ב-HTML עצמו - לא כאן.   │
 // └──────────────────────────────────────────────────────────────┘
 const SITE_CONFIG = {
-  // מבצע נובמבר — מדליקים/מכבים ידנית בלבד: enabled:true / false
+  // מבצע נובמבר - מדליקים/מכבים ידנית בלבד: enabled:true / false
   sale: { enabled: true },
   sections: {
     projects: { enabled: true  },   // פרויקטים לדוגמה
-    catalog:  { enabled: false },   // קטלוג צבעים — הוסר מהאתר לבקשת הלקוח (אוקטובר 2026)
-    shop:     { enabled: false },   // ✅ חנות ציוד מיובא (דיזות/פילמנט/מייבשים) — דלוק כשיהיה מלאי
-    products: { enabled: true  },   // "מה אפשר להדפיס" — שירות ההדפסה
+    catalog:  { enabled: false },   // קטלוג צבעים - הוסר מהאתר לבקשת הלקוח (אוקטובר 2026)
+    shop:     { enabled: false },   // ✅ חנות ציוד מיובא (דיזות/פילמנט/מייבשים) - דלוק כשיהיה מלאי
+    products: { enabled: true  },   // "מה אפשר להדפיס" - שירות ההדפסה
     pricing:  { enabled: true  },
     order:    { enabled: true  },
-    materials:{ enabled: true  },   // ✅ טבלת השוואת חומרי הדפסה — מידע קבוע, לא תלוי "מאמרים"
-    resinMaterials:{ enabled: false }, // ✅ טבלת חומרי רזין — כבוי עד שתכיר את התחום ותאשר את התוכן
-    articles: { enabled: false },   // ✅ מאמרים/כתבות — דלוק כשיהיה תוכן
-    reviews:  { enabled: false },   // ✅ כבוי כרגע — Placeholder, תדליק כשיהיו ביקורות אמיתיות
+    materials:{ enabled: true  },   // ✅ טבלת השוואת חומרי הדפסה - מידע קבוע, לא תלוי "מאמרים"
+    resinMaterials:{ enabled: false }, // ✅ טבלת חומרי רזין - כבוי עד שתכיר את התחום ותאשר את התוכן
+    articles: { enabled: false },   // ✅ מאמרים/כתבות - דלוק כשיהיה תוכן
+    reviews:  { enabled: false },   // ✅ כבוי כרגע - Placeholder, תדליק כשיהיו ביקורות אמיתיות
     about:    { enabled: true  },
     faq:      { enabled: true  },
     social:   { enabled: true  },
@@ -190,11 +190,11 @@ const SITE_CONFIG = {
 };
 
 // ┌──────────────────────────────────────────────────────────────┐
-// │  🛒 SHOP_PRODUCTS — מוצרי חנות (ציוד מיובא, לא הדפסות)       │
+// │  🛒 SHOP_PRODUCTS - מוצרי חנות (ציוד מיובא, לא הדפסות)       │
 // │  ערוך ידנית כאן עד שיהיה לך CMS ייעודי לחנות.                │
 // └──────────────────────────────────────────────────────────────┘
 // ┌──────────────────────────────────────────────────────────────┐
-// │  🧪 הגדרות תצוגה לטבלת החומרים — true/false להראות/להחביא    │
+// │  🧪 הגדרות תצוגה לטבלת החומרים - true/false להראות/להחביא    │
 // │  עמודה. הדאטה (מחיר/קושי) נשארת בקובץ, רק לא מוצגת.          │
 // └──────────────────────────────────────────────────────────────┘
 const MATERIALS_TABLE_OPTIONS = {
@@ -209,14 +209,14 @@ const SHOP_PRODUCTS = [
 ];
 
 // ┌──────────────────────────────────────────────────────────────┐
-// │  📝 ARTICLES — מאמרים/כתבות קצרות                            │
+// │  📝 ARTICLES - מאמרים/כתבות קצרות                            │
 // └──────────────────────────────────────────────────────────────┘
 const ARTICLES = [
-  // { title:"PLA מול PETG — מה ההבדל?", date:"01/2026", excerpt:"...", image:"", url:"#" },
+  // { title:"PLA מול PETG - מה ההבדל?", date:"01/2026", excerpt:"...", image:"", url:"#" },
 ];
 
 // ┌──────────────────────────────────────────────────────────────┐
-// │  🧪 MATERIALS — טבלת השוואת חומרי הדפסה                      │
+// │  🧪 MATERIALS - טבלת השוואת חומרי הדפסה                      │
 // │  5 קטגוריות עמידות, כל אחת בערך 1-3 (1=חלש · 2=בינוני · 3=מעולה) │
 // │  load = נשיאת משקל קבוע · impact = מכות ונפילות · heat = חום  │
 // │  uv = קרינת שמש · chemical = עמידות כימית                     │
@@ -225,7 +225,7 @@ const ARTICLES = [
 // │  הנדסי מתקדם → מחוזק-סיבים (heat/load עולים בהדרגה).          │
 // │  לעריכה עצמאית: כל ערך הוא פשוט מספר 1/2/3.                   │
 // └──────────────────────────────────────────────────────────────┘
-// suits ניתן כאובייקט {he,en,ru} — נבחר בזמן ריצה לפי LANG (ראה MATERIALS_LOCALIZED למטה)
+// suits ניתן כאובייקט {he,en,ru} - נבחר בזמן ריצה לפי LANG (ראה MATERIALS_LOCALIZED למטה)
 const MATERIALS_RAW = [
   { name:"PLA",        load:1, impact:1, heat:1, uv:1, chemical:1, suits:{
       he:"פסלונים · דגמי נוי · מתנות", en:"Figurines · decorative models · gifts", ru:"Фигурки · декоративные модели · подарки" } },
@@ -251,7 +251,7 @@ const MATERIALS_RAW = [
 const MATERIALS = MATERIALS_RAW.map(m => ({ ...m, suits: m.suits[LANG] || m.suits.he }));
 
 // ┌──────────────────────────────────────────────────────────────┐
-// │  🧫 RESIN_MATERIALS — טבלת חומרי רזין (טיוטה ראשונית!)        │
+// │  🧫 RESIN_MATERIALS - טבלת חומרי רזין (טיוטה ראשונית!)        │
 // │  הסקשן כבוי (resinMaterials.enabled=false) עד שתאשר/תערוך.   │
 // └──────────────────────────────────────────────────────────────┘
 const RESIN_MATERIALS_RAW = [
@@ -270,7 +270,7 @@ const RESIN_MATERIALS = RESIN_MATERIALS_RAW.map(m => ({ ...m, meaning: m.meaning
 
 const COLORS_DATA_URL   = "/data/colors.json";
 const PROJECTS_DATA_URL = "/data/projects.json";
-// ✅ שליחת הטופס עוברת עכשיו דרך Worker בצד שרת — הדפדפן לא שולח ל-EmailJS ישירות יותר
+// ✅ שליחת הטופס עוברת עכשיו דרך Worker בצד שרת - הדפדפן לא שולח ל-EmailJS ישירות יותר
 // (Worker זה גם מאמת את Turnstile בעצמו, כך שאין יותר צורך ב-Worker נפרד לאימות)
 const CONTACT_WORKER_URL = "https://nsf3d-contact.nsf3d-il.workers.dev/";
 
@@ -363,12 +363,12 @@ function escapeHTML(str){
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
-// גרסה לשימוש בתוך attribute (onclick='...') — מחמירה יותר על מירכאות
+// גרסה לשימוש בתוך attribute (onclick='...') - מחמירה יותר על מירכאות
 function escapeAttr(str){
   return escapeHTML(str).replace(/`/g, '&#96;');
 }
 
-// (cachedFetchJSON הוסר — התוכן נטען כעת כקבצי JSON סטטיים מאותו דומיין,
+// (cachedFetchJSON הוסר - התוכן נטען כעת כקבצי JSON סטטיים מאותו דומיין,
 //  ראה loadColors/loadProjects, שהם מהירים מיידית בזכות ה-HTTP cache הרגיל
 //  של הדפדפן ולא צריכים שכבת קאש נפרדת ב-sessionStorage.)
 
@@ -491,7 +491,7 @@ function toggleDark(){
 //  DOM READY
 // ══════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded',()=>{
-  // (emailjs.init הוסר — השליחה עוברת כעת דרך Worker בצד שרת, ראה submitForm)
+  // (emailjs.init הוסר - השליחה עוברת כעת דרך Worker בצד שרת, ראה submitForm)
 
   applySiteConfig();
   if(SITE_CONFIG.sale && SITE_CONFIG.sale.enabled) document.body.classList.add('sale-on');
@@ -535,10 +535,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(dateEl){
     const days = T.days;
     const now = new Date();
-    // ⚠️ העדכון היומי "נכנס לתוקף" רק מ-08:00 בבוקר — לפני השעה הזו (כולל כל שעות הלילה
+    // ⚠️ העדכון היומי "נכנס לתוקף" רק מ-08:00 בבוקר - לפני השעה הזו (כולל כל שעות הלילה
     // שלאחר חצות) ממשיכים להציג את התאריך של היום הקודם, כי בפועל המלאי עדיין לא התעדכן.
     if(now.getHours() < 8) now.setDate(now.getDate() - 1);
-    // ⚠️ לא מציגים שהעדכון "התרחש" בשישי/שבת (לכבד לקוחות שומרי שבת) —
+    // ⚠️ לא מציגים שהעדכון "התרחש" בשישי/שבת (לכבד לקוחות שומרי שבת) -
     // גם אם בפועל יש עדכון אוטומטי, מציגים את תאריך יום חמישי הקרוב שלפניו.
     const dow = now.getDay(); // 0=ראשון ... 5=שישי, 6=שבת
     if(dow === 5)      now.setDate(now.getDate() - 1); // שישי → חמישי
@@ -588,7 +588,7 @@ function renderSkeletons(count=12){
 async function loadColors(){
   renderSkeletons(6);
   try{
-    // ✅ טעינה ישירה מקובץ JSON סטטי באותו דומיין — אין יותר תלות ב-Worker/Notion
+    // ✅ טעינה ישירה מקובץ JSON סטטי באותו דומיין - אין יותר תלות ב-Worker/Notion
     // בזמן אמת, ולכן אין יותר עיכוב רשת חיצוני. הדפדפן גם שומר את הקובץ בקאש
     // הרגיל שלו (HTTP cache), כך שטעינות חוזרות מהירות עוד יותר.
     const res  = await fetch(COLORS_DATA_URL);
@@ -624,7 +624,7 @@ function updateShowAllButtons(show, total, list){
   }
 }
 
-// ⚠️ 'זוהר בחושך' כאן נשאר בעברית בכוונה — זהו ערך הנתונים בפועל בתוך
+// ⚠️ 'זוהר בחושך' כאן נשאר בעברית בכוונה - זהו ערך הנתונים בפועל בתוך
 // data/colors.json (משותף לכל השפות כרגע), לא טקסט תצוגה. ראה הערת I18N למעלה.
 function filterColors(){
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -654,7 +654,7 @@ function renderColors(list){
     const isGlow = c.finishes.includes('זוהר בחושך');
     const posY = c.imgPos != null ? c.imgPos + '%' : (isGlow ? '83%' : '50%');
     const imgPos = `object-position:center ${posY};`;
-    // ✅ escape — c.image מגיע ממקור חיצוני (Notion), חשוב לא להזריק אותו גולמי
+    // ✅ escape - c.image מגיע ממקור חיצוני (Notion), חשוב לא להזריק אותו גולמי
     const safeImg  = escapeAttr(c.image || '');
     const safeName = escapeHTML(c.name);
     const safeSku  = escapeHTML(c.sku);
@@ -684,7 +684,7 @@ function renderColors(list){
 // ══════════════════════════════════════════════
 async function loadProjects(){
   try{
-    // ✅ טעינה ישירה מקובץ JSON סטטי — אין יותר תלות ב-Worker/Notion בזמן אמת
+    // ✅ טעינה ישירה מקובץ JSON סטטי - אין יותר תלות ב-Worker/Notion בזמן אמת
     const res   = await fetch(PROJECTS_DATA_URL);
     const data  = await res.json();
     allProjects = data.projects || [];
@@ -777,7 +777,7 @@ function toggleProjectsShowAll(){
 }
 
 // ══════════════════════════════════════════════
-//  MATERIALS — אקורדיון לטבלת ההשוואה
+//  MATERIALS - אקורדיון לטבלת ההשוואה
 // ══════════════════════════════════════════════
 function toggleMaterialsTable(forceOpen){
   const restBody = document.getElementById('materialsRestBody');
@@ -802,7 +802,7 @@ function toggleMaterialsTable(forceOpen){
 }
 
 // ══════════════════════════════════════════════
-//  🛒 SHOP — ציוד מיובא (לא הדפסות)
+//  🛒 SHOP - ציוד מיובא (לא הדפסות)
 // ══════════════════════════════════════════════
 function renderShop(){
   const grid = document.getElementById('shopGrid');
@@ -874,14 +874,14 @@ function renderArticles(){
 // ══════════════════════════════════════════════
 //  🧪 MATERIALS TABLE
 // ══════════════════════════════════════════════
-// מד-כוכבים (Star Indicator) — 3 כוכבים בגוון זהב (var(--gold-mid),
+// מד-כוכבים (Star Indicator) - 3 כוכבים בגוון זהב (var(--gold-mid),
 // מסתגל אוטומטית לבהיר/כהה): good = 3/3 · mid = 2/3 · bad = 1/3.
 // כוכב מלא גדול ומוצק, כוכב ריק קטן וחלול (קו מתאר בלבד).
 const MAT_DOTS_TOTAL = 3;
 const MAT_LEVEL_DOTS = { good: 3, mid: 2, bad: 1 };
 const MAT_STAR_PATH = "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z";
 const PRICE_LABEL = { 1:'₪', 2:'₪₪', 3:'₪₪₪' };
-// חומרים שמוצגים גלויים תמיד בטבלה (ללא לחיצה) — הנפוצים והמוכרים ביותר ללקוח רגיל
+// חומרים שמוצגים גלויים תמיד בטבלה (ללא לחיצה) - הנפוצים והמוכרים ביותר ללקוח רגיל
 const MATERIALS_PREVIEW_NAMES = ['PLA','PETG','TPU','ASA'];
 
 // מציג מד כוכבים בודד לרמה נתונה (level מספרי 1-3, או מחרוזת good/mid/bad לתאימות)
@@ -898,8 +898,8 @@ function matDots(level){
   return `<span class="mat-dots">${stars}</span>`;
 }
 
-// matCell מקבל ערך תא: מחרוזת רמה רגילה ('good'/'mid'/'bad'), או — לשורות
-// CF/GF שמתנהגות אחרת בכל גרסה — אובייקט {cf:'...', gf:'...'} שמוצג כשני
+// matCell מקבל ערך תא: מחרוזת רמה רגילה ('good'/'mid'/'bad'), או - לשורות
+// CF/GF שמתנהגות אחרת בכל גרסה - אובייקט {cf:'...', gf:'...'} שמוצג כשני
 // מדים זה מעל זה עם תווית CF/GF.
 function matCell(value){
   if(value && typeof value === 'object'){
@@ -996,7 +996,7 @@ function openModal(indexOrObj){
   document.getElementById('modalName').textContent = c.name;
   const inStock = c.inStock === true;
   const rows = [
-    [T.sku, escapeHTML(c.sku||'—')],
+    [T.sku, escapeHTML(c.sku||'-')],
     [T.stock, inStock ? T.inStock : T.outOfStock],
   ];
   if(c.notes) rows.push([T.notes, escapeHTML(c.notes)]);
@@ -1033,23 +1033,23 @@ document.addEventListener('keydown',e=>{
 });
 
 // ══════════════════════════════════════════════
-//  📨 CONTACT FORM — עם honeypot + throttle
+//  📨 CONTACT FORM - עם honeypot + throttle
 // ══════════════════════════════════════════════
 const SUBMIT_MIN_INTERVAL_MS = 60 * 1000; // לא יותר מפנייה אחת בדקה מאותו דפדפן
 
 async function submitForm(e){
   e.preventDefault();
 
-  // ── 1. Honeypot — שדה מוסתר שבני-אדם לא ימלאו, בוטים בד"כ ממלאים אוטומטית ──
+  // ── 1. Honeypot - שדה מוסתר שבני-אדם לא ימלאו, בוטים בד"כ ממלאים אוטומטית ──
   const honeypot = document.getElementById('fwebsite');
   if(honeypot && honeypot.value.trim() !== ''){
-    // לא מציגים שגיאה — רק "מדמים" הצלחה כדי לא לרמז לבוט שהוא נתפס
+    // לא מציגים שגיאה - רק "מדמים" הצלחה כדי לא לרמז לבוט שהוא נתפס
     document.getElementById('formSuccess').style.display='block';
     document.getElementById('contactForm').reset();
     return;
   }
 
-  // ── 2. Throttle — מגביל קצב שליחות מאותו דפדפן ──
+  // ── 2. Throttle - מגביל קצב שליחות מאותו דפדפן ──
   const last = parseInt(localStorage.getItem('nsf-last-submit') || '0', 10);
   if(Date.now() - last < SUBMIT_MIN_INTERVAL_MS){
     const errEl = document.getElementById('formError');
@@ -1066,13 +1066,13 @@ async function submitForm(e){
   const message = document.getElementById('fmessage').value.trim();
   const consent = document.getElementById('fconsent');
   if(!name || !phone){ alert(T.alertNamePhone); return; }
-  // ולידציה: טלפון — ספרות/מקף/פלוס/רווח בלבד, אורך סביר
+  // ולידציה: טלפון - ספרות/מקף/פלוס/רווח בלבד, אורך סביר
   if(!/^[0-9\-\+\s]{9,15}$/.test(phone)){ alert(T.alertPhoneInvalid); return; }
-  // ולידציה: פרטים — לפחות 5 תווים משמעותיים (לא רק רווחים)
+  // ולידציה: פרטים - לפחות 5 תווים משמעותיים (לא רק רווחים)
   if(message.length < 5){ alert(T.alertMessageShort); return; }
   if(consent && !consent.checked){ alert(T.alertConsent); return; }
 
-  // ── 3. Turnstile — אימות אנושי לפני שליחה בפועל ──
+  // ── 3. Turnstile - אימות אנושי לפני שליחה בפועל ──
   const turnstileResponse = typeof turnstile !== 'undefined' ? turnstile.getResponse() : '';
   if(!turnstileResponse){
     const errEl0 = document.getElementById('formError');
@@ -1087,7 +1087,7 @@ async function submitForm(e){
   success.style.display='none'; errEl.style.display='none';
   try{
     // ✅ קריאה יחידה ל-Worker: הוא מאמת את Turnstile ושולח את המייל בעצמו בצד שרת.
-    // הדפדפן לא שולח ל-EmailJS ישירות יותר — אי אפשר לעקוף את הטופס ולשלוח מיילים
+    // הדפדפן לא שולח ל-EmailJS ישירות יותר - אי אפשר לעקוף את הטופס ולשלוח מיילים
     // ישירות מהקונסול, כי המפתחות והלוגיקה נמצאים רק ב-Worker.
     const res  = await fetch(CONTACT_WORKER_URL, {
       method: 'POST',
@@ -1161,7 +1161,7 @@ function initA11y(){
 }
 function applyZoom(level){
   // CSS zoom נתמך כיום בכל הדפדפנים המרכזיים (כולל Firefox מגרסה 126, 2024) ומגדיל/מקטין
-  // את כל התוכן באופן יחסי — ללא תלות ביחידות ה-px הקבועות שבהן בנוי שאר ה-CSS באתר.
+  // את כל התוכן באופן יחסי - ללא תלות ביחידות ה-px הקבועות שבהן בנוי שאר ה-CSS באתר.
   document.documentElement.style.zoom = level === 0 ? '' : ((16 + level * 2) / 16).toFixed(3);
 }
 function toggleA11yPanel(){ document.getElementById('a11yPanel').classList.toggle('open'); }
@@ -1207,15 +1207,15 @@ const LEGAL_CONTENT_ALL = {
       title:'הצהרת נגישות',
       body:`
         <h3>מחויבות לנגישות</h3>
-        <p>NSF 3D מאמין שכולם — ללא יוצא מן הכלל — מגיעים לחוויית שימוש נוחה ונגישה באתר.</p>
+        <p>NSF 3D מאמין שכולם - ללא יוצא מן הכלל - מגיעים לחוויית שימוש נוחה ונגישה באתר.</p>
         <h3>♿ כלי הנגישות המובנה</h3>
         <p>האתר כולל לחצן נגישות קבוע בפינה הימנית התחתונה של המסך, המאפשר:</p>
         <ul>
-          <li>📝 <strong>שינוי גודל טקסט</strong> — הגדלה או הקטנה של הגופן</li>
-          <li>⬛ <strong>ניגודיות גבוהה</strong> — הגברת הניגוד לנוחות קריאה</li>
-          <li>🔗 <strong>הדגשת קישורים</strong> — קו תחתון לכל הקישורים</li>
-          <li>⏸ <strong>עצירת אנימציות</strong> — לרגישים לתנועה</li>
-          <li>🖱️ <strong>סמן גדול</strong> — להתמצאות נוחה יותר</li>
+          <li>📝 <strong>שינוי גודל טקסט</strong> - הגדלה או הקטנה של הגופן</li>
+          <li>⬛ <strong>ניגודיות גבוהה</strong> - הגברת הניגוד לנוחות קריאה</li>
+          <li>🔗 <strong>הדגשת קישורים</strong> - קו תחתון לכל הקישורים</li>
+          <li>⏸ <strong>עצירת אנימציות</strong> - לרגישים לתנועה</li>
+          <li>🖱️ <strong>סמן גדול</strong> - להתמצאות נוחה יותר</li>
         </ul>
         <p>כל ההגדרות נשמרות אוטומטית בדפדפן לביקורים הבאים.</p>
         <h3>פעולות נגישות נוספות</h3>
@@ -1227,7 +1227,7 @@ const LEGAL_CONTENT_ALL = {
           <li>תוויות aria לרכיבים אינטראקטיביים</li>
         </ul>
         <h3>מעמד משפטי</h3>
-        <div class="highlight">NSF 3D פועל כעוסק פטור, ובהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), חל על העסק פטור מלא מחובת ביצוע התאמות נגישות מקיפות באתר. <strong>יחד עם זאת, ומתוך מחויבות אמיתית לנושא — יישמנו באתר את ההתאמות המפורטות לעיל, מעבר לנדרש מאיתנו על פי חוק.</strong></div>
+        <div class="highlight">NSF 3D פועל כעוסק פטור, ובהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), חל על העסק פטור מלא מחובת ביצוע התאמות נגישות מקיפות באתר. <strong>יחד עם זאת, ומתוך מחויבות אמיתית לנושא - יישמנו באתר את ההתאמות המפורטות לעיל, מעבר לנדרש מאיתנו על פי חוק.</strong></div>
         <h3>נתקלתם בבעיה בנגישות? נשמח לעזור</h3>
         <p><strong>אחראי נגישות:</strong> סמואל נרודיצקי פינקל | <strong>טלפון:</strong> 055-9144386 | <strong>מייל:</strong> nsf3d.il@gmail.com</p>
         <p style="font-size:13px;color:var(--text2);margin-top:10px">עדכון אחרון: יוני 2026</p>
@@ -1237,7 +1237,7 @@ const LEGAL_CONTENT_ALL = {
       title:'מדיניות פרטיות',
       body:`
         <h3>מהו המידע שאנו אוספים?</h3>
-        <p>בטופס יצירת הקשר באתר: שם מלא, מספר טלפון, כתובת מייל (לא חובה), ותוכן הפנייה. מסירת הפרטים היא לבחירתכם ובהסכמתכם, ונדרשת לצורך מענה לפנייתכם — בלעדיה לא נוכל לחזור אליכם.</p>
+        <p>בטופס יצירת הקשר באתר: שם מלא, מספר טלפון, כתובת מייל (לא חובה), ותוכן הפנייה. מסירת הפרטים היא לבחירתכם ובהסכמתכם, ונדרשת לצורך מענה לפנייתכם - בלעדיה לא נוכל לחזור אליכם.</p>
         <h3>כיצד אנו משתמשים במידע?</h3>
         <ul><li>מענה לפניות, הצעות מחיר ועיבוד הזמנות</li><li>שיפור השירות והאתר</li></ul>
         <h3>שירותי צד שלישי</h3>
@@ -1252,23 +1252,23 @@ const LEGAL_CONTENT_ALL = {
       `
     },
     terms:{
-      title:'תקנון ותנאי שימוש — NSF 3D',
+      title:'תקנון ותנאי שימוש - NSF 3D',
       body:`
         <p style="font-size:12px;color:var(--text2);margin-bottom:16px">עדכון אחרון: יוני 2026 | גרסה 1.3</p>
         <h3>1. כללי ותחולה</h3>
         <p>תקנון זה מסדיר את תנאי ההתקשרות בין <strong>NSF 3D</strong> לבין כל לקוח המבצע הזמנה. ביצוע הזמנה מהווה הסכמה מלאה לתנאי תקנון זה.</p>
         <h3>2. איך עובד תהליך ההזמנה</h3>
-        <p>האתר משמש להצגת מידע, חומרי הדפסה, ופרויקטים לדוגמה — ההזמנה עצמה אינה מתבצעת באופן אוטומטי באתר. התהליך: גלישה באתר ובחירת מה שמתאים ← פנייה ותיאום בוואטסאפ, טלפון או טופס יצירת קשר ← אישור מחיר מפורט מול הלקוח ← תשלום ← ייצור ומסירה (איסוף עצמי או משלוח). העסקה נכרתת בשלב אישור המחיר בין הצדדים, ולא לפני כן.</p>
+        <p>האתר משמש להצגת מידע, חומרי הדפסה, ופרויקטים לדוגמה - ההזמנה עצמה אינה מתבצעת באופן אוטומטי באתר. התהליך: גלישה באתר ובחירת מה שמתאים ← פנייה ותיאום בוואטסאפ, טלפון או טופס יצירת קשר ← אישור מחיר מפורט מול הלקוח ← תשלום ← ייצור ומסירה (איסוף עצמי או משלוח). העסקה נכרתת בשלב אישור המחיר בין הצדדים, ולא לפני כן.</p>
         <h3>3. קניין רוחני</h3>
         <p>הלקוח מצהיר כי הוא הבעלים החוקי של כל קובץ שהוא מוסר לייצור. NSF 3D אינה אחראית לגבי זכויות קניין רוחני הגלומות בקבצים.</p>
         <div class="highlight"><strong>⚠️ דגש:</strong> אין להגיש לייצור קבצים של דמויות מוגנות ללא אישור מחזיק הזכויות.</div>
         <h3>4. טיב המוצר</h3>
         <p>סימני שכבות, קווי חיבור ועקבות תמיכות הם חלק אינהרנטי מתהליך ההדפסה ואינם מהווים פגם. תיתכן סטייה מידתית של עד ±0.2 מ"מ.</p>
         <h3>5. ביטולים והחזרים</h3>
-        <div class="highlight"><strong>⚠️ בהתאם לסעיף 14ג(ד) לחוק הגנת הצרכן, התשמ"א-1981, הקובע כי זכות הביטול בעסקת מכר מרחוק אינה חלה על טובין שיוצרו במיוחד בעבור הצרכן בעקבות העסקה — מוצרי NSF 3D, המיוצרים בהזמנה אישית ולפי דרישת הלקוח, נכללים בחריג זה, ואינם כפופים לזכות ביטול חד-צדדית.</strong></div>
+        <div class="highlight"><strong>⚠️ בהתאם לסעיף 14ג(ד) לחוק הגנת הצרכן, התשמ"א-1981, הקובע כי זכות הביטול בעסקת מכר מרחוק אינה חלה על טובין שיוצרו במיוחד בעבור הצרכן בעקבות העסקה - מוצרי NSF 3D, המיוצרים בהזמנה אישית ולפי דרישת הלקוח, נכללים בחריג זה, ואינם כפופים לזכות ביטול חד-צדדית.</strong></div>
         <h3>6. טיפול בפגמים ואי-התאמות</h3>
         <p>הדפסת תלת מימד, ובפרט פסלונים ודמויות בהתאמה אישית, היא תהליך ייצור פיזי ולא צילום או הדמיה דיגיטלית. הדמיות, תמונות ותצוגות מקדימות שמוצגות לפני ההזמנה נועדו להמחשה בלבד, ולא ניתן להבטיח דמיון מלא (100%) בין התוצר הסופי לבין ההדמיה או לדמות המקורית. הבדלים קלים בגוון, בפרטים, בפרופורציות ובגימור הם חלק טבעי מהתהליך ואינם נחשבים פגם או אי-התאמה.</p>
-        <p>אם המוצר שהתקבל שונה מהותית ממה שהוסכם (לדוגמה: צבע, מימדים או פרטים מרכזיים) — יש לפנות אלינו בהקדם עם תיאור ותמונה. נבדוק את המקרה ונפעל לתיקון ולהסדרת הפנייה, בהתאם לנסיבות ובתיאום מול הלקוח.</p>
+        <p>אם המוצר שהתקבל שונה מהותית ממה שהוסכם (לדוגמה: צבע, מימדים או פרטים מרכזיים) - יש לפנות אלינו בהקדם עם תיאור ותמונה. נבדוק את המקרה ונפעל לתיקון ולהסדרת הפנייה, בהתאם לנסיבות ובתיאום מול הלקוח.</p>
         <h3>7. אמצעי תשלום</h3>
         <p>NSF 3D מקבל תשלום ב-<strong>Bit</strong>, <strong>PayBox</strong>, <strong>מזומן</strong> ו<strong>העברה בנקאית</strong>. העסק פועל כעוסק פטור.</p>
         <h3>8. זמני אספקה</h3>
@@ -1283,15 +1283,15 @@ const LEGAL_CONTENT_ALL = {
       title:'Accessibility Statement',
       body:`
         <h3>Our commitment to accessibility</h3>
-        <p>NSF 3D believes that everyone — without exception — deserves a comfortable, accessible experience on our website.</p>
+        <p>NSF 3D believes that everyone - without exception - deserves a comfortable, accessible experience on our website.</p>
         <h3>♿ Built-in accessibility toolbar</h3>
         <p>The site includes a fixed accessibility button in the bottom corner of the screen, which lets you:</p>
         <ul>
-          <li>📝 <strong>Change text size</strong> — increase or decrease the font size</li>
-          <li>⬛ <strong>High contrast</strong> — boost contrast for easier reading</li>
-          <li>🔗 <strong>Highlight links</strong> — underline all links</li>
-          <li>⏸ <strong>Stop animations</strong> — for motion-sensitive visitors</li>
-          <li>🖱️ <strong>Large cursor</strong> — for easier navigation</li>
+          <li>📝 <strong>Change text size</strong> - increase or decrease the font size</li>
+          <li>⬛ <strong>High contrast</strong> - boost contrast for easier reading</li>
+          <li>🔗 <strong>Highlight links</strong> - underline all links</li>
+          <li>⏸ <strong>Stop animations</strong> - for motion-sensitive visitors</li>
+          <li>🖱️ <strong>Large cursor</strong> - for easier navigation</li>
         </ul>
         <p>All settings are saved automatically in your browser for future visits.</p>
         <h3>Additional accessibility measures</h3>
@@ -1313,7 +1313,7 @@ const LEGAL_CONTENT_ALL = {
       title:'Privacy Policy',
       body:`
         <h3>What information do we collect?</h3>
-        <p>Through the contact form on the site: full name, phone number, email address (optional), and the content of your message. Providing these details is your choice and requires your consent, and is needed in order to respond to your inquiry — without it, we cannot get back to you.</p>
+        <p>Through the contact form on the site: full name, phone number, email address (optional), and the content of your message. Providing these details is your choice and requires your consent, and is needed in order to respond to your inquiry - without it, we cannot get back to you.</p>
         <h3>How do we use this information?</h3>
         <ul><li>Responding to inquiries, quotes, and processing orders</li><li>Improving our service and website</li></ul>
         <h3>Third-party services</h3>
@@ -1328,23 +1328,23 @@ const LEGAL_CONTENT_ALL = {
       `
     },
     terms:{
-      title:'Terms of Service — NSF 3D',
+      title:'Terms of Service - NSF 3D',
       body:`
         <p style="font-size:12px;color:var(--text2);margin-bottom:16px">Last updated: June 2026 | Version 1.3</p>
         <h3>1. General and scope</h3>
         <p>These Terms govern the relationship between <strong>NSF 3D</strong> and any customer placing an order. Placing an order constitutes full agreement to these Terms.</p>
         <h3>2. How the ordering process works</h3>
-        <p>The website is used to present information, printing materials, and sample projects — orders themselves are not placed automatically through the site. The process: browse the site and choose what suits you → reach out and coordinate via WhatsApp, phone, or the contact form → confirm a detailed price with the customer → payment → production and delivery (self pickup or shipping). The transaction is formed at the point the price is confirmed between the parties, and not before.</p>
+        <p>The website is used to present information, printing materials, and sample projects - orders themselves are not placed automatically through the site. The process: browse the site and choose what suits you → reach out and coordinate via WhatsApp, phone, or the contact form → confirm a detailed price with the customer → payment → production and delivery (self pickup or shipping). The transaction is formed at the point the price is confirmed between the parties, and not before.</p>
         <h3>3. Intellectual property</h3>
         <p>The customer represents that they are the lawful owner of any file submitted for production. NSF 3D is not responsible for intellectual property rights embedded in submitted files.</p>
         <div class="highlight"><strong>⚠️ Important:</strong> Do not submit files of copyrighted characters for production without the rights holder's permission.</div>
         <h3>4. Product characteristics</h3>
         <p>Layer lines, seam marks, and support marks are an inherent part of the printing process and do not constitute a defect. A dimensional deviation of up to ±0.2mm may occur.</p>
         <h3>5. Cancellations and refunds</h3>
-        <div class="highlight"><strong>⚠️ Under Section 14c(d) of Israel's Consumer Protection Law, 5741-1981, which provides that the right of cancellation in a distance sale does not apply to goods specially manufactured for the consumer as a result of the transaction — NSF 3D products, which are custom-made to order per the customer's request, fall under this exception and are not subject to a unilateral right of cancellation.</strong></div>
+        <div class="highlight"><strong>⚠️ Under Section 14c(d) of Israel's Consumer Protection Law, 5741-1981, which provides that the right of cancellation in a distance sale does not apply to goods specially manufactured for the consumer as a result of the transaction - NSF 3D products, which are custom-made to order per the customer's request, fall under this exception and are not subject to a unilateral right of cancellation.</strong></div>
         <h3>6. Handling defects and discrepancies</h3>
-        <p>3D printing, and custom figurines and characters in particular, is a physical manufacturing process — not a photograph or a digital rendering. Renderings, images, and previews shown before the order are for illustration only, and we cannot guarantee a full (100%) match between the final product and the rendering or the original character. Minor differences in shade, details, proportions, and finish are a natural part of the process and are not considered a defect or discrepancy.</p>
-        <p>If the product received differs materially from what was agreed (for example: color, dimensions, or key details) — please contact us as soon as possible with a description and photo. We will review the case and act to correct it and resolve your request, depending on the circumstances and in coordination with the customer.</p>
+        <p>3D printing, and custom figurines and characters in particular, is a physical manufacturing process - not a photograph or a digital rendering. Renderings, images, and previews shown before the order are for illustration only, and we cannot guarantee a full (100%) match between the final product and the rendering or the original character. Minor differences in shade, details, proportions, and finish are a natural part of the process and are not considered a defect or discrepancy.</p>
+        <p>If the product received differs materially from what was agreed (for example: color, dimensions, or key details) - please contact us as soon as possible with a description and photo. We will review the case and act to correct it and resolve your request, depending on the circumstances and in coordination with the customer.</p>
         <h3>7. Payment methods</h3>
         <p>NSF 3D accepts payment via <strong>Bit</strong>, <strong>PayBox</strong>, <strong>cash</strong>, and <strong>bank transfer</strong>. The business operates as an Israeli exempt dealer (osek patur).</p>
         <h3>8. Delivery times</h3>
@@ -1359,15 +1359,15 @@ const LEGAL_CONTENT_ALL = {
       title:'Заявление о доступности',
       body:`
         <h3>Наша приверженность доступности</h3>
-        <p>NSF 3D считает, что каждый — без исключения — заслуживает удобного и доступного взаимодействия с нашим сайтом.</p>
+        <p>NSF 3D считает, что каждый - без исключения - заслуживает удобного и доступного взаимодействия с нашим сайтом.</p>
         <h3>♿ Встроенная панель доступности</h3>
         <p>На сайте есть фиксированная кнопка доступности в нижнем углу экрана, которая позволяет:</p>
         <ul>
-          <li>📝 <strong>Изменить размер текста</strong> — увеличить или уменьшить шрифт</li>
-          <li>⬛ <strong>Высокая контрастность</strong> — усилить контраст для удобства чтения</li>
-          <li>🔗 <strong>Выделение ссылок</strong> — подчеркивание всех ссылок</li>
-          <li>⏸ <strong>Остановка анимаций</strong> — для чувствительных к движению пользователей</li>
-          <li>🖱️ <strong>Крупный курсор</strong> — для более удобной навигации</li>
+          <li>📝 <strong>Изменить размер текста</strong> - увеличить или уменьшить шрифт</li>
+          <li>⬛ <strong>Высокая контрастность</strong> - усилить контраст для удобства чтения</li>
+          <li>🔗 <strong>Выделение ссылок</strong> - подчеркивание всех ссылок</li>
+          <li>⏸ <strong>Остановка анимаций</strong> - для чувствительных к движению пользователей</li>
+          <li>🖱️ <strong>Крупный курсор</strong> - для более удобной навигации</li>
         </ul>
         <p>Все настройки автоматически сохраняются в браузере для последующих посещений.</p>
         <h3>Дополнительные меры по доступности</h3>
@@ -1379,7 +1379,7 @@ const LEGAL_CONTENT_ALL = {
           <li>ARIA-метки для интерактивных элементов</li>
         </ul>
         <h3>Правовой статус</h3>
-        <div class="highlight">NSF 3D работает как индивидуальный предприниматель, освобождённый от НДС (осек патур) в Израиле, и в соответствии с израильскими нормами о равных правах для людей с инвалидностью (доступность услуг) полностью освобождён от обязанности реализации комплексных мер по обеспечению доступности сайта. <strong>Тем не менее, из искреннего желания заботиться об этом вопросе, мы реализовали на сайте описанные выше меры — сверх того, что требуется от нас по закону.</strong></div>
+        <div class="highlight">NSF 3D работает как индивидуальный предприниматель, освобождённый от НДС (осек патур) в Израиле, и в соответствии с израильскими нормами о равных правах для людей с инвалидностью (доступность услуг) полностью освобождён от обязанности реализации комплексных мер по обеспечению доступности сайта. <strong>Тем не менее, из искреннего желания заботиться об этом вопросе, мы реализовали на сайте описанные выше меры - сверх того, что требуется от нас по закону.</strong></div>
         <h3>Столкнулись с проблемой доступности? Будем рады помочь</h3>
         <p><strong>Ответственный за доступность:</strong> Самуэль Народицкий Финкель | <strong>Телефон:</strong> 055-9144386 | <strong>Email:</strong> nsf3d.il@gmail.com</p>
         <p style="font-size:13px;color:var(--text2);margin-top:10px">Последнее обновление: июнь 2026</p>
@@ -1389,7 +1389,7 @@ const LEGAL_CONTENT_ALL = {
       title:'Политика конфиденциальности',
       body:`
         <h3>Какую информацию мы собираем?</h3>
-        <p>Через контактную форму на сайте: полное имя, номер телефона, адрес электронной почты (необязательно) и содержание обращения. Предоставление данных — ваш выбор с вашего согласия, и необходимо для ответа на ваше обращение — без них мы не сможем с вами связаться.</p>
+        <p>Через контактную форму на сайте: полное имя, номер телефона, адрес электронной почты (необязательно) и содержание обращения. Предоставление данных - ваш выбор с вашего согласия, и необходимо для ответа на ваше обращение - без них мы не сможем с вами связаться.</p>
         <h3>Как мы используем эту информацию?</h3>
         <ul><li>Ответы на обращения, расчёт стоимости и обработка заказов</li><li>Улучшение сервиса и сайта</li></ul>
         <h3>Сторонние сервисы</h3>
@@ -1404,23 +1404,23 @@ const LEGAL_CONTENT_ALL = {
       `
     },
     terms:{
-      title:'Условия использования — NSF 3D',
+      title:'Условия использования - NSF 3D',
       body:`
         <p style="font-size:12px;color:var(--text2);margin-bottom:16px">Последнее обновление: июнь 2026 | Версия 1.3</p>
         <h3>1. Общие положения и сфера действия</h3>
         <p>Настоящие условия регулируют отношения между <strong>NSF 3D</strong> и любым клиентом, оформляющим заказ. Оформление заказа означает полное согласие с условиями настоящего документа.</p>
         <h3>2. Как проходит процесс заказа</h3>
-        <p>Сайт используется для представления информации, материалов для печати, а также примеров проектов — сам заказ не оформляется автоматически через сайт. Процесс: просмотр сайта и выбор подходящего варианта → обращение и согласование через WhatsApp, телефон или контактную форму → подтверждение точной цены с клиентом → оплата → изготовление и передача (самовывоз или доставка). Сделка считается заключённой на этапе подтверждения цены между сторонами, а не ранее.</p>
+        <p>Сайт используется для представления информации, материалов для печати, а также примеров проектов - сам заказ не оформляется автоматически через сайт. Процесс: просмотр сайта и выбор подходящего варианта → обращение и согласование через WhatsApp, телефон или контактную форму → подтверждение точной цены с клиентом → оплата → изготовление и передача (самовывоз или доставка). Сделка считается заключённой на этапе подтверждения цены между сторонами, а не ранее.</p>
         <h3>3. Интеллектуальная собственность</h3>
         <p>Клиент подтверждает, что является законным владельцем любого файла, переданного для изготовления. NSF 3D не несёт ответственности за права интеллектуальной собственности, заложенные в переданных файлах.</p>
         <div class="highlight"><strong>⚠️ Важно:</strong> запрещается передавать для изготовления файлы защищённых авторским правом персонажей без разрешения правообладателя.</div>
         <h3>4. Особенности изделия</h3>
         <p>Линии слоёв, следы швов и следы поддержек являются неотъемлемой частью процесса печати и не считаются браком. Возможно отклонение размеров до ±0,2 мм.</p>
         <h3>5. Отмена заказа и возврат средств</h3>
-        <div class="highlight"><strong>⚠️ В соответствии со статьёй 14в(г) израильского Закона о защите прав потребителей 5741-1981, согласно которой право на отмену дистанционной сделки не распространяется на товары, изготовленные специально для потребителя в результате сделки — изделия NSF 3D, изготавливаемые на заказ по индивидуальному запросу клиента, подпадают под это исключение и не подлежат одностороннему праву отмены.</strong></div>
+        <div class="highlight"><strong>⚠️ В соответствии со статьёй 14в(г) израильского Закона о защите прав потребителей 5741-1981, согласно которой право на отмену дистанционной сделки не распространяется на товары, изготовленные специально для потребителя в результате сделки - изделия NSF 3D, изготавливаемые на заказ по индивидуальному запросу клиента, подпадают под это исключение и не подлежат одностороннему праву отмены.</strong></div>
         <h3>6. Работа с дефектами и несоответствиями</h3>
-        <p>3D-печать, и в особенности фигурки и персонажи на заказ, — это физический производственный процесс, а не фотография и не цифровая визуализация. Визуализации, изображения и предварительные макеты, показанные до оформления заказа, носят исключительно иллюстративный характер, и мы не можем гарантировать полное (100%) сходство готового изделия с визуализацией или исходным персонажем. Небольшие различия в оттенке, деталях, пропорциях и отделке — естественная часть процесса и не считаются дефектом или несоответствием.</p>
-        <p>Если полученное изделие существенно отличается от согласованного (например: цвет, размеры или ключевые детали) — свяжитесь с нами как можно скорее, приложив описание и фото. Мы рассмотрим случай и предпримем меры для исправления и урегулирования обращения — в зависимости от обстоятельств и по согласованию с клиентом.</p>
+        <p>3D-печать, и в особенности фигурки и персонажи на заказ, - это физический производственный процесс, а не фотография и не цифровая визуализация. Визуализации, изображения и предварительные макеты, показанные до оформления заказа, носят исключительно иллюстративный характер, и мы не можем гарантировать полное (100%) сходство готового изделия с визуализацией или исходным персонажем. Небольшие различия в оттенке, деталях, пропорциях и отделке - естественная часть процесса и не считаются дефектом или несоответствием.</p>
+        <p>Если полученное изделие существенно отличается от согласованного (например: цвет, размеры или ключевые детали) - свяжитесь с нами как можно скорее, приложив описание и фото. Мы рассмотрим случай и предпримем меры для исправления и урегулирования обращения - в зависимости от обстоятельств и по согласованию с клиентом.</p>
         <h3>7. Способы оплаты</h3>
         <p>NSF 3D принимает оплату через <strong>Bit</strong>, <strong>PayBox</strong>, <strong>наличными</strong> и <strong>банковским переводом</strong>. Бизнес работает в статусе «осек патур» (индивидуальный предприниматель, освобождённый от НДС).</p>
         <h3>8. Сроки изготовления</h3>
