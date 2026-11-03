@@ -46,12 +46,21 @@
       "image": "/images/projects/40cab47e-1c92-8071-8464-cf5367ea2c5a.png"
     },
     {
+      "name": "פסלון מקעקוע למציאות",
+      "category": "",
+      "description": "האם פעם רציתם לראות איך הקעקוע שלכם נראה במציאות?",
+      "waMsg": "",
+      "featured": false,
+      "order": 6,
+      "image": "/images/projects/40cab47e-1c92-80d4-b0df-fe72d84785d0.png"
+    },
+    {
       "name": "פסלון בהתאמה אישית - קריקטורה",
       "category": "",
       "description": "דמות תלת מימד בהשראת תמונה אמיתית. סגנון פופ קריקטורה. \nמתנה אישית שלא שוכחים",
       "waMsg": "",
       "featured": true,
-      "order": 6,
+      "order": 7,
       "image": "/images/projects/323ab47e-1c92-801d-b6a2-db3eec8bfce9.jpg"
     },
     {
@@ -60,7 +69,7 @@
       "description": "פסלון בהתאמה אישית - דמות רכובה על גבי אופנוע. מתנה מדהימה לחובבי הרכיבה",
       "waMsg": "",
       "featured": false,
-      "order": 7,
+      "order": 8,
       "image": "/images/projects/40cab47e-1c92-8048-b57a-dc62eb1dc101.png"
     },
     {
@@ -69,7 +78,7 @@
       "description": "מתן - “המפקד התלהב מאוד מהמתנה, לא ישכח אותי, תודה”",
       "waMsg": "",
       "featured": false,
-      "order": 8,
+      "order": 9,
       "image": "/images/projects/40cab47e-1c92-8067-adaf-eba71ced65fd.jpg"
     },
     {
@@ -78,7 +87,7 @@
       "description": "ינאי, תל אביב - “מבסוטים ממש, גם השירות וגם המוצר”\n\nדמות תלת מימד בהשראת תמונה או תיאור.  ",
       "waMsg": "",
       "featured": true,
-      "order": 9,
+      "order": 10,
       "image": "/images/projects/40cab47e-1c92-8029-a5cf-c82c4346b0f1.jpg"
     },
     {
@@ -87,9 +96,9 @@
       "description": "פסלון החירות, גימור משי",
       "waMsg": "",
       "featured": true,
-      "order": 10,
+      "order": 11,
       "image": "/images/projects/40cab47e-1c92-8049-a908-d359b30c63fa.jpg"
     }
   ],
-  "_generatedAt": "2026-11-02T17:18:46.525Z"
+  "_generatedAt": "2026-11-03T01:33:22.787Z"
 }
