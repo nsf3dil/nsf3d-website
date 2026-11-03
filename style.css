@@ -706,3 +706,7 @@ body.sale-on .sale-banner:hover{background:#b91c1c;}
 .sale-new{color:#dc2626;font-weight:900;font-size:1.3em;}
 body.dark .sale-new{color:#ff6b6b;}
 
+
+.figurine-special{padding:10px 20px 6px;font-size:14px;line-height:1.7;color:var(--text2);}
+.figurine-special strong{color:var(--text);}
+.figurine-special a{color:var(--blue-mid);font-weight:800;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
