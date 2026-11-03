@@ -707,6 +707,8 @@ body.sale-on .sale-banner:hover{background:#b91c1c;}
 body.dark .sale-new{color:#ff6b6b;}
 
 
-.figurine-special{padding:10px 20px 6px;font-size:14px;line-height:1.7;color:var(--text2);}
-.figurine-special strong{color:var(--text);}
-.figurine-special a{color:var(--blue-mid);font-weight:800;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
+.figurine-special{margin:10px 16px 6px;padding:14px 16px;border:1.5px dashed var(--border2,var(--border));border-radius:12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.figurine-special-title{font-size:15px;font-weight:800;color:var(--text);}
+.figurine-special-desc{font-size:13px;line-height:1.6;color:var(--text2);}
+.figurine-special-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:6px;background:linear-gradient(135deg,#15803d 0%,#16a34a 100%);color:#fff;padding:10px 20px;border-radius:10px;font-size:14px;font-weight:800;text-decoration:none;transition:opacity .2s,transform .2s;box-shadow:0 3px 14px rgba(21,128,61,.3);}
+.figurine-special-btn:hover{opacity:.9;transform:translateY(-1px);}
