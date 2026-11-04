@@ -1,13 +1,13 @@
 {
   "projects": [
     {
-      "name": "חריטה בלייזר על בקבוק נירוסטה תרמי",
+      "name": "חריטה בלייזר של פרצוף על גבי בקבוק תרמי",
       "category": "חריטה בלייזר",
-      "description": "חריטה של פנים על גבי בקבוק נירוסטה תרמי. כעת לא יהיה ספק לאף אחד למי שייך הבקבוק  🙂",
+      "description": "חריטה בלייזר של פרצוף ברמת פרטים עשירה ומדויקת. מושלם למתנות עבור חיילים, שי לחג לעובדים, לתלמידים ועוד.",
       "waMsg": "",
-      "featured": false,
+      "featured": true,
       "order": 1,
-      "image": "/images/projects/40eab47e-1c92-8083-8f4f-d4838357dbad.jpg"
+      "image": "/images/projects/40eab47e-1c92-80ff-9d5f-d8f309205450.jpg"
     },
     {
       "name": "פסלון בהתאמה אישית פרימיום למשרד",
@@ -19,6 +19,15 @@
       "image": "/images/projects/40cab47e-1c92-80af-afa9-e266e1e4178e.png"
     },
     {
+      "name": "חריטה בלייזר של תמונה על גבי כוס מתכת תרמית",
+      "category": "חריטה בלייזר",
+      "description": "חריטה בלייזר של תמונה של כלב על גבי כוס תרמית",
+      "waMsg": "",
+      "featured": true,
+      "order": 2,
+      "image": "/images/projects/40eab47e-1c92-8087-b869-d9c56e7112df.jpg"
+    },
+    {
       "name": "סבתא ונכד - רגע מתוק שיישאר לנצח",
       "category": "",
       "description": "דמות תלת מימד בהשראת תמונה אמיתית. מתנה אישית שלא שוכחים",
@@ -28,6 +37,15 @@
       "image": "/images/projects/40cab47e-1c92-80d5-8092-caade5bf7190.jpg"
     },
     {
+      "name": "חריטה בלייזר על בקבוק נירוסטה תרמי",
+      "category": "חריטה בלייזר",
+      "description": "חריטה של פנים על גבי בקבוק נירוסטה תרמי. כעת לא יהיה ספק לאף אחד למי שייך הבקבוק  🙂",
+      "waMsg": "",
+      "featured": true,
+      "order": 3,
+      "image": "/images/projects/40eab47e-1c92-8083-8f4f-d4838357dbad.jpg"
+    },
+    {
       "name": "דמות בהתאמה אישית - חיית מחמד",
       "category": "",
       "description": "דמות תלת מימד של חיית המחמד שלכם בהשראת תמונה אמיתית. כי הם חלק מהמשפחה",
@@ -35,6 +53,15 @@
       "featured": true,
       "order": 3,
       "image": "/images/projects/324ab47e-1c92-80be-986b-c186d9bf1d93.png"
+    },
+    {
+      "name": "חריטה בלייזר של לוגו על גבי כוס מתכת תרמית",
+      "category": "חריטה בלייזר",
+      "description": "חריטה בלייזר של כל לוגו על גבי כוס מתכת תרמית, מתנה מושלמת לעובדי חברות וסטארטפים.",
+      "waMsg": "",
+      "featured": true,
+      "order": 4,
+      "image": "/images/projects/40eab47e-1c92-80a3-b30a-f710fb3320df.jpg"
     },
     {
       "name": "פסלון בהתאמה אישית משפחתי",
@@ -93,10 +120,19 @@
     {
       "name": "פסלון בהתאמה אישית",
       "category": "",
+      "description": "פסלון בהתאמה אישית כולל מעמד פרימיום",
+      "waMsg": "",
+      "featured": false,
+      "order": 10,
+      "image": "/images/projects/40eab47e-1c92-8005-9bc9-f5a8f645ff6e.jpg"
+    },
+    {
+      "name": "פסלון בהתאמה אישית",
+      "category": "",
       "description": "ינאי, תל אביב - “מבסוטים ממש, גם השירות וגם המוצר”\n\nדמות תלת מימד בהשראת תמונה או תיאור.  ",
       "waMsg": "",
       "featured": true,
-      "order": 10,
+      "order": 11,
       "image": "/images/projects/40cab47e-1c92-8029-a5cf-c82c4346b0f1.jpg"
     },
     {
@@ -105,9 +141,45 @@
       "description": "פסלון החירות, גימור משי",
       "waMsg": "",
       "featured": true,
-      "order": 11,
+      "order": 12,
       "image": "/images/projects/40cab47e-1c92-8049-a908-d359b30c63fa.jpg"
+    },
+    {
+      "name": "פסלון מודפס בתלת מימד",
+      "category": "",
+      "description": "פסלון “רובוטריק”",
+      "waMsg": "",
+      "featured": false,
+      "order": 13,
+      "image": "/images/projects/40eab47e-1c92-8000-9b2c-c3d96d0222a7.jpg"
+    },
+    {
+      "name": "פסלון “בהפחדה אישית”",
+      "category": "",
+      "description": "פסלון מפחיד לחובבי הז’אנר",
+      "waMsg": "",
+      "featured": false,
+      "order": 14,
+      "image": "/images/projects/40eab47e-1c92-807b-859a-e30162e038fc.jpg"
+    },
+    {
+      "name": "פסלון מלחיץ לחדרי בריחה",
+      "category": "",
+      "description": "פסלון מלחיץ לחדרי בריחה ולמוזיאונים, או לסלון בבית לאמיצים בלבד. ",
+      "waMsg": "",
+      "featured": false,
+      "order": 15,
+      "image": "/images/projects/40eab47e-1c92-80f4-9c64-eb32fbe69830.jpg"
+    },
+    {
+      "name": "פסלון מודפס של חייל עם נשק",
+      "category": "",
+      "description": "פסלון לדוגמה של חייל עם נשק",
+      "waMsg": "",
+      "featured": false,
+      "order": 16,
+      "image": "/images/projects/40eab47e-1c92-8074-8bc1-e5fe82d68322.jpg"
     }
   ],
-  "_generatedAt": "2026-11-04T21:04:33.140Z"
+  "_generatedAt": "2026-11-04T21:45:39.868Z"
 }
