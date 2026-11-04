@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NSF 3D - Professional 3D Printing Studio | Beer Sheva & Southern Israel</title>
-<meta name="description" content="NSF 3D - custom 3D printing. PLA PETG TPU ASA PA and more engineering-grade materials. Custom figurines and statuettes, personal service and nationwide delivery.">
+<meta name="description" content="NSF 3D - custom 3D printing. PLA PETG TPU ASA PA and more engineering-grade materials. Custom figurines and statuettes, laser engraving, personal service and nationwide delivery.">
 <meta name="keywords" content="3D printing, 3D printing Beer Sheva, 3D printing Israel, custom 3D printing, PLA, PETG, TPU, ABS, ASA, PC, PA, PP, 3D signage, 3D figurines, NSF 3D">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nsf3d.co.il/en/">
@@ -28,7 +28,7 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "NSF 3D",
-  "description": "Custom 3D printing in Beer Sheva and Southern Israel - PLA, PETG, TPU, ABS, ASA, PC, PA, PP, signage, figurines, and design projects",
+  "description": "Custom 3D printing in Beer Sheva and Southern Israel - PLA, PETG, TPU, ABS, ASA, PC, PA, PP, signage, figurines, laser engraving, and design projects",
   "url": "https://nsf3d.co.il/en/",
   "telephone": "+972-55-9144386",
   "email": "nsf3d.il@gmail.com",
@@ -65,6 +65,7 @@
     { "@type":"Question","name":"Can I get a multi-colored print?","acceptedAnswer":{"@type":"Answer","text":"Yes, our printers support multi-color printing directly from the printer. Another option is hand-painting with acrylic paints."} },
     { "@type":"Question","name":"Which is better - multi-color printing or hand painting?","acceptedAnswer":{"@type":"Answer","text":"Both methods cost the same. Multi-color printing is more consistent but slower. Hand painting can be faster in some cases and allows for an artistic finish. We'll recommend the best option based on your project and timeline."} },
     { "@type":"Question","name":"Do you also print in resin?","acceptedAnswer":{"@type":"Answer","text":"Yes, in addition to FDM we also print in resin (MSLA) - especially suited for small figurines and fine details that require high precision."} },
+    { "@type":"Question","name":"Do you offer laser engraving?","acceptedAnswer":{"@type":"Answer","text":"Yes. In addition to 3D printing, we do laser engraving, marking and branding on wood, metal, plastic, acrylic (Plexiglas), stone and ceramics, cork and leather - names, dedications, logos and personal designs. Send us your idea or design and we'll get back to you with a quote."} },
     { "@type":"Question","name":"Do you ship nationwide?","acceptedAnswer":{"@type":"Answer","text":"Yes. Door-to-door courier delivery anywhere in the country takes up to 3 business days and costs ₪60, and orders over ₪999 ship free. Self pickup in Beer Sheva is always free."} },
     { "@type":"Question","name":"How can I pay?","acceptedAnswer":{"@type":"Answer","text":"Payment in advance - Bit, PayBox, bank transfer, or cash on self pickup."} },
     { "@type":"Question","name":"What should I do if I have a problem or question?","acceptedAnswer":{"@type":"Answer","text":"During business hours you can get an immediate response via WhatsApp or phone. Outside those hours, leave a message and we'll get back to you as soon as possible."} },
@@ -174,16 +175,16 @@
     <div class="hero-logo-wrap">
       <img src="../NSF-logo-large-1000px.png" alt="NSF 3D" width="124" height="124" fetchpriority="high" onerror="this.style.display='none'">
     </div>
-    <div class="hero-tag">✦ The Leading 3D Printing Studio in Beer Sheva & Southern Israel</div>
+    <div class="hero-tag">✦ The Leading 3D Printing, Laser Engraving & Marking Studio in Beer Sheva & Southern Israel</div>
     <h1 class="hero-title">
       <span class="line-main">Your idea, <span class="accent">turned into a product</span></span>
     </h1>
-    <a class="sale-banner" href="#pricing">🏷️ <strong>November Sale:</strong> figurines from ₪599 · until Nov 30</a>
+    <a class="sale-banner" href="#pricing">🏷️ <strong>November Sale:</strong> custom figurines & characters from ₪599 · until Nov 30</a>
     <div class="hero-pills">
       <div class="hero-pill">Planning, modeling & design services</div>
       <div class="hero-pill">High-quality 3D printing</div>
-      <div class="hero-pill">Wide range of materials & colors</div>
       <div class="hero-pill">Engineering precision meets an artistic touch</div>
+      <div class="hero-pill">Laser engraving & marking on a wide range of materials</div>
     </div>
     <div class="hero-btns">
       <a href="https://wa.me/972559144386?text=%D7%94%D7%99%D7%99%20NSF%203D!%20%F0%9F%91%8B%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%F0%9F%98%8A" target="_blank" rel="noopener noreferrer" class="btn-cta3" style="font-size:18px;padding:16px 36px;">
@@ -203,10 +204,13 @@
 <div class="sdiv"></div>
 <section id="projects" style="background:var(--bg)">
 <div class="sw">
-  <div class="sh">
-    <h2 class="stitle">Sample Projects</h2>
-    <p class="projects-subhead">Figurines, signage & more...</p>
-    <p class="ssub">Want something similar? Talk to us</p>
+  <div class="sh sh-with-tabs">
+    <div class="sh-text">
+      <h2 class="stitle">Sample Projects</h2>
+      <p class="projects-subhead">Figurines, laser engraving & more...</p>
+      <p class="ssub">Want something similar? Talk to us</p>
+    </div>
+    <div class="projects-tabs" id="projectsTabs" role="tablist" aria-label="Project categories" style="display:none"></div>
   </div>
   <div class="projects-show-more top-row" id="projectsShowMoreTop" style="display:none">
     <button class="projects-show-more-btn" id="projectsShowMoreBtnTop" onclick="toggleProjectsShowAll()">Show more projects ↓</button>
@@ -257,8 +261,9 @@
         </div>
       </div>
       <div class="figurine-per-note">* "From" prices are for one character per figurine.</div>
+      <div class="figurine-leadtime">⏱ Preparation time: <strong>up to 7 business days</strong></div>
       <div class="figurine-included">
-        ✨ <strong>Included with every figurine order at no extra charge:</strong> a custom-designed premium stand <strong>(worth ₪150)</strong> alongside a frame with a printed photo and a personal dedication inscription, giving the figurine stability and the look of a luxury gallery piece.
+        ✨ <strong>Included with every figurine order at no extra charge:</strong> a custom-designed premium stand <strong>(worth ₪150)</strong> alongside a frame with a printed photo and a personal laser-engraved dedication inscription, giving the figurine stability and the look of a luxury gallery piece.
       </div>
       <div class="figurine-extras">
         <div class="figurine-extras-title">➕ FIGURINE ADD-ONS</div>
@@ -270,6 +275,14 @@
 
     <div class="price-card">
       <div class="price-card-head">
+        <div class="price-card-icon">⚡</div>
+        <div class="price-card-title">Laser Engraving</div>
+      </div>
+      <div class="price-rows">
+        <div class="price-row"><span class="price-row-label">Engraving & marking on metal / wood / plastic / acrylic (Plexiglas) / stone & ceramics / cork / leather</span><span class="price-row-val">Custom quote</span></div>
+        <div class="price-row"><span class="price-row-label">Preparation time</span><span class="price-row-val">Up to 2 business days</span></div>
+      </div>
+      <div class="price-card-head price-card-head-sub">
         <div class="price-card-icon">🎯</div>
         <div class="price-card-title">General 3D Printing</div>
       </div>
@@ -283,7 +296,9 @@
         <span>💬</span>
         <span>Every project is priced individually based on its exact details. You'll always get a detailed quote before we begin. <strong>No surprises.</strong></span>
       </div>
+      <div class="card-cta"><a class="figurine-special-btn" href="https://wa.me/972559144386?text=Hi%20NSF%203D%21%20I%27d%20like%20a%20quote.%20Here%27s%20what%20I%20have%20in%20mind%3A%20" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Get a quote on WhatsApp</a></div>
     </div>
+
   </div>
 
   <div style="margin-bottom:10px;margin-top:8px">
@@ -494,7 +509,7 @@
       <h2 class="stitle">About</h2>
       <h3 class="section-subhead">Who we are</h3>
       <p class="ssub" style="margin-top:14px">
-        NSF 3D is a 3D printing studio in Beer Sheva, led by <strong>Samuel Naroditski Finkel</strong> - a mechanical engineer and Ben-Gurion University graduate with over 4 years of experience in the field, who also serves as the lab engineer for the Department of Environmental Sciences at Ben-Gurion University.
+        NSF 3D is a 3D printing, laser engraving and marking studio in Beer Sheva, led by <strong>Samuel Naroditski Finkel</strong> - a mechanical engineer and Ben-Gurion University graduate with over 4 years of experience in the field, who also serves as the lab engineer for the Department of Environmental Sciences at Ben-Gurion University.
       </p>
       <div class="founder-photo-row">
         <img src="../samuel-portrait.jpg" alt="Samuel Naroditski Finkel - Founder of NSF 3D" class="founder-photo"
@@ -515,8 +530,9 @@
       <div class="abn">NSF 3D</div>
       <div class="abl">General Info</div>
       <div class="ab-chips">
-        <div class="ab-chip"><div class="ab-chip-l">Area of expertise</div><div class="ab-chip-v">Planning, design, modeling & 3D printing</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">Area of expertise</div><div class="ab-chip-v">Planning, design, modeling, 3D printing & laser engraving</div></div>
         <div class="ab-chip"><div class="ab-chip-l">Printing technologies</div><div class="ab-chip-v">FDM - Fused Deposition Modeling<br>MSLA - Masked Stereolithography</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">Engraving technologies</div><div class="ab-chip-v">Fiber laser + diode laser · 20W</div></div>
         <div class="ab-chip"><div class="ab-chip-l">Experience</div><div class="ab-chip-v">Over 4 years in the field</div></div>
         <div class="ab-chip"><div class="ab-chip-l">Service languages</div><div class="ab-chip-v">עברית · English · Русский</div></div>
         <a class="ab-chip ab-chip-link" href="https://wa.me/972559144386?text=%D7%94%D7%99%D7%99%20NSF%203D!%20%F0%9F%91%8B%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%F0%9F%98%8A" target="_blank" rel="noopener noreferrer" aria-label="Availability - chat on WhatsApp">
@@ -540,60 +556,64 @@
     <h3 class="section-subhead">Everything worth asking</h3>
   </div>
   <div class="faq-list">
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">01</span>Why choose NSF3D?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">01</span>Why choose NSF3D?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">NSF3D is a 3D printing studio in Beer Sheva and Southern Israel, specializing in planning, design, and manufacturing custom products. Since launching in early 2026, the studio has provided solutions for private customers, businesses, and institutions - from personal figurines and gifts to functional parts and general-purpose solutions. The studio is run by a mechanical engineer and Ben-Gurion University graduate, with an emphasis on precision, durability, and fully listening to customers' design and engineering needs.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">02</span>Can anyone place an order?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">02</span>Can anyone place an order?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">We serve everyone - private and business customers, institutions, offices, and startups - from a small one-off order to large, repeat orders.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">03</span>How much does 3D printing cost?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">03</span>How much does 3D printing cost?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">It depends on size, material, and complexity. Prices generally start from ₪50 for small, simple prints when the customer sends us a file, and a custom figurine from ₪999. Either way, you'll get a detailed quote before we begin - no surprises.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">04</span>What's the maximum print size?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">04</span>What's the maximum print size?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">At this stage, our studio can print up to 32×32×32 cm in a single print. Need a larger project? We can print it in separate parts and assemble them - <a href="#contact" onclick="event.stopPropagation()" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">talk to us</a> and we'll find the right solution for you.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">05</span>How long does an order take?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">05</span>How long does an order take?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">Most orders are ready within 7 business days, depending on workload and project complexity.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">06</span>What materials do you print with?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">06</span>What materials do you print with?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">We print with a wide range of quality plastics - PLA, PETG, TPU, ABS, ASA, PC, PA (nylon), and PP - choosing the material that best suits each project: PLA for decorative items and figurines, TPU for flexibility, PA and PC for engineering and industrial durability, ASA for UV-resistant outdoor use, and more. <a href="#materials" onclick="event.stopPropagation();toggleMaterialsTable(true)" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">👉 See the full materials comparison table</a></div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">07</span>I don't have a ready file - can you still help?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">07</span>I don't have a ready file - can you still help?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">Absolutely! You can send a written description, an image, a sketch, or just a general idea. We'll design the model from scratch and tailor it exactly to your request.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">08</span>Can I get a multi-colored print?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">08</span>Can I get a multi-colored print?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">Yes! Our printers support multi-color printing directly from the printer. Another option is hand-painting with brushes and acrylic paints after printing.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">09</span>Which is better - multi-color printing or hand painting?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">09</span>Which is better - multi-color printing or hand painting?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">Both methods cost the same. Multi-color printing is more consistent but slower. Hand painting can be faster in some cases and allows for an artistic finish. We'll recommend the best option based on your project and timeline.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">10</span>Do you also print in resin?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">10</span>Do you also print in resin?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">Yes, in addition to standard FDM printing we also print in resin (MSLA) - a technology especially suited to small figurines and fine details that require a high level of precision. <a href="#contact" onclick="event.stopPropagation()" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">Send us a message</a> and we'll advise what's best for your project.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">11</span>Do you ship nationwide?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">11</span>Do you offer laser engraving?</span><span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. In addition to 3D printing, we do laser engraving, marking and branding on wood, metal, plastic, acrylic (Plexiglas), stone and ceramics, cork and leather - names, dedications, logos and personal designs. <a href="#contact" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">Send us</a> your idea or design and we'll get back to you with a quote.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">12</span>Do you ship nationwide?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">Yes. Door-to-door courier delivery anywhere in the country takes up to 3 business days and costs ₪60, and orders over ₪999 ship free. Self pickup in Beer Sheva - always free.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">12</span>How can I pay?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">13</span>How can I pay?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">Payment in advance - Bit, PayBox, bank transfer, or cash on self pickup.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">13</span>What should I do if I have a problem or question?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">14</span>What should I do if I have a problem or question?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">During business hours you can get an immediate response via WhatsApp or phone. Outside those hours, leave a message and we'll get back to you as soon as possible - <a href="#contact" onclick="event.stopPropagation()" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">contact us</a>.</div>
     </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q"><span class="faq-q-left"><span class="faq-num">14</span>I changed my mind - can I cancel my order and get a refund?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">15</span>I changed my mind - can I cancel my order and get a refund?</span><span class="faq-arrow">▼</span></div>
       <div class="faq-a">As a business that manufactures custom-made products, once a product has been printed and delivered - the transaction cannot be canceled and no refund can be issued, in accordance with Israel's Consumer Protection Law. Full details in the <a href="#" onclick="event.preventDefault();event.stopPropagation();openLegal('terms')" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">Terms of Service</a>.</div>
     </div>
   </div>

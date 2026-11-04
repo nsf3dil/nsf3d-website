@@ -50,6 +50,7 @@ const I18N = {
     featuredBadge: '⭐ מומלץ',
     orderSimilar: 'הזמינו כזה ←',
     orderSimilarAria: (name) => `הזמינו פרויקט דומה ל-${name} בוואטסאפ`,
+    categoryLabels: {'הדפסות תלת מימד':'הדפסות תלת מימד','חריטה בלייזר':'חריטה בלייזר'},
     showFewerProjects: 'הצג פחות ↑', showMoreProjects: 'הצג עוד פרויקטים ↓',
     projectsComingTitle: 'פרויקטים בדרך - בקרוב!',
     projectsComingDesc: (link) => `בינתיים ${link} ונראה מה נוכל לעשות יחד`,
@@ -96,6 +97,7 @@ const I18N = {
     featuredBadge: '⭐ Featured',
     orderSimilar: 'Order something like this ←',
     orderSimilarAria: (name) => `Order a project similar to ${name} on WhatsApp`,
+    categoryLabels: {'הדפסות תלת מימד':'3D Printing','חריטה בלייזר':'Laser Engraving'},
     showFewerProjects: 'Show less ↑', showMoreProjects: 'Show more projects ↓',
     projectsComingTitle: 'Projects coming soon!',
     projectsComingDesc: (link) => `In the meantime, ${link} and let's see what we can create together`,
@@ -142,6 +144,7 @@ const I18N = {
     featuredBadge: '⭐ Рекомендуем',
     orderSimilar: 'Заказать похожее ←',
     orderSimilarAria: (name) => `Заказать проект, похожий на ${name}, в WhatsApp`,
+    categoryLabels: {'הדפסות תלת מימד':'3D-печать','חריטה בלייזר':'Лазерная гравировка'},
     showFewerProjects: 'Свернуть ↑', showMoreProjects: 'Показать больше проектов ↓',
     projectsComingTitle: 'Проекты уже скоро!',
     projectsComingDesc: (link) => `А пока ${link} - и посмотрим, что мы можем сделать вместе`,
@@ -346,7 +349,13 @@ const SOCIALS = [
 //  STATE
 // ══════════════════════════════════════════════
 let allColors=[], showingAll=false, activeFilter='popular', currentModalColor=null;
-let allProjects=[], projectsShowingAll=false;
+let allProjects=[], projectsShowingAll=false, projectsActiveCat=null;
+const PROJECTS_DEFAULT_CAT = 'הדפסות תלת מימד';   // פרויקטים בלי קטגוריה ב-Notion נחשבים כאן
+const PROJECTS_CAT_ORDER   = ['הדפסות תלת מימד','חריטה בלייזר'];
+const PROJECTS_CAT_ICON    = {'חריטה בלייזר':'⚡'};   // בלי אייקון להדפסות תלת מימד
+function projectCat(p){ return p.category || PROJECTS_DEFAULT_CAT; }
+function catLabel(key){ return (T.categoryLabels && T.categoryLabels[key]) || key; }
+function visibleProjects(){ return projectsActiveCat ? allProjects.filter(p => projectCat(p) === projectsActiveCat) : allProjects; }
 
 // ══════════════════════════════════════════════
 //  🛡️ SECURITY HELPERS
@@ -688,12 +697,46 @@ async function loadProjects(){
     const res   = await fetch(PROJECTS_DATA_URL);
     const data  = await res.json();
     allProjects = data.projects || [];
-    renderProjects(allProjects.slice(0, PROJECTS_DEFAULT_SHOW));
-    updateProjectsShowMoreButtons(allProjects.length > PROJECTS_DEFAULT_SHOW);
+    buildProjectsTabs();
+    const vis = visibleProjects();
+    renderProjects(vis.slice(0, PROJECTS_DEFAULT_SHOW));
+    updateProjectsShowMoreButtons(vis.length > PROJECTS_DEFAULT_SHOW);
   }catch(e){
     document.getElementById('projectsGrid').innerHTML =
       `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text2)">${T.projectsLoadError} <a href="#contact" style="color:var(--blue-mid);font-weight:700">${T.contactUsDirect}</a></div>`;
   }
+}
+
+// טאבים לפי קטגוריה (שדה "קטגוריה" ב-Notion). אם יש רק קטגוריה אחת - לא מוצגים.
+function buildProjectsTabs(){
+  const wrap = document.getElementById('projectsTabs');
+  const section = document.getElementById('projects');
+  if(!wrap) return;
+  const found = [...new Set(allProjects.map(projectCat))];
+  const cats = found.sort((a,b) => {
+    const ia = PROJECTS_CAT_ORDER.indexOf(a), ib = PROJECTS_CAT_ORDER.indexOf(b);
+    return (ia<0?99:ia) - (ib<0?99:ib);
+  });
+  if(cats.length < 2){
+    wrap.style.display = 'none'; wrap.innerHTML = '';
+    if(section) section.classList.remove('projects-has-tabs');
+    projectsActiveCat = null;
+    return;
+  }
+  if(!projectsActiveCat || !cats.includes(projectsActiveCat)) projectsActiveCat = cats[0];
+  wrap.style.display = 'flex';
+  if(section) section.classList.add('projects-has-tabs');
+  wrap.innerHTML = cats.map(c => `<button type="button" role="tab" class="projects-tab" aria-selected="${c===projectsActiveCat}" data-cat="${escapeAttr(c)}">${PROJECTS_CAT_ICON[c] ? `<span class="projects-tab-ico" aria-hidden="true">${PROJECTS_CAT_ICON[c]}</span>` : ''}<span>${escapeHTML(catLabel(c))}</span></button>`).join('');
+  wrap.querySelectorAll('.projects-tab').forEach(btn => btn.addEventListener('click', () => setProjectsCategory(btn.dataset.cat)));
+}
+
+function setProjectsCategory(cat){
+  projectsActiveCat = cat;
+  projectsShowingAll = false;
+  document.querySelectorAll('#projectsTabs .projects-tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.cat === cat)));
+  const vis = visibleProjects();
+  renderProjects(vis.slice(0, PROJECTS_DEFAULT_SHOW));
+  updateProjectsShowMoreButtons(vis.length > PROJECTS_DEFAULT_SHOW);
 }
 
 function renderProjects(list){
@@ -710,7 +753,7 @@ function renderProjects(list){
   grid.innerHTML = list.map(p => {
     const safeName = escapeHTML(p.name);
     const safeDesc  = p.description ? escapeHTML(p.description) : '';
-    const safeCat   = p.category ? escapeHTML(p.category) : '';
+    const safeCat   = p.category ? escapeHTML(catLabel(p.category)) : '';
     const safeImg   = escapeAttr(p.image || '');
 
     const defaultMsg = encodeURIComponent(T.waProjectMsg(p.name));
@@ -767,13 +810,14 @@ function updateProjectsShowMoreButtons(show){
 
 function toggleProjectsShowAll(){
   projectsShowingAll = !projectsShowingAll;
+  const vis = visibleProjects();
   if(projectsShowingAll){
-    renderProjects(allProjects);
+    renderProjects(vis);
   } else {
-    renderProjects(allProjects.slice(0, PROJECTS_DEFAULT_SHOW));
+    renderProjects(vis.slice(0, PROJECTS_DEFAULT_SHOW));
     document.getElementById('projects').scrollIntoView({behavior:'smooth'});
   }
-  updateProjectsShowMoreButtons(allProjects.length > PROJECTS_DEFAULT_SHOW);
+  updateProjectsShowMoreButtons(vis.length > PROJECTS_DEFAULT_SHOW);
 }
 
 // ══════════════════════════════════════════════
@@ -1442,3 +1486,4 @@ function openLegal(type){
 }
 function closeLegal(e){ if(e.target===document.getElementById('legalOverlay')) closeLegalDirect(); }
 function closeLegalDirect(){ document.getElementById('legalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+
