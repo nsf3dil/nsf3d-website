@@ -420,13 +420,9 @@ function declineCookies(){
 }
 function openCookieSettings(){ document.getElementById('cookieBanner').style.display='block'; }
 function closeCookieBanner(){ document.getElementById('cookieBanner').style.display='none'; }
-// ── Meta Pixel: נטען רק אחרי הסכמה באנר העוגיות ──
-const FB_PIXEL_ID = '1167668755845301';
+// ── Meta Pixel: הקוד נמצא ב-<head>; כאן רק מעבירים אותו למצב "הסכמה ניתנה" אחרי אישור באנר העוגיות ──
 function loadFbPixel(){
-  if(window.fbq) return;
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', FB_PIXEL_ID);
-  fbq('track', 'PageView');
+  try{ if(window.fbq) fbq('consent','grant'); }catch(e){}
 }
 // אירוע Lead: לחיצה על וואטסאפ / שליחת טופס (רק אם יש הסכמה והפיקסל נטען)
 function trackLead(src){
