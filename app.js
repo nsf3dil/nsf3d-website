@@ -405,9 +405,37 @@ function applySiteConfig(){
 // ══════════════════════════════════════════════
 function getCookieConsent(){ return localStorage.getItem('nsf-cookie-consent'); }
 function acceptCookies(){ localStorage.setItem('nsf-cookie-consent','all'); closeCookieBanner(); loadFbPixel(); }
-function declineCookies(){ localStorage.setItem('nsf-cookie-consent','none'); closeCookieBanner(); }
+function declineCookies(){
+  const was = getCookieConsent();
+  localStorage.setItem('nsf-cookie-consent','none');
+  closeCookieBanner();
+  // ביטול הסכמה אחרי שהפיקסל כבר נטען: מנקים עוגיות Meta וטוענים מחדש בלי הפיקסל
+  if(was==='all'){
+    ['_fbp','_fbc'].forEach(n=>{
+      document.cookie = n+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+      document.cookie = n+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.'+location.hostname.replace(/^www\./,'');
+    });
+    location.reload();
+  }
+}
+function openCookieSettings(){ document.getElementById('cookieBanner').style.display='block'; }
 function closeCookieBanner(){ document.getElementById('cookieBanner').style.display='none'; }
-function loadFbPixel(){ console.log('[NSF3D] Facebook Pixel loaded after consent'); }
+// ── Meta Pixel: נטען רק אחרי הסכמה באנר העוגיות ──
+const FB_PIXEL_ID = '1167668755845301';
+function loadFbPixel(){
+  if(window.fbq) return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', FB_PIXEL_ID);
+  fbq('track', 'PageView');
+}
+// אירוע Lead: לחיצה על וואטסאפ / שליחת טופס (רק אם יש הסכמה והפיקסל נטען)
+function trackLead(src){
+  try{ if(window.fbq && getCookieConsent()==='all') fbq('track','Lead',{content_name:src}); }catch(e){}
+}
+document.addEventListener('click', function(e){
+  const a = e.target.closest && e.target.closest('a[href*="wa.me/"]');
+  if(a) trackLead('whatsapp');
+});
 
 // ══════════════════════════════════════════════
 //  ANNOUNCEMENT POPUP
@@ -1055,6 +1083,7 @@ function orderFromModal(){
   if(!currentModalColor) return;
   const c = currentModalColor;
   const msg = encodeURIComponent(T.waColorMsg(c.name, c.sku));
+  trackLead('whatsapp');
   window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank','noopener');
 }
 function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
@@ -1148,6 +1177,7 @@ async function submitForm(e){
     }
 
     success.style.display='block';
+    trackLead('contact_form');
     document.getElementById('contactForm').reset();
     if(typeof turnstile !== 'undefined') turnstile.reset();
     localStorage.setItem('nsf-last-submit', String(Date.now()));
@@ -1285,14 +1315,14 @@ const LEGAL_CONTENT_ALL = {
         <h3>כיצד אנו משתמשים במידע?</h3>
         <ul><li>מענה לפניות, הצעות מחיר ועיבוד הזמנות</li><li>שיפור השירות והאתר</li></ul>
         <h3>שירותי צד שלישי</h3>
-        <p>לצורך משלוח הפנייה שלכם אלינו, אנו משתמשים בשירות הדיוור <strong>EmailJS</strong> להעברת תוכן הפנייה לתיבת המייל שלנו. ככל שתאשרו זאת באנר העוגיות, ייתכן שימוש בכלי שיווק/אנליטיקה (כגון Meta Pixel או Google Analytics) למדידת ביצועי האתר. <strong>אנו לא מוכרים, משתפים או מעבירים את פרטיכם לכל גורם אחר, ולכל מטרה אחרת.</strong></p>
+        <p>לצורך משלוח הפנייה שלכם אלינו, אנו משתמשים בשירות הדיוור <strong>EmailJS</strong> להעברת תוכן הפנייה לתיבת המייל שלנו. ככל שתאשרו זאת באנר העוגיות, נשתמש ב<strong>פיקסל של Meta</strong> (פייסבוק ואינסטגרם) למדידת ביצועי הפרסום שלנו ולהצגת מודעות רלוונטיות. הפיקסל מעביר ל-Meta מידע על הגלישה באתר (כגון דפים שנצפו ולחיצה על כפתורי יצירת קשר), באמצעות עוגיות ומזהים טכניים. איננו שולחים ל-Meta את תוכן פנייתכם. המידע שנאסף על ידי Meta כפוף ל<a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">מדיניות הפרטיות של Meta</a>. <strong>אנו לא מוכרים, משתפים או מעבירים את פרטיכם לכל גורם אחר, ולכל מטרה אחרת.</strong></p>
         <h3>שמירת מידע</h3>
         <p>אנו שומרים את פרטי הפנייה למשך הזמן הנדרש למתן השירות ולתיעוד עסקי סביר בלבד.</p>
         <h3>עוגיות (Cookies)</h3>
-        <p>האתר משתמש בעוגיות הכרחיות לתפעולו, ובעוגיות נוספות (שיווק/אנליטיקה) רק בכפוף להסכמתכם המפורשת באנר העוגיות. ניתן לשנות את ההסכמה בכל עת.</p>
+        <p>האתר משתמש בעוגיות הכרחיות לתפעולו, ובעוגיות שיווק של Meta (כגון _fbp) רק בכפוף להסכמתכם המפורשת באנר העוגיות. ניתן לשנות או לבטל את ההסכמה בכל עת באמצעות הקישור "הגדרות עוגיות" בתחתית האתר.</p>
         <h3>זכויותיכם</h3>
         <p>בהתאם לחוק הגנת הפרטיות (ישראל), יש לכם זכות לעיין, לתקן או למחוק את המידע האישי שנמסר לנו. לפניות: <strong>nsf3d.il@gmail.com</strong></p>
-        <p style="font-size:13px;color:var(--text2);margin-top:10px">עדכון אחרון: יוני 2026</p>
+        <p style="font-size:13px;color:var(--text2);margin-top:10px">עדכון אחרון: נובמבר 2026</p>
       `
     },
     terms:{
@@ -1361,14 +1391,14 @@ const LEGAL_CONTENT_ALL = {
         <h3>How do we use this information?</h3>
         <ul><li>Responding to inquiries, quotes, and processing orders</li><li>Improving our service and website</li></ul>
         <h3>Third-party services</h3>
-        <p>To deliver your message to us, we use the <strong>EmailJS</strong> mailing service to forward your inquiry to our inbox. If you consent via the cookie banner, we may also use marketing/analytics tools (such as Meta Pixel or Google Analytics) to measure site performance. <strong>We do not sell, share, or transfer your details to any other party, for any other purpose.</strong></p>
+        <p>To deliver your message to us, we use the <strong>EmailJS</strong> mailing service to forward your inquiry to our inbox. If you consent via the cookie banner, we will use the <strong>Meta Pixel</strong> (Facebook and Instagram) to measure our advertising performance and show relevant ads. The pixel sends Meta information about your browsing on the site (such as pages viewed and clicks on contact buttons) using cookies and technical identifiers. We do not send the content of your inquiry to Meta. Data collected by Meta is subject to <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta's Privacy Policy</a>. <strong>We do not sell, share, or transfer your details to any other party, for any other purpose.</strong></p>
         <h3>Data retention</h3>
         <p>We retain your inquiry details only for as long as needed to provide the service and for reasonable business record-keeping.</p>
         <h3>Cookies</h3>
-        <p>The site uses cookies that are essential for its operation, and additional cookies (marketing/analytics) only with your explicit consent via the cookie banner. You may change your consent at any time.</p>
+        <p>The site uses cookies that are essential for its operation, and Meta marketing cookies (such as _fbp) only with your explicit consent via the cookie banner. You may change or withdraw your consent at any time using the "Cookie Settings" link at the bottom of the site.</p>
         <h3>Your rights</h3>
         <p>Under Israel's Privacy Protection Law, you have the right to review, correct, or delete the personal information you provided to us. For inquiries: <strong>nsf3d.il@gmail.com</strong></p>
-        <p style="font-size:13px;color:var(--text2);margin-top:10px">Last updated: June 2026</p>
+        <p style="font-size:13px;color:var(--text2);margin-top:10px">Last updated: November 2026</p>
       `
     },
     terms:{
@@ -1437,14 +1467,14 @@ const LEGAL_CONTENT_ALL = {
         <h3>Как мы используем эту информацию?</h3>
         <ul><li>Ответы на обращения, расчёт стоимости и обработка заказов</li><li>Улучшение сервиса и сайта</li></ul>
         <h3>Сторонние сервисы</h3>
-        <p>Для доставки вашего сообщения нам мы используем почтовый сервис <strong>EmailJS</strong> для пересылки содержания обращения на наш почтовый ящик. При вашем согласии через баннер cookie мы также можем использовать инструменты маркетинга/аналитики (например, Meta Pixel или Google Analytics) для оценки эффективности сайта. <strong>Мы не продаём, не передаём и не раскрываем ваши данные третьим лицам ни для каких иных целей.</strong></p>
+        <p>Для доставки вашего сообщения нам мы используем почтовый сервис <strong>EmailJS</strong> для пересылки содержания обращения на наш почтовый ящик. При вашем согласии через баннер cookie мы используем <strong>пиксель Meta</strong> (Facebook и Instagram) для оценки эффективности нашей рекламы и показа релевантных объявлений. Пиксель передаёт Meta информацию о вашем посещении сайта (например, просмотренные страницы и нажатия на кнопки связи) с помощью cookie и технических идентификаторов. Мы не передаём Meta содержание вашего обращения. Данные, собранные Meta, регулируются <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Политикой конфиденциальности Meta</a>. <strong>Мы не продаём, не передаём и не раскрываем ваши данные третьим лицам ни для каких иных целей.</strong></p>
         <h3>Хранение данных</h3>
         <p>Мы храним данные вашего обращения только в течение времени, необходимого для оказания услуги и разумного делового учёта.</p>
         <h3>Файлы cookie</h3>
-        <p>Сайт использует файлы cookie, необходимые для его работы, а также дополнительные cookie (маркетинг/аналитика) только с вашего явного согласия через баннер cookie. Вы можете изменить своё согласие в любое время.</p>
+        <p>Сайт использует файлы cookie, необходимые для его работы, а также маркетинговые cookie Meta (например, _fbp) только с вашего явного согласия через баннер cookie. Вы можете изменить или отозвать согласие в любое время по ссылке «Настройки cookie» внизу сайта.</p>
         <h3>Ваши права</h3>
         <p>В соответствии с израильским Законом о защите частной жизни, вы имеете право просматривать, исправлять или удалять предоставленные нам персональные данные. По вопросам: <strong>nsf3d.il@gmail.com</strong></p>
-        <p style="font-size:13px;color:var(--text2);margin-top:10px">Последнее обновление: июнь 2026</p>
+        <p style="font-size:13px;color:var(--text2);margin-top:10px">Последнее обновление: ноябрь 2026</p>
       `
     },
     terms:{
