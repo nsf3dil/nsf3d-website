@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NSF 3D - Профессиональная 3D-печать | Беэр-Шева и юг Израиля</title>
-<meta name="description" content="NSF 3D - 3D-печать на заказ. PLA PETG TPU ASA PA и другие инженерные материалы. Фигурки и статуэтки на заказ, лазерная гравировка, персональный сервис и доставка по всей стране.">
+<title>NSF 3D - 3D-печать, лазерная маркировка и гравировка | Беэр-Шева и юг Израиля</title>
+<meta name="description" content="NSF 3D - 3D-печать на заказ. Инженерные материалы TPU, ASA, нейлон, смола и другие. Лазерная маркировка и гравировка, фигурки и статуэтки на заказ, оригинальные подарки, персональный сервис и доставка по всей стране.">
 <meta name="keywords" content="3D печать, 3D печать Беэр-Шева, 3D печать Израиль, печать на заказ, PLA, PETG, TPU, ABS, ASA, PC, PA, PP, 3D вывески, 3D фигурки, NSF 3D">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nsf3d.co.il/ru/">
@@ -65,7 +65,7 @@
     { "@type":"Question","name":"Можно ли получить цветную печать?","acceptedAnswer":{"@type":"Answer","text":"Да, наши принтеры позволяют многоцветную печать прямо на принтере. Другой вариант - ручная покраска акриловыми красками."} },
     { "@type":"Question","name":"Что лучше - многоцветная печать или ручная покраска?","acceptedAnswer":{"@type":"Answer","text":"Оба метода стоят одинаково. Многоцветная печать более стабильна по результату, но медленнее. Ручная покраска в некоторых случаях быстрее и позволяет добиться художественной отделки. Мы порекомендуем оптимальный вариант исходя из вашего проекта и сроков."} },
     { "@type":"Question","name":"Печатаете ли вы смолой (Resin)?","acceptedAnswer":{"@type":"Answer","text":"Да, помимо FDM мы также печатаем смолой (MSLA) - эта технология особенно подходит для небольших фигурок и мелких деталей, требующих высокой точности."} },
-    { "@type":"Question","name":"Делаете ли вы лазерную гравировку?","acceptedAnswer":{"@type":"Answer","text":"Да. Помимо 3D-печати мы выполняем лазерную гравировку, маркировку и брендирование на дереве, металле, пластике, акриле (оргстекле), камне и керамике, пробке и коже - имена, посвящения, логотипы и персональные дизайны. Пришлите нам идею или макет, и мы вернёмся с расчётом."} },
+    { "@type":"Question","name":"Делаете ли вы лазерную гравировку?","acceptedAnswer":{"@type":"Answer","text":"Да. Помимо 3D-печати мы выполняем лазерную гравировку, маркировку и брендирование на дереве, металлах и украшениях, пластике, акриле (оргстекле), камне и керамике, пробке и коже - имена, посвящения, логотипы и персональные дизайны. Пришлите нам идею или макет, и мы вернёмся с расчётом."} },
     { "@type":"Question","name":"Есть ли доставка по всей стране?","acceptedAnswer":{"@type":"Answer","text":"Да. Курьерская доставка до двери в любую точку страны занимает до 3 рабочих дней и стоит 60 ₪, а при заказе от 999 ₪ - доставка бесплатная. Самовывоз в Беэр-Шеве - всегда бесплатно."} },
     { "@type":"Question","name":"Как оплатить заказ?","acceptedAnswer":{"@type":"Answer","text":"Предоплата - Bit, PayBox, банковский перевод или наличные при самовывозе."} },
     { "@type":"Question","name":"Что делать, если возникла проблема или вопрос?","acceptedAnswer":{"@type":"Answer","text":"В рабочие часы можно получить мгновенный ответ в WhatsApp или по телефону. Вне этих часов оставьте сообщение - мы свяжемся с вами как можно скорее."} },
@@ -250,6 +250,12 @@ fbq('track', 'PageView');
     <h2 class="stitle">Цены</h2>
     <h3 class="section-subhead">Честные цены, полная прозрачность</h3>
     <p class="ssub">Прозрачное ценообразование, без сюрпризов - согласованная цена до начала работы. Всегда.</p>
+    <div class="currency-switch" id="currencySwitch" role="group" aria-label="Валюта">
+      <button type="button" class="currency-btn active" data-cur="ILS" aria-pressed="true">₪ ILS</button>
+      <button type="button" class="currency-btn" data-cur="USD" aria-pressed="false">$ USD</button>
+      <button type="button" class="currency-btn" data-cur="EUR" aria-pressed="false">€ EUR</button>
+    </div>
+    <div class="currency-note" id="currencyNote">Цены приблизительные, по текущему курсу, с округлением вверх. Оплата взимается в израильских шекелях (₪).</div>
   </div>
 
   <div class="pricing-grid">
@@ -269,22 +275,22 @@ fbq('track', 'PageView');
         <div class="price-row">
           <span class="price-row-label">Высота 20 см</span>
           <span class="price-popular-badge">⭐ Самый популярный</span>
-          <span class="price-row-val"><span class="price-regular">от 999 ₪</span><span class="price-sale"><s class="sale-old">999 ₪</s> <span class="sale-new">от 599 ₪</span></span></span>
+          <span class="price-row-val"><span class="price-regular">от <span class="cur" data-ils="999">999 ₪</span></span><span class="price-sale"><s class="sale-old"><span class="cur" data-ils="999">999 ₪</span></s> <span class="sale-new">от <span class="cur" data-ils="599">599 ₪</span></span></span></span>
         </div>
         <div class="price-row">
           <span class="price-row-label">Высота около 30 см - крупная и эффектная</span>
-          <span class="price-row-val"><span class="price-regular">от 1 299 ₪</span><span class="price-sale"><s class="sale-old">1 299 ₪</s> <span class="sale-new">от 799 ₪</span></span></span>
+          <span class="price-row-val"><span class="price-regular">от <span class="cur" data-ils="1299">1 299 ₪</span></span><span class="price-sale"><s class="sale-old"><span class="cur" data-ils="1299">1 299 ₪</span></s> <span class="sale-new">от <span class="cur" data-ils="799">799 ₪</span></span></span></span>
         </div>
       </div>
       <div class="figurine-per-note">* Цена «от» указана за одного персонажа в фигурке.</div>
       <div class="figurine-leadtime">⏱ Срок изготовления: <strong>до 7 рабочих дней</strong></div>
       <div class="figurine-included">
-        ✨ <strong>В каждый заказ фигурки включено без доплаты:</strong> премиальная подставка индивидуального дизайна <strong>(стоимостью 150 ₪)</strong> и рамка с напечатанной фотографией и персональной памятной надписью, выгравированной лазером - они придают фигурке устойчивость и вид элитного галерейного предмета.
+        ✨ <strong>В каждый заказ фигурки включено без доплаты:</strong> премиальная подставка индивидуального дизайна <strong>(стоимостью <span class="cur" data-ils="150">150 ₪</span>)</strong> и рамка с напечатанной фотографией и персональной памятной надписью, выгравированной лазером - они придают фигурке устойчивость и вид элитного галерейного предмета.
       </div>
       <div class="figurine-extras">
         <div class="figurine-extras-title">➕ ДОПОЛНЕНИЯ К ФИГУРКЕ</div>
-        <div class="price-row"><span class="price-row-label">Фигурка 20 см - ещё один персонаж или питомец</span><span class="price-row-val add-on"><span class="price-regular">+399 ₪</span><span class="price-sale"><s class="sale-old">399 ₪</s> <span class="sale-new">+199 ₪</span></span></span></div>
-        <div class="price-row"><span class="price-row-label">Фигурка 30 см - ещё один персонаж или питомец</span><span class="price-row-val add-on"><span class="price-regular">+449 ₪</span><span class="price-sale"><s class="sale-old">449 ₪</s> <span class="sale-new">+249 ₪</span></span></span></div>
+        <div class="price-row"><span class="price-row-label">Фигурка 20 см - ещё один персонаж или питомец</span><span class="price-row-val add-on"><span class="price-regular">+<span class="cur" data-ils="399">399 ₪</span></span><span class="price-sale"><s class="sale-old"><span class="cur" data-ils="399">399 ₪</span></s> <span class="sale-new">+<span class="cur" data-ils="199">199 ₪</span></span></span></span></div>
+        <div class="price-row"><span class="price-row-label">Фигурка 30 см - ещё один персонаж или питомец</span><span class="price-row-val add-on"><span class="price-regular">+<span class="cur" data-ils="449">449 ₪</span></span><span class="price-sale"><s class="sale-old"><span class="cur" data-ils="449">449 ₪</span></s> <span class="sale-new">+<span class="cur" data-ils="249">249 ₪</span></span></span></span></div>
         <div class="figurine-special"><div class="figurine-special-title">Особые дополнения - рассчитываются отдельно</div><div class="figurine-special-desc">(размер более 30 см, стул, музыкальный инструмент, транспорт, логотип, рисунки и др.)</div><a class="figurine-special-btn" href="https://wa.me/972559144386?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20NSF%203D%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%BD%D0%B0%20%D0%B8%D0%BD%D0%B4%D0%B8%D0%B2%D0%B8%D0%B4%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%83%D1%8E%20%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%BA%D1%83.%20%D0%92%D0%BE%D1%82%20%D1%87%D1%82%D0%BE%20%D1%8F%20%D0%B7%D0%B0%D0%B4%D1%83%D0%BC%D0%B0%D0%BB%28%D0%B0%29%3A%20" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Получите расчёт в WhatsApp</a></div>
       </div>
     </div>
@@ -295,7 +301,7 @@ fbq('track', 'PageView');
         <div class="price-card-title">Лазерная гравировка</div>
       </div>
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">Гравировка и маркировка на металле / дереве / пластике / акриле (оргстекле) / камне и керамике / пробке / коже</span><span class="price-row-val">По расчёту</span></div>
+        <div class="price-row"><span class="price-row-label">Гравировка и маркировка на металлах и украшениях / дереве / пластике / акриле (оргстекле) / камне и керамике / пробке / коже</span><span class="price-row-val">По расчёту</span></div>
         <div class="price-row"><span class="price-row-label">Срок подготовки</span><span class="price-row-val">До 2 рабочих дней</span></div>
       </div>
       <div class="price-card-head price-card-head-sub">
@@ -303,10 +309,10 @@ fbq('track', 'PageView');
         <div class="price-card-title">Общая 3D-печать</div>
       </div>
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">Небольшие / простые проекты</span><span class="price-row-val">~50–100 ₪</span></div>
-        <div class="price-row"><span class="price-row-label">Средние проекты</span><span class="price-row-val">~100–400 ₪</span></div>
+        <div class="price-row"><span class="price-row-label">Небольшие / простые проекты</span><span class="price-row-val">~<span class="cur" data-ils="50-100">50–100 ₪</span></span></div>
+        <div class="price-row"><span class="price-row-label">Средние проекты</span><span class="price-row-val">~<span class="cur" data-ils="100-400">100–400 ₪</span></span></div>
         <div class="price-row"><span class="price-row-label">Крупные / сложные проекты</span><span class="price-row-val">По расчёту</span></div>
-        <div class="price-row"><span class="price-row-label">Дизайн с нуля (+печать)</span><span class="price-row-val" style="white-space:normal;text-align:end;">По расчёту · 180 ₪ за час моделирования</span></div>
+        <div class="price-row"><span class="price-row-label">Дизайн с нуля (+печать)</span><span class="price-row-val" style="white-space:normal;text-align:end;">По расчёту · <span class="cur" data-ils="180">180 ₪</span> за час моделирования</span></div>
       </div>
       <div class="card-pricing-note">
         <span>💬</span>
@@ -322,10 +328,10 @@ fbq('track', 'PageView');
   </div>
   <div class="shipping-row">
     <span class="shipping-label">🚚 Доставка курьером до двери (по всей стране), до 3 рабочих дней</span>
-    <span style="font-weight:800;color:var(--text);">60 ₪</span>
+    <span style="font-weight:800;color:var(--text);"><span class="cur" data-ils="60">60 ₪</span></span>
   </div>
   <div class="shipping-row" style="background:var(--bg3);border-color:var(--border2);">
-    <span class="shipping-label">🎁 Бесплатная доставка при заказе от 999 ₪</span>
+    <span class="shipping-label">🎁 Бесплатная доставка при заказе от <span class="cur" data-ils="999">999 ₪</span></span>
     <span class="shipping-free">Бесплатно ✓</span>
   </div>
   <div class="shipping-row" style="background:var(--bg3);border-color:var(--border2);">
@@ -614,7 +620,7 @@ fbq('track', 'PageView');
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">11</span>Делаете ли вы лазерную гравировку?</span><span class="faq-arrow">▼</span></div>
-      <div class="faq-a">Да. Помимо 3D-печати мы выполняем лазерную гравировку, маркировку и брендирование на дереве, металле, пластике, акриле (оргстекле), камне и керамике, пробке и коже - имена, посвящения, логотипы и персональные дизайны. <a href="#contact" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">Пришлите нам</a> идею или макет, и мы вернёмся с расчётом.</div>
+      <div class="faq-a">Да. Помимо 3D-печати мы выполняем лазерную гравировку, маркировку и брендирование на дереве, металлах и украшениях, пластике, акриле (оргстекле), камне и керамике, пробке и коже - имена, посвящения, логотипы и персональные дизайны. <a href="#contact" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">Пришлите нам</a> идею или макет, и мы вернёмся с расчётом.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">12</span>Есть ли доставка по всей стране?</span><span class="faq-arrow">▼</span></div>

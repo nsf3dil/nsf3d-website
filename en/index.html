@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NSF 3D - Professional 3D Printing Studio | Beer Sheva & Southern Israel</title>
-<meta name="description" content="NSF 3D - custom 3D printing. PLA PETG TPU ASA PA and more engineering-grade materials. Custom figurines and statuettes, laser engraving, personal service and nationwide delivery.">
+<title>NSF 3D - 3D Printing, Laser Marking & Engraving | Beer Sheva & Southern Israel</title>
+<meta name="description" content="NSF 3D - custom 3D printing. Engineering materials TPU, ASA, nylon, resin and more. Laser marking and engraving, custom figurines and statuettes, original gifts, personal service and nationwide delivery.">
 <meta name="keywords" content="3D printing, 3D printing Beer Sheva, 3D printing Israel, custom 3D printing, PLA, PETG, TPU, ABS, ASA, PC, PA, PP, 3D signage, 3D figurines, NSF 3D">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nsf3d.co.il/en/">
@@ -65,7 +65,7 @@
     { "@type":"Question","name":"Can I get a multi-colored print?","acceptedAnswer":{"@type":"Answer","text":"Yes, our printers support multi-color printing directly from the printer. Another option is hand-painting with acrylic paints."} },
     { "@type":"Question","name":"Which is better - multi-color printing or hand painting?","acceptedAnswer":{"@type":"Answer","text":"Both methods cost the same. Multi-color printing is more consistent but slower. Hand painting can be faster in some cases and allows for an artistic finish. We'll recommend the best option based on your project and timeline."} },
     { "@type":"Question","name":"Do you also print in resin?","acceptedAnswer":{"@type":"Answer","text":"Yes, in addition to FDM we also print in resin (MSLA) - especially suited for small figurines and fine details that require high precision."} },
-    { "@type":"Question","name":"Do you offer laser engraving?","acceptedAnswer":{"@type":"Answer","text":"Yes. In addition to 3D printing, we do laser engraving, marking and branding on wood, metal, plastic, acrylic (Plexiglas), stone and ceramics, cork and leather - names, dedications, logos and personal designs. Send us your idea or design and we'll get back to you with a quote."} },
+    { "@type":"Question","name":"Do you offer laser engraving?","acceptedAnswer":{"@type":"Answer","text":"Yes. In addition to 3D printing, we do laser engraving, marking and branding on wood, metals and jewelry, plastic, acrylic (Plexiglas), stone and ceramics, cork and leather - names, dedications, logos and personal designs. Send us your idea or design and we'll get back to you with a quote."} },
     { "@type":"Question","name":"Do you ship nationwide?","acceptedAnswer":{"@type":"Answer","text":"Yes. Door-to-door courier delivery anywhere in the country takes up to 3 business days and costs ₪60, and orders over ₪999 ship free. Self pickup in Beer Sheva is always free."} },
     { "@type":"Question","name":"How can I pay?","acceptedAnswer":{"@type":"Answer","text":"Payment in advance - Bit, PayBox, bank transfer, or cash on self pickup."} },
     { "@type":"Question","name":"What should I do if I have a problem or question?","acceptedAnswer":{"@type":"Answer","text":"During business hours you can get an immediate response via WhatsApp or phone. Outside those hours, leave a message and we'll get back to you as soon as possible."} },
@@ -250,6 +250,12 @@ fbq('track', 'PageView');
     <h2 class="stitle">Pricing</h2>
     <h3 class="section-subhead">Fair pricing, full transparency</h3>
     <p class="ssub">Transparent pricing, no surprises - an agreed price before we begin. Always.</p>
+    <div class="currency-switch" id="currencySwitch" role="group" aria-label="Currency">
+      <button type="button" class="currency-btn active" data-cur="ILS" aria-pressed="true">₪ ILS</button>
+      <button type="button" class="currency-btn" data-cur="USD" aria-pressed="false">$ USD</button>
+      <button type="button" class="currency-btn" data-cur="EUR" aria-pressed="false">€ EUR</button>
+    </div>
+    <div class="currency-note" id="currencyNote">Approximate prices at the current exchange rate, rounded up. Payment is charged in Israeli shekels (₪).</div>
   </div>
 
   <div class="pricing-grid">
@@ -269,22 +275,22 @@ fbq('track', 'PageView');
         <div class="price-row">
           <span class="price-row-label">20 cm tall</span>
           <span class="price-popular-badge">⭐ Most popular</span>
-          <span class="price-row-val"><span class="price-regular">from ₪999</span><span class="price-sale"><s class="sale-old">₪999</s> <span class="sale-new">from ₪599</span></span></span>
+          <span class="price-row-val"><span class="price-regular">from <span class="cur" data-ils="999">₪999</span></span><span class="price-sale"><s class="sale-old"><span class="cur" data-ils="999">₪999</span></s> <span class="sale-new">from <span class="cur" data-ils="599">₪599</span></span></span></span>
         </div>
         <div class="price-row">
           <span class="price-row-label">About 30 cm tall - large & impressive</span>
-          <span class="price-row-val"><span class="price-regular">from ₪1,299</span><span class="price-sale"><s class="sale-old">₪1,299</s> <span class="sale-new">from ₪799</span></span></span>
+          <span class="price-row-val"><span class="price-regular">from <span class="cur" data-ils="1299">₪1,299</span></span><span class="price-sale"><s class="sale-old"><span class="cur" data-ils="1299">₪1,299</span></s> <span class="sale-new">from <span class="cur" data-ils="799">₪799</span></span></span></span>
         </div>
       </div>
       <div class="figurine-per-note">* "From" prices are for one character per figurine.</div>
       <div class="figurine-leadtime">⏱ Preparation time: <strong>up to 7 business days</strong></div>
       <div class="figurine-included">
-        ✨ <strong>Included with every figurine order at no extra charge:</strong> a custom-designed premium stand <strong>(worth ₪150)</strong> alongside a frame with a printed photo and a personal laser-engraved dedication inscription, giving the figurine stability and the look of a luxury gallery piece.
+        ✨ <strong>Included with every figurine order at no extra charge:</strong> a custom-designed premium stand <strong>(worth <span class="cur" data-ils="150">₪150</span>)</strong> alongside a frame with a printed photo and a personal laser-engraved dedication inscription, giving the figurine stability and the look of a luxury gallery piece.
       </div>
       <div class="figurine-extras">
         <div class="figurine-extras-title">➕ FIGURINE ADD-ONS</div>
-        <div class="price-row"><span class="price-row-label">20 cm figurine - additional character or pet</span><span class="price-row-val add-on"><span class="price-regular">+₪399</span><span class="price-sale"><s class="sale-old">₪399</s> <span class="sale-new">+₪199</span></span></span></div>
-        <div class="price-row"><span class="price-row-label">30 cm figurine - additional character or pet</span><span class="price-row-val add-on"><span class="price-regular">+₪449</span><span class="price-sale"><s class="sale-old">₪449</s> <span class="sale-new">+₪249</span></span></span></div>
+        <div class="price-row"><span class="price-row-label">20 cm figurine - additional character or pet</span><span class="price-row-val add-on"><span class="price-regular">+<span class="cur" data-ils="399">₪399</span></span><span class="price-sale"><s class="sale-old"><span class="cur" data-ils="399">₪399</span></s> <span class="sale-new">+<span class="cur" data-ils="199">₪199</span></span></span></span></div>
+        <div class="price-row"><span class="price-row-label">30 cm figurine - additional character or pet</span><span class="price-row-val add-on"><span class="price-regular">+<span class="cur" data-ils="449">₪449</span></span><span class="price-sale"><s class="sale-old"><span class="cur" data-ils="449">₪449</span></s> <span class="sale-new">+<span class="cur" data-ils="249">₪249</span></span></span></span></div>
         <div class="figurine-special"><div class="figurine-special-title">Special add-ons - priced separately</div><div class="figurine-special-desc">(sizes over 30 cm, chair, musical instrument, vehicle, logo, drawings and more)</div><a class="figurine-special-btn" href="https://wa.me/972559144386?text=Hi%20NSF%203D%21%20I%27d%20like%20a%20quote%20for%20a%20custom%20figurine.%20Here%27s%20what%20I%20have%20in%20mind%3A%20" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Get a quote on WhatsApp</a></div>
       </div>
     </div>
@@ -295,7 +301,7 @@ fbq('track', 'PageView');
         <div class="price-card-title">Laser Engraving</div>
       </div>
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">Engraving & marking on metal / wood / plastic / acrylic (Plexiglas) / stone & ceramics / cork / leather</span><span class="price-row-val">Custom quote</span></div>
+        <div class="price-row"><span class="price-row-label">Engraving & marking on metals & jewelry / wood / plastic / acrylic (Plexiglas) / stone & ceramics / cork / leather</span><span class="price-row-val">Custom quote</span></div>
         <div class="price-row"><span class="price-row-label">Preparation time</span><span class="price-row-val">Up to 2 business days</span></div>
       </div>
       <div class="price-card-head price-card-head-sub">
@@ -303,10 +309,10 @@ fbq('track', 'PageView');
         <div class="price-card-title">General 3D Printing</div>
       </div>
       <div class="price-rows">
-        <div class="price-row"><span class="price-row-label">Small / simple projects</span><span class="price-row-val">~₪50–100</span></div>
-        <div class="price-row"><span class="price-row-label">Medium projects</span><span class="price-row-val">~₪100–400</span></div>
+        <div class="price-row"><span class="price-row-label">Small / simple projects</span><span class="price-row-val">~<span class="cur" data-ils="50-100">₪50–100</span></span></div>
+        <div class="price-row"><span class="price-row-label">Medium projects</span><span class="price-row-val">~<span class="cur" data-ils="100-400">₪100–400</span></span></div>
         <div class="price-row"><span class="price-row-label">Large / complex projects</span><span class="price-row-val">Custom quote</span></div>
-        <div class="price-row"><span class="price-row-label">Design from scratch (+printing)</span><span class="price-row-val" style="white-space:normal;text-align:end;">Custom quote · ₪180 per modeling hour</span></div>
+        <div class="price-row"><span class="price-row-label">Design from scratch (+printing)</span><span class="price-row-val" style="white-space:normal;text-align:end;">Custom quote · <span class="cur" data-ils="180">₪180</span> per modeling hour</span></div>
       </div>
       <div class="card-pricing-note">
         <span>💬</span>
@@ -322,10 +328,10 @@ fbq('track', 'PageView');
   </div>
   <div class="shipping-row">
     <span class="shipping-label">🚚 Door-to-door courier (nationwide), within 3 business days</span>
-    <span style="font-weight:800;color:var(--text);">₪60</span>
+    <span style="font-weight:800;color:var(--text);"><span class="cur" data-ils="60">₪60</span></span>
   </div>
   <div class="shipping-row" style="background:var(--bg3);border-color:var(--border2);">
-    <span class="shipping-label">🎁 Free shipping on orders over ₪999</span>
+    <span class="shipping-label">🎁 Free shipping on orders over <span class="cur" data-ils="999">₪999</span></span>
     <span class="shipping-free">Free ✓</span>
   </div>
   <div class="shipping-row" style="background:var(--bg3);border-color:var(--border2);">
@@ -614,7 +620,7 @@ fbq('track', 'PageView');
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">11</span>Do you offer laser engraving?</span><span class="faq-arrow">▼</span></div>
-      <div class="faq-a">Yes. In addition to 3D printing, we do laser engraving, marking and branding on wood, metal, plastic, acrylic (Plexiglas), stone and ceramics, cork and leather - names, dedications, logos and personal designs. <a href="#contact" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">Send us</a> your idea or design and we'll get back to you with a quote.</div>
+      <div class="faq-a">Yes. In addition to 3D printing, we do laser engraving, marking and branding on wood, metals and jewelry, plastic, acrylic (Plexiglas), stone and ceramics, cork and leather - names, dedications, logos and personal designs. <a href="#contact" style="color:var(--blue-mid);font-weight:700;text-decoration:none;">Send us</a> your idea or design and we'll get back to you with a quote.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-q-left"><span class="faq-num">12</span>Do you ship nationwide?</span><span class="faq-arrow">▼</span></div>

@@ -739,3 +739,18 @@ body.dark .projects-tab{color:var(--text);}
 .projects-tab[aria-selected="true"]::before{content:"✓";position:absolute;top:-10px;inset-inline-start:-10px;width:26px;height:26px;border-radius:50%;background:#fff;color:#1e6fa8;border:2.5px solid #1a3a5c;font-size:15px;font-weight:900;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.25);}
 .projects-tab[aria-selected="true"]::after{content:"";position:absolute;bottom:-13px;left:50%;margin-left:-9px;border:9px solid transparent;border-top-color:#1a3a5c;border-bottom-width:0;}
 @media(max-width:820px){.projects-tab[aria-selected="true"],.projects-tab[aria-selected="true"]:hover{transform:scale(1.04);}.projects-tab[aria-selected="true"]::before{top:-9px;width:23px;height:23px;font-size:13px;}}
+
+/* ── Currency switch (EN/RU) ── */
+.currency-switch{display:none;gap:8px;justify-content:center;margin:18px auto 0;flex-wrap:wrap}
+.currency-switch.ready{display:flex}
+.currency-btn{font-family:'Rubik',sans-serif;font-size:15px;font-weight:700;padding:8px 20px;border-radius:999px;border:1.5px solid var(--border2);background:var(--card-bg);color:var(--text2);cursor:pointer;transition:all .2s}
+.currency-btn:hover{border-color:var(--blue-mid);color:var(--blue-mid)}
+.currency-btn.active{background:var(--blue-mid);border-color:var(--blue-mid);color:#fff}
+body.dark .currency-btn.active{color:#0b1622}
+.currency-note{display:none;text-align:center;font-size:13px;color:var(--text2);margin-top:10px;line-height:1.5}
+.currency-note.show{display:block}
+/* מובייל: שורות מחיר (במיוחד סייל + מטבע זר) יורדות לשורה חדשה במקום לגלוש מהכרטיס */
+@media(max-width:480px){
+  .price-row{flex-wrap:wrap;gap:2px 10px}
+  .price-row-val{margin-inline-start:auto}
+}

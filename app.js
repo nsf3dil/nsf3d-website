@@ -503,6 +503,66 @@ function closeAnnounce(){
   }
 }
 
+
+// ══════════════════════════════════════════════
+//  CURRENCY (EN/RU בלבד): תצוגת מחירון ב-$ / € לפי שער חי, עיגול כלפי מעלה ל-x.99
+// ══════════════════════════════════════════════
+const CUR_SYMBOL = { ILS:'₪', USD:'$', EUR:'€' };
+let fxRates = null;           // { USD: <לכל 1 ₪>, EUR: <לכל 1 ₪> }
+function priceUp(v){ return Math.ceil(v - 0.99 - 1e-9) + 0.99; }
+function curLang(){ return (document.documentElement.lang||'').toLowerCase().startsWith('ru') ? 'ru' : 'en'; }
+function fmtNum(v){ return v.toLocaleString(curLang()==='ru'?'ru-RU':'en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fmtMoney(v,cur){ return curLang()==='ru' ? fmtNum(v)+'\u00a0'+CUR_SYMBOL[cur] : CUR_SYMBOL[cur]+fmtNum(v); }
+function applyCurrency(cur){
+  const sw = document.getElementById('currencySwitch'); if(!sw) return;
+  if(cur!=='ILS' && !(fxRates && fxRates[cur])) cur = 'ILS';
+  document.querySelectorAll('#pricing .cur').forEach(el=>{
+    if(el.dataset.orig===undefined) el.dataset.orig = el.textContent;
+    if(cur==='ILS'){ el.textContent = el.dataset.orig; return; }
+    const parts = el.dataset.ils.split('-').map(n=>priceUp(Number(n)*fxRates[cur]));
+    el.textContent = parts.length===1 ? fmtMoney(parts[0],cur)
+      : (curLang()==='ru' ? fmtNum(parts[0])+'–'+fmtMoney(parts[1],cur) : CUR_SYMBOL[cur]+fmtNum(parts[0])+'–'+CUR_SYMBOL[cur]+fmtNum(parts[1]));
+  });
+  sw.querySelectorAll('.currency-btn').forEach(b=>{ const on=b.dataset.cur===cur; b.classList.toggle('active',on); b.setAttribute('aria-pressed',on); });
+  document.getElementById('currencyNote').classList.toggle('show', cur!=='ILS');
+  try{ localStorage.setItem('nsf-currency', cur); }catch(e){}
+}
+async function fetchJsonTimeout(url, ms){
+  const ctl = new AbortController(); const t = setTimeout(()=>ctl.abort(), ms);
+  try{ const r = await fetch(url,{signal:ctl.signal}); if(!r.ok) throw new Error(r.status); return await r.json(); }
+  finally{ clearTimeout(t); }
+}
+async function loadFxRates(){
+  const KEY='nsf-fx-v1', FRESH=12*3600e3, STALE=7*24*3600e3;
+  let cached=null; try{ cached = JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){}
+  if(cached && Date.now()-cached.t < FRESH) return cached;
+  const sources = [
+    ['https://api.frankfurter.dev/v1/latest?base=ILS&symbols=USD,EUR', d=>d.rates],
+    ['https://open.er-api.com/v6/latest/ILS', d=>d.rates]
+  ];
+  for(const [url,pick] of sources){
+    try{
+      const r = pick(await fetchJsonTimeout(url, 6000));
+      if(r && r.USD>0 && r.EUR>0){
+        const out = { t:Date.now(), USD:r.USD, EUR:r.EUR };
+        try{ localStorage.setItem(KEY, JSON.stringify(out)); }catch(e){}
+        return out;
+      }
+    }catch(e){}
+  }
+  // אם אין שער חי - משתמשים בשער ישן (עד שבוע). אחרת אין תצוגת מטבע, ונשארים עם ₪.
+  return (cached && Date.now()-cached.t < STALE) ? cached : null;
+}
+async function initCurrency(){
+  const sw = document.getElementById('currencySwitch'); if(!sw) return;
+  const fx = await loadFxRates(); if(!fx) return;      // בלי שער - הכפתורים נשארים מוסתרים
+  fxRates = { USD:fx.USD, EUR:fx.EUR };
+  sw.classList.add('ready');
+  sw.addEventListener('click', e=>{ const b=e.target.closest('.currency-btn'); if(b) applyCurrency(b.dataset.cur); });
+  let saved='ILS'; try{ saved = localStorage.getItem('nsf-currency')||'ILS'; }catch(e){}
+  applyCurrency(saved);
+}
+
 function initCookieBanner(){
   const consent = getCookieConsent();
   if(!consent){ setTimeout(()=>{ document.getElementById('cookieBanner').style.display='block'; }, 1500); }
@@ -550,6 +610,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   initAnnouncement();
   initCookieBanner();
+  initCurrency();
 
   const btt = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
